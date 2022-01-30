@@ -1,0 +1,72 @@
+/*
+  #FF5757
+  #35C4FF
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Inter:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+    padding: 0;
+    margin: 0;
+    background: #fff;
+}
+
+.navbar {
+    height: 93px;
+    background: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
+    font-family: Inter;
+    padding: 0 70px;
+    align-items: center;
+}
+
+@media(max-width:768px) {
+    .navbar {
+        padding: 0 20px;
+    }
+}
+
+.nav-link,
+.navbar-brand {
+    color: #777E91;
+    cursor: pointer;
+}
+
+.nav-link {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    margin-right: 1em !important;
+}
+
+.connect-wallet-btn {
+    width: 153px;
+    height: 48px;
+    background: #35C4FF;
+    border: 0px;
+    border-radius: 90px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #FCFCFD;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 1px;
+}
+
+.nav-link:hover {
+    color: #000;
+}
+
+.navbar-collapse {
+    justify-content: center;
+}
+
+.page-container {
+    margin-top: 93px;
+}
