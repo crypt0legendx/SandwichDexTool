@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sandwich Network</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link media="all" rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/jquery.flatpicker.css"/>
+	<link media="all" rel="stylesheet" href="/css/main.css">
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.js"></script>
+    <script src="/js/jquery.flatpicker.js"></script>
+	<script src="/js/jquery.main.js"></script>
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+    
+    <style>
+.err {
+    color: red;
+}
+    </style>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9F0EVMSM8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S9F0EVMSM8');
+    </script>
+</head>
+
+<body>
+    
+    
+    
+    
+    
+	<div id="wrapper">
+	    <section class="dashboard-block">
+			<header class="mobile-header">
+				<span class="side-collapsible">
+					<svg viewBox="0 0 24 24" width="24px" color="textSubtle" xmlns="http://www.w3.org/2000/svg" class="active-bars"><path d="M4 18H15C15.55 18 16 17.55 16 17C16 16.45 15.55 16 15 16H4C3.45 16 3 16.45 3 17C3 17.55 3.45 18 4 18ZM4 13H12C12.55 13 13 12.55 13 12C13 11.45 12.55 11 12 11H4C3.45 11 3 11.45 3 12C3 12.55 3.45 13 4 13ZM3 7C3 7.55 3.45 8 4 8H15C15.55 8 16 7.55 16 7C16 6.45 15.55 6 15 6H4C3.45 6 3 6.45 3 7ZM20.3 14.88L17.42 12L20.3 9.12C20.69 8.73 20.69 8.1 20.3 7.71C19.91 7.32 19.28 7.32 18.89 7.71L15.3 11.3C14.91 11.69 14.91 12.32 15.3 12.71L18.89 16.3C19.28 16.69 19.91 16.69 20.3 16.3C20.68 15.91 20.69 15.27 20.3 14.88Z"></path></svg>
+					<svg viewBox="0 0 24 24" width="24px" color="textSubtle" xmlns="http://www.w3.org/2000/svg" class="collapsed-bars"><path d="M4 18H20C20.55 18 21 17.55 21 17C21 16.45 20.55 16 20 16H4C3.45 16 3 16.45 3 17C3 17.55 3.45 18 4 18ZM4 13H20C20.55 13 21 12.55 21 12C21 11.45 20.55 11 20 11H4C3.45 11 3 11.45 3 12C3 12.55 3.45 13 4 13ZM3 7C3 7.55 3.45 8 4 8H20C20.55 8 21 7.55 21 7C21 6.45 20.55 6 20 6H4C3.45 6 3 6.45 3 7Z"></path></svg>
+				</span>
+				<span class="side-opener"></span>
+				<strong class="logo">
+					<a href="https://sandwich.network/"><img src="/images/sandwich-with-text-2-1.png" alt="Sandwich"></a>
+				</strong>
+			</header>
+			
+			<aside class="sidebar">
+		        <div class="scroller mCustomScrollbar">
+			        <strong class="logo">
+			            <a href="https://sandwich.network/"><img src="/images/sandwich-with-text-2-1.png" alt="Sandwich"></a>
+			        </strong>
+		        	<!--a href="" id="connect" class="button-primary w-button connect">Connect Wallet</a-->
+			        <ul class="title-wrap">
+			            <li><a href="/launch/" class="page-title space-title">LAUNCH</a></li>
+			            <li><a href="/invest/" class="invest-link">INVEST</a></li>
+			        </ul>
+			        <ul class="tabset">
+			            <li>
+			              <a class="tab-opener" href="/launch/#main-all" id="open-main">
+			                <span class="img">
+			                  <svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><path d="m467 17h-422c-24.813 0-45 20.187-45 45v292c0 24.813 20.187 45 45 45h145.293l-11 66h-19.293c-8.284 0-15 6.716-15 15s6.716 15 15 15h192c8.284 0 15-6.716 15-15s-6.716-15-15-15h-19.293l-11-66h145.293c24.813 0 45-20.187 45-45v-292c0-24.813-20.187-45-45-45zm-164.707 448h-92.586l11-66h70.586zm179.707-111c0 8.271-6.729 15-15 15-10.702 0-409.447 0-422 0-8.271 0-15-6.729-15-15v-292c0-8.271 6.729-15 15-15h196v17c0 8.284 6.716 15 15 15s15-6.716 15-15v-17h196c8.271 0 15 6.729 15 15z"/><path d="m208 209c-8.284 0-15 6.716-15 15v49h-34v-97c0-8.284-6.716-15-15-15s-15 6.716-15 15v97h-34v-145c0-8.284-6.716-15-15-15s-15 6.716-15 15v160c0 8.284 6.716 15 15 15h128c8.284 0 15-6.716 15-15v-64c0-8.284-6.716-15-15-15z"/><path d="m360 121c-47.972 0-87 39.028-87 87 0 23.627 9.472 45.081 24.813 60.775.689.787.656.749 1.411 1.411 15.694 15.341 37.148 24.814 60.776 24.814 47.972 0 87-39.028 87-87s-39.028-87-87-87zm54.983 72h-39.983v-39.983c19.391 5.296 34.687 20.592 39.983 39.983zm-69.983-39.983v48.77l-34.471 34.471c-18.545-32.339-1.316-73.466 34.471-83.241zm-13.258 104.454 34.471-34.471h48.77c-9.79 35.839-50.946 52.99-83.241 34.471z"/></g></svg>
+			                </span>
+			                Launch Dashboard
+			              </a>
+			            </li>
+			            <li>
+			              <a class="tab-opener" href="/launch/#mint-all" id="open-mint">
+			                <span class="img">
+			                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+			                    <path d="M8.7,29c-3,1.14-4.79,2.67-4.79,4.35v4.09c0,3.54,8,6.4,17.91,6.4S39.74,41,39.74,37.43v-4a45.26,45.26,0,0,1-11.56,1.41C20.18,34.83,11.69,33,8.7,29Z" fill="currentColor"></path>
+			                    <path class="cls-1" d="M44.42,19C42.13,23.6,33,25.74,24.36,25.74a41.19,41.19,0,0,1-14.1-2.23v2.24c0,3.53,8,6.4,17.92,6.4s17.91-2.87,17.91-6.4V21.66A3.55,3.55,0,0,0,44.42,19Z" fill="currentColor"></path>
+			                    <path class="cls-1" d="M24.36,23.06c9.9,0,17.92-2.86,17.92-6.4V12.57c0-3.54-8-6.4-17.92-6.4S6.45,9,6.45,12.57v4.09C6.45,20.2,14.47,23.06,24.36,23.06Z" fill="currentColor"></path>
+			                  </svg>
+			                </span>
+			                SandwichMint
+			              </a>
+			            </li>
+			            <li>
+			              <a class="tab-opener" href="/launch/#launch-all" id="open-sale">
+			                <span class="img">
+			                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.55 23.66">
+			                    <path d="M18.82,3.05l-.89.13a12.64,12.64,0,0,0-7.19,3.59l-.58.58S7.22,6,3.24,8.53a.55.55,0,0,0,.1,1l3.42,1.24-.3.3a1,1,0,0,0,0,1.42l4.68,4.68a1,1,0,0,0,1.41,0l.31-.3,1.24,3.42a.55.55,0,0,0,1,.1c2.52-4,1.18-6.93,1.18-6.93l.58-.57a12.76,12.76,0,0,0,3.59-7.2l.13-.89A1.53,1.53,0,0,0,18.82,3.05Zm-2.71,6.5a1.46,1.46,0,0,1-2,0,1.45,1.45,0,1,1,2,0Z" fill="currentColor"></path>
+			                    <path class="cls-1" d="M8,15.59H8a1.86,1.86,0,0,1-.62,3L3.35,20.26,5,16.21A1.86,1.86,0,0,1,8,15.59Z" fill="currentColor"></path>
+			                  </svg>
+			                </span>
+			                SandwichLaunch
+			              </a>
+			            </li>
+			            <li>
+			              <a class="tab-opener" href="/launch/#lock-all" id="open-lock">
+			                <span class="img">
+			                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+			                    <path d="m18.75 24h-13.5c-1.24 0-2.25-1.009-2.25-2.25v-10.5c0-1.241 1.01-2.25 2.25-2.25h13.5c1.24 0 2.25 1.009 2.25 2.25v10.5c0 1.241-1.01 2.25-2.25 2.25zm-13.5-13.5c-.413 0-.75.336-.75.75v10.5c0 .414.337.75.75.75h13.5c.413 0 .75-.336.75-.75v-10.5c0-.414-.337-.75-.75-.75z" fill="currentColor"></path>
+			                    <path d="m17.25 10.5c-.414 0-.75-.336-.75-.75v-3.75c0-2.481-2.019-4.5-4.5-4.5s-4.5 2.019-4.5 4.5v3.75c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-3.75c0-3.309 2.691-6 6-6s6 2.691 6 6v3.75c0 .414-.336.75-.75.75z" fill="currentColor"></path>
+			                    <path d="m12 17c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zm0-2.5c-.275 0-.5.224-.5.5s.225.5.5.5.5-.224.5-.5-.225-.5-.5-.5z" fill="currentColor"></path>
+			                    <path d="m12 20c-.414 0-.75-.336-.75-.75v-2.75c0-.414.336-.75.75-.75s.75.336.75.75v2.75c0 .414-.336.75-.75.75z" fill="currentColor"></path>
+			                  </svg>
+			                </span>
+			                SandwichLock
+			              </a>
+			            </li>
+			            <li class="more-openclose">
+			              <a class="tab-opener more-opener" href="#">
+			                <span class="img">
+			                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-192 0 512 512">
+			                    <path d="m128 256c0 35.347656-28.652344 64-64 64s-64-28.652344-64-64 28.652344-64 64-64 64 28.652344 64 64zm0 0" fill="currentColor"></path>
+			                    <path d="m128 64c0 35.347656-28.652344 64-64 64s-64-28.652344-64-64 28.652344-64 64-64 64 28.652344 64 64zm0 0" fill="currentColor"></path>
+			                    <path d="m128 448c0 35.347656-28.652344 64-64 64s-64-28.652344-64-64 28.652344-64 64-64 64 28.652344 64 64zm0 0" fill="currentColor"></path>
+			                  </svg>
+			                </span>
+			                Support &amp; More 
+			              </a>
+			              <ul class="aside-dropdown">
+			                <li><a target="_blank" href="/token/">Token</a></li>
+			                <li><a target="_blank" href="https://docs.sandwich.network/support">Support</a></li>
+			                <li><a target="_blank" href="https://docs.sandwich.network/">Docs</a></li>
+			                <li><a href="/tutorials/">Tutorials</a></li>
+			                <li><a target="_blank" href="https://medium.com/@sandwichnetwork">Blog</a></li>
+			                <li><a href="/submit/">Submit idea</a></li>
+			              </ul>
+			            </li>
+			        </ul>
+		        </div>
+		        <div class="aside-socialbox">
+		        	<label class="switcher">
+		        		<input type="checkbox" checked>
+		        		<span class="fake-switcher"></span>
+		        	</label>
+			        <ul class="social-networks">
+			            <li>
+			              <a target="_blank" href="https://twitter.com/NetworkSandwich">
+			                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="Sidebar_mediaIcon__2HcGh"><g id="_1" data-name="1"><path id="cls-1" d="M22,5.8a8.6,8.6,0,0,1-2.36.65,4.07,4.07,0,0,0,1.8-2.27,8.1,8.1,0,0,1-2.6,1A4.1,4.1,0,0,0,11.75,8a4.73,4.73,0,0,0,.09.93A11.6,11.6,0,0,1,3.39,4.62,4.2,4.2,0,0,0,2.83,6.7a4.09,4.09,0,0,0,1.82,3.4A4,4,0,0,1,2.8,9.6v0a4.11,4.11,0,0,0,3.29,4A4.2,4.2,0,0,1,5,13.81a4,4,0,0,1-.78-.07,4.14,4.14,0,0,0,3.83,2.85A8.22,8.22,0,0,1,3,18.34a6.37,6.37,0,0,1-1-.06,11.48,11.48,0,0,0,6.29,1.84A11.58,11.58,0,0,0,20,8.46c0-.18,0-.36,0-.53A8.31,8.31,0,0,0,22,5.8Z"></path></g></svg>
+			              </a>
+			            </li>
+			            <li>
+			              <a target="_blank" href="https://t.me/SandwichNetwork">
+			                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="Sidebar_mediaIcon__2HcGh"><g id="_1" data-name="1"><path class="cls-1" d="M9.4,15v3.66a.35.35,0,0,0,.61.23l2.52-2.81,5.14,4.67a.49.49,0,0,0,.81-.26L22,4A.71.71,0,0,0,21,3.14L2.31,10.36a.48.48,0,0,0,0,.9L6.44,13a1.28,1.28,0,0,0,1.2-.1L18.88,5.62,9.81,14.09A1.28,1.28,0,0,0,9.4,15Z"></path></g></svg>
+			              </a>
+			            </li>
+			            <li>
+			              <a target="_blank" href="https://medium.com/@sandwichnetwork">
+			                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="Sidebar_mediaIcon__2HcGh"><g id="_1" data-name="1"><path class="cls-1" d="M20.4,5.94,22,4.42V4.08H16.47l-3.94,9.81L8.05,4.08H2.25v.34L4.12,6.66a.8.8,0,0,1,.25.65v8.82A1,1,0,0,1,4.1,17L2,19.55v.33H8v-.33L5.85,17a1.08,1.08,0,0,1-.29-.88V8.5l5.23,11.39h.61L15.89,8.5v9.07c0,.24,0,.29-.15.45l-1.62,1.56v.34H22v-.34l-1.55-1.52a.47.47,0,0,1-.18-.45V6.39a.48.48,0,0,1,.17-.45Z"></path></g></svg>
+			              </a>
+			            </li>
+			            <li>
+			              <a target="_blank" href="#">
+			                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="Sidebar_mediaIcon__2HcGh"><g id="_1" data-name="1"><path class="cls-1" d="M5.74,17.55V10.82a.56.56,0,0,1,.56-.55H8.56a.56.56,0,0,1,.56.55v6.11l1-.24V9a.56.56,0,0,1,.55-.56h2.27a.56.56,0,0,1,.55.56v6.63c.42-.16.83-.34,1.24-.52v-8a.56.56,0,0,1,.56-.55h2.26a.56.56,0,0,1,.56.55V13.2a13.93,13.93,0,0,0,3.58-3.64A10,10,0,0,0,2,12a9.88,9.88,0,0,0,1.84,5.76C4.38,17.71,5,17.65,5.74,17.55Z"></path><path class="cls-1" d="M6.76,20.5A9.84,9.84,0,0,0,12,22,10,10,0,0,0,22,12c0-.26,0-.53,0-.78C20.52,14.32,16.72,18.49,6.76,20.5Z"></path></g></svg>
+			              </a>
+			            </li>
+			            <li>
+			              <a target="_blank" href="#">
+			                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="Sidebar_mediaIcon__2HcGh"><g id="_1" data-name="1"><path class="cls-1" d="M17.61,8.77,18.27,5a2.62,2.62,0,0,0-.5-2,2.64,2.64,0,0,0-1.85-1h-.21a2.59,2.59,0,0,0-2.59,2.59V7.7c-.37,0-.75,0-1.12,0s-.79,0-1.19,0V4.56A2.6,2.6,0,0,0,8.21,2H8A2.61,2.61,0,0,0,5.65,5L6.32,8.8C3.6,10,2,12,2,14.12v1.46C2,19.2,6.39,22,12,22s10-2.83,10-6.45V14.12C22,11.93,20.37,10,17.61,8.77Zm-1.9-6h0Zm-.28,9.61c.56,0,1,.68,1,1.52s-.45,1.51-1,1.51-1-.68-1-1.51S14.87,12.33,15.43,12.33ZM8.21,2.72h0Zm.23,9.61c.56,0,1,.68,1,1.52s-.45,1.51-1,1.51-1-.68-1-1.51S7.88,12.33,8.44,12.33Zm12.81,3.25c0,3.15-4.14,5.7-9.25,5.7s-9.25-2.55-9.25-5.7V14.12h0c0,3.14,4.15,5.69,9.25,5.69s9.24-2.55,9.25-5.69h0Z"></path></g></svg>
+			              </a>
+			            </li>
+			        </ul>
+			        <ul class="aside-link">
+			            <li><a href="/tos">Terms &amp; conditions</a></li>
+			            <li>|</li>
+			            <li><a href="/tos#privacy">Privacy policy</a></li>
+			        </ul>
+		        </div>
+		    </aside>
+		    
+		    
+		    
+		    <div class="block-content">
+		    	<header class="block-head">
+		    		<h1>Terms and Conditions</h1>
+		    		<!--a href="#" class="button-primary w-button">Connect Wallet</a-->
+		    	</header>
+		    	<div class="subpages-content">
+		    		<p>Before using Sandwich's services or products, you or the user must read this end-user agreement. You should know that this agreement contains a legal binding between the customer and the Sandwich Network, which works on the internet and its services run at https://sandwich.network. On using our website, we will consider that you agree to all the terms and conditions mentioned below.</p>
+		    		<p>To use this website, products on this website, and services on this website, you must agree to this agreement which means that you are bound to follow the terms and conditions and the Privacy Policy. If you do not agree to these conditions, you must not use this website or any product or service on it.</p>
+		    		<h2>Services</h2>
+		    		<ol>
+		    		    <li>The Sandwich Network Platform offers numerous support contributions in particular: SandwichMint, SandwichLaunch, and SandwichLock, the utilization of every individual Service of whom are controlled according to their separate terms read with these Terms; which term incorporates the hidden application, all administrations accessible through the Platform, and every free preliminary and beta administrations made accessible by the Platform.</li>
+		    		    <li>The User might be needed to interface their wallet to the Platform to access a portion of the Services. We are not answerable for any misfortune or harm that might emerge from such incorporation.</li>
+		    		    <li>You comprehend that the Platform Services include early advances, and the use of such Services could bring about fractional or complete loss of assets.</li>
+		    		</ol>
+		    		<h2>Services Access</h2>
+		    		<p>By utilizing the Services, you have the following benefits:</p>
+		    		<ol>
+		    		    <li>You have full lawful limit and power to concur and tie yourself to these Terms;</li>
+		    		    <li>You are eighteen years old or more established;</li>
+		    		    <li>Your utilization of the Services is not disallowed by relevant law and is consistently agreeable with material law.</li>
+		    		    <li>You are exclusively answerable for utilization of the Services and, if relevant, for all exercises that happen on or through your User account.</li>
+		    		</ol>
+		    		<p>You should find ways to guarantee the secrecy of your data and limit admittance to the gadgets you use to get to the Platform.</p>
+		    		<h2>Your Responsibilities</h2>
+		    		<ol>
+		    		    <li>You will not utilize the Services in any way besides as explicitly allowed in these Terms without restricting the consensus of the first sentence;</li>
+		    		    <li>You may not: encroach any restrictive rights, including yet not restricted to copyrights, licenses, brand names, or proprietary advantages of Sandwich Network;</li>
+                        <li>Do not utilize the Services to communicate any information or send or transfer any material that contains infections, Trojan ponies, worms, delayed bombs, keystroke lumberjacks, spyware, adware, or some other destructive projects or comparative PC code intended to influence the activity of any program or equipment unfavourably;</li>
+                        <li>You mustn’t utilize any robot, bug, other mechanized gadgets, or manual cycle to screen or duplicate the Services or any piece thereof other than replicating or sending out as allowed by the Terms;</li>
+                        <li>You shouldn’t make any backup or documented duplicates of the Platform or any part thereof, including dismantling or de-accumulation of the Platform;</li>
+                        <li>You shouldn’t utilize the Services in any unlawful way, for false or malignant exercises, or any way conflicting with these Terms;</li>
+                        <li>You may not abuse appropriate laws in any way;</li>
+                        <li>You warrant that you know about material laws and guidelines overseeing your utilization of the Services. You will be exclusively liable for guaranteeing consistency with the different material laws. You will be exclusively at risk for any responsibility that might emerge because of a break of your commitments in such a manner.</li>
+		    		</ol>
+		    		<p>You agree to familiarize yourself with the platform, the services, and its intended usage. You agree To follow all the requisite steps required to use the program, and you must first agree to do so. If it is the user's fault, we won't be responsible for any problem in the system. You will expand all participation, at your expense, to Sandwich with regards to any procedures that might be started against it because of a break of your commitments or agreements under these Terms.</p>
+		    	    <h2>Sandwich’s Intellectual Property</h2>
+		    	    <ol>
+		    	        <li>All rights, title, and interest in and to the Services, including all protected innovation rights emerging out of the Services, are possessed by or in any case authorized to Sandwich. Subject to your consistency with these Terms, Sandwich awards you a non-select, non-sublicensable, and restricted permit to utilize the Services in the allowed hereunder.</li>
+		    	        <li>Except as expressed in these Terms, nothing in these Terms ought to be interpreted as presenting any right in or permit to Sandwich's or any outsider's scholarly rights.</li>
+		    	        <li>You might give ideas and other criticism, including bug reports, comparable to the Services occasionally ("Feedback"). Sandwich Network may uninhibitedly utilize, duplicate, unveil, distribute, show, appropriate, and take advantage of the Feedback with no instalment of eminence, affirmation, earlier assent, or some other type of limitation emerging out of your protected innovation rights.</li>
+		    	    </ol>
+		    	    <h2>Outsider Services</h2>
+		    	    <ol>
+		    	        <li>The Services might incorporate administrations, content, and data possessed, made accessibly, or in any case authorized by an outsider ("Third Party Services") or contain connections to Third Party Services. You comprehend that Third Party Services are the obligation of the outsider that made or gave it and recognize that the utilization of such Third Party Services is exclusively at your danger.</li>
+		    	        <li>Sandwich makes no portrayals and bars all guarantees and liabilities emerging from or relating to such Third Party Services, including its precision or fulfilment.</li>
+		    	        <li>All licensed innovation rights in and to Third-Party Services are the property of the separate outsiders.</li>
+		    	    </ol>
+		    	    <h2>Repayment</h2>
+		    	    <p>You consent to repay and hold innocuous Sandwich organization, its associates, auxiliaries, licensors, and their particular chiefs, officials, individuals, supervisors, representatives, and specialists from and against any cases and costs emerging out of your utilization of the Services, a break of any arrangement of these Terms by you or any individual utilizing the Services for your sake, a break by you of any relevant laws, or any outsider case to the degree emerging from or associated with a claim that your utilization of the Services as per these Terms encroaches any privileges of an outsider.</p>
+		    	    <h2>Terms and Termination</h2>
+		    	    <ol>
+		    	        <li>These Terms will stay as a result except if ended as per the terms hereunder.</li>
+		    	        <li>The sandwich might end, suspend, or change your admittance to the Services, or any part thereof, quickly and anytime, at its sole circumspection in case it is of the view that you abuse or break any of your commitments, obligations, or agreements under these Terms. Sandwich Network won't be responsible to you or any outsider for any end, suspension, or adjustment of your admittance to the Services.</li>
+		    	        <li>Upon end under Clause 7(b):</li>
+		    	        <li>These Terms will end, except those conditions that explicitly or are expected to endure end or expiry.</li>
+		    	    </ol>
+		    	    <h2>Disclaimers and Warranties</h2>
+		    	    <ol>
+		    	        <li>The sandwich will make all economically sensible endeavors to work with data about the use of the Services Information. Nonetheless, you comprehend that Sandwich doesn't (I) ensure the exactness, idealness, or culmination of such data, (ii) furnish any guarantees regarding your utilization or dependence on such data. You concur that your utilization of the Services Information is at your danger. In case of delay, cancelation, inaccuracy, or interruption of any service information, the Sandwich Network won’t be responsible.</li>
+		    	        <li>You concur that your utilization of the Services is at your sole danger. To the degree allowed by appropriate law, the Services are given with no guarantees and as accessible premise. The sandwich doesn't warrant that the capacities contained in the Services will meet your necessities. You like this acknowledge full liability regarding any outcomes that might emerge from your utilization of the Services and explicitly concur and recognize that Sandwich will have no responsibility in such a manner.</li>
+		    	        <li>The sandwich doesn't warrant or address that the Services will be viable with any outsider equipment or programming, except if expressly demonstrated. It will be your obligation to guarantee the similarity of the Services before use. Furthermore, Sandwich will not be considered liable for any genuine, accidental, or noteworthy harms that might result from any utilization or powerlessness to utilize any outsider peripherals with the Services.</li>
+		    	        <li>The Application might contain connections to outsider sites or administrations that are not possessed or constrained by Sandwich. Sandwich has no power over and accepts no accountability for any such sites' substance, security arrangements, or practices. You further recognize and concur that Sandwich will not be capable or responsible, straightforwardly or in a roundabout way, for any harm or misfortune caused or asserted to be brought about by or regarding utilization of or dependence on any such substance, labor, and products accessible on or through any such sites or administration.</li>
+		    	        <li>To the furthest reaches reasonable under material law, Sandwich explicitly renounces all guarantees of any sort, express or suggested, emerging out of the Services, including guarantees of merchantability, readiness for a specific reason, palatable quality, precision, title and non-encroachment, similarity, relevance, convenience, suitability, and any guarantee that might emerge out obviously of execution, course of managing, or use of the exchange.</li>
+		    	        <li>To the furthest reaches permissible by law, Sandwich, its subsidiaries, and their connected gatherings each renounce all risk to you for any misfortune or harm emerging out of or due to.</li>
+		    	        <li>Your utilization of, failure to utilize, or accessibility or inaccessibility of the Services, including any outsider administrations made accessible through the Services.</li>
+		    	        <li>The event or presence of any imperfection, interference, erasure of documents, delays in the activity or transmission of data to, from, or through the Services, correspondences disappointment, robbery, obliteration or unapproved admittance to Sandwich's records, programs, administrations, worker, or other foundation is identifying with the Sandwich, the Services being tainted with any pernicious code or infections, or the disappointment of the Services to stay functional for any timeframe.</li>
+		    	    </ol>
+		    	    <h2>Classification</h2>
+		    	    <p>You recognize that the Services contain Sandwich's and its licensors' proprietary advantages and secret data. You consent to hold and keep up with the Services in certainty and not outfit some other individual with a duplicate of the Services or Platform. You consent to utilize a healthy level of care to secure the classification of the Services. You won't eliminate or change any of Sandwich's or its licensors' exclusive take note. Your commitments under this Clause proceed even after these Terms have lapsed or been ended.</p>
+		    	    <h2>Policy Against Money Laundering</h2>
+		    	    <p>Sandwich explicitly disallows and dismisses the utilization of the Service for any type of unlawful action, including illegal tax avoidance, psychological oppressor financing, or international restrictions infringement, reliable with different wards' laws, guidelines, and standards. By utilizing the Service, you address that you are not associated with any such action.</p>
+		    	    <h2>Force Majeure</h2>
+		    	    <p>Sandwich Network will have no responsibility to you in case it is kept from or deferred in playing out its commitments or from carrying on its business, by acts, occasions, exclusions or mishaps past its sensible control, including, without constraint, strikes, disappointment of a utility help or broadcast communications organization, demonstration of God, war, revolt, common disturbance, malevolent harm, consistence with any law or administrative request, rule, guideline, or heading.</p>
+                    <h2>Purview AND Governing Law</h2>
+                    <p>Subject to different arrangements of this Clause 12, the Parties will endeavor sincerely to commonly resolve any questions, regardless of whether of law or reality and any nature at all emerging from or as for this Agreement.</p>
+                    <p>All questions will be settled by discretion in Estonia as per the procedural parts of Estonian Arbitration law for the time being in power and rules thereunder, which are considered consolidated by reference in this Clause. The court will comprise of 1 (One) mediator commonly delegated by the Parties.</p>
+                    <p>The honor delivered by such a mediator will be conclusive and restricting on the Parties.</p>
+                    <h2>Various Provisions</h2>
+                    <ol>
+                        <li>Modification: Sandwich holds the right to alter these Terms and add new or extra terms or conditions on your utilization of the Services. Such changes and extra agreements will be imparted to you and, if explicitly dismissed (in which these Terms will end), will be taking effect right now and will be fused into these Terms. On occasion, you won't acknowledge such changes; these Terms and permits will end.</li>
+                        <li>Severability: If any arrangement of these Terms is controlled by any court or other equipped power to be unlawful or unenforceable, different arrangements of these Terms will proceed basically. If any unlawful or unenforceable arrangement would be legal or enforceable if some portion of it were erased, that part will be considered to be erased. The remainder of the arrangement will proceed as a result except if that would negate the unmistakable goal of the condition, where the total of the important arrangement will be considered to be erased.</li>
+                        <li>Notices: All notification, solicitations, requests, and judgments for Sandwich Network under these Terms (other than routine functional interchanges) will be shipped off info@sandwich.network.</li>
+                        <li>Third-Party Rights: No outsider will reserve any privileges to authorize any terms contained thus.</li>
+                    </ol>
+                    
+                    <h1 id="privacy">Privacy Policy</h1>
+                    
+                    <p>This Privacy Policy diagrams Sandwich network rehearses comparable to the capacity, use, handling, and divulgence of individual information that you have decided to impart to us when you access the Platform (as characterized in the Terms) or utilize the Services as characterized in the Terms. This Policy, along with our Terms, applies to your utilization of the Platform.</p>
+                    <p>At Sandwich Network, we are focused on ensuring your information and regarding your protection. If it's not too much trouble, read this Policy cautiously to comprehend our works concerning your information and how we will treat it. The Policy sets out the premise that we will prepare any personal information that we gather from you or give to us.</p>
+                    <p>Except if characterized in this Policy, uppercase words will have similar significance credited to them in our Terms and Conditions. If it's not too much trouble, read this Policy following our Terms. By getting to the Platform, you agree to the assortment, stockpiling, use, and divulgence of your information, as per, and are consenting to be limited by this Policy. We will not gather any data from you, except where you intentionally and expressly give it.</p>
+                    <h2>The Information Collected About You</h2>
+                    <ol>
+                        <li>We might gather, use, store, and move various types of individual information about you regarding your utilization of the Services, including however not restricted to: (I) character information, for example, username; (ii) contact information like individual and additionally business contact data including your first name, last name, street number, phone number, fax number, email address or some other individual information you give to us to the reasons for working with us; and (iii) use information, including how you utilize the Services.</li>
+                        <li>You don't need to give any private information or data to us, yet in doing so, you will be unable to exploit every one of the Services we offer.</li>
+                    </ol>
+                    <h2>How We Collect This Data?</h2>
+                    <p>We will gather and handle the accompanying information about you: (a) Information you give us: This is the data you agree to give us about you when you utilize our Services or compare with us, for instance, by email or visit. It incorporates data you give when you register to utilize the Services, share information through the Platform, through different exercises normally completed regarding the Services, and report an issue with the Services. On the off chance that you get in touch with us, we will track the data shared during the correspondence.</p>
+                    <p>Information we gather about you and your gadget: Each time you visit our Platform or utilize one of our Services, we will gather individual information, including specialized and use information. This fundamentally incorporates your subject of the decision.</p>
+                    <p>We may likewise gather, use, and offer totaled information like measurable information for any reason. Accumulated information could be gotten from your information however isn't viewed as close to home information under pertinent laws. For instance, we might total your utilization information to ascertain the level of clients getting to a particular Services element. Notwithstanding, if we join our interface amassed information with your information so it can straightforwardly or by implication distinguish you, we treat the consolidated information as close to home information which will be utilized as per this Policy.</p>
+                    <h2>Why and How We Use Your Personal Data?</h2>
+                    <p>We regard information insurance standards and individual interaction information just for determined, express, and genuine purposes for which such close-to-home information was given. We principally utilize your information to empower your utilization of Sandwich Network and supply the Services mentioned by you. We may likewise utilize your information for the reasons gave in this Policy and the reasons recorded beneath: (a) You comprehend that when you agree to give us your information, you additionally agree to us imparting the individual information to outsiders, including the public authority and administrative elements, should the need emerge under law, regarding or identified with the arrangement of Services. You know that by utilizing and sharing your data on the Platform, you approve us, our partner accomplices, associates, and related outsiders to get in touch with you through email or the Platform. This guarantees that you know about every one of the elements of the Platform and the Services. You know that any data relating to you, regardless of whether you straightforwardly give it to us (through the Platform or something else), including yet not restricted to individual correspondence like messages or letters, guidelines from you, and so forth, might be gathered, accumulated, and shared by us to deliver services to you and you explicitly agree to this. (d) as a general rule, we won't reveal individual information besides as per the accompanying reason or action: To enlist you as a client; (ii) to convey Services; (iii) to deal with our relationship with you, including informing you of changes to any Services; (iv) to control the Services including investigating and framework testing; (v) to screen drifts so we can work on the Services; (vi) to play out our commitments that emerge out of the course of action we are going to enter or have entered with you; (vii) to uphold the provisions of the plan we host with you or any third get-together; (viii) to follow a legitimate or administrative commitment.</p>
+                    <h2>Transfer of Your Data</h2>
+                    <p>As a piece of your utilization of and to guarantee better and consistent conveyance of the Services to you, the data and individual information you give to us might be moved to and put away at nations other than your home locale. These nations will be dependent upon the information laws of their separate nations. We and our specialist co-ops might move your data to, or store or access it in, locales that may not give comparable degrees of information security as your homeward. We will find ways to guarantee that your information gets a sufficient degree of insurance in the purviews where we measure it. By utilizing such Service, you explicitly agree to this exchange and concur and recognize that we won't be answerable for any extra agreements, arrangements, and rules. By presenting your data and individual information to us, you consent to the exchange, stockpiling, or potentially preparing such data and individual information outside the country you are situated in, in the way portrayed previously.</p>
+                    <h2>Services of the Third-Party</h2>
+                    <p>Our Services may, occasionally, contain administrations gave by or connections to and from the sites of our accomplice organizations, sponsors, and members ("Third Party Services"). If it's not too much trouble, note that the Third Party Services available through our Services have their security strategies. We don't acknowledge any liability or obligation for the approaches or for any private information that might be gathered through the Third Party Services. Kindly check their strategies before you present any personal information to such sites or utilize their administrations. Your relationship with these outsiders and their administrations and devices is autonomous of your relationship with us. These outsiders might permit you to allow/limit the data that is gathered. It very well might be to your greatest advantage to exclusively confine or empower such information assortments.</p>
+                    <p>The spot of preparing data relies upon every outsider specialist co-op. You should look at the security strategy of every one of the specialist co-ops to recognize the information shared and its motivation. You will depend on an outsider's protection strategy if you pick in to get correspondences from outsiders. We won't be liable for the protection principles and practices of outsiders.</p>
+                    <h2>Cookies</h2>
+                    <p>We use cookies to recognize you from different clients of the Platform and recall your inclinations. This assists us in giving you a consistent client experience when you utilize our Services and permits us to work on the Platform. We gather information via 'cookies'. Cookies are little information documents shipped off your program from the Platform and are put away on your PC or hard drive. The cookies will not give admittance to information in your PC or gadget, for example, email addresses or whatever other information that can be followed to you by and by. The information gathered via cookies will permit us to direct the Platform and furnish you with a custom-made and easy-to-understand administration. The cookies will empower you to get to specific components of the Services. Most internet browsers and gadgets can be set to tell when you get a treat or keep cookies from being sent. If you keep cookies from being sent, it might restrict the use we can give when you visit the Platform. As of now, the lone cookies which are gathered are topic inclinations.</p>
+                    <p>Additionally, you might experience cookies or other comparative gadgets on specific Platform pages that outsiders set. We don't control the utilization of cookies by outsiders. If you send us individual correspondence, like messages or letters, or if different clients or outsiders send us correspondence about your exercises or postings on the Platform, we might gather such data into a document explicit to you.</p>
+                    <h2>Data Protection</h2>
+                    <p>We carry out sensible safety efforts to shield your data from unapproved access. Such safety efforts are consistent with the security practices and methods as endorsed under the pertinent laws. In any case, you concur and recognize that the previously mentioned measures don't ensure total insurance to the individual data. By getting to the Services, you consent to accept all dangers related to exposure of individual data emerging because of break of firewalls and secure worker programming. Where you have picked a secret key that empowers you admittance to our Services, you are answerable for keeping this secret phrase private. We ask you not to impart the secret key to anybody. We will consent to the prerequisites of appropriate laws in case of an information or security hazard.</p>
+                    <h2>Retention of Data</h2>
+                    <p>You know that your information will keep being put away and held by us for a sensible period after you utilize the Services.</p>
+                    <h2>Business Transition</h2>
+                    <p>You know that in the occasion we go through business progress, like a consolidation, securing by another association, or offer of all or a part of our resources, your information may be among the resources moved.</p>
+                    <h2>Privacy Policy Change</h2>
+                    <p>We hold our Policy under normal survey and may alter this Policy every once in a while, at our sole caution. The particulars of this Policy might change, and on the off chance that they do, the progressions will be posted on this page and, where suitable, informed to you by email. The new Policy might be shown on-screen, and you might be needed to peruse and acknowledge the progressions to proceed with your utilization of the Services.</p>
+                    <h2>Legal Rights of the Clients</h2>
+                    <p>After agreeing to this agreement, you have the legal rights to:</p>
+                    <ul>
+                        <li>Access Your Personal Information. You will get a duplicate of the individual data we hold about you. Kindly note that we might demand explicit data from you to empower us to affirm your character and right to get to. If we can't furnish you with admittance to your data, we will educate you regarding the reasons why subject to any lawful or administrative limitations. If you want to make such a solicitation, kindly get in touch with us at: info@sandwich.network and incorporate "Access Personal Information" in the title.</li>
+                        <li>Update Your Personal Information. We expect to guarantee that individual data in our ownership is exact, current, and complete. If you accept that the individual data about you is inaccurate, deficient, or obsolete, you might demand the amendment or adjustment of that data. We will utilize sensible endeavors to amend it and, if fundamental, to utilize sensible endeavors to advise specialists, specialist co-ops, or other outsiders, which were given incorrect data, so records in their ownership may likewise be remedied or refreshed. On the off chance that you might want to make such a solicitation, if it's not too much trouble, get in touch with us at data info@sandwich.network and incorporate "Update Personal Information" in the title.</li>
+                        <li>You might reserve the option to have a problem with us handling your data in specific conditions. This right applies when we are preparing your data depending on an outsider's real interest, which you might challenge on the off chance that you feel it impacts your central rights and opportunities. You likewise reserve the option to protest where we are handling your data for direct advertising purposes. Nonetheless, now and again, we might show that we have convincing genuine ground to handle your data or legitimate commitments which abrogate your privileges and opportunities. If you might want to make such a solicitation, reach us at info@sandwich.network with "Object to Processing" in the headline if it's not too much trouble.</li>
+                        <li>You might request that we erase or eliminate individual data with no lawful justification for us to keep utilizing it. You likewise reserve the option to request that we erase or eliminate your data where you effectively practiced your entitlement to protest handling (see underneath), where we might have prepared your data unlawfully, or where we are needed to eradicate your data to consent to law. Kindly note that we may not generally have the option to conform to your solicitation of eradication for explicit lawful reasons, which we will tell you, if appropriate, at the hour of your solicitation. On the off chance that you might want to make such a solicitation, if it's not too much trouble, reach us at: info@sandwich.network with "Erasure of Personal Information" in the title.</li>
+                    </ul>
+                    <p>If you wish to practice any of the rights set above, if it's not too much trouble, send a solicitation to info@sandwich.network. We will require you to give explicit data to assist us with affirming your character. This is a safety effort to guarantee that your data isn't unveiled to somebody who doesn't reserve the option to get it.</p>
+                    
+		    	</div>
+		    </div>
+
+
+		    
+		</section>
+	</div>
+	
+</body>
+</html>

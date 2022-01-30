@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandwich Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link media="all" rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.flatpicker.css" />
+    <link media="all" rel="stylesheet" href="../css/main.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/jquery.mCustomScrollbar.js"></script>
+    <script src="../js/jquery.flatpicker.js"></script>
+    <script src="../js/jquery.main.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        .err {
+            color: red;
+        }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag../js?id=G-S9F0EVMSM8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-S9F0EVMSM8');
+    </script>
+</head>
+
+<body>
+
+
+
+
+
+    <div id="wrapper">
+        <section class="dashboard-block">
+            <header class="mobile-header mt-5">
+                <span class="side-collapsible">
+					<svg viewBox="0 0 24 24" width="24px" color="textSubtle" xmlns="http://www.w3.org/2000/svg" class="active-bars"><path d="M4 18H15C15.55 18 16 17.55 16 17C16 16.45 15.55 16 15 16H4C3.45 16 3 16.45 3 17C3 17.55 3.45 18 4 18ZM4 13H12C12.55 13 13 12.55 13 12C13 11.45 12.55 11 12 11H4C3.45 11 3 11.45 3 12C3 12.55 3.45 13 4 13ZM3 7C3 7.55 3.45 8 4 8H15C15.55 8 16 7.55 16 7C16 6.45 15.55 6 15 6H4C3.45 6 3 6.45 3 7ZM20.3 14.88L17.42 12L20.3 9.12C20.69 8.73 20.69 8.1 20.3 7.71C19.91 7.32 19.28 7.32 18.89 7.71L15.3 11.3C14.91 11.69 14.91 12.32 15.3 12.71L18.89 16.3C19.28 16.69 19.91 16.69 20.3 16.3C20.68 15.91 20.69 15.27 20.3 14.88Z"></path></svg>
+					<svg viewBox="0 0 24 24" width="24px" color="textSubtle" xmlns="http://www.w3.org/2000/svg" class="collapsed-bars"><path d="M4 18H20C20.55 18 21 17.55 21 17C21 16.45 20.55 16 20 16H4C3.45 16 3 16.45 3 17C3 17.55 3.45 18 4 18ZM4 13H20C20.55 13 21 12.55 21 12C21 11.45 20.55 11 20 11H4C3.45 11 3 11.45 3 12C3 12.55 3.45 13 4 13ZM3 7C3 7.55 3.45 8 4 8H20C20.55 8 21 7.55 21 7C21 6.45 20.55 6 20 6H4C3.45 6 3 6.45 3 7Z"></path></svg>
+				</span>
+                <span class="side-opener"></span>
+                <strong class="logo">
+					<a href="https://sandwich.network/"><img src="../images/sandwich-with-text-2-1.png" alt="Sandwich"></a>
+				</strong>
+            </header>
+
+            <aside class="sidebar">
+                <div class="scroller mCustomScrollbar">
+                    <strong class="logo">
+			            <a href="https://sandwich.network/"><img src="../images/sandwich-with-text-2-1.png" alt="Sandwich"></a>
+			        </strong>
+                    <a href="#" id="connect" class="button-primary w-button connect">Connect Wallet</a>
+                    <ul class="title-wrap">
+                        <li><a href="/launch/" class="page-title space-title">LAUNCH</a></li>
+                        <li><a href="/invest/" class="invest-link">INVEST</a></li>
+                    </ul>
+                    <ul class="tabset">
+                        <li>
+                            <a class="tab-opener active" href="#main-all" id="open-main">
+                                <span class="img">
+			                  <svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><path d="m467 17h-422c-24.813 0-45 20.187-45 45v292c0 24.813 20.187 45 45 45h145.293l-11 66h-19.293c-8.284 0-15 6.716-15 15s6.716 15 15 15h192c8.284 0 15-6.716 15-15s-6.716-15-15-15h-19.293l-11-66h145.293c24.813 0 45-20.187 45-45v-292c0-24.813-20.187-45-45-45zm-164.707 448h-92.586l11-66h70.586zm179.707-111c0 8.271-6.729 15-15 15-10.702 0-409.447 0-422 0-8.271 0-15-6.729-15-15v-292c0-8.271 6.729-15 15-15h196v17c0 8.284 6.716 15 15 15s15-6.716 15-15v-17h196c8.271 0 15 6.729 15 15z"/><path d="m208 209c-8.284 0-15 6.716-15 15v49h-34v-97c0-8.284-6.716-15-15-15s-15 6.716-15 15v97h-34v-145c0-8.284-6.716-15-15-15s-15 6.716-15 15v160c0 8.284 6.716 15 15 15h128c8.284 0 15-6.716 15-15v-64c0-8.284-6.716-15-15-15z"/><path d="m360 121c-47.972 0-87 39.028-87 87 0 23.627 9.472 45.081 24.813 60.775.689.787.656.749 1.411 1.411 15.694 15.341 37.148 24.814 60.776 24.814 47.972 0 87-39.028 87-87s-39.028-87-87-87zm54.983 72h-39.983v-39.983c19.391 5.296 34.687 20.592 39.983 39.983zm-69.983-39.983v48.77l-34.471 34.471c-18.545-32.339-1.316-73.466 34.471-83.241zm-13.258 104.454 34.471-34.471h48.77c-9.79 35.839-50.946 52.99-83.241 34.471z"/></g></svg>
+			                </span> Launch Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tab-opener" href="#mint-all" id="open-mint">
+                                <span class="img">
+			                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+			                    <path d="M8.7,29c-3,1.14-4.79,2.67-4.79,4.35v4.09c0,3.54,8,6.4,17.91,6.4S39.74,41,39.74,37.43v-4a45.26,45.26,0,0,1-11.56,1.41C20.18,34.83,11.69,33,8.7,29Z" fill="currentColor"></path>
+			                    <path class="cls-1" d="M44.42,19C42.13,23.6,33,25.74,24.36,25.74a41.19,41.19,0,0,1-14.1-2.23v2.24c0,3.53,8,6.4,17.92,6.4s17.91-2.87,17.91-6.4V21.66A3.55,3.55,0,0,0,44.42,19Z" fill="currentColor"></path>
+			                    <path class="cls-1" d="M24.36,23.06c9.9,0,17.92-2.86,17.92-6.4V12.57c0-3.54-8-6.4-17.92-6.4S6.45,9,6.45,12.57v4.09C6.45,20.2,14.47,23.06,24.36,23.06Z" fill="currentColor"></path>
+			                  </svg>
+			                </span> SandwichMint
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tab-opener" href="#launch-all" id="open-sale">
+                                <span class="img">
+			                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.55 23.66">
+			                    <path d="M18.82,3.05l-.89.13a12.64,12.64,0,0,0-7.19,3.59l-.58.58S7.22,6,3.24,8.53a.55.55,0,0,0,.1,1l3.42,1.24-.3.3a1,1,0,0,0,0,1.42l4.68,4.68a1,1,0,0,0,1.41,0l.31-.3,1.24,3.42a.55.55,0,0,0,1,.1c2.52-4,1.18-6.93,1.18-6.93l.58-.57a12.76,12.76,0,0,0,3.59-7.2l.13-.89A1.53,1.53,0,0,0,18.82,3.05Zm-2.71,6.5a1.46,1.46,0,0,1-2,0,1.45,1.45,0,1,1,2,0Z" fill="currentColor"></path>
+			                    <path class="cls-1" d="M8,15.59H8a1.86,1.86,0,0,1-.62,3L3.35,20.26,5,16.21A1.86,1.86,0,0,1,8,15.59Z" fill="currentColor"></path>
+			                  </svg>
+			                </span> SandwichLaunch
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tab-opener" href="#lock-all" id="open-lock">
+                                <span class="img">
+			                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+			                    <path d="m18.75 24h-13.5c-1.24 0-2.25-1.009-2.25-2.25v-10.5c0-1.241 1.01-2.25 2.25-2.25h13.5c1.24 0 2.25 1.009 2.25 2.25v10.5c0 1.241-1.01 2.25-2.25 2.25zm-13.5-13.5c-.413 0-.75.336-.75.75v10.5c0 .414.337.75.75.75h13.5c.413 0 .75-.336.75-.75v-10.5c0-.414-.337-.75-.75-.75z" fill="currentColor"></path>
+			                    <path d="m17.25 10.5c-.414 0-.75-.336-.75-.75v-3.75c0-2.481-2.019-4.5-4.5-4.5s-4.5 2.019-4.5 4.5v3.75c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-3.75c0-3.309 2.691-6 6-6s6 2.691 6 6v3.75c0 .414-.336.75-.75.75z" fill="currentColor"></path>
+			                    <path d="m12 17c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zm0-2.5c-.275 0-.5.224-.5.5s.225.5.5.5.5-.224.5-.5-.225-.5-.5-.5z" fill="currentColor"></path>
+			                    <path d="m12 20c-.414 0-.75-.336-.75-.75v-2.75c0-.414.336-.75.75-.75s.75.336.75.75v2.75c0 .414-.336.75-.75.75z" fill="currentColor"></path>
+			                  </svg>
+			                </span> SandwichLock
+                            </a>
+                        </li>
+                        <li class="more-openclose">
+                            <a class="tab-opener more-opener" href="#">
+                                <span class="img">
+			                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-192 0 512 512">
+			                    <path d="m128 256c0 35.347656-28.652344 64-64 64s-64-28.652344-64-64 28.652344-64 64-64 64 28.652344 64 64zm0 0" fill="currentColor"></path>
+			                    <path d="m128 64c0 35.347656-28.652344 64-64 64s-64-28.652344-64-64 28.652344-64 64-64 64 28.652344 64 64zm0 0" fill="currentColor"></path>
+			                    <path d="m128 448c0 35.347656-28.652344 64-64 64s-64-28.652344-64-64 28.652344-64 64-64 64 28.652344 64 64zm0 0" fill="currentColor"></path>
+			                  </svg>
+			                </span> Support &amp; More
+                            </a>
+                            <ul class="aside-dropdown">
+                                <li><a target="_blank" href="/token/">Token</a></li>
+                                <li><a target="_blank" href="https://docs.sandwich.network/support">Support</a></li>
+                                <li><a target="_blank" href="https://docs.sandwich.network/">Docs</a></li>
+                                <li><a href="/tutorials/">Tutorials</a></li>
+                                <li><a target="_blank" href="https://medium.com/@sandwichnetwork">Blog</a></li>
+                                <li><a href="/submit/">Submit idea</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="aside-socialbox">
+                    <label class="switcher">
+		        		<input type="checkbox" checked>
+		        		<span class="fake-switcher"></span>
+		        	</label>
+                    <ul class="social-networks">
+                        <li>
+                            <a target="_blank" href="https://twitter.com/NetworkSandwich">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="Sidebar_mediaIcon__2HcGh"><g id="_1" data-name="1"><path id="cls-1" d="M22,5.8a8.6,8.6,0,0,1-2.36.65,4.07,4.07,0,0,0,1.8-2.27,8.1,8.1,0,0,1-2.6,1A4.1,4.1,0,0,0,11.75,8a4.73,4.73,0,0,0,.09.93A11.6,11.6,0,0,1,3.39,4.62,4.2,4.2,0,0,0,2.83,6.7a4.09,4.09,0,0,0,1.82,3.4A4,4,0,0,1,2.8,9.6v0a4.11,4.11,0,0,0,3.29,4A4.2,4.2,0,0,1,5,13.81a4,4,0,0,1-.78-.07,4.14,4.14,0,0,0,3.83,2.85A8.22,8.22,0,0,1,3,18.34a6.37,6.37,0,0,1-1-.06,11.48,11.48,0,0,0,6.29,1.84A11.58,11.58,0,0,0,20,8.46c0-.18,0-.36,0-.53A8.31,8.31,0,0,0,22,5.8Z"></path></g></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://t.me/SandwichNetwork">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="Sidebar_mediaIcon__2HcGh"><g id="_1" data-name="1"><path class="cls-1" d="M9.4,15v3.66a.35.35,0,0,0,.61.23l2.52-2.81,5.14,4.67a.49.49,0,0,0,.81-.26L22,4A.71.71,0,0,0,21,3.14L2.31,10.36a.48.48,0,0,0,0,.9L6.44,13a1.28,1.28,0,0,0,1.2-.1L18.88,5.62,9.81,14.09A1.28,1.28,0,0,0,9.4,15Z"></path></g></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://medium.com/@sandwichnetwork">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="Sidebar_mediaIcon__2HcGh"><g id="_1" data-name="1"><path class="cls-1" d="M20.4,5.94,22,4.42V4.08H16.47l-3.94,9.81L8.05,4.08H2.25v.34L4.12,6.66a.8.8,0,0,1,.25.65v8.82A1,1,0,0,1,4.1,17L2,19.55v.33H8v-.33L5.85,17a1.08,1.08,0,0,1-.29-.88V8.5l5.23,11.39h.61L15.89,8.5v9.07c0,.24,0,.29-.15.45l-1.62,1.56v.34H22v-.34l-1.55-1.52a.47.47,0,0,1-.18-.45V6.39a.48.48,0,0,1,.17-.45Z"></path></g></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="Sidebar_mediaIcon__2HcGh"><g id="_1" data-name="1"><path class="cls-1" d="M5.74,17.55V10.82a.56.56,0,0,1,.56-.55H8.56a.56.56,0,0,1,.56.55v6.11l1-.24V9a.56.56,0,0,1,.55-.56h2.27a.56.56,0,0,1,.55.56v6.63c.42-.16.83-.34,1.24-.52v-8a.56.56,0,0,1,.56-.55h2.26a.56.56,0,0,1,.56.55V13.2a13.93,13.93,0,0,0,3.58-3.64A10,10,0,0,0,2,12a9.88,9.88,0,0,0,1.84,5.76C4.38,17.71,5,17.65,5.74,17.55Z"></path><path class="cls-1" d="M6.76,20.5A9.84,9.84,0,0,0,12,22,10,10,0,0,0,22,12c0-.26,0-.53,0-.78C20.52,14.32,16.72,18.49,6.76,20.5Z"></path></g></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="Sidebar_mediaIcon__2HcGh"><g id="_1" data-name="1"><path class="cls-1" d="M17.61,8.77,18.27,5a2.62,2.62,0,0,0-.5-2,2.64,2.64,0,0,0-1.85-1h-.21a2.59,2.59,0,0,0-2.59,2.59V7.7c-.37,0-.75,0-1.12,0s-.79,0-1.19,0V4.56A2.6,2.6,0,0,0,8.21,2H8A2.61,2.61,0,0,0,5.65,5L6.32,8.8C3.6,10,2,12,2,14.12v1.46C2,19.2,6.39,22,12,22s10-2.83,10-6.45V14.12C22,11.93,20.37,10,17.61,8.77Zm-1.9-6h0Zm-.28,9.61c.56,0,1,.68,1,1.52s-.45,1.51-1,1.51-1-.68-1-1.51S14.87,12.33,15.43,12.33ZM8.21,2.72h0Zm.23,9.61c.56,0,1,.68,1,1.52s-.45,1.51-1,1.51-1-.68-1-1.51S7.88,12.33,8.44,12.33Zm12.81,3.25c0,3.15-4.14,5.7-9.25,5.7s-9.25-2.55-9.25-5.7V14.12h0c0,3.14,4.15,5.69,9.25,5.69s9.24-2.55,9.25-5.69h0Z"></path></g></svg>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="aside-link">
+                        <li><a href="/tos">Terms &amp; conditions</a></li>
+                        <li>|</li>
+                        <li><a href="/tos#privacy">Privacy policy</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+
+
+            <div class="block-content" id="main-all">
+                <header class="block-head">
+                    <h1>Launch Dashboard</h1>
+                    <a href="#" id="connect1" class="button-primary w-button connect">Connect Wallet</a>
+                </header>
+                <div class="dashboard-area">
+                    <div class="main-image">
+                        <img src="../images/Launching-Banner.png" alt="image description">
+                    </div>
+                    <div class="box-items">
+                        <div class="item-holder">
+                            <strong class="title">My tokens</strong>
+                            <ul class="tokens-list list-tokens"></ul>
+                            <div class="tokens-none">
+                                <div class="img">
+                                    <img src="../images/img-note.png" alt="image description">
+                                </div>
+                                <span class="empty-data">no data</span>
+                            </div>
+                        </div>
+                        <div class="item-holder">
+                            <strong class="title">My sale contracts</strong>
+                            <div class="sales-list"></div>
+                            <div class="sales-none">
+                                <div class="img">
+                                    <img src="../images/img-note.png" alt="image description">
+                                </div>
+                                <span class="empty-data">no data</span>
+                            </div>
+                        </div>
+                        <div class="item-holder">
+                            <strong class="title">My lockers</strong>
+                            <div class="lockers-list"></div>
+                            <div class="lockers-none">
+                                <div class="img">
+                                    <img src="../images/img-note.png" alt="image description">
+                                </div>
+                                <span class="empty-data">no data</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="block-content" id="mint-all" style="display: none;">
+                <header class="block-head">
+                    <h1>SandwichMint
+                        <span class="img">
+	    					<img src="../images/mint.png">
+			            </span>
+                    </h1>
+                    <a id="connect2" href="#" class="button-primary w-button connect">Connect Wallet</a>
+                </header>
+                <div class="three-cols">
+                    <div class="col has-shadow">
+                        <strong class="title">Create a token</strong>
+                        <div class="field-holder">
+                            <input type="text" placeholder="Name" id="token-name">
+                            <div class="tooltip-open-close">
+                                <a href="#" class="tooltip-opener">
+                                    <img src="../images/info.png">
+                                </a>
+                                <div class="tooltip-slide">
+                                    <p>The name of your crypto currency like Bitcoin or Ethereum</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-holder">
+                            <input type="text" placeholder="Symbol" id="token-symbol">
+                            <div class="tooltip-open-close">
+                                <a href="#" class="tooltip-opener">
+                                    <img src="../images/info.png">
+                                </a>
+                                <div class="tooltip-slide">
+                                    <p>This is your tickr so like: BTC or ETH</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-holder">
+                            <input type="number" placeholder="Decimals (max. 18)" id="token-decimals" min="0" max="18">
+                            <div class="tooltip-open-close">
+                                <a href="#" class="tooltip-opener">
+                                    <img src="../images/info.png">
+                                </a>
+                                <div class="tooltip-slide">
+                                    <p>The number of digits after decimal point (e.g. 0.12 = 2 decimals, 0.12345 = 5 decimals)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-holder">
+                            <input type="number" placeholder="Total Supply" id="token-supply" min="0">
+                            <div class="tooltip-open-close">
+                                <a href="#" class="tooltip-opener">
+                                    <img src="../images/info.png">
+                                </a>
+                                <div class="tooltip-slide">
+                                    <p>The total number of tokens that are being created / minted</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="defarea" class="field-holder" style="display: none;">
+                            <input type="number" placeholder="Deflation %" id="token-def" min="0" step="0.1">
+                            <div class="tooltip-open-close">
+                                <a href="#" class="tooltip-opener">
+                                    <img src="../images/info.png">
+                                </a>
+                                <div class="tooltip-slide">
+                                    <p>% of tokens that will be automatically burned during each transfer (receiver will get transfer amount minus deflation %)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="risearea" style="display: none;">
+                            <div class="field-holder">
+                                <input type="number" placeholder="Rewards %" id="token-reward" min="0" step="0.1">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Holders reward fee - redistributed to holders (in tokens)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-holder">
+                                <input type="number" placeholder="Buyback fee %" id="token-buyback" min="0" step="0.1">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Buyback fee - used for buyback of tokens</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-holder">
+                                <input type="number" placeholder="Marketing fee %" id="token-marketing" min="0" step="0.1">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Marketing fee goes to your marketing wallet (in BNB)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-holder">
+                                <input type="text" placeholder="Marketing wallet" id="token-mktwallet">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Wallet for collecting marketing fee</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col has-bg">
+                        <strong class="title">Additional options</strong>
+                        <ul class="list-checkboxes">
+                            <li>
+                                <label class="fake-check-label">
+				    				<input type="checkbox" id="mintable">
+				    				<span class="fake-check"></span>
+				    				<span class="text" title="Can create / mint more of this token">Mintable</span>
+				    			</label>
+                            </li>
+                            <li>
+                                <label class="fake-check-label">
+				    				<input type="checkbox" id="burnable">
+				    				<span class="fake-check"></span>
+				    				<span class="text" title="Can burn / destroy tokens">Burnable</span>
+				    			</label>
+                            </li>
+                            <li>
+                                <label class="fake-check-label">
+				    				<input type="checkbox" id="deflation">
+				    				<span class="fake-check"></span>
+				    				<span class="text" title="Set a percentage of what will be burned per transaction executed with your token">Auto-burning (deflation)</span>
+				    			</label>
+                            </li>
+                            <!--li>
+				    			<label class="fake-check-label">
+				    				<input type="checkbox">
+				    				<span class="fake-check"></span>
+				    				<span class="text">Auto-LP</span>
+				    			</label>
+		    				</li-->
+                            <li>
+                                <label class="fake-check-label">
+				    				<input type="checkbox" id="everrise">
+				    				<span class="fake-check"></span>
+				    				<span class="text" title="Clone of famous EverRise (RISE) token with buyback function">EverRise clone</span>
+				    			</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col image-box">
+                        <div class="image-holder">
+                            <img src="../images/Mining.png" alt="image description">
+                        </div>
+                    </div>
+                </div>
+                <div class="cost-area revert">
+                    <div class="cost-box">
+                        <strong class="title">Tokens will be minted to your address<br><span class="myAddress text-code" style="word-break: break-all;"></span></strong>
+                        <strong class="title">Cost:</strong>
+                        <strong class="price token-create-cost">0.1</strong>
+                        <a id="create-token" class="lightbox btn-white" href="#mint-confirm">Create token</a>
+                    </div>
+                    <div class="block-contract">
+                        <strong class="title">My tokens</strong>
+                        <ul class="tokens-list list-tokens"></ul>
+                        <div class="tokens-none">
+                            <div class="img">
+                                <img src="../images/img-note.png" alt="image description">
+                            </div>
+                            <div class="empty-data">no data</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="popup-holder">
+                <div id="mint-confirm" class="lightbox-demo">
+
+                    <div id="token-errors-all" style="display: none;">
+                        <h2>Error</h2>
+                        <div id="token-errors" style="color: red;"></div>
+                        <a data-fancybox-close href="#" class="btn-white">Close</a>
+                    </div>
+
+                    <div id="token-confirm-all" style="display: none;">
+                        <h2>You are creating a token</h2>
+                        <h1><span id="token-confirm-name"></span> (<span id="token-confirm-symbol"></span>)</h1>
+                        <span id="token-confirm-options" class="lightbox-title"></span>
+                        <h2><strong class="text-title">Decimals:</strong> <span id="token-confirm-decimals"></span></h2>
+                        <h2><strong class="text-title">Total supply:</strong> <span id="token-confirm-supply"></span></h2>
+                        <h2><strong class="text-title">Blockchain:</strong> <span id="token-confirm-network"></span></h2>
+                        <h2><strong class="text-title">Your address:</strong> <span id="token-confirm-address" class="text-code"></span></h2>
+
+                        <div class="presale-text-info">
+                            <span class="img"><img src="../images/disclaimanation.png"></span>
+                            <p>By clicking Create button you agree with our Terms of service, confirm that the provided data is correct and well understand that the operation can not be reverted and creation cost <span class="token-create-cost">0.0BNB</span>                                is not refundable.</p>
+                        </div>
+
+                        <div class="btn-actions">
+                            <button id="token-confirm-create" class="lightbox button-primary" style="border: none;">Confirm</button>
+                            <a data-fancybox-close href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+
+                    <div id="mint-await">
+                        <h1>Creating your token...</h1>
+                        <span class="fancybox-loading"></span>
+                        <strong class="lightbox-title">Please make sure to confirm transaction in your wallet</strong>
+                        <div class="btn-actions">
+                            <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+
+                    <div id="mint-ok">
+                        <h1>Success</h1>
+                        <strong class="lightbox-title">You can now see your new token in your tokens list</strong>
+                        <div class="btn-actions">
+                            <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="popup-holder">
+                <div id="token-admin" class="lightbox-demo fancybox-content">
+                    <div id="loadertoken" style="display: none;">Loading....<span class="fancybox-loading"></span></div>
+                    <div id="contenttoken">
+                        <h2><span id="adminName"></span> (<span id="adminSymbol"></span>)</h2>
+                        <div class="btns-holder mb-20">
+                            <button id="adminAdd" class="button-primary w-button">Add to metamask</button>
+                            <button id="adminCopy" class="button-primary w-button">Copy address</button>
+                        </div>
+                        <p><strong class="text-title">Address:</strong> <a target="_blank" id="adminAddress" href="https://testnet.bscscan.com/token/0x0Eb9Fc6C9e65D3A4fC18c39c88248Eb09d2a5543" title="View in explorer" class="text-code">0x0Eb9Fc6C9e65D3A4fC18c39c88248Eb09d2a5543</a></p>
+                        <p><strong class="text-title">Total supply:</strong> <span id="adminSupply">10.0</span></p>
+                        <p><strong class="text-title">Decimals:</strong> <span id="adminDecimals">16</span></p>
+                        <div id="adminMint" class="item-box">
+                            <h2>Mint</h2>
+                            <div class="field-holder">
+                                <input type="number" id="mintQty" placeholder="tokens quantity" min="0">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Please Enter tokens quantity</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-form text-title">tokens to wallet</span>
+                            <div class="field-holder">
+                                <input type="text" id="mintTo" placeholder="to wallet address">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Please Enter wallet address</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="mint" class="button-primary w-button">Mint</button>
+                        </div>
+                        <div id="adminBurn" class="item-box">
+                            <h2>Burn</h2>
+                            <div class="field-holder">
+                                <input type="number" id="burnQty" placeholder="tokens quantity" min="0">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Please Enter tokens quantity</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="burn" class="button-primary w-button">Burn</button>
+                        </div>
+                        <div id="adminDef" class="item-box">
+                            <h2>Deflation</h2>
+                            <p>Auto-burning: <span id="adminDefPer"></span>%</p>
+                            <p>Check if address is excluded from deflation fees:</p>
+                            <div class="field-holder">
+                                <input type="text" id="adminDefAddr" placeholder="Check if address is excluded from fees">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Check if an address is excluded from fees (if address is excluded from fees transfers from this address don't cause deflation)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-form text-title" id="checkverres"></div>
+                            <p><button id="exverbtn" class="button-primary w-button" style="display:none">Exclude</button> <button id="addverbtn" class="button-primary w-button" style="display:none">Include</button></p>
+
+                        </div>
+                        <div id="adminFix" class="item-box">
+                            <h2>Fix supply</h2>
+                            <p>Disable manual mint / burn functions forever (this operation is irrevertible - once you fix the supply you will not be able to mint or burn tokens; auto-deflation (if any) will still work) </p>
+                            <button id="fixSupply" class="button-primary w-button">Fix supply</button>
+                        </div>
+                        <!-- ==================================================================================== -->
+                        <div id="adminRise" class="item-box">
+                            <h2>Fees <span id="totalfees"></span>%</h2>
+                            <p>Holders reward: <span id="taxfee"></span>%</p>
+                            <p>Buyback: <span id="buybackfee"></span>%</p>
+                            <p>Marketing: <span id="marketingfee"></span>%</p>
+
+                            <h2>Marketing wallet</h2>
+                            <p><span id="marketingaddress" class="text-code"></span></p>
+                            <p>Change marketing wallet:</p>
+                            <div class="field-holder">
+                                <input type="text" id="adminMktAddr" placeholder="New marketing wallet address">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Set new marketing wallet address - marketing fees will be sent to this wallet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="newmktwallet" class="button-primary w-button">Change</button>
+                            <p></p>
+
+                            <h2>Mode: <span id="mode"></span></h2>
+                            <p>In NORMAL MODE taxes and buyback are on, in PRESALE MODE taxes and buyback are off. We recommend to turn on PRESALE MODE for the time of presale.</p>
+                            <p><button id="presaleOn" class="button-primary w-button" style="display:none">Turn on presale mode</button>
+                                <button id="presaleOff" class="button-primary w-button" style="display:none">Turn off presale mode</button></p>
+
+                            <h2>Max. transaction amount: <span id="maxtx"></span> <span class="adminSymbol"></span></h2>
+                            <p>Set new max. transaction amount: </p>
+                            <div class="field-holder">
+                                <input type="number" id="newmaxtx" min="0" placeholder="Amount BNB">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Enter new maximum transaction amount, BNB</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="setmaxtx" class="button-primary w-button">Set</button>
+                            <p></p>
+
+                            <h2>Whitelists</h2>
+
+                            <p>Check if address is excluded from rewards:</p>
+                            <div class="field-holder">
+                                <input type="text" id="checkreward" placeholder="Check if address is excluded from rewards">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Check if an address is excluded from rewards</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-form text-title" id="checkrewardres"></div>
+                            <p><button id="exrewardbtn" class="button-primary w-button" style="display:none">Exclude</button> <button id="inrewardbtn" class="button-primary w-button" style="display:none">Include</button></p>
+
+                            <p>Check if address is excluded from fees:</p>
+                            <div class="field-holder">
+                                <input type="text" id="checkfee" placeholder="Check if address is excluded from fees">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Check if an address is excluded from fees</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-form text-title" id="checkfeeres"></div>
+                            <p><button id="exfeebtn" class="button-primary w-button" style="display:none">Exclude</button> <button id="infeebtn" class="button-primary w-button" style="display:none">Include</button></p>
+
+                            <h2>Owner</h2>
+                            <p><span id="adminowner" class="text-code"></span></p>
+                            <p>Ownership: <span id="locked"></span> <button id="unlockown" class="button-primary w-button" style="display:none">Get back</button></p>
+                            <div id="locker">Lock ownership for
+                                <div class="field-holder">
+                                    <input type="number" id="days" step="1" placeholder="days" min="0">
+                                    <div class="tooltip-open-close">
+                                        <a href="#" class="tooltip-opener">
+                                            <img src="../images/info.png" alt="image description">
+                                        </a>
+                                        <div class="tooltip-slide">
+                                            <p>How many days do you want your ownership to be locked?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="lockown" class="button-primary w-button">Lock</button>
+                            </div>
+                        </div>
+                        <!-- ==================================================================================== -->
+                        <div class="btn-actions has-padding">
+                            <button data-fancybox-close="" id="adminUseSale" class="button-primary w-button">Launch presale</button>
+                            <button data-fancybox-close="" id="adminUseLock" class="button-primary w-button">Lock</button>
+                            <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="block-content" id="launch-all" style="display: none;">
+                <header class="block-head">
+                    <h1>SandwichLaunch
+                        <span class="img">
+		    				<img src="../images/launch.png" alt="image description">
+		                </span>
+                    </h1>
+                    <a href="#" id="connect3" class="button-primary w-button connect">Connect Wallet</a>
+                </header>
+                <div class="two-cols">
+                    <div class="left-block">
+                        <h2>Create a presale</h2>
+                        <div class="field-holder">
+                            <input type="text" id="sale-token" placeholder="Token address">
+                            <div class="tooltip-open-close">
+                                <a href="#" class="tooltip-opener">
+                                    <img src="../images/info.png" alt="image description">
+                                </a>
+                                <div class="tooltip-slide">
+                                    <p>Contract address of the token that you want to sell in the presale</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="check-sale-token"></div>
+                        <ul class="list-options">
+                            <li><a href="#choose-sale" class="btn-white lightbox" title="Choose from your tokens that you created on sandwich">Choose from my tokens</a></li>
+                            <li><a id="mint-new" href="#" class="btn-white" title="Create a new token on sandwich">Mint a new token</a></li>
+                        </ul>
+                        <div class="fields-area">
+                            <div class="field-holder w-100">
+                                <input id="sale-rate" type="number" placeholder="Rate (tokens for 1 BNB)" min="0">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Rate - how many tokens buyer will get for 1 BNB</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-holder">
+                                <input id="sale-sc" type="number" placeholder="Soft cap (BNB)" min="0">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Minimal amount to be raised for successful presale</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-holder">
+                                <input id="sale-hc" type="number" placeholder="Hard cap (BNB)" min="0">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Max amount to be raised. When HC is reached the sale will stop automatically.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-holder">
+                                <input id="sale-min" type="number" placeholder="Min. contribution (BNB)" min="0">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>The minimal amount of BNB an investor can invest</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-holder">
+                                <input id="sale-max" type="number" placeholder="Max. contribution (BNB)" min="0">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>The maximal amount of BNB an investor can invest (with 1 wallet)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-holder">
+                                <input id="sale-liq" type="number" placeholder="PancakeSwap liquidity (%)" min="0" max="100">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>The percentage of raised funds that’ll be used for creating the initial pair on the liquidity pool on pancake swap</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field-holder">
+                                <input id="sale-pcs-rate" type="number" placeholder="PancakeSwap rate" min="0">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>How many tokens a buyer will get for 1 BNB on pancakeswap (after the pre sale has ended)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields-area datepicker">
+                            <div class="field-holder">
+                                <span class="label-text">Start (local time)</span>
+                                <input id="sale-start" type="text" class="flatpicker" placeholder="(dd-mm-yyyy --:--)" readonly>
+                                <span class="img">
+        							<svg id="Layer_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m446 40h-46v-24c0-8.836-7.163-16-16-16s-16 7.164-16 16v24h-224v-24c0-8.836-7.163-16-16-16s-16 7.164-16 16v24h-46c-36.393 0-66 29.607-66 66v340c0 36.393 29.607 66 66 66h380c36.393 0 66-29.607 66-66v-340c0-36.393-29.607-66-66-66zm34 406c0 18.778-15.222 34-34 34h-380c-18.778 0-34-15.222-34-34v-265c0-2.761 2.239-5 5-5h438c2.761 0 5 2.239 5 5z"/></g></svg>
+        						</span>
+                            </div>
+                            <div class="field-holder">
+                                <span class="label-text">End (local time)</span>
+                                <input id="sale-end" type="text" class="flatpicker" placeholder="(dd-mm-yyyy --:--)" readonly>
+                                <span class="img">
+        							<svg id="Layer_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m446 40h-46v-24c0-8.836-7.163-16-16-16s-16 7.164-16 16v24h-224v-24c0-8.836-7.163-16-16-16s-16 7.164-16 16v24h-46c-36.393 0-66 29.607-66 66v340c0 36.393 29.607 66 66 66h380c36.393 0 66-29.607 66-66v-340c0-36.393-29.607-66-66-66zm34 406c0 18.778-15.222 34-34 34h-380c-18.778 0-34-15.222-34-34v-265c0-2.761 2.239-5 5-5h438c2.761 0 5 2.239 5 5z"/></g></svg>
+        						</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-block">
+                        <div class="box-finalize">
+                            <strong class="title">Finalize</strong>
+                            <ul class="list-radios">
+                                <li>
+                                    <label class="fake-radio-label">
+		    							<input type="radio" name="finalize" value="1" checked>
+		    							<span class="fake-radio"></span>
+		    							<span class="text">Automatically when HC reached / time expires + <input id="finalDelay" type="number" value="0" max="24"> hours (max. 24h)</span>
+		    						</label>
+                                </li>
+                                <li>
+                                    <label class="fake-radio-label">
+		    							<input type="radio" name="finalize" value="0">
+		    							<span class="fake-radio"></span>
+		    							<span class="text">Manually (must be finalized within 24h after HC/end otherwise done automatically)</span>
+		    						</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget-box">
+                            <div class="datepicker">
+                                <div class="field-holder">
+                                    <span class="label-text">Liquidity unlock</span>
+                                    <input id="sale-liq-unlock" type="text" class="flatpicker" placeholder="(dd-mm-yyyy --:--)" readonly>
+                                    <span class="img">
+	        							<svg id="Layer_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m446 40h-46v-24c0-8.836-7.163-16-16-16s-16 7.164-16 16v24h-224v-24c0-8.836-7.163-16-16-16s-16 7.164-16 16v24h-46c-36.393 0-66 29.607-66 66v340c0 36.393 29.607 66 66 66h380c36.393 0 66-29.607 66-66v-340c0-36.393-29.607-66-66-66zm34 406c0 18.778-15.222 34-34 34h-380c-18.778 0-34-15.222-34-34v-265c0-2.761 2.239-5 5-5h438c2.761 0 5 2.239 5 5z"/></g></svg>
+	        						</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--div class="block-project">
+		    		<h2>Project Description</h2>
+		    		<div class="row-holder">
+	    				<div class="field-holder">
+	    					<input type="text" placeholder="Link to Logo picture">
+		    				<div class="tooltip-open-close">
+		    					<a href="#" class="tooltip-opener">
+		    						<img src="../images/info.png" alt="image description">
+		    					</a>
+		    					<div class="tooltip-slide">
+		    						<p>Please Enter the Link to Logo picture</p>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="field-holder">
+	    					<input type="text" placeholder="website">
+		    				<div class="tooltip-open-close">
+		    					<a href="#" class="tooltip-opener">
+		    						<img src="../images/info.png" alt="image description">
+		    					</a>
+		    					<div class="tooltip-slide">
+		    						<p>Please Enter the Link to the website</p>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="field-holder">
+	    					<input type="text" placeholder="Telegram">
+		    				<div class="tooltip-open-close">
+		    					<a href="#" class="tooltip-opener">
+		    						<img src="../images/info.png" alt="image description">
+		    					</a>
+		    					<div class="tooltip-slide">
+		    						<p>Please Enter the Link of Telegram</p>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="field-holder">
+	    					<input type="text" placeholder="Twitter">
+		    				<div class="tooltip-open-close">
+		    					<a href="#" class="tooltip-opener">
+		    						<img src="../images/info.png" alt="image description">
+		    					</a>
+		    					<div class="tooltip-slide">
+		    						<p>Please Enter the Link to the Twitter</p>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="field-holder">
+	    					<input type="text" placeholder="Facebook">
+		    				<div class="tooltip-open-close">
+		    					<a href="#" class="tooltip-opener">
+		    						<img src="../images/info.png" alt="image description">
+		    					</a>
+		    					<div class="tooltip-slide">
+		    						<p>Please Enter the Link to the Facebook</p>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="field-holder">
+	    					<input type="text" placeholder="Other Link">
+		    				<div class="tooltip-open-close">
+		    					<a href="#" class="tooltip-opener">
+		    						<img src="../images/info.png" alt="image description">
+		    					</a>
+		    					<div class="tooltip-slide">
+		    						<p>Please Enter the Other Link</p>
+		    					</div>
+		    				</div>
+	    				</div>
+	    				<div class="field-holder">
+	    					<textarea placeholder="Description"></textarea>
+	    				</div>
+		    		</div>
+		    	</div-->
+                <div class="cost-area">
+                    <div class="cost-box">
+                        <strong class="title">Cost:</strong>
+                        <strong class="price sale-create-cost">1 BNB</strong>
+                        <a id="create-sale" class="lightbox btn-white" href="#sale-confirm">Create presale</a>
+                    </div>
+                    <div class="block-contract">
+                        <strong class="title">My sale contracts</strong>
+                        <div class="sales-list"></div>
+                        <div class="sales-none">
+                            <div class="img">
+                                <img src="../images/img-note.png" alt="image description">
+                            </div>
+                            <div class="empty-data">no data</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="popup-holder">
+                <div id="choose-sale" class="lightbox-demo">
+                    <h2>Choose a token for presale</h2>
+                    <div id="tokens-sale-choose"></div>
+                    <div class="tokens-none">
+                        <div class="img">
+                            <img src="../images/img-note.png" alt="image description">
+                        </div>
+                        <span class="empty-data">no data</span>
+                    </div>
+                    <div class="btn-actions">
+                        <p></p>
+                        <a data-fancybox-close href="#" class="btn-white">Close</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="popup-holder">
+                <div id="sale-confirm" class="lightbox-demo fancybox-content">
+                    <div id="sale-errors-all" style="display: none;">
+                        <h2>Error</h2>
+                        <div id="sale-errors" style="color: red;" class="error-text"></div>
+                        <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                    </div>
+                    <div id="sale-confirm-all">
+                        <h2>You are creating a presale for</h2>
+                        <h2><span id="sale-confirm-name">Abubakar</span> (<span class="sale-confirm-symbol">testting</span>)</h2>
+                        <p></p>
+                        <p><strong class="text-title">Rate: 1 BNB =</strong> <span id="sale-confirm-rate"></span> <span class="sale-confirm-symbol"></span></p>
+                        <p><strong class="text-title">Soft cap:</strong> <span id="sale-confirm-sc"></span> BNB</p>
+                        <p><strong class="text-title">Hard cap:</strong> <span id="sale-confirm-hc"></span> BNB</p>
+                        <p><strong class="text-title">Min. contribution:</strong> <span id="sale-confirm-min"></span> BNB</p>
+                        <p><strong class="text-title">Max. contribution:</strong> <span id="sale-confirm-max"></span> BNB</p>
+                        <p></p>
+                        <p><strong class="text-title">Start:</strong> <span id="sale-confirm-start"></span></p>
+                        <p><strong class="text-title">End:</strong> <span id="sale-confirm-end"></span></p>
+                        <p><strong class="text-title">Duration:</strong> <span id="sale-confirm-dur"></span></p>
+                        <p><strong class="text-title">Finalization:</strong> <span id="sale-confirm-final"></span></p>
+                        <p></p>
+                        <p></p>
+                        <p><strong class="text-title">PancakeSwap liquidity percentage:</strong> <span id="sale-confirm-liq"></span>%</p>
+                        <p><strong class="text-title">PancakeSwap listing rate: 1 BNB =</strong> <span id="sale-confirm-pcsrate"></span> <span class="sale-confirm-symbol">testting</span></p>
+                        <p><strong class="text-title">PancakeSwap liquidity unlock:</strong> <span id="sale-confirm-liqun"></span></p>
+                        <p><strong class="text-title">Your address:</strong> <span id="sale-confirm-address" class="text-code"></span> (you will be the owner / admin of the presale)</p>
+                        <div class="form-field">
+                            <p>Now we are creating presale smart contract, presale numbers and parameters can not be changed later.<br>You will be able to add description, social links and logo after creating the presale.</p>
+                        </div>
+                        <div class="form-field">
+                            <p>Make sure that you have not yet added a liquidity to PancakeSwap and no one adds it during the presale - most probably the presale will fail to finalize if the liquidity has been added already!</p>
+                        </div>
+                        <div class="form-field">
+                            <p>By clicking Confirm button you agree with our Terms of service, confirm that the provided data is correct and well understand that the operation can not be reverted and creation cost <span class="sale-create-cost">0.0BNB</span>                                is not refundable.</p>
+                        </div>
+                        <div class="btn-actions">
+                            <button id="sale-confirm-create" class="lightbox button-primary" style="border: none;">Confirm</button>
+                            <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+                    <div id="sale-await" style="display: none;">
+                        <h1>Creating your token sale...</h1>
+                        <span class="fancybox-loading"></span>
+                        <h2>Please make sure to confirm transaction in your wallet</h2>
+                        <div class="btn-actions">
+                            <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+                    <div id="sale-ok" style="display: none;">
+                        <h1>Success</h1>
+                        <h2>Your token sale contract has been deployed. You can see your token sale in the list, add logo, links and description and publish it.</h2>
+                        <div class="btn-actions">
+                            <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="popup-holder">
+                <div id="presale-admin" class="lightbox-demo fancybox-content">
+                    <div id="loaderpresale" style="display: none;">Loading....<span class="fancybox-loading"></span></div>
+                    <div id="contentpresale">
+                        <div class="item-box">
+                            <h2>Presale</h2>
+                            <p>Presale address:
+                                <a target="_blank" id="presaleAdminAddress" href="" title="View in explorer" class="text-code"></a>
+                            </p>
+                        </div>
+                        <div class="item-box">
+                            <h2>Token</h2>
+                            <span class="lightbox-title"><span id="presaleAdminName"></span> (<span class="presaleAdminSymbol"></span>)</span>
+                            <div id="verified" style="margin: 0 0 20px;"></div>
+                            <p><strong class="text-title">Token address:</strong>
+                                <a target="_blank" id="presaleAdminTokenAddress" href="" title="View in explorer" class="text-code"></a>
+                            </p>
+                        </div>
+                        <div class="row-items">
+                            <div class="col-item">
+                                <div class="item-box">
+                                    <h2>Presale status</h2>
+                                    <div id="presaleSupply" style="display: none; color: red;">
+                                        <div class="presale-text-info">
+                                            <span class="img"><img src="../images/disclaimanation.png" alt="image description"></span>
+                                            <p>Please supply tokens otherwise presale can not run!</p>
+                                            <p>Required tokens quantity in your wallet (presale + LP + Sandwich %): <span id="toSupply">4832</span> <span class="presaleAdminSymbol">testting</span><br> We recommend you to supply more tokens to prevent any
+                                                issues, especially if your token has taxes (add more % than your taxes, or exclude presale contract address from fees/taxes, or turn the taxes off for presale).<br> Unused tokens will be returned to your
+                                                wallet after the presale.</p>
+                                        </div>
+                                        <div class="field-holder">
+                                            <input type="number" id="addToPresaleQty" placeholder="tokens quantity" min="0">
+                                            <div class="tooltip-open-close">
+                                                <a href="#" class="tooltip-opener">
+                                                    <img src="../images/info.png" alt="image description">
+                                                </a>
+                                                <div class="tooltip-slide">
+                                                    <p>Please Enter tokens quantity</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button id="addToPresale" class="button-primary w-button" style="margin: 0 0 15px;">Supply tokens</button>
+                                        <p>You can also simply send tokens from any wallet to the presale contract address.</p>
+                                    </div>
+                                    <p><strong class="text-title">Status:</strong> <span class="presaleAdminStatus"></span></p>
+                                    <p><strong class="text-title">Raised:</strong> <span id="presaleAdminRaised"></span> BNB</p>
+                                    <p><strong class="text-title">Tokens sold:</strong> <span id="presaleAdminSold"></span> <span class="presaleAdminSymbol"></span></p>
+                                    <p><strong class="text-title">Tokens on the presale contract:</strong> <span id="presaleAdminBalance"></span> <span class="presaleAdminSymbol"></span></p>
+                                    <p></p>
+                                </div>
+                                <div class="item-box">
+                                    <h2>Presale parameters</h2>
+                                    <p><strong class="text-title">Rate: 1 BNB =</strong> <span id="presaleAdminRate"></span> <span class="presaleAdminSymbol"></span></p>
+                                    <p><strong class="text-title">Softcap:</strong> <span id="presaleAdminSC"></span> BNB</p>
+                                    <p><strong class="text-title">Hardcap:</strong> <span id="presaleAdminHC"></span> BNB</p>
+                                    <p><strong class="text-title">Min./max. contribution:</strong> <span id="presaleAdminMin"></span>/<span id="presaleAdminMax"></span> BNB</p>
+                                </div>
+                                <div class="item-box">
+                                    <h2>Dates</h2>
+                                    <p><strong class="text-title">Start:</strong> <span id="presaleAdminStart"></span></p>
+                                    <p><strong class="text-title">End:</strong> <span id="presaleAdminEnd"></span></p>
+                                    <p><strong class="text-title">Status:</strong> <span class="presaleAdminStatus"></span></p>
+                                </div>
+                                <div class="item-box">
+                                    <h2>Listing parameters</h2>
+                                    <p><strong class="text-title">Listing percentage:</strong> <span id="presaleAdminListPer"></span>%</p>
+                                    <p><strong class="text-title">Listing rate: 1 BNB =</strong> <span id="presaleAdminListRate"></span> <span class="presaleAdminSymbol"></span></p>
+                                    <p><strong class="text-title">LP pair:</strong> <span id="presaleAdminPair"></span></p>
+                                    <p><strong class="text-title">Liquidity tokens unlock:</strong> <span id="presaleAdminLpUnlock"></span> <span id="presaleAdminLpUnlockS"></span></p>
+                                    <button id="withdrawLiquidity" class="button-primary w-button">Withdraw liquidity tokens</button>
+                                </div>
+                                <div class="item-box">
+                                    <h2>Finalize</h2>
+                                    <p><strong class="text-title">Finalization:</strong> <span id="presaleAdminFinal"></span> <span id="presaleAdminFinalS"></span></p>
+                                    <button id="finalizePresale" class="button-primary w-button">Finalize presale</button>
+                                    <button id="cancelPresale" class="button-primary w-button">Cancel presale</button>
+                                </div>
+                                <div class="item-box">
+                                    <div id="presalelink" style="display: none;">
+                                        <h2>Presale page</h2>
+                                        <button id="presaleAdminCopyPage" class="button-primary w-button">Copy</button>
+                                        <p>
+                                            <a target="_blank" id="presaleAdminPageAddress" href="" title="Presale page"></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-item">
+                                <h2>Edit description</h2>
+                                <div class="field-holder">
+                                    <input id="logo" type="text" placeholder="Link to Logo picture">
+                                    <div class="tooltip-open-close">
+                                        <a href="#" class="tooltip-opener">
+                                            <img src="../images/info.png" alt="image description">
+                                        </a>
+                                        <div class="tooltip-slide">
+                                            <p>Please enter link to where your logo picture is uploaded</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-holder">
+                                    <input id="www" type="text" placeholder="website">
+                                    <div class="tooltip-open-close">
+                                        <a href="#" class="tooltip-opener">
+                                            <img src="../images/info.png" alt="image description">
+                                        </a>
+                                        <div class="tooltip-slide">
+                                            <p>Please Enter Link to your project's website</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-holder">
+                                    <input id="telegram" type="text" placeholder="Telegram">
+                                    <div class="tooltip-open-close">
+                                        <a href="#" class="tooltip-opener">
+                                            <img src="../images/info.png" alt="image description">
+                                        </a>
+                                        <div class="tooltip-slide">
+                                            <p>Please Enter Link to Telegram</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-holder">
+                                    <input id="twitter" type="text" placeholder="Twitter">
+                                    <div class="tooltip-open-close">
+                                        <a href="#" class="tooltip-opener">
+                                            <img src="../images/info.png" alt="image description">
+                                        </a>
+                                        <div class="tooltip-slide">
+                                            <p>Please Enter Link to Twitter</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-holder">
+                                    <input id="facebook" type="text" placeholder="Facebook">
+                                    <div class="tooltip-open-close">
+                                        <a href="#" class="tooltip-opener">
+                                            <img src="../images/info.png" alt="image description">
+                                        </a>
+                                        <div class="tooltip-slide">
+                                            <p>Please Enter Link to Facebook</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-holder">
+                                    <input id="link" type="text" placeholder="Other Link">
+                                    <div class="tooltip-open-close">
+                                        <a href="#" class="tooltip-opener">
+                                            <img src="../images/info.png" alt="image description">
+                                        </a>
+                                        <div class="tooltip-slide">
+                                            <p>Please Enter Other Link</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field-holder">
+                                    <textarea id="description" placeholder="Description"></textarea>
+                                </div>
+                                <button id="publishPresale" class="button-primary w-button">Publish</button>
+                                <div id="publish-success" style="color: green; display: none;">Successfully published</div>
+                                <div id="publish-error" style="color: red; display: none;">Error saving data</div>
+                            </div>
+                        </div>
+                        <div id="presaleAdminTopup" style="display: none;">
+                            <div class="item-box">
+                                <h2>Add tokens to presale</h2>
+                                <input type="number" id="addToPresaleQty" placeholder="tokens quantity" min="0">
+                                <button id="addToPresale" class="button-primary w-button">Deposit</button>
+                                <p>You can also simply send tokens from any wallet to the presale contract address.</p>
+                            </div>
+                        </div>
+                        <div id="presaleAdminWithdraw" style="display: none;">
+                            <div class="item-box">
+                                <h2>Withdraw</h2>
+                                <button id="presaleWithdraw" class="button-primary w-button">Withdraw tokens</button>
+                            </div>
+                        </div>
+                        <div class="btn-actions">
+                            <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="block-content" id="lock-all" style="display: none;">
+                <header class="block-head">
+                    <h1>SandwichLock
+                        <span class="img">
+		    				<img src="../images/lock.svg" alt="image description">
+		                </span>
+                    </h1>
+                    <a id="connect4" href="#" class="button-primary w-button connect">Connect Wallet</a>
+                </header>
+                <div class="lock-block">
+                    <div class="lock-row">
+                        <div class="col has-shadow">
+                            <strong class="title">Create a token locker</strong>
+                            <div class="field-holder">
+                                <input id="lock-token" type="text" placeholder="Token address">
+                                <div class="tooltip-open-close">
+                                    <a href="#" class="tooltip-opener">
+                                        <img src="../images/info.png" alt="image description">
+                                    </a>
+                                    <div class="tooltip-slide">
+                                        <p>Please Enter the Token address</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="check-lock-token"></div>
+                            <ul class="list-options">
+                                <li><a href="#choose-lock" class="btn-white lightbox">Choose from my tokens</a></li>
+                            </ul>
+                            <div class="datepicker">
+                                <div class="field-holder">
+                                    <span class="label-text">Unlock time (local time)</span>
+                                    <input id="lock-tokens-unlock" type="text" class="flatpicker" placeholder="(dd-mm-yyyy --:--)" readonly>
+                                    <span class="img">
+	        							<svg id="Layer_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m446 40h-46v-24c0-8.836-7.163-16-16-16s-16 7.164-16 16v24h-224v-24c0-8.836-7.163-16-16-16s-16 7.164-16 16v24h-46c-36.393 0-66 29.607-66 66v340c0 36.393 29.607 66 66 66h380c36.393 0 66-29.607 66-66v-340c0-36.393-29.607-66-66-66zm34 406c0 18.778-15.222 34-34 34h-380c-18.778 0-34-15.222-34-34v-265c0-2.761 2.239-5 5-5h438c2.761 0 5 2.239 5 5z"/></g></svg>
+	        						</span>
+                                    <div id="lock-duration"></div>
+                                </div>
+                            </div>
+                            <div>After creating a locker you will be able to lock there as many tokens as you want</div>
+                        </div>
+                        <div class="col image-box">
+                            <div class="image-holder">
+                                <img src="../images/locking2.png" alt="Sandwich Locker">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cost-area ">
+                        <div class="cost-box">
+                            <strong class="title">Cost:</strong>
+                            <strong class="price lock-create-cost">0.1</strong>
+                            <a id="create-locker" class="lightbox btn-white" href="#lock-confirm">Create locker</a>
+                        </div>
+                        <div class="block-contract">
+                            <strong class="title">My lockers</strong>
+                            <div class="lockers-list"></div>
+                            <div class="lockers-none">
+                                <div class="img">
+                                    <img src="../images/img-note.png" alt="image description">
+                                </div>
+                                <div class="empty-data">no data</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="popup-holder">
+                <div id="choose-lock" class="lightbox-demo">
+                    <h2>Choose a token to lock</h2>
+                    <div id="tokens-lock-choose"></div>
+                    <div class="tokens-none">
+                        <div class="img">
+                            <img src="../images/img-note.png" alt="image description">
+                        </div>
+                        <span class="empty-data">no data</span>
+                    </div>
+                    <div class="btn-actions">
+                        <p></p>
+                        <a data-fancybox-close href="#" class="btn-white">Close</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="popup-holder">
+                <div id="lock-confirm" class="lightbox-demo">
+
+                    <div id="lock-errors-all" style="display: none;">
+                        <h2>Error</h2>
+                        <div id="lock-errors" style="color: red;"></div>
+                        <a data-fancybox-close href="#" class="btn-white">Close</a>
+                    </div>
+
+                    <div id="lock-confirm-all">
+                        <h2>You are creating a token locker for</h2>
+                        <h1><span id="lock-confirm-name"></span> (<span id="lock-confirm-symbol"></span>)</h1>
+                        <h2><strong class="text-title">Unlock time:</strong> <span id="lock-confirm-time"></span> (it is impossible to withdraw tokens until this time!)</h2>
+                        <h2><strong class="text-title">Your address:</strong> <span id="lock-confirm-address" class="text-code"></span> (only you will be able to withdraw the tokens once they are unlocked)</h2>
+                        <h2>After creating the locker you will be able to send and lock there as many tokens as you want to lock</h2>
+                        <div class="presale-text-info">
+                            <span class="img"><img src="../images/disclaimanation.png"></span>
+                            <p>By clicking Create button you agree with our Terms of service, confirm that the provided data is correct and well understand that the operation can not be reverted and creation cost <span class="lock-create-cost">0.0BNB</span>                                is not refundable.</p>
+                        </div>
+
+                        <div class="btn-actions">
+                            <button id="lock-confirm-create" class="lightbox button-primary" style="border: none;">Confirm</button>
+                            <a data-fancybox-close href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+
+                    <div id="lock-await" style="display: none;">
+                        <h1>Creating your locker...</h1>
+                        <span class="fancybox-loading"></span>
+                        <strong class="lightbox-title">Please make sure to confirm transaction in your wallet</strong>
+                        <div class="btn-actions">
+                            <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+
+                    <div id="lock-ok" style="display: none;">
+                        <h1>Success</h1>
+                        <strong class="lightbox-title">You can now see your new token locker in the list and lock your tokens there</strong>
+                        <div class="btn-actions">
+                            <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="popup-holder">
+                <div id="locker-admin" class="lightbox-demo">
+                    <div id="loaderlocker" style="display: none;">Loading....<span class="fancybox-loading"></span></div>
+                    <div id="contentlocker">
+                        <div class="item-box">
+                            <h2>Locker</h2>
+                            <p><strong class="text-title">Contract address:</strong>
+                                <a target="_blank" id="lockerAdminAddress" href="" title="View in explorer" class="text-code"></a>
+                            </p>
+                        </div>
+                        <div class="item-box">
+                            <h2>Balance (locked tokens)</h2>
+                            <span id="lockerAdminBalance"></span> <span id="lockerAdminName"></span> (<span id="lockerAdminSymbol"></span>)
+                        </div>
+                        <div class="item-box">
+                            <h2>Unlock date</h2>
+                            <span id="lockerAdminUnlock"></span><br>
+                            <span id="lockerAdminStatus"></span>
+                        </div>
+                        <div class="item-box">
+                            <h2>Locker page</h2>
+                            <button id="lockerAdminCopyPage" class="button-primary w-button">Copy</button>
+                            <p class="mt-10">
+                                <a target="_blank" id="lockerAdminPageAddress" href="" title="Locker page" class="text-code"></a>
+                            </p>
+                        </div>
+                        <div id="lockerAdminTopup" class="item-box" style="display: none;">
+                            <h2>Add tokens to locker</h2>
+                            <input type="number" id="addToLockerQty" placeholder="tokens quantity" min="0">
+                            <button id="addToLocker" class="button-primary w-button">Deposit</button>
+                            <p class="mt-10">You can also simply send tokens from any wallet to the locker contract address.</p>
+                        </div>
+                        <div id="lockerAdminWithdraw" class="item-box" style="display: none;">
+                            <h2>Withdraw</h2>
+                            <button id="lockerWithdraw" class="button-primary w-button">Withdraw tokens</button>
+                        </div>
+                        <div class="btn-actions">
+                            <a data-fancybox-close="" href="#" class="btn-white">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </section>
+    </div>
+
+
+    <script src='../js/ethers-5.2.umd.min.js' type="text/javascript" charset="utf-8"></script>
+    <script src='../js/app.js' type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

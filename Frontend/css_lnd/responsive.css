@@ -1,0 +1,539 @@
+/*Extra large devices (large desktops, 1200px and up)*/
+@media(min-width: 1800px) and (max-width: 1920px){
+	.network_wrapper .n_img {
+	    width: 35%;
+	}
+	.eco_shape {
+	    left: 50%;
+	    transform: translateX(-50%);
+	}
+}
+@media(min-width: 1600px) and (max-width: 1799.98px){
+	.network_wrapper .n_img {
+	    width: 42%;
+	}
+	.eco_shape {
+	    left: 50%;
+	    transform: translateX(-50%);
+	    width: 84%;
+	}
+}
+@media(min-width: 1410px) and (max-width: 1599.98px){
+	.network_wrapper .n_img {
+	    width: 49%;
+	}
+	.eco_shape {
+	    left: 50%;
+	    transform: translateX(-50%);
+	    width: 96%;
+	}
+}
+
+@media (min-width: 1300px) {
+	.container{
+		max-width: 1270px;
+	} 
+	
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.logo_box {
+	    padding-right: 30px;
+	    margin-right: 30px;
+	} 
+	#menu li {
+	    padding-right: 39px;
+	}
+	.header_btn .button{
+		font-size: 12px;
+		padding: 13px 19px;
+	}
+	.hero_content h1 {
+	    font-size: 46px;
+	    max-width: 501px;
+	}
+	.hero_content p {
+	    max-width: 468px;
+	    font-size: 14px;
+	}
+	.hero_content {
+	    padding-top: 140px;
+	}
+	.hero_btn_group .button {
+	    padding: 16px 30px;
+	    font-size: 14px;
+	}
+	.hero_shape3 {
+		right: 45px;
+	    bottom: 13px;
+	}
+	.hero_btn_group {
+	    margin-top: 30px;
+	}
+	.hero_shape6 {
+	    width: 5%;
+	}
+	.logo_box1 .logo_box1_img {
+	    margin-right: 55px;
+	}
+	.title {
+	    font-size: 40px;
+	}
+	.network_wrapper .n_img {
+	    left: 44%;
+	    width: 73%;
+	}
+	.buy_banner_content {
+	    padding: 69px 30px 59px;
+	}
+	.buy_left_content h3 {
+	    font-size: 28px;
+	}
+	.buy_box h4 {
+	    font-size: 18px;
+	}
+	.partner_img img {
+	    max-width: 116px;
+	}
+	.ecosystem_banner_content {
+	    padding: 60px 30px;
+	}
+	.eco_logo_box {
+	    padding-right: 20px;
+	    margin-right: 20px;
+	}
+	.eco_btn_group a,
+	.eco_btn_group a:last-child{
+	    font-size: 14px;
+	    padding: 17px 36px;
+	}
+	.ecosystem_logo p {
+	    font-size: 20px;
+	}
+	.community_content_wrapper {
+	    padding: 90px 30px 75px;
+	}
+	.community_content h3 {
+	    font-size: 38px;
+	}
+	.com_btn_group .button {
+	    width: 165px;
+	}
+	
+}
+
+@media (max-width: 991.98px) {
+	header {
+	    height: 80px;
+	}
+	.hamburger-menu {
+		display: block;
+	}
+	#menu {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		z-index: -1;
+		top: 0;
+		left: -100%;
+		-webkit-transition: .3s;
+		-o-transition: .3s;
+		transition: .3s;
+		text-align: center;
+		padding-top: 100px;
+	}
+	#menu.current {
+		left: 0;
+	}
+	#menu li{
+		display: block;
+		padding-right: 0;
+		padding-bottom: 30px;
+	}
+	.logo_box {
+	    border-right: none;
+	    padding-right: 0px;
+	    margin-right: 0px;
+	}
+	.hamburger_col{
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+	.header_btn{
+		margin-right: 30px;
+	}
+	.hero_wrapper {
+	    padding-bottom: 60px;
+	}
+	.hero_img_col{
+		position: relative;
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+	.hero_content {
+	    padding-top: 80px;
+	}
+	.hero_content h1 {
+	    font-size: 46px;
+	    max-width: 501px;
+	}
+	.hero_content p {
+	    max-width: 650px;
+	}
+	.hero_btn_group {
+	    margin-top: 30px;
+	}
+	.hero_img {
+	    padding-top: 60px;
+	}
+	.logo_box1 .logo_box1_img {
+	    margin-right: 40px;
+	}
+	.hero_shape6 {
+	    bottom: -61px;
+	    max-width: 5%;
+	}
+	.tools_box h4 {
+	    font-size: 17px;
+	}
+	.tools_box p {
+	    font-size: 13px;
+	    max-width: 295px;
+	}
+	.tools_box {
+	    padding: 40px 16px;
+	}
+	.tools_box4 p{
+		max-width: 263px !important;
+	}
+	.net_work_box p {
+	    font-size: 14px;
+	}
+	.network_wrapper .n_img {
+	    top: 32%;
+	    width: 86%;
+	}
+	.token_wrapper {
+	    padding-top: 80px;
+	}
+	.buy_banner_content {
+	    padding: 40px 50px 40px;
+	}
+	.buy_left_content h3 {
+	    font-size: 26px;
+	    text-align: center;
+	}
+	.buy_box {
+	    justify-content: center;
+	}
+	.buy_btn{
+		padding-top: 30px;
+		text-align: center;
+	}
+	.buy_btn .button {
+	    padding: 17px 32px;
+	    font-size: 16px;
+	}
+	.partner_wrapper {
+	    padding-top: 90px;
+	    padding-bottom: 40px;
+	}
+	.partner_img img {
+	    max-width: 85px;
+	}
+	.ecosystem_banner_content {
+	    padding: 50px 30px;
+	    flex-wrap: wrap;
+	    justify-content: center;
+	}
+	.eco_btn_group {
+	    padding-top: 30px;
+	}
+	.eco_btn_group a,
+	.eco_btn_group a:last-child {
+	    font-size: 16px;
+	    padding: 18px 32px;
+	}
+	.eco_shape {
+	    top: 29px;
+	}
+	.ecosysteam_banner_wrapper {
+	    padding-bottom: 100px;
+	}
+	.community_content_wrapper {
+	    padding: 60px 30px 60px;
+	}
+	.community_content h3{
+		text-align: center;
+	}
+	.community_content p {
+	    padding-top: 15px;
+	    text-align: center;
+	}
+	.bg_btn {
+	    padding-top: 30px;
+	    text-align: center;
+	}
+	.com_btn_group {
+	    text-align: center;
+	}
+	.community_img {
+	    text-align: center;
+	    padding-top: 30px;
+	}
+	.footer_content p {
+	    max-width: 205px;
+	}
+	
+}
+
+/*Medium devices (tablets, 767px and down)*/
+@media (max-width: 767.98px) {
+	.hero_shape6,
+	.hero_shape1,
+	.hero_shape2,
+	.hero_shape3,
+	.hero_shape4,
+	.hero_shape5{
+		display: none;
+	}
+	.logo_box1_wrapper {
+	    padding-bottom: 70px;
+	}
+	.logo_box1 .logo_box1_img {
+	    margin-right: 20px;
+	}
+	.title {
+	    font-size: 36px;
+	}
+	.tools_box p {
+	    font-size: 14px;
+	    max-width: 367px;
+	}
+	.tools_box4 p {
+	    max-width: 302px !important;
+	}
+	.hero_wrapper {
+	    padding-bottom: 20px;
+	}
+	.network_wrapper {
+	    padding: 80px 0 123px;
+	}
+	.net_work_box p {
+	    padding-top: 10px;
+	}
+	.net_work_box {
+	    padding: 10px;
+	}
+	.net_work_box p {
+	    font-size: 13px;
+	}
+	.network_wrapper .n_img {
+	    top: 34%;
+	    width: 86%;
+	}
+	.token_wrapper {
+	    padding-top: 10px;
+	}
+	.token_box {
+	    padding: 40px 15px;
+	    min-height: 260px;
+	}
+	.token_box p {
+	    font-size: 13px;
+	}
+	.buy_banner_content {
+	    padding: 40px 15px 40px;
+	}
+	.buy_box h4 {
+	    font-size: 15px;
+	}
+	.partner_img_wrapper2 .partner_img{
+		margin-right: 0;
+	}
+	.partner_img_wrapper{
+		flex-wrap: wrap;
+	}
+	.partner_img {
+	    max-width: 33.33%;
+	    flex-basis: 33.33%;
+	    text-align: center;
+	}
+	.partner_img_wrapper {
+	    padding-top: 20px;
+	}
+	.partner_img_wrapper .partner_img1 {
+	    padding-top: 15px;
+	}
+	.partner_img_wrapper2{
+		flex-wrap: wrap;
+		padding-top: 15px;
+	}
+	.partner_img_wrapper2 .partner_img{
+		flex-basis: 50% !important;
+		max-width: 50% !important;
+	}
+	.partner_img img {
+	    max-width: 110px;
+	}
+	.partner_img2{
+		padding-top: 10px;
+	}
+	.ecosystem_banner_content {
+	    padding: 50px 15px;
+	}
+	.ecosystem_logo p {
+	    font-size: 18px;
+	}
+	.footer_box_wrapper {
+	    flex-wrap: wrap;
+	}
+	.footer_box{
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+	.footer_content {
+	    text-align: center;
+	}
+	.footer_content p{
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.footer_social{
+		justify-content: center;
+	}
+	.footer_list_wrapper {
+	    text-align: center;
+	}
+	.footer_content p {
+	    max-width: 302px;
+	}
+}
+
+/*Small devices (landscape phones, 575px and down)*/
+@media (max-width: 575.98px) {
+	.header_btn{
+		margin-right: 15px;
+	}
+	.header_btn .button {
+	    font-size: 13px;
+	    padding: 13px 19px;
+	}
+	.hero_content {
+	    padding-top: 50px;
+	}
+	.hero_content h1 {
+	    font-size: 33px;
+	}
+	.hero_content p {
+	    font-size: 14px;
+	}
+	.hero_btn_group .button {
+	    padding: 15px 27px;
+	    font-size: 14px;
+	}
+	.logo_box1{
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.logo_box1 .logo_box1_img{
+		margin-right: 0;
+	}
+	.logo_box1 .logo_box1_img{
+		max-width: 50%;
+		flex-basis: 50%;
+		text-align: center;
+		padding-top: 20px;
+	}
+	.title {
+	    font-size: 26px;
+	}
+	.tools_btn .button {
+	    padding: 18px 30px;
+	    font-size: 14px;
+	}
+	.net_work_box p {
+	    max-width: 100%;
+	}
+	.net_work_box {
+	    padding: 20px;
+	}
+	.network_wrapper .n_img {
+	    top: 34%;
+	    width: 94%;
+	}
+	.net_work_box2 {
+	    margin-top: 0px;
+	}
+	.network_box_wrapper {
+	    padding-top: 0px;
+	}
+	.network_wrapper {
+	    padding: 80px 0 87px;
+	}
+	.buy_left_content h3 {
+	    font-size: 22px;
+	}
+	.buy_box2{
+		padding-top: 30px;
+	}
+	.partner_img{
+		flex-basis: 50%;
+		max-width: 50%;
+	}
+	.partner_img0 {
+	    padding-bottom: 10px;
+	}
+	.partner_img_wrapper {
+	    padding-top: 5px;
+	}
+	.partner_img1_1{
+		padding-top: 15px;
+	}
+	.eco_shape {
+	    display: none;
+	}
+	.eco_logo_box {
+	    padding-right: 14px;
+	    margin-right: 14px;
+	}
+	.ecosystem_logo p {
+	    font-size: 14px;
+	}
+	.eco_logo_box {
+	    max-width: 115px;
+	}
+	.eco_btn_group a, .eco_btn_group a:last-child {
+	    font-size: 14px;
+	    padding: 14px 29px;
+	}
+	.ecosysteam_banner_wrapper {
+	    padding-bottom: 80px;
+	}
+	.community_content h3 {
+	    font-size: 27px;
+	}
+	.community_content_wrapper {
+	    padding: 40px 15px 40px;
+	}
+	.community_content p br{
+		display: none;
+	}
+	.bg_btn .button {
+	    padding: 8px;
+	    justify-content: center;
+	    font-size: 16px;
+	    width: 302px;
+	    height: 60px;
+	}
+	.com_btn_group a:last-child{
+		margin-left: 0;
+		margin-top: 15px;
+	}
+	.footer_wrapper {
+	    padding-top: 35px;
+	}	
+}
+
+
