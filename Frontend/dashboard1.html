@@ -2,84 +2,140 @@
 <html lang="en">
 
 <head>
-    <title>SandwichTools| Dashboard</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="app, landing, corporate, Creative, Html Template, Template">
+    <meta name="author" content="web-themes">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1">
+
+    <!-- title -->
+    <title>Sandwich</title>
+
+    <!-- favicon -->
+    <link href="./img/buy-icon1.png" type="image/png" rel="icon">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css" integrity="sha512-4wFGk961cJS2gpSfzy1vU+R8Q93foZOoGgfEDetiClOqNvggdtnRpdCsAgfm8VU9mKkv2unla8RBYwA6hoFwqg==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet " type="text/css " href="assets/css/main.css ">
-    <link rel="stylesheet " type="text/css " href="assets/css/sidebar.css ">
-    <link rel="stylesheet " type="text/css " href="assets/css/table.css ">
-    <link rel="stylesheet " type="text/css " href="assets/css/colors.css ">
-    <link rel="stylesheet " type="text/css " href="assets/css/dashboard1.css ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css" integrity="sha512-4wFGk961cJS2gpSfzy1vU+R8Q93foZOoGgfEDetiClOqNvggdtnRpdCsAgfm8VU9mKkv2unla8RBYwA6hoFwqg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link href="./css_lnd/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="./css_lnd/fontawesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="./css_lnd/helper.css" rel="stylesheet" type="text/css" />
+    <link href="./css_lnd/style.css" rel="stylesheet" type="text/css" />
+    <link href="./css_lnd/responsive.css" rel="stylesheet" type="text/css" />
+
+    <!-- <link rel="stylesheet " type="text/css " href="./css/custom/main.css "> -->
+    <link rel="stylesheet " type="text/css " href="./css/custom/sidebar.css ">
+    <link rel="stylesheet " type="text/css " href="./css/custom/table.css ">
+    <link rel="stylesheet " type="text/css " href="./css/custom/colors.css ">
+    <link rel="stylesheet " type="text/css " href="./css/custom/dashboard1.css ">
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-md fixed-top ">
-        <a class="navbar-brand " href="# ">
-            <img src="assets/images/logo/logo.png " />
-        </a>
-        <button class="navbar-toggler navbar-light " type="button " data-toggle="collapse " data-target="#main-navigation ">
-            <span class="navbar-toggler-icon "></span>
-        </button>
-        <div class="collapse navbar-collapse " id="main-navigation ">
-            <ul class="navbar-nav ">
-                <li class="nav-item ">
-                    <a class="nav-link" href="# ">Sandwich Launch</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link " href="# ">SandwichSAFU<br /><small>Comming soon</small></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link " href="# ">SandwichTools<br /><small>Comming soon</small></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link " href="# ">SandwichSwap<br /><small>Comming soon</small></a>
-                </li>
-            </ul>
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="loader3">
+            <span></span>
+            <span></span>
         </div>
-        <button type="button " class="btn btn-primary connect-wallet-btn ">Connect Wallet</button>
-    </nav>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- start header -->
+    <header class="d-flex align-items-center sticky-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-10 col-4">
+                    <div class="menu_box">
+                        <div class="logo_box">
+                            <a href="#"><img src="./img/logo.png" class="img-fluid" alt=""></a>
+                        </div>
+                        <!--menu start-->
+                        <ul id="menu">
+                            <li class="nav-item">
+                                <a href="./launch/" class="nav-link">SandwichBeta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    SandwichSAFU
+                                    <span>Coming soon</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    SandwichTools
+                                    <span>Coming soon</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    SandwichSwap
+                                    <span>Coming soon</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--menu end-->
+                    </div>
+                </div>
+                <div class="col-lg-2 col-8 text-left position-relative hamburger_col">
+                    <div class="header_btn">
+                        <a href="#" class="button">Connect Wallet</a>
+                    </div>
+                    <div class="hamburger-menu mr-3">
+                        <span class="line-top"></span>
+                        <span class="line-center"></span>
+                        <span class="line-bottom"></span>
+                    </div>
+                    <!-- menu toggler -->
+                    <div class="hamburger-menu">
+                        <span class="line-top"></span>
+                        <span class="line-center"></span>
+                        <span class="line-bottom"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <div class="page-container container-full ">
-        <nav id="sidebarMenu " class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse p-0 ">
+        <nav id="sidebarMenu" class="col-lg-2 d-md-block bg-light sidebar collapse show p-0 ">
             <div class="sidebar-sticky ">
                 <ul class="nav flex-column ">
                     <li class="nav-item active ">
                         <a class="nav-link align-items-center d-flex" href="# ">
-                            <img src="assets/icons/sidebar/home.svg" class="mr-3" />&nbsp;Home
+                            <img src="./icons/sidebar/home.svg" class="mr-3" />&nbsp;Home
                             <span class="sr-only ">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link " href="# ">
-                            <img src="assets/icons/sidebar/chart.svg" class="mr-3" />SandwichCharts
+                            <img src="./icons/sidebar/chart.svg" class="mr-3" />SandwichCharts
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link " href="# ">
-                            <img src="assets/icons/sidebar/cryptocurrencies.svg" class="mr-3" />Cryptocurrencies
+                            <img src="./icons/sidebar/cryptocurrencies.svg" class="mr-3" />Cryptocurrencies
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link " href="# ">
-                            <img src="assets/icons/sidebar/tracking.svg" class="mr-3" />Sandwich Tracking
+                            <img src="./icons/sidebar/tracking.svg" class="mr-3" />Sandwich Tracking
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link " href="# ">
-                            <img src="assets/icons/sidebar/instruments.svg" class="mr-3" /> Sandwich Instruments
+                            <img src="./icons/sidebar/instruments.svg" class="mr-3" /> Sandwich Instruments
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link " href="# ">
-                            <img src="assets/icons/sidebar/portfolio.svg" class="mr-3" />SandwichPortfolio
+                            <img src="./icons/sidebar/portfolio.svg" class="mr-3" />SandwichPortfolio
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link " href="# ">
-                            <img src="assets/icons/sidebar/support&more.svg" class="mr-3" /> Support & More
+                            <img src="./icons/sidebar/support&more.svg" class="mr-3" /> Support & More
                         </a>
                     </li>
                 </ul>
@@ -87,13 +143,13 @@
             <div class="sidebar-footer">
                 <div class="social-links  d-flex align-items-center justify-content-center">
                     <a href="#">
-                        <img src="assets/icons/socials/telegram.svg" class="mr-4" />
+                        <img src="./icons/socials/telegram.svg" class="mr-4" />
                     </a>
                     <a href="#">
-                        <img src="assets/icons/socials/twitter.svg" />
+                        <img src="./icons/socials/twitter.svg" />
                     </a>
                     <a href="#">
-                        <img src="assets/icons/socials/medium.svg" class="ml-4" />
+                        <img src="./icons/socials/medium.svg" class="ml-4" />
                     </a>
                 </div>
                 <div class="footer-text  d-flex align-items-center justify-content-center mt-2">
@@ -101,7 +157,7 @@
                 </div>
             </div>
         </nav>
-        <div class="page-content col-md-9 ml-sm-auto col-lg-10 px-md-5 ">
+        <div class="page-content ml-sm-auto col-lg-10 px-md-5 ">
             <div class="row ">
                 <div class="col-md-12 d-flex justify-content-lg-between flex-wrap justify-content-sm-between justify-content-between">
                     <button type="button " class="btn btn-primary px-md-2 coin-item mt-3"><i class="fa-brands fa-bitcoin text-warning"></i> &nbsp;1. Bitcoin</button>
@@ -117,7 +173,7 @@
             <div class="row">
                 <div class="col-md-4 ">
                     <div class="composition-image mt-3  ">
-                        <img src="assets/images/compositions/composition_1.png " />
+                        <img src="./images/compositions/composition_1.png " />
                     </div>
                     <div class="composition-footer d-flex justify-content-between ">
                         <div class="composition-title ">
@@ -130,7 +186,7 @@
                 </div>
                 <div class="col-md-4 ">
                     <div class="composition-image mt-3  ">
-                        <img src="assets/images/compositions/composition_2.png " />
+                        <img src="./images/compositions/composition_2.png " />
                     </div>
                     <div class="composition-footer d-flex justify-content-between ">
                         <div class="composition-title ">
@@ -143,7 +199,7 @@
                 </div>
                 <div class="col-md-4 ">
                     <div class="composition-image mt-3  ">
-                        <img src="assets/images/compositions/composition_3.png " />
+                        <img src="./images/compositions/composition_3.png " />
                     </div>
                     <div class="composition-footer d-flex justify-content-between ">
                         <div class="composition-title ">
@@ -243,7 +299,7 @@
                 </div>
             </div>
             <div class="row mt-3 ">
-                <div class="col-md-12 " style="width:100%;overflow-x: scroll;">
+                <div class="col-md-12 " style="width:100%;overflow-x: auto; overflow-y: hidden;">
 
                     <table class="table ">
                         <thead>
@@ -326,13 +382,113 @@
                     </table>
                 </div>
             </div>
+            <footer>
+                <div class="footer_wrapper">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-10 col-lg-12">
+                                <div class="footer_box_wrapper">
+                                    <div class="footer_box pt_30">
+                                        <div class="footer_content">
+                                            <a href="index.html">
+                                                <img src="img/logo.png" class="img-fluid" alt="">
+                                            </a>
+                                            <p>Sandwich Network is the definite hub to start your decentralized cryptocurrency journey. Join us!</p>
+                                        </div>
+                                    </div>
+                                    <div class="footer_box pt_30">
+                                        <div class="footer_list_wrapper">
+                                            <h5>Products</h5>
+                                            <ul class="footer_list">
+                                                <li>
+                                                    <a href="/launch/">SandwichBeta</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">SandwichSAFU</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">SandwichTools</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">SandwichSwap</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="footer_box pt_30">
+                                        <div class="footer_list_wrapper">
+                                            <h5>Support</h5>
+                                            <ul class="footer_list">
+                                                <li>
+                                                    <a href="/tutorials/">Tutorials</a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank" href="https://docs.sandwich.network/">Documentation</a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank" href="https://docs.sandwich.network/support">Customer support</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="footer_box pt_30">
+                                        <div class="footer_list_wrapper">
+                                            <h5>Social</h5>
+                                            <ul class="footer_list">
+                                                <li>
+                                                    <a target="_blank" href="https://t.me/SandwichNetwork">
+                                                        <i class="fab fa-telegram-plane"></i> Telegram
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank" href="https://twitter.com/NetworkSandwich">
+                                                        <i class="fab fa-twitter"></i> Twitter
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a target="_blank" href="https://medium.com/@sandwichnetwork">
+                                                        <i class="fab fa-medium"></i> Medium
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="footer_last_text">
+                                    <p>Copyright © 2021 Sandwich. All rights reserved</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js " integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=" anonymous "></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js " integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s " crossorigin="anonymous "></script>
+    <!-- start footer -->
+
+    <!-- end footer -->
+    <!--====== BACK TO TOP START ======-->
+    <a href="#" class="back-to-top"><i class="fal fa-angle-up"></i></a>
+    <!--====== BACK TO TOP ENDS ======-->
+
+    <!-- all js here -->
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js_lnd/plugins.js"></script>
+    <script src="./js_lnd/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="assets/js/main.js "></script>
+    <script src="./js/dashboard1.js "></script>
+    <script>
+        function togglerSidebar() {
+            if (document.getElementById('sidebarMenu').classList.includes("collapse")) {
+                console.log("exist");
+            } else {
+                console.log("noexist");
+            }
+        }
+    </script>
 </body>
 
 </html>
