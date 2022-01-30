@@ -1,0 +1,129 @@
+.sidebar {
+  width: 280px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  /* Behind the navbar */
+  padding: 48px 0 0;
+  /* Height of navbar */
+  transition: all 0.5s ease-out;
+  
+}
+
+@media(max-width:768px){
+  .sidebar{
+    left: -280px;
+    transition: all 0.5s ease-out;
+  }
+  
+  .sidebar.show{
+    left: 0px ;
+  }
+}
+
+.side-icon{
+  font-size: 23px;
+}
+
+.sidebar-sticky {
+  height: calc(100vh - 93px);
+  padding-top: 93px !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+      position: -webkit-sticky;
+      position: sticky;
+  }
+}
+
+.sidebar .nav .nav-item {
+  height: 52px;
+  margin: 5px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .nav .nav-item:hover{
+  background-color: #ebebea;
+}
+.sidebar .nav .nav-item.active {
+  background-color: #F4F9FE;
+}
+
+.sidebar .nav .nav-item .nav-link {
+  padding: 5px 10px 5px 40px;
+  font-family: DM Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  /* identical to box height, or 114% */
+  color: #777E91;
+}
+
+.sidebar .nav .nav-item.active .nav-link {
+  color: #35C4FF;
+}
+
+.sidebar .footer-text {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 14px;
+}
+
+.setting-section{
+    background-color: #f3f3f3;;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: inset 0 0 30px 3px #f4f4f4;;
+    display: none;
+}
+
+@media(max-width:768px){
+  .setting-section{
+    display: flex;
+  }
+}
+
+.network-logo{
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.network-dropdown-body{
+  background: #f4e6ea;
+  border: 1px solid #e1b5c1;
+}
+
+.switch-network-btn{
+  background-color: #f8f9fa !important;
+  color: #232636 !important;
+  border:0px;
+  font-family: DM Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.setting-btn{
+  background-color: transparent !important;
+  border:0px;
+  font-size: 24px;
+  color:#649db9;
+}
+
+.social-links a{
+  color:#7e859f;
+}
+

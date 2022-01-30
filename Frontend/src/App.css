@@ -1,0 +1,38 @@
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css");
+@import url("style/css/global.css");
+@import url("style/css_lnd/helper.css");
+@import url("style/css_lnd/responsive.css");
+@import url("style/css_lnd/style.css");
+@import url("style/css/main.css");
+
+
+/*
+Web3Modal
+*/
+
+.web3modal-modal-lightbox{
+    z-index: 347834353 !important;
+}
+
+::-webkit-scrollbar {
+    background: #f4e6ea;
+    width: 8px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-corner {
+    background: 0 0;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    border: none;
+    box-shadow: inset 0 0 10px 10px #e5d4d9;
+}
+
+::-webkit-scrollbar-track {
+    border: 3px solid transparent;
+    box-shadow: none;
+}
