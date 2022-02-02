@@ -11,13 +11,13 @@
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 24px;
 }
 
 .table td.text-strong {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 24px;
     color: #23262F;
 }
@@ -26,7 +26,7 @@
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 24px;
     color: #777E91;
     background-color: transparent;
@@ -58,4 +58,11 @@
 
 .market-trade-table.table-striped tbody tr:nth-of-type(odd) {
     background-color: #F4F9FE;
+}
+.table th{
+    border-top:0px;
+    border-bottom: 0px;
+}
+.table thead th{
+    border-bottom: 0px;    
 }

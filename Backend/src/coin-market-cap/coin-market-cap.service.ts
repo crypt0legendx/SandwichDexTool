@@ -10,19 +10,20 @@ export class CoinMarketCapService {
   /*
    * Servicio de listado de precio de criptomonedas por default 'BTC,ETH'
    */
-  async getAll() {
-    const coins = await this.fetchCoins();
+  async getAll(chain:String) {
+    const crypto_req =  await this.fetchCoins(chain);
+    const coins =  crypto_req.cryptoCurrencyList;
 
     const listCoins = Object.keys(coins);
     return listCoins.map((k) => ({
       id:coins[k].id,
       name: coins[k].name,
       symbol: coins[k].symbol,
-      price: coins[k].quote?.USD?.price,
-      volume_24h:coins[k].quote?.USD?.volume_24h,
-      percent_change_24h:coins[k].quote?.USD?.percent_change_24h,
-      percent_change_7d:coins[k].quote?.USD?.percent_change_24h,
-      market_cap:coins[k].quote?.USD?.market_cap,      
+      price: coins[k].quotes[0].price,
+      volume_24h:coins[k].quotes[0].volume24h,
+      percent_change_24h:coins[k].quotes[0].percentChange24h,
+      percent_change_7d:coins[k].quotes[0].percentChange7d,
+      market_cap:coins[k].quotes[0].marketCap,      
     }));
   }
 
@@ -54,13 +55,29 @@ export class CoinMarketCapService {
   }
 
 
-  private async fetchCoins(): Promise<any> {
+  private async fetchCoins(chain:String): Promise<any> {
     let request;
+    let platform = "ethereum-ecosystem";
+    if(chain =="BSC")
+      platform = "binance-smart-chain";
+    else if(chain =="Polygon")
+      platform = "polygon-ecosystem";
     try {
       request = await this.httpService
-        .get(this.url, {
-          headers: { 'X-CMC_PRO_API_KEY': this.apiKey },
-          params: { start:1, limit:20 },
+        .get('https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing', {
+          params: { 
+            start:1, 
+            limit:20,
+            sortBy:'market_cap',
+            sortType:'desc',
+            convert:'USD',
+            cryptoType:'all',
+            tagType:'all',
+            audited:false,
+            aux:"ath,atl,high24h,low24h,num_market_pairs,cmc_rank,date_added,max_supply,circulating_supply,total_supply,volume_7d,volume_30d,self_reported_circulating_supply,self_reported_market_cap",
+            tagSlugs:platform
+
+          },
         })
         .toPromise();
     } catch (err) {

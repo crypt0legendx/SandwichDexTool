@@ -5,60 +5,19 @@ import "../style/css/table.css"
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import Marquee from "react-easy-marquee";
+import TrendingMarquee from "../components/TrendingMarquee/TrendingMarquee";
+import {useSelector, useDispatch} from "react-redux";
 
 function Home() {
 
-    const [largeTokens, setLargeTokens] = useState([]);
-
-    useEffect(() => {
-        
-        getLargeTokens();
-        
-
-    }, []);
-
-    useEffect(() => {
-        console.log(largeTokens);
-    }, [largeTokens]);
-
-    const getLargeTokens = async() => {
-
-        axios.get('http://192.168.113.22:4000/coin-market-cap')
-            .then(function (response) {
-                console.log('getdata');
-                setLargeTokens(response.data);
-                console.log(response.data);
-                console.log(largeTokens);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
+    const ranking = useSelector((state) => state.currencies.ranking);
+    const isLoading = useSelector((state) => state.currencies.isLoading);
 
     return ( 
         <>
             <div className="row ">
                 <div className="col-md-12 d-flex ">
-                <Marquee className="marquee-bar" duration={50000} background="#fafafa" height="40px"  pauseOnHover={true} reverse={true}>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;1. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;2. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;3. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;4. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;5. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;6. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;7. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;8. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;1. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;2. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;3. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;4. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;5. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;6. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;7. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;8. Ethereum</button>
-                </Marquee>
-                    
+                    <TrendingMarquee />    
                 </div>
             </div>
             <div className="row">
@@ -174,7 +133,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="row mt-3 ">
+            {/* <div className="row mt-3 ">
                 <div className="col-md-12 d-flex flex-wrap justify-content-between ">
                     <div className="col-md-6 d-flex flex-wrap justify-content-md-start justify-content-xs-center">
                         <button className="btn btn-default coin-sort-btn active mt-2 mr-2 ">All Tokens</button>
@@ -188,50 +147,59 @@ function Home() {
                         <button className="btn btn-default mt-2 mr-2 time-sort-btn d-flex ">All time &nbsp;<i className="fa fa-calendar"></i></button>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="row mt-3 ">
-                <div className="col-md-12 "  style={{width:'100%', overflowX:'auto'}}>
+                <div className="col-md-12"  style={{width:'100%', overflowX:'auto', textAlign:'center'}}>
+                    {
+                        isLoading&&(
+                            <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--sQzcbE_t--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/fk3smrzna1vieidxaawn.gif" alt="Alt Text" loading="lazy" data-xblocker="passed" />
+                        )
+                    }
+                    {
+                        !isLoading&&(
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col ">#</th>
+                                        <th scope="col " className="text-left ">Name <i className="fa fa-sort ml-2"></i></th>
+                                        <th scope="col " className="text-left ">Price<i className="fa fa-sort ml-2"></i></th>
+                                        <th scope="col " className="text-right ">24h %</th>
+                                        <th scope="col " className="text-right ">7d %</th>
+                                        <th scope="col " className="text-right ">marketcap<i className="fa fa-dollar ml-2"></i>
+                                        </th>
+                                        <th scope="col " className="text-right ">volume(24)<i className="fa fa-chart-column ml-2"></i></th>
+                                        <th scope="col " className="text-right ">Last 7 Days</th>
 
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th scope="col ">#</th>
-                                <th scope="col " className="text-left ">Name <i className="fa fa-sort ml-2"></i></th>
-                                <th scope="col " className="text-left ">Price<i className="fa fa-sort ml-2"></i></th>
-                                <th scope="col " className="text-right ">24h %</th>
-                                <th scope="col " className="text-right ">7d %</th>
-                                <th scope="col " className="text-right ">marketcap<i className="fa fa-dollar ml-2"></i>
-                                </th>
-                                <th scope="col " className="text-right ">volume(24)<i className="fa fa-chart-column ml-2"></i></th>
-                                <th scope="col " className="text-right ">chart</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                largeTokens.map((t,i)=>{
-                                    return (<tr key={i}>
-                                        <th scope="row ">{i+1}</th>
-                                        <td className="text-strong text-left ">
-                                            <Link to={ `/chart/${t.symbol}`}>
-                                                <img className="ranking-img mr-1" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/`+t.id+'.png'} />
-                                                {t.name} <span className="mark ">                                            
-                                                {t.symbol}</span>
-                                            </Link>
-                                            </td>
-                                        <td className="text-strong text-left ">${Math.floor(t.price * 100) / 100}</td>
-                                        <td className={t.percent_change_24h>0?"text-success":"text-danger"}>{t.percent_change_24h}%</td>
-                                        <td className={t.percent_change_7d>0?"text-success":"text-danger"}>{t.percent_change_7d}%</td>
-                                        <td className="text-strong text-right ">${Math.round(t.market_cap)}</td>
-                                        <td className="text-strong text-right ">${Math.round(t.volume_24h)}</td>
-                                        <td className="chart "> 
-                                            <div id="chart0"></div>
-                                        </td>
-                                    </tr>);
-                                })
-                            }
-                        </tbody>
-                    </table>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        ranking.map((t,i)=>{
+                                            return (<tr key={i}>
+                                                <td>{i+1}</td>
+                                                <td className="text-strong text-left ">
+                                                    <Link to={ `/chart/${t.symbol}`}>
+                                                        <img className="ranking-img mr-1" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/`+t.id+'.png'} />
+                                                        {t.name} <span className="mark ">                                            
+                                                        {t.symbol}</span>
+                                                    </Link>
+                                                    </td>
+                                                <td className="text-strong text-left ">${Math.floor(t.price * 100) / 100}</td>
+                                                <td className={t.percent_change_24h>0?"text-success text-right":"text-danger text-right"}>{Math.floor(t.percent_change_24h*100)/100}%</td>
+                                                <td className={t.percent_change_7d>0?"text-success text-right":"text-danger text-right"}>{Math.floor(t.percent_change_7d*100)/100}%</td>
+                                                <td className="text-strong text-right ">${Math.round(t.market_cap)}</td>
+                                                <td className="text-strong text-right ">${Math.round(t.volume_24h)}</td>
+                                                <td className="chart "> 
+                                                    <img className={t.percent_change_7d>0?"bCltOL isUp":"bCltOL"}  src={`https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${t.id}.svg`} />
+                                                </td>
+                                            </tr>);
+                                        })
+                                    }
+                                </tbody>
+                            </table>
+                        )    
+                    }
+                    
                 </div>
             </div>
             <footer>

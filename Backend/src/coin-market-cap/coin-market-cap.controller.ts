@@ -12,9 +12,10 @@ export class CoinMarketCapController {
   }
 
   // List coins filter by key
-  @Get('/')
+  @Get('/:chain')
   async getAllCoins(@Res() res, @Req() req) {
-    const coins = await this.coinMarketCapService.getAll();
+    const {chain} = req.params;
+    const coins = await this.coinMarketCapService.getAll(chain);
     return res.status(HttpStatus.OK).json(coins);
   }
 

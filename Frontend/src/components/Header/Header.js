@@ -1,13 +1,35 @@
+import React, {useState, useEffect} from "react";
+import axios from 'axios';
 import {RiNotification2Line, RiSearchLine} from "react-icons/ri";
 import {Dropdown, Button,Badge} from "react-bootstrap";
-import "./Header.css";
 import ConnectWallet from "../ConnectWallet";
 import {useSelector, useDispatch} from "react-redux";
 import {changeNetwork} from "../../store/slices/network-slice";
+import {changeLoading, changeRanking} from "../../store/slices/currencies-slice";
+
+import "./Header.css";
 
 function Header(props) {
     const network = useSelector((state) => state.network.name);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        changedNetwork("Ethereum");
+    }, []);
+
+    const changedNetwork = async(chain) => {
+            dispatch(changeNetwork(chain));
+            dispatch(changeLoading(true));
+            axios.get(`http://localhost:4000/coin-market-cap/${chain}`)
+            .then(function (response) {
+                dispatch(changeRanking(response.data));                
+            })
+            .catch(function (error) {
+                console.log(error);
+            }).finally(()=>{
+                dispatch(changeLoading(false));
+            });
+    }
     return ( 
         <>
         <nav className="navbar navbar-expand-md fixed-top ">
@@ -39,12 +61,12 @@ function Header(props) {
                 <button type="button " className="btn btn-default notification-btn "><RiNotification2Line /></button>
                 <Dropdown className="mr-2 ml-2 d-flex align-items-center network-dropdown">
                     <Dropdown.Toggle id="dropdown-basic" className="header-switch-network-btn">
-                        <img className="network-logo mr-2" src={`assets/images/Networks/${network}.png`} />{network}
+                        <img className="network-logo mr-2" src={`../../assets/images/Networks/${network}.png`} />{network}
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="network-dropdown-body">
-                        <Dropdown.Item onClick={() => dispatch(changeNetwork("Ethereum"))}>Ethereum</Dropdown.Item>
-                        <Dropdown.Item onClick={() => dispatch(changeNetwork("BSC"))}>BSC</Dropdown.Item>
-                        <Dropdown.Item onClick={() => dispatch(changeNetwork("Polygon"))}>Polygon</Dropdown.Item>
+                        <Dropdown.Item onClick={() => changedNetwork("Ethereum")}>Ethereum</Dropdown.Item>
+                        <Dropdown.Item onClick={() => changedNetwork("BSC")}>BSC</Dropdown.Item>
+                        <Dropdown.Item onClick={() => changedNetwork("Polygon")}>Polygon</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                 <ConnectWallet />

@@ -8,12 +8,13 @@ import TradingChart from "../components/Chart/TradingChart";
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-import Marquee from "react-easy-marquee";
+import TrendingMarquee from "../components/TrendingMarquee/TrendingMarquee";
+
 
 function Chart() {
 
-    const [coin,setCoin] =  useState({});
     const { symbol } = useParams();
+    const [coin,setCoin] =  useState({});
 
     useEffect(() => {
         const interval = setTimeout(async () => {
@@ -27,7 +28,7 @@ function Chart() {
     }, [coin]);
 
     const getCoinBySymbol = async() => {
-        axios.get(`http://192.168.113.22:4000/coin-market-cap/coins/${symbol}`)
+        axios.get(`http://localhost:4000/coin-market-cap/coins/${symbol}`)
         .then(function (response) {
             console.log('getdata');
             console.log(response.data);
@@ -44,24 +45,7 @@ function Chart() {
         <>
             <div className="row ">
                 <div className="col-md-12 d-flex">
-                <Marquee className="marquee-bar" duration={50000} background="#fafafa" height="50px" pauseOnHover={true} reverse={true}>
-                <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;1. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;2. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;3. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;4. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;5. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;6. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;7. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;8. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;1. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;2. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;3. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;4. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;5. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;6. Ethereum</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-bitcoin text-warning"></i> &nbsp;7. Bitcoin</button>
-                        <button type="button " className="btn btn-primary px-md-2 coin-item mr-2"><i className="fa-brands fa-ethereum text-pink"></i> &nbsp;8. Ethereum</button>
-                </Marquee>
+                    <TrendingMarquee />
                 </div>
             </div>
             <div className="row">
