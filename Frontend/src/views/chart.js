@@ -9,12 +9,16 @@ import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import TrendingMarquee from "../components/TrendingMarquee/TrendingMarquee";
+import {Tabs, Tab} from "react-bootstrap";
 
 
 function Chart() {
 
     const { symbol } = useParams();
     const [coin,setCoin] =  useState({});
+
+    const [timeInterval] =  useState(['1H','4H','1D','1W','1M']);
+    const [intervalChart, setIntervalChart] = useState("1D");
 
     useEffect(() => {
         const interval = setTimeout(async () => {
@@ -119,12 +123,15 @@ function Chart() {
                         <div className="row">
                             <div className="col-md-7 d-flex flex-wrap">
                                 <button className="trading-filter-btn mt-1 mr-1">Time</button>
-                                <button className="trading-filter-btn mt-1 mr-1">1H</button>
-                                <button className="trading-filter-btn mt-1 mr-1">1H</button>
-                                <button className="trading-filter-btn mt-1 mr-1">4H</button>
-                                <button className="trading-filter-btn mt-1 mr-1 active">1D</button>
-                                <button className="trading-filter-btn mt-1 mr-1">1W</button>
-                                <button className="trading-filter-btn mt-1 mr-1">1M</button>
+                                {
+                                    timeInterval.map((val,index)=>{
+                                        return <button 
+                                        key={index} 
+                                        className={intervalChart==val?`trading-filter-btn mt-1 mr-1 active`:`trading-filter-btn mt-1 mr-1`}
+                                        onClick={()=>setIntervalChart(val)}
+                                        >{val}</button>
+                                    })
+                                }                                
                             </div>
                             <div className="col-md-5 d-flex justify-content-end align-items-center">
                                 <a href="" className="trading-subnav active mr-3">Trading View</a>
@@ -138,90 +145,99 @@ function Chart() {
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <TradingChart symbol = {symbol} />
+                    <TradingChart symbol = {symbol} interval={intervalChart} />
                 </div>
             </div>   
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="market-trade-filter d-flex mt-5 flex-wrap">
-                        <button className="trading-filter-btn mt-1 active">Tradebook</button>
-                        <button className="trading-filter-btn mt-1">Your trades</button>
-                        <button className="trading-filter-btn mt-1">Holders</button>
-                        <button className="trading-filter-btn mt-1">Details</button>
-                        <button className="trading-filter-btn mt-1">Liquidity</button>
-                        <button className="trading-filter-btn mt-1">News</button>
-                    </div>
-                </div>
-            </div>
             <div className="row mt-3">
-                <div className="col-md-12 "  style={{width:'100%', overflowX:'auto'}}>
-
-                    <table className="table table-striped market-trade-table ">
-                        <thead>
-                            <tr>
-                                <th scope="col " className="text-left ">Time <i className="fa fa-sort ml-2"></i></th>
-                                <th scope="col " className="text-left ">Traded<i className="fa fa-sort ml-2"></i></th>
-                                <th scope="col " className="text-left ">Token Price<i className="fa fa-sort ml-2"></i></th>
-                                <th scope="col " className="text-right ">value<i className="fa fa-sort ml-2"></i></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td className="text-strong text-left ">18:05:40</td>
-                                <td className="text-strong text-success text-left ">36,641.209735578</td>
-                                <td className="text-strong text-left ">0.245455484546</td>
-                                <td className="text-strong text-right ">36,641.209735578</td>
-                            </tr>
-                            <tr>
-                                <td className="text-strong text-left ">18:05:40</td>
-                                <td className="text-strong text-success text-left ">36,641.209735578</td>
-                                <td className="text-strong text-left ">0.245455484546</td>
-                                <td className="text-strong text-right ">36,641.209735578</td>
-                            </tr>
-                            <tr>
-                                <td className="text-strong text-left ">18:05:40</td>
-                                <td className="text-strong text-success text-left ">36,641.209735578</td>
-                                <td className="text-strong text-left ">0.245455484546</td>
-                                <td className="text-strong text-right ">36,641.209735578</td>
-                            </tr>
-                            <tr>
-                                <td className="text-strong text-left ">18:05:40</td>
-                                <td className="text-strong text-success text-left ">36,641.209735578</td>
-                                <td className="text-strong text-left ">0.245455484546</td>
-                                <td className="text-strong text-right ">36,641.209735578</td>
-                            </tr>
-                            <tr>
-                                <td className="text-strong text-left ">18:05:40</td>
-                                <td className="text-strong text-success text-left ">36,641.209735578</td>
-                                <td className="text-strong text-left ">0.245455484546</td>
-                                <td className="text-strong text-right ">36,641.209735578</td>
-                            </tr>
-                            <tr>
-                                <td className="text-strong text-left ">18:05:40</td>
-                                <td className="text-strong text-success text-left ">36,641.209735578</td>
-                                <td className="text-strong text-left ">0.245455484546</td>
-                                <td className="text-strong text-right ">36,641.209735578</td>
-                            </tr>
-                            <tr>
-                                <td className="text-strong text-left ">18:05:40</td>
-                                <td className="text-strong text-success text-left ">36,641.209735578</td>
-                                <td className="text-strong text-left ">0.245455484546</td>
-                                <td className="text-strong text-right ">36,641.209735578</td>
-                            </tr>
-                            <tr>
-                                <td className="text-strong text-left ">18:05:40</td>
-                                <td className="text-strong text-success text-left ">36,641.209735578</td>
-                                <td className="text-strong text-left ">0.245455484546</td>
-                                <td className="text-strong text-right ">36,641.209735578</td>
-                            </tr>
-                            <tr>
-                                <td className="text-strong text-left ">18:05:40</td>
-                                <td className="text-strong text-success text-left ">36,641.209735578</td>
-                                <td className="text-strong text-left ">0.245455484546</td>
-                                <td className="text-strong text-right ">36,641.209735578</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className="col-md-12">
+                <Tabs variant="pills" defaultActiveKey="trade_book" id="uncontrolled-tab-example" className="mb-3">
+                    <Tab eventKey="trade_book" title="Tradebook" className="mt-1">
+                        <div style={{width:'100%', overflowX:'auto'}}>
+                            <table className="table table-striped market-trade-table ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col " className="text-left ">Time <i className="fa fa-sort ml-2"></i></th>
+                                        <th scope="col " className="text-left ">Traded<i className="fa fa-sort ml-2"></i></th>
+                                        <th scope="col " className="text-left ">Token Price<i className="fa fa-sort ml-2"></i></th>
+                                        <th scope="col " className="text-right ">value<i className="fa fa-sort ml-2"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td className="text-strong text-left ">18:05:40</td>
+                                        <td className="text-strong text-success text-left ">36,641.209735578</td>
+                                        <td className="text-strong text-left ">0.245455484546</td>
+                                        <td className="text-strong text-right ">36,641.209735578</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-strong text-left ">18:05:40</td>
+                                        <td className="text-strong text-success text-left ">36,641.209735578</td>
+                                        <td className="text-strong text-left ">0.245455484546</td>
+                                        <td className="text-strong text-right ">36,641.209735578</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-strong text-left ">18:05:40</td>
+                                        <td className="text-strong text-success text-left ">36,641.209735578</td>
+                                        <td className="text-strong text-left ">0.245455484546</td>
+                                        <td className="text-strong text-right ">36,641.209735578</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-strong text-left ">18:05:40</td>
+                                        <td className="text-strong text-success text-left ">36,641.209735578</td>
+                                        <td className="text-strong text-left ">0.245455484546</td>
+                                        <td className="text-strong text-right ">36,641.209735578</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-strong text-left ">18:05:40</td>
+                                        <td className="text-strong text-success text-left ">36,641.209735578</td>
+                                        <td className="text-strong text-left ">0.245455484546</td>
+                                        <td className="text-strong text-right ">36,641.209735578</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-strong text-left ">18:05:40</td>
+                                        <td className="text-strong text-success text-left ">36,641.209735578</td>
+                                        <td className="text-strong text-left ">0.245455484546</td>
+                                        <td className="text-strong text-right ">36,641.209735578</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-strong text-left ">18:05:40</td>
+                                        <td className="text-strong text-success text-left ">36,641.209735578</td>
+                                        <td className="text-strong text-left ">0.245455484546</td>
+                                        <td className="text-strong text-right ">36,641.209735578</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-strong text-left ">18:05:40</td>
+                                        <td className="text-strong text-success text-left ">36,641.209735578</td>
+                                        <td className="text-strong text-left ">0.245455484546</td>
+                                        <td className="text-strong text-right ">36,641.209735578</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-strong text-left ">18:05:40</td>
+                                        <td className="text-strong text-success text-left ">36,641.209735578</td>
+                                        <td className="text-strong text-left ">0.245455484546</td>
+                                        <td className="text-strong text-right ">36,641.209735578</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </Tab>
+                    <Tab eventKey="your_trades" title="Your trades" className="mt-1">
+                        
+                    </Tab>
+                    <Tab eventKey="holders" title="Holders" className="mt-1">
+                        
+                    </Tab>
+                    <Tab eventKey="details" title="Details" className="mt-1">
+                        
+                    </Tab>
+                    <Tab eventKey="liquidity" title="Liquidity" className="mt-1">
+                        
+                    </Tab>
+                    <Tab eventKey="news" title="News" className="mt-1">
+                        
+                    </Tab>
+                </Tabs>
                 </div>
             </div>
             <footer>

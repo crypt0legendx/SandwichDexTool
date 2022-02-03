@@ -161,13 +161,13 @@ function Home() {
                                 <thead>
                                     <tr>
                                         <th scope="col ">#</th>
-                                        <th scope="col " className="text-left ">Name <i className="fa fa-sort ml-2"></i></th>
-                                        <th scope="col " className="text-left ">Price<i className="fa fa-sort ml-2"></i></th>
+                                        <th scope="col " className="text-left ">Name</th>
+                                        <th scope="col " className="text-left ">Price</th>
                                         <th scope="col " className="text-right ">24h %</th>
                                         <th scope="col " className="text-right ">7d %</th>
                                         <th scope="col " className="text-right ">marketcap<i className="fa fa-dollar ml-2"></i>
                                         </th>
-                                        <th scope="col " className="text-right ">volume(24)<i className="fa fa-chart-column ml-2"></i></th>
+                                        <th scope="col " className="text-right ">volume(24)</th>
                                         <th scope="col " className="text-right ">Last 7 Days</th>
 
                                     </tr>

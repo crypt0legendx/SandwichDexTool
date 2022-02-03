@@ -164,3 +164,22 @@
         border-bottom: 1px solid #E6E8EC;
     }
 }
+
+.nav-pills .nav-link{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 20px;
+    border:0px;
+    margin-top: 5px;
+    padding: 6.84868px 13.6974px;
+    background: transparent;
+    color:#807e91;
+    margin-right: 5px !important;
+}
+
+.nav-pills .nav-link.active{
+    background: #35c4ff;
+}

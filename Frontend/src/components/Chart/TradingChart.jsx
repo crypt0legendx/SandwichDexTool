@@ -6,19 +6,19 @@ const TradingChart = (props) => {
   const [symbol, setSymbol] = useState("BTCUSDT");
 
   useEffect(() => {
-    console.log(tradingRef.current.props.symbol);
+
     setSymbol(props.symbol);
-  }, []);
+  }, [props.symbol]);
 
   console.log(symbol);
 
   return (
     <TradingViewWidget
-      width={'100%'}
+      width="100%"
       symbol={symbol}
       theme={Themes.LIGHT}
       locale="en"
-      interval="D"
+      interval={props.interval}
       timezone="exchange"
       theme="Light"
       hide_top_toolbar={true}

@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useWeb3Context } from "../../hooks/web3";
-import { Button } from "react-bootstrap";
 
 import "./style.css";
 
 function ConnectWallet() {
 
     const { connect, disconnect, connected, web3, providerChainID, checkWrongNetwork, address } = useWeb3Context();
-    const dispatch = useDispatch();
     const [isConnected, setConnected] = useState(connected);
 
     let buttonText = "ConnectWallet";
