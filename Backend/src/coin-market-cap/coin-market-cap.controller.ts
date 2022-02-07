@@ -5,25 +5,43 @@ import { CoinMarketCapService } from './coin-market-cap.service';
 export class CoinMarketCapController {
   constructor(private coinMarketCapService: CoinMarketCapService) {}
 
+  /**
+   * Return ranking list for certain chain from CMC.
+   * @param res 
+   * @param req 
+   * @returns
+   */
+  @Get('/ranking/:chain')
+  async getRanking(@Res() res, @Req() req) {
+    const {chain} = req.params;
+    const coins = await this.coinMarketCapService.getRankingByChain(chain);
+    return res.status(HttpStatus.OK).json(coins);
+  }
+
+  /**
+   * Return Trending List from CMC
+   * @param res 
+   * @param req 
+   * @returns 
+   */
   @Get('/trending')
   async getTrending(@Res() res, @Req() req) {    
     const trendins = await this.coinMarketCapService.getTrending();
     return res.status(HttpStatus.OK).json(trendins);
   }
 
-  // List coins filter by key
-  @Get('/:chain')
-  async getAllCoins(@Res() res, @Req() req) {
-    const {chain} = req.params;
-    const coins = await this.coinMarketCapService.getAll(chain);
-    return res.status(HttpStatus.OK).json(coins);
-  }
 
-  @Get('/coins/:symbol')
-  async getCoinsbySymbol(@Res() res, @Req() req) {
+  /**
+   * Return Token Detail Info for Symbol from CMC.
+   * @param res 
+   * @param req 
+   * @returns 
+   */
+  @Get('/token/:symbol')
+  async getTokenInfobySymbol(@Res() res, @Req() req) {
     const {symbol} =  req.params;
-    const coins = await this.coinMarketCapService.getCoinInfoBySysmbol(symbol);
-    return res.status(HttpStatus.OK).json(coins);
+    const tokens = await this.coinMarketCapService.getTokenInfoBySymbol(symbol);
+    return res.status(HttpStatus.OK).json(tokens);
   }
 
   

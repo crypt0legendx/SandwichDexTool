@@ -10,25 +10,26 @@ export class EtherscanApiService {
         private httpService: HttpService
     ){}
 
-    async getLargestTokens(){
-        const tokens = await this.fetchLargestTokens();
-
-        const listCoins = Object.keys(tokens);
-        console.log(tokens);
-        return [];
-    }
-
-    private async fetchLargestTokens(): Promise<any> {
+    async getTopTokens(){
+        const html = await this.fetchTopTokens();
+        return html
+      }
+  
+  
+      private async fetchTopTokens(): Promise<any> {
         let request;
         try {
-          request = await this.httpService
-            .get(this.url, {
-              headers: {'module':'account','action':'tokentx', 'apikey': this.apiKey }
+        request = await this.httpService
+            .get('https://etherscan.io/tokens', {
+            params: { 
+                p:1,
+            },
             })
             .toPromise();
         } catch (err) {
-          console.error(err);
+        console.error(err);
         }
-        return request?.data?.data || {};
-      }
+        return request.data || {};
+    }
+
 }

@@ -12,24 +12,31 @@ export class MultiChainCapController {
         private polygonscanApiService:PolygonscanApiService
     ){}
     
-    @Get('/trending/:network')
-    async getTrending(@Res() res, @Req() req) {    
-        const {network} =  req.params;
+
+    @Get('/toptokens/:network')
+    async getTopTokens(@Res() res, @Req() req){
+        const {network} = req.params;
+        let tokenList;
+        if(network=="Ethereum"){
+            tokenList = await this.etherscanApiService.getTopTokens();
+        }
+        if(network=="BSC"){
+            tokenList = await this.bscscanApiService.getTopTokens();
+        }
+        if(network=="Polygon"){
+            tokenList = await this.polygonscanApiService.getTopTokens();
+        }
+        
+        return res.status(HttpStatus.OK).json(tokenList);
     }
 
-    // List coins filter by key
-    @Get('/largest/:network')
-    async getLargestTokens(@Res() res, @Req() req) {
-        const {network} =  req.params;
-        if(network == "Ethereum"){
-            const tokens = await this.etherscanApiService.getLargestTokens();
-            return res.status(HttpStatus.OK).json(tokens);
-        }
-        if(network == "BSC"){
-            const tokens = await this.bscscanApiService.getLargestTokens();
-            return res.status(HttpStatus.OK).json(tokens);
-        }
+    @Get('/tradebook/:network/:contractAddress')
+    async getTradeBook(@Res() res, @Req() req){
+        const {network, contractAddress} = req.params;
+        const tradelist = await this.bscscanApiService.getTradeBook(contractAddress);
+        return res.status(HttpStatus.OK).json(tradelist);
     }
+
 
     @Get('/tokenInfo/:network/:symbol')
     async getTokenInfoBySymbol(@Res() res, @Req() req) {

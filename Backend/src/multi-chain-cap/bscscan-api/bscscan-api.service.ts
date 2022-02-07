@@ -4,41 +4,62 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class BscscanApiService {
 
-    private url = `${process.env.COINMARKETCAP_URL}/v1/cryptocurrency/listings/latest`;
+    private url = process.env.BSCSCAN_URL;
     private apiKey = process.env.BSCSCAN_APIKEY;
 
     constructor(
         private httpService:HttpService
     ){}
 
-    async getLargestTokens(){
-        const tokens = await this.fetchLargestTokens();
-
-        const listCoins = Object.keys(tokens);
-        return listCoins.map((k) => ({
-          id:tokens[k].id,
-          name: tokens[k].name,
-          symbol: tokens[k].symbol,
-          price: tokens[k].quote?.USD?.price,
-          volume_24h:tokens[k].quote?.USD?.volume_24h,
-          percent_change_24h:tokens[k].quote?.USD?.percent_change_24h,
-          percent_change_7d:tokens[k].quote?.USD?.percent_change_24h,
-          market_cap:tokens[k].quote?.USD?.market_cap,      
-        }));
+    async getTradeBook(contractAddress){
+      const tradebook =  await this.fetchTradeBook(contractAddress);
+      return tradebook.result;
     }
 
-    private async fetchLargestTokens(): Promise<any> {
-        let request;
+    async getTopTokens(){
+      const html = await this.fetchTopTokens();
+      return html
+    }
+
+
+    private async fetchTopTokens(): Promise<any> {
+      let request;
         try {
           request = await this.httpService
-            .get(this.url, {
-              headers: { 'X-CMC_PRO_API_KEY': this.apiKey },
-              params: { start:1, limit:20 },
+            .get('https://bscscan.com/tokens', {
+              params: { 
+                p:1,
+              },
             })
             .toPromise();
         } catch (err) {
           console.error(err);
         }
-        return request?.data?.data || {};
+        return request.data || {};
+      }
+
+    private async fetchTradeBook(contractAddress): Promise<any> {
+      
+        let request;
+        try {
+          request = await this.httpService
+            .get(this.url, {
+              params: { 
+                module:'account',
+                action:'tokentx',
+                contractaddress:`${contractAddress}`,
+                page:1,
+                offset:10,
+                startblock:0,
+                endblock:99999999,
+                sort:'desc',
+                apikey:this.apiKey
+              },
+            })
+            .toPromise();
+        } catch (err) {
+          console.error(err);
+        }
+        return request.data || {};
       }
 }
