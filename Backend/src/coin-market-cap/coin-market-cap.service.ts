@@ -4,7 +4,7 @@ import { HttpService } from '@nestjs/axios';
 @Injectable()
 export class CoinMarketCapService {
   private url = `${process.env.COINMARKETCAP_URL}/v1/cryptocurrency/listings/latest`;
-  private apiKey = process.env.CMC_APIKEY;
+  private apiKey = process.env.COINMARKETCAP_APIKEY;
 
   constructor(private httpService: HttpService) {}
   
@@ -72,7 +72,7 @@ export class CoinMarketCapService {
       price: coins[k].quote?.USD?.price,
       volume_24h:coins[k].quote?.USD?.volume_24h,
       percent_change_24h:coins[k].quote?.USD?.percent_change_24h,
-      percent_change_7d:coins[k].quote?.USD?.percent_change_24h,
+      percent_change_7d:coins[k].quote?.USD?.percent_change_7d,
       market_cap:coins[k].quote?.USD?.market_cap,      
       quote:coins[k].quote?.USD
 
@@ -121,7 +121,7 @@ export class CoinMarketCapService {
     } catch (err) {
       console.error(err);
     }
-    return request?.data?.data || {};
+    return request?.data?.data || [];
   }
 }
 

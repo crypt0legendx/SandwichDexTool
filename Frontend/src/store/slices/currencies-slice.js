@@ -5,6 +5,9 @@ export const currenciesSlice = createSlice({
   initialState: {
     isLoading: false,
     ranking: [],
+    InvalidCMC:[
+      'aCRV','wMANA','BSC-USD','IOTA','PAX'
+    ]
   },
   reducers: {
     changeRanking: (state, action) => {

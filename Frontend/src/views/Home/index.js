@@ -148,19 +148,19 @@ function Home() {
                                                 <td className="text-strong text-left ">                                                    
                                                     <Link to={ `/chart/${t.symbol}`}>
                                                         <div className="d-flex align-items-center">
-                                                        <img className="ranking-img mr-1" src={`${scanurl}/token/`+t.logo} />
+                                                        <img className="ranking-img mr-1" src={t.logo?`${scanurl}/token/`+t.logo:`${scanurl}/images/main/empty-token.png`} />
                                                         {t.name} <span className="mark ">                                            
                                                         {t.symbol}</span>
                                                         </div>
                                                     </Link>
                                                     </td>
                                                 <td className="text-strong text-left ">${t.price.toFixed(2)}</td>
-                                                <td className={t.percent_change_24h>0?"text-success text-right":"text-danger text-right"}>{Math.floor(t.percent_change_24h*100)/100}%</td>
-                                                <td className={t.percent_change_7d>0?"text-success text-right":"text-danger text-right"}>{Math.floor(t.percent_change_7d*100)/100}%</td>
-                                                <td className="text-strong text-right ">${Math.round(t.market_cap)}</td>
-                                                <td className="text-strong text-right ">${Math.round(t.volume_24h)}</td>
+                                                <td className={parseFloat(t.percent_change_24h)>0?"text-success text-right":"text-danger text-right"}>{t.percent_change_24h}</td>
+                                                <td className={parseFloat(t.percent_change_7d)>0?"text-success text-right":"text-danger text-right"}>{t.percent_change_7d}</td>
+                                                <td className="text-strong text-right ">{t.market_cap}</td>
+                                                <td className="text-strong text-right ">{t.volume_24h}</td>
                                                 <td className="chart "> 
-                                                    <img className={t.percent_change_7d>0?"bCltOL isUp":"bCltOL"}  src={`https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${t.id}.svg`} />
+                                                    <img className={parseFloat(t.percent_change_7d)>0?"bCltOL isUp":"bCltOL"}  src={`https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${t.id}.svg`} />
                                                 </td>
                                             </tr>);
                                         })
