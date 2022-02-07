@@ -23,6 +23,18 @@
     justify-content: center;
 }
 
+.composition-back1{
+    background: #F4E6EA;
+}
+
+.composition-back2{
+    background: #E6E8EC;
+}
+
+.composition-back3{
+    background: #CADBE0;
+}
+
 .composition-title {
     font-family: Poppins;
     font-style: normal;

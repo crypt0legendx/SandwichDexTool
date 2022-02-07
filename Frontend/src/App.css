@@ -5,16 +5,18 @@
 @import url("style/css_lnd/helper.css");
 @import url("style/css_lnd/responsive.css");
 @import url("style/css_lnd/style.css");
+@import url("style/css/common.css");
 @import url("style/css/main.css");
 
 
-/*
-Web3Modal
-*/
-/* 
-.web3modal-modal-lightbox{
-    z-index: 347834353 !important;
-} */
+html{
+    scroll-behavior: smooth;
+}
+
+
+.hidden{
+    display: none;
+}
 
 ::-webkit-scrollbar {
     background: #f4e6ea;

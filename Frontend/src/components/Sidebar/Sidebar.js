@@ -27,7 +27,7 @@ function Sidebar(props) {
         props.setOpen();
         dispatch(changeNetwork(chain));
         dispatch(changeLoading(true));
-        axios.get(`http://localhost:4000/coin-market-cap/${chain}`)
+        axios.get(`http://localhost:4000/coin-market-cap/ranking/${chain}`)
         .then(function (response) {
             dispatch(changeRanking(response.data));                
         })

@@ -48,29 +48,6 @@
 }
 
 
-.search{
-    width: 100%;
-    padding: 0 30px;
-    text-align: center;
-}
-
-@media(max-width:1028px){
-    .search{
-        display: none;
-    }
-}
-
-.search-field{
-    width: 100%;
-    max-width: 450px;
-    border: 2px solid rgb(191 234 252);
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    font-size: 13px;
-    padding: 8px 8px;
-    
-}
-
 .network-logo{
     width: 20px;
     height: 20px;
@@ -126,14 +103,4 @@
 
 .notification-btn:focus, .search-btn:focus{
     box-shadow: none;
-}
-
-.search-btn{
-    display: none;
-}
-
-@media(max-width:1028px){
-    .search-btn{
-        display: inline-block;
-    }
 }

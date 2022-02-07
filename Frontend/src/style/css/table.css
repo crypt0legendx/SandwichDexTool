@@ -7,6 +7,9 @@
     color: #777E91;
 }
 
+.table th big{
+    font-size: 17px;
+}
 .table td {
     font-family: Poppins;
     font-style: normal;
