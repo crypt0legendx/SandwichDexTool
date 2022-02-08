@@ -17,8 +17,9 @@ function Header(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        console.log('refresh');
         changedNetwork("Ethereum");
-    }, [props]);
+    }, []);
 
     const changedNetwork = async(chain) => {
             let scanurl="";
@@ -62,7 +63,7 @@ function Header(props) {
                         symbols=symbols+','+symbol;
                     }                        
                     
-                    results.push({id:1027, logo:logo, name:name, symbol:symbol, price:usd_price,percent_change_24h:change,percent_change_7d:change,market_cap:marketcap,volume_24h:volume});
+                    results.push({id:1027, contractAddress:contractAddress, logo:logo, name:name, symbol:symbol, price:usd_price,percent_change_24h:change,percent_change_7d:change,market_cap:marketcap,volume_24h:volume});
                     
                 }
                 symbols=symbols.substring(1);
@@ -74,10 +75,10 @@ function Header(props) {
                             
                             const token_cmc=cmc_data.find(cd=>d.symbol.toUpperCase()==cd.symbol);
                             
-                            if(token_cmc){
-                                return {id:token_cmc.id, logo:d.logo, name:d.name, symbol:d.symbol, price:d.price,percent_change_24h:token_cmc.percent_change_24h,percent_change_7d:token_cmc.percent_change_7d,market_cap:d.market_cap,volume_24h:d.volume_24h}
+                            if(token_cmc&&token_cmc.percent_change_24h){
+                                return {id:token_cmc.id, contractAddress:d.contractAddress, logo:d.logo, name:d.name, symbol:d.symbol, price:d.price,percent_change_24h:token_cmc.percent_change_24h,percent_change_7d:token_cmc.percent_change_7d,market_cap:d.market_cap,volume_24h:d.volume_24h}
                             }else{
-                                return {id:1027, logo:d.logo, name:d.name, symbol:d.symbol, price:d.price,percent_change_24h:d.percent_change_24h,percent_change_7d:'-',market_cap:d.market_cap,volume_24h:d.volume_24h}
+                                return {id:1027, contractAddress:d.contractAddress, logo:d.logo, name:d.name, symbol:d.symbol, price:d.price,percent_change_24h:d.percent_change_24h,percent_change_7d:'-',market_cap:d.market_cap,volume_24h:d.volume_24h}
                             }
                         });
 

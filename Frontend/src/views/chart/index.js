@@ -6,6 +6,8 @@ import FullscreenIcon from "../../assets/icons/others/screen.svg"
 import TradingChart from "../../components/Chart/TradingChart";
 
 import React, {useState, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import TrendingMarquee from "../../components/TrendingMarquee/TrendingMarquee";
@@ -14,7 +16,9 @@ import {Tabs, Tab} from "react-bootstrap";
 
 function Chart() {
 
-    const { symbol } = useParams();
+    
+    const { symbol, contractAddress } = useParams();
+    const network_name = useSelector((state) => state.network.name);
     const [coin,setCoin] =  useState({});
     const [tradeBook, setTradeBook] = useState([]);
 
@@ -40,7 +44,7 @@ function Chart() {
     }, [coin]);
 
     const fetchTradeBook = async() =>{
-        axios.get(`http://localhost:4000/multi-chain-cap/tradebook/BSC/0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51`)
+        axios.get(`http://localhost:4000/multi-chain-cap/tradebook/${network_name}/${contractAddress}`)
         .then(function (response) {
             console.log('tradebook',response.data);
             setTradeBook(response.data);
@@ -186,10 +190,10 @@ function Chart() {
                                     {
                                         tradeBook.map((tx, index)=>{
                                             return <tr key={index}>
-                                                        <td className="text-strong text-left ">{new Date(Number(tx.timeStamp)).toLocaleTimeString()}</td>
-                                                        <td className="text-strong text-success text-left ">{tx.value}</td>
+                                                        <td className="text-strong text-left ">{new Date(Number(tx.timeStamp)*1000).toLocaleTimeString()}</td>
+                                                        <td className="text-strong text-success text-left ">{Number(tx.value)/Math.pow(10, Number(tx.tokenDecimal))}&nbsp;{tx.tokenSymbol}</td>
                                                         <td className="text-strong text-left ">0.245455484546</td>
-                                                        <td className="text-strong text-right ">{tx.value}</td>
+                                                        <td className="text-strong text-right ">{Number(tx.gasPrice)/Math.pow(10, 18)}</td>
                                                     </tr>
                                         })
                                     }                                    

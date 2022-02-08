@@ -146,7 +146,7 @@ function Home() {
                                                     </div>
                                                 </td>
                                                 <td className="text-strong text-left ">                                                    
-                                                    <Link to={ `/chart/${t.symbol}`}>
+                                                    <Link to={ `/chart/${t.symbol}/${t.contractAddress}`}>
                                                         <div className="d-flex align-items-center">
                                                         <img className="ranking-img mr-1" src={t.logo?`${scanurl}/token/`+t.logo:`${scanurl}/images/main/empty-token.png`} />
                                                         {t.name} <span className="mark ">                                            

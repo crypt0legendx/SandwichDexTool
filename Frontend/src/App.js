@@ -36,8 +36,8 @@ function App() {
                     
                     <Routes>
                         <Route path="/home" element={<Home />} />
-                        <Route path="/chart/:symbol" element={<Chart />} />
-                        <Route path="/*" element={<Navigate to="/home" />} />
+                        <Route path="/chart/:symbol/:contractAddress" element={<Chart />} />
+                        {/* <Route path="/*" element={<Navigate to="/home" />} /> */}
                     </Routes>
                     
                     <footer>

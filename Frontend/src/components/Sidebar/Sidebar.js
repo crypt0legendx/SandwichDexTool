@@ -59,7 +59,7 @@ function Sidebar(props) {
                     </div>
                     <ul className="nav flex-column ">
                         <li className="nav-item" className={`${pathname.match('/home') ? 'nav-item active' : 'nav-item'}`}>
-                            <Link to="/home" className="nav-link align-items-center d-flex" onClick={()=>props.setOpen()}>
+                            <Link to={'home'} className="nav-link align-items-center d-flex" onClick={()=>props.setOpen()}>
                                 <RiHomeFill className="side-icon mr-3" />Home
                                 <span className="sr-only ">(current)</span>
                             </Link>

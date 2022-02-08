@@ -16,7 +16,7 @@ export class MultiChainCapController {
     @Get('/toptokens/:network')
     async getTopTokens(@Res() res, @Req() req){
         const {network} = req.params;
-        let tokenList;
+        let tokenList=[];
         if(network=="Ethereum"){
             tokenList = await this.etherscanApiService.getTopTokens();
         }
@@ -33,7 +33,17 @@ export class MultiChainCapController {
     @Get('/tradebook/:network/:contractAddress')
     async getTradeBook(@Res() res, @Req() req){
         const {network, contractAddress} = req.params;
-        const tradelist = await this.bscscanApiService.getTradeBook(contractAddress);
+        let tradelist=[];
+        if(network=="Ethereum"){
+            tradelist = await this.etherscanApiService.getTradeBook(contractAddress);
+        }
+        if(network=="BSC"){
+            tradelist = await this.bscscanApiService.getTradeBook(contractAddress);
+        }
+        if(network=="Polygon"){
+            tradelist = await this.polygonscanApiService.getTradeBook(contractAddress);
+        }
+            
         return res.status(HttpStatus.OK).json(tradelist);
     }
 

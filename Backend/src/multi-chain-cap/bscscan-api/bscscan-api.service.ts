@@ -11,11 +11,6 @@ export class BscscanApiService {
         private httpService:HttpService
     ){}
 
-    async getTradeBook(contractAddress){
-      const tradebook =  await this.fetchTradeBook(contractAddress);
-      return tradebook.result;
-    }
-
     async getTopTokens(){
       const html = await this.fetchTopTokens();
       return html
@@ -37,6 +32,12 @@ export class BscscanApiService {
         }
         return request.data || {};
       }
+
+      
+    async getTradeBook(contractAddress){
+      const tradebook =  await this.fetchTradeBook(contractAddress);
+      return tradebook.result;
+    }
 
     private async fetchTradeBook(contractAddress): Promise<any> {
       
