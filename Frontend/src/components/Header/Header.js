@@ -21,6 +21,7 @@ function Header(props) {
         changedNetwork("Ethereum");
     }, []);
 
+
     const changedNetwork = async(chain) => {
             let scanurl="";
             if(chain=="Ethereum"){

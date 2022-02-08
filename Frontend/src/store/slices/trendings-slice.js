@@ -11,19 +11,31 @@ export const getTrendings =  createAsyncThunk("trendings/getTrendings", async()=
             
 })
 
+export const getGainersLosers =  createAsyncThunk("trendings/getGainersLosers", async()=>{
+  console.log('get_gainers_losers');
+  const response = await axios.get(`http://localhost:4000/coin-market-cap/gainers-losers`);
+  console.log(response.data);
+  return response.data;
+          
+})
+
 export const trendingsSlice = createSlice({
   name: 'trendings',
   initialState: {
-    data: [],
+    latest: [],
+    gainers_losers:[]
   },
   reducers: {
     changeTredings: (state, action) => {
-      state.data = action.payload
+      state.latest = action.payload
     },
   },
   extraReducers:(builder)=>{
     builder.addCase(getTrendings.fulfilled,(state, action)=>{
-      state.data = action.payload
+      state.latest = action.payload
+    })
+    builder.addCase(getGainersLosers.fulfilled,(state, action)=>{
+      state.gainers_losers = action.payload
     })
   }
 })

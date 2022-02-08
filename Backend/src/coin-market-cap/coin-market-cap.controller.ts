@@ -30,6 +30,18 @@ export class CoinMarketCapController {
     return res.status(HttpStatus.OK).json(trendins);
   }
 
+  /**
+   * Return Biggest Gainers and Losers from CMC
+   * @param res 
+   * @param req 
+   * @returns 
+   */
+   @Get('/gainers-losers')
+   async getGainersLosers(@Res() res, @Req() req) {    
+     const gainers_losers = await this.coinMarketCapService.getGainersLosers();
+     return res.status(HttpStatus.OK).json(gainers_losers);
+   }
+
 
   /**
    * Return Token Detail Info for Symbol from CMC.

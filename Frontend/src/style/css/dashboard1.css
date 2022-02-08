@@ -106,6 +106,7 @@
 }
 
 .coin-marketcap-info-item .info-item-opt-title {
+    display: flex;
     font-family: Poppins;
     font-style: normal;
     font-weight: 500;

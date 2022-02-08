@@ -7,7 +7,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Chart from "./views/chart/index";
 import Home from "./views/Home/index";
 
-import {getTrendings} from './store/slices/trendings-slice';
+import {getTrendings, getGainersLosers} from './store/slices/trendings-slice';
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
 
@@ -24,8 +24,13 @@ function App() {
 
 
     useEffect(()=>{
-        // setInterval(()=>dispatch(getTrendings()),20000);
+        getRealtimeDatas();
+        setInterval(()=>getRealtimeDatas(),100000);
     })
+    const getRealtimeDatas  =() =>{
+        dispatch(getTrendings())
+        dispatch(getGainersLosers())
+    }
 
     return ( 
         <Router>

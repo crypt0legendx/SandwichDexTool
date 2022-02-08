@@ -1,10 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+
+export const changeFavourites =  createAsyncThunk("trendings/changeFavourites", async()=>{
+  console.log('change_favourites');
+  const favourites = localStorage.getItem('favourites');
+  return favourites;
+          
+})
+
+
 export const currenciesSlice = createSlice({
   name: 'currencies',
   initialState: {
     isLoading: false,
     ranking: [],
+    favourites:[],
     InvalidCMC:[
       'aCRV','wMANA','BSC-USD','IOTA','PAX'
     ]
@@ -18,6 +28,11 @@ export const currenciesSlice = createSlice({
         state.isLoading = action.payload
     },
   },
+  extraReducers:(builder)=>{
+    builder.addCase(changeFavourites.fulfilled,(state, action)=>{
+      state.favourites = action.payload
+    })
+  }
 })
 
 // Action creators are generated for each case reducer function
