@@ -19,16 +19,22 @@ function TrendingTokens() {
     const [filteredTrendings, setFilteredTrendings] = useState([]);
 
     useEffect(()=>{
+        console.log('Trendings', chain);
         let ntrendings=[];
-        trendings.forEach(t => {
-          if(t.platform!==null){
-            if(t.platform.slug=='ethereum'){
-              ntrendings.push(t);
+        let slug ="";
+        if(chain==="Ethereum")
+            slug="ethereum";
+        if(chain==="BSC")
+            slug="bnb";
+        if(chain==="Polygon")
+            slug="matic";
+        trendings.forEach(d => {
+            if(d.platform!=null&&d.platform.slug == slug){
+              ntrendings.push(d);
             }
-          }
         });
         setFilteredTrendings(ntrendings);
-    },[trendings])
+    },[trendings, chain])
 
 
     return ( 
@@ -73,7 +79,7 @@ function TrendingTokens() {
                     </thead>
                     <tbody>
                         {
-                            filteredTrendings.map((t,i)=>{
+                            filteredTrendings.slice(0,10).map((t,i)=>{
                                 return (<tr key={i}>
                                     <td className="text-left td-no">
                                         <div className="d-flex">

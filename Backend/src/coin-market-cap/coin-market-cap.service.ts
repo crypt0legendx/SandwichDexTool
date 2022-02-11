@@ -144,7 +144,7 @@ export class CoinMarketCapService {
           headers: { 'X-CMC_PRO_API_KEY': this.apiKey },
           params: { 
             start:1, 
-            limit:20,
+            limit:200,
           }
         })
         .toPromise();
