@@ -39,6 +39,9 @@
     line-height: 24px;
 }
 
+.table tr:first-child td { 
+    border-top:0px;
+}
 .table td.text-strong {
     font-weight: 600;
     font-size: 13px;
@@ -99,6 +102,8 @@
     font-size: 12px;
     line-height: 20px;
 }
+
+
 
 
 .theader-round-left{

@@ -89,6 +89,10 @@
     cursor: pointer;
 }
 
+.token-logo{
+    width:26px;
+    border-radius: 13px;
+}
 
 /*colors*/
 

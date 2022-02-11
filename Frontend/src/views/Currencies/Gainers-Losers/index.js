@@ -1,8 +1,10 @@
 import "../../../style/css/table.css"
+import "./style.css"
 
 import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import { Link } from "react-router-dom";
+
 
 function GainersLosers() {
 
@@ -69,25 +71,28 @@ function GainersLosers() {
                         </thead>
                         <tbody>
                             {
-                                filteredGainersForChain.map((t,i)=>{
+                                filteredGainersForChain.slice(0,10).map((t,i)=>{
                                     return (<tr key={i}>                                        
                                         <td className="text-strong text-left ">                                                    
                                             <Link to={ `/chart/${t.symbol}/${t.platform.token_address}`}>
-                                                <div className="d-flex flex-column">
-                                                    <div className="d-flex align-items-center">
-                                                        <img className="ranking-img mr-1" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${t.id}.png`} />
-                                                        {t.name} <span className="mark ">                                            
-                                                        
-                                                        </span>
-                                                    </div>
+                                                <div className="d-flex align-items-center">
+                                                <img className="token-logo mr-2" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${t.id}.png`} />
+                                                <div className="d-flex flex-column token-normal-info">
                                                     <div>
-                                                        {t.price}
-                                                    </div>                                                
+                                                        {t.name}
+                                                    </div>                                                        
+                                                    <div  className="small-price">
+                                                        ${t.price}
+                                                    </div>
+                                                </div>                                                                                                    
                                                 </div>
                                             </Link>
                                             </td>
-                                        <td className={parseFloat(t.percent_change_24h)>0?"text-success text-right":"text-danger text-right"}>{t.percent_change_24h}</td>
-                                        <td className="text-strong text-right ">{Math.floor(t.volume_24h)}</td>
+                                        <td className={parseFloat(t.percent_change_24h)>0?"text-success text-right":"text-danger text-right"}>
+                                            {Math.floor(t.percent_change_24h)}
+                                            %
+                                        </td>
+                                        <td className="text-strong text-right ">${Math.floor(t.volume_24h)}</td>
                                         <td className="text-strong text-center"> 
                                             N/A
                                         </td>
@@ -110,25 +115,27 @@ function GainersLosers() {
                         </thead>
                         <tbody>
                             {
-                                filteredLosersForChain.map((t,i)=>{
+                                filteredLosersForChain.slice(0,10).map((t,i)=>{
                                     return (<tr key={i}>                                        
                                         <td className="text-strong text-left ">                                                    
                                             <Link to={ `/chart/${t.symbol}/${t.platform.token_address}`}>
-                                                <div className="d-flex flex-column">
-                                                    <div className="d-flex align-items-center">
-                                                        <img className="ranking-img mr-1" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${t.id}.png`} />
-                                                        {t.name}
-                                                         {/* <span className="mark ">                                             */}
-                                                        {/* {t.symbol}</span> */}
-                                                    </div>
+                                                <div className="d-flex align-items-center">
+                                                <img className="token-logo mr-2" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${t.id}.png`} />
+                                                <div className="d-flex flex-column token-normal-info">
                                                     <div>
-                                                        {t.price}
-                                                    </div>                                                
+                                                        {t.name}
+                                                    </div>                                                        
+                                                    <div className="small-price">
+                                                        ${t.price}
+                                                    </div>
+                                                </div>                                                                                                    
                                                 </div>
                                             </Link>
-                                            </td>
-                                        <td className={parseFloat(t.percent_change_24h)>0?"text-success text-right":"text-danger text-right"}>{t.percent_change_24h}</td>
-                                        <td className="text-strong text-right ">{Math.floor(t.volume_24h)}</td>
+                                        </td>
+                                        <td className={parseFloat(t.percent_change_24h)>0?"text-success text-right":"text-danger text-right"}>
+                                            {Math.floor(t.percent_change_24h)}%
+                                        </td>
+                                        <td className="text-strong text-right ">${Math.floor(t.volume_24h)}</td>
                                         <td className="text-strong text-center"> 
                                             N/A
                                         </td>
