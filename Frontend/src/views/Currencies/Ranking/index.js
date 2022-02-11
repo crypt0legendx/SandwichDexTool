@@ -2,9 +2,9 @@
 import "../../../style/css/dashboard1.css"
 import "../../../style/css/table.css"
 
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 
 import {FaRegStar, FaStar} from "react-icons/fa";
 import {AiOutlineDollar, AiOutlineBarChart} from "react-icons/ai";
@@ -37,7 +37,7 @@ function Ranking() {
             <div className="row">
                 <div className="col-md-4 ">
                     <div className="composition-image mt-3 composition-back1" >
-                        <img src="../../../assets/images/compositions/composition_1.png " />
+                        <img src="../../../assets/images/compositions/composition_1.png " alt="composition" />
                     </div>
                     <div className="composition-footer d-flex justify-content-between ">
                         <div className="composition-title ">
@@ -50,7 +50,7 @@ function Ranking() {
                 </div>
                 <div className="col-md-4 ">
                     <div className="composition-image mt-3  composition-back2">
-                        <img src="../../../assets/images/compositions/composition_2.png " />
+                        <img src="../../../assets/images/compositions/composition_2.png " alt="composition" />
                     </div>
                     <div className="composition-footer d-flex justify-content-between ">
                         <div className="composition-title ">
@@ -63,7 +63,7 @@ function Ranking() {
                 </div>
                 <div className="col-md-4 ">
                     <div className="composition-image mt-3  composition-back3">
-                        <img src="../../../assets/images/compositions/composition_3.png " />
+                        <img src="../../../assets/images/compositions/composition_3.png " alt="composition" />
                     </div>
                     <div className="composition-footer d-flex justify-content-between ">
                         <div className="composition-title ">
@@ -153,7 +153,7 @@ function Ranking() {
                                                 <td className="text-strong text-left ">                                                    
                                                     <Link to={ `/chart/${t.symbol}/${t.contractAddress}`}>
                                                         <div className="d-flex align-items-center">
-                                                        <img className="ranking-img mr-1" src={t.logo?`${scanurl}/token/`+t.logo:`${scanurl}/images/main/empty-token.png`} />
+                                                        <img className="ranking-img mr-1" src={t.logo?`${scanurl}/token/`+t.logo:`${scanurl}/images/main/empty-token.png`} alt="t_logo" />
                                                         {t.name} <span className="mark ">                                            
                                                         {t.symbol}</span>
                                                         </div>

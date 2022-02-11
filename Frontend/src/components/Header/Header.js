@@ -24,13 +24,13 @@ function Header(props) {
 
     const changedNetwork = async(chain) => {
             let scanurl="";
-            if(chain=="Ethereum"){
+            if(chain==="Ethereum"){
                 scanurl="https://etherscan.io"
             }
-            if(chain=="BSC"){
+            if(chain==="BSC"){
                 scanurl="https://bscscan.com"
             }
-            if(chain=="Polygon"){
+            if(chain==="Polygon"){
                 scanurl="https://polygonscan.com"
             }
             dispatch(changeNetwork({name:chain, scanurl:scanurl}));

@@ -1,7 +1,7 @@
 import "../../../style/css/table.css"
 
 import React, {useState, useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 
 import {FaRegStar, FaStar} from "react-icons/fa";
@@ -21,7 +21,7 @@ function TrendingTokens() {
     useEffect(()=>{
         let ntrendings=[];
         trendings.forEach(t => {
-          if(t.platform!=null){
+          if(t.platform!==null){
             if(t.platform.slug=='ethereum'){
               ntrendings.push(t);
             }
@@ -91,7 +91,7 @@ function TrendingTokens() {
                                                 })}}
                                             >
                                                 {
-                                                    isFavourite(t.contractAddress)?<FaStar />:
+                                                    isFavourite(t.platform.token_address)?<FaStar />:
                                                     <FaRegStar />
                                                 }
                                                 
