@@ -71,6 +71,23 @@
   color: #35C4FF;
 }
 
+.sidebar .submenu{
+  
+  margin: 5px 10px;
+  border-radius: 20px;
+}
+.sidebar .submenu .submenu-item {
+  padding: 5px 10px 5px 30px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #777E91;
+}
+.sidebar .submenu .submenu-item.active {
+  color: #35C4FF;
+}
 .sidebar .footer-text {
   font-family: Inter;
   font-style: normal;

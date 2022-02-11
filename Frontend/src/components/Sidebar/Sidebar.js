@@ -1,9 +1,23 @@
 
-import {RiCopperCoinLine, RiHomeFill, RiDonutChartLine, RiBarChartBoxLine, RiWallet2Line, RiToolsLine, RiMoreLine, RiSettings2Fill} from "react-icons/ri"
+import {
+    RiCopperCoinLine, 
+    RiHomeFill, 
+    RiDonutChartLine, 
+    RiBarChartBoxLine, 
+    RiWallet2Line, 
+    RiToolsLine, 
+    RiMoreLine, 
+    RiSettings2Fill,
+    RiBarChart2Line,
+    RiArrowDownSLine,
+    RiArrowUpSLine
+
+} from "react-icons/ri"
 import {FaTelegramPlane, FaMedium, FaTwitter} from "react-icons/fa";
+import {MdOutlineShowChart,MdOutlineLocalFireDepartment} from "react-icons/md";
 import {Dropdown, Button} from "react-bootstrap";
 import { Link } from "react-router-dom";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./Sidebar.css";
 
 import {useSelector, useDispatch} from "react-redux";
@@ -15,6 +29,7 @@ import axios from 'axios';
 function Sidebar(props) {
 
     const network = useSelector((state) => state.network.name);
+    const [openSubMenu, setOpenSubMenu] = useState(false);
     const dispatch = useDispatch();
 
     let pathname = window.location.pathname;
@@ -36,7 +51,11 @@ function Sidebar(props) {
         }).finally(()=>{
             dispatch(changeLoading(false));
         });
-}
+    }
+
+    const toggleSubmenu =() =>{
+        setOpenSubMenu(!openSubMenu);
+    }
 
     return ( 
         <>
@@ -58,22 +77,50 @@ function Sidebar(props) {
                         <Button variant="light" className="setting-btn"><RiSettings2Fill /></Button>
                     </div>
                     <ul className="nav flex-column ">
-                        <li className="nav-item" className={`${pathname.match('/home') ? 'nav-item active' : 'nav-item'}`}>
+                        <li className={`${pathname.match('/home') ? 'nav-item active' : 'nav-item'}`}>
                             <Link to={'home'} className="nav-link align-items-center d-flex" onClick={()=>props.setOpen()}>
                                 <RiHomeFill className="side-icon mr-3" />Home
                                 <span className="sr-only ">(current)</span>
                             </Link>
                         </li>
-                        <li className="nav-item " className={`${pathname.match('/chart') ? 'nav-item active' : 'nav-item'}`}>
+                        <li className={`${pathname.match('/chart') ? 'nav-item active' : 'nav-item'}`}>
                             <Link to="/chart/BTC" className="nav-link " onClick={()=>props.setOpen()}>                            
                                 <RiBarChartBoxLine className="side-icon mr-3" />SandwichCharts                            
                             </Link>
                         </li>
-                        <li className="nav-item ">
+                        <li
+                            className={`${(pathname.match('/currencies')||pathname.match('/trending')||pathname.match('/gainer')) ? 'nav-item active' : 'nav-item'}`}
+                        >
                             <Link to={'currencies'} className="nav-link align-items-center d-flex" onClick={()=>props.setOpen()}>
                                 <RiCopperCoinLine className="side-icon mr-3" />Cryptocurrencies
+                                {
+                                  openSubMenu?<RiArrowUpSLine onClick={()=>toggleSubmenu()} className="side-icon ml-3" />:
+                                  <RiArrowDownSLine onClick={()=>toggleSubmenu()} className="side-icon ml-3" />
+                                }
+                                
                             </Link>
                         </li>
+                        {
+                            openSubMenu&&(
+                                <ul className="submenu">
+                                    <Link to="/currencies" className="nav-link " onClick={()=>props.setOpen()}>
+                                        <li className={`${pathname.match('/currencies') ? 'submenu-item active' : 'submenu-item'}`}>
+                                            <RiBarChart2Line className="side-icon mr-3"  />Ranking
+                                        </li>
+                                    </Link>
+                                    <Link to="/trending-tokens" className="nav-link " onClick={()=>props.setOpen()}>
+                                        <li className={`${pathname.match('/trending') ? 'submenu-item active' : 'submenu-item'}`}>
+                                            <MdOutlineLocalFireDepartment className="side-icon mr-3"  />Trending
+                                        </li>
+                                    </Link>
+                                    <Link to="/gainers-losers" className="nav-link " onClick={()=>props.setOpen()}>
+                                        <li className={`${pathname.match('/gainer') ? 'submenu-item active' : 'submenu-item'}`}>
+                                            <MdOutlineShowChart className="side-icon mr-3"  />Gainers & Losers
+                                        </li>
+                                    </Link>
+                                </ul>
+                            )
+                        }                        
                         <li className="nav-item ">
                             <a className="nav-link " href="# ">
                                 <RiDonutChartLine className="side-icon mr-3" />Sandwich Tracking
