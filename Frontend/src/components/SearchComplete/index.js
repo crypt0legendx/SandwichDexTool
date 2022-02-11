@@ -106,7 +106,7 @@ const SearchComplete = () => {
       }
     )
   }
-  
+
    return (
     <>
       <div id="token-search">
@@ -158,7 +158,7 @@ const SearchComplete = () => {
                 {activeCat=="favorites"&&favourites.map((data, index)=>{
                   return <div key={index} className="filtered-token-item d-flex justify-content-between align-items-center">
                       <div className="d-flex align-items-center">
-                        <button className="star-toggle-button active" onClick={()=>toggleFavouriteToken(data.contractAddress)}>
+                        <button className="star-toggle-button active" onClick={()=>toggleFavouriteToken(data)}>
                           <FaRegStar />
                         </button>
                         <img className="token-logo ml-2" src={data.logo} alt="token-logo"/>
