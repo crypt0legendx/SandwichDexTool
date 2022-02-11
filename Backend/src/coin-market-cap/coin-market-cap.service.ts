@@ -126,7 +126,8 @@ export class CoinMarketCapService {
       percent_change_24h:trendings[k].quote?.USD?.percent_change_24h,
       percent_change_7d:trendings[k].quote?.USD?.percent_change_7d,
       market_cap:trendings[k].quote?.USD?.market_cap,      
-      quote:trendings[k].quote?.USD
+      quote:trendings[k].quote?.USD,
+      platform:trendings[k].platform
     }));
   }
 
@@ -159,20 +160,49 @@ export class CoinMarketCapService {
    */
    async getGainersLosers() {
     console.log("gainers_losers");
-    const gainers_losers = await this.fetchGainersLosers();
+    const gainers_data = await this.fetchGainers();
+    const losers_data= await this.fetchLosers();
+    let gainers_chain;
+    let losers_chain;
 
-    const listCoins = Object.keys(gainers_losers);
-    return listCoins.map((k) => ({
-      id:gainers_losers[k].id,
-      name: gainers_losers[k].name,
-      symbol: gainers_losers[k].symbol,
-      price: gainers_losers[k].quote?.USD?.price,
-      volume_24h:gainers_losers[k].quote?.USD?.volume_24h,
-      percent_change_24h:gainers_losers[k].quote?.USD?.percent_change_24h,
-      percent_change_7d:gainers_losers[k].quote?.USD?.percent_change_7d,
-      market_cap:gainers_losers[k].quote?.USD?.market_cap,      
-      quote:gainers_losers[k].quote?.USD
-    }));
+    let listGainerCoins = Object.keys(gainers_data);
+    let listLoserCoins = Object.keys(losers_data);
+
+    gainers_chain = listGainerCoins.map((k) => {
+        
+          return {
+            id:gainers_data[k].id,
+            name: gainers_data[k].name,
+            symbol: gainers_data[k].symbol,
+            price: gainers_data[k].quote?.USD?.price,
+            volume_24h:gainers_data[k].quote?.USD?.volume_24h,
+            percent_change_24h:gainers_data[k].quote?.USD?.percent_change_24h,
+            percent_change_7d:gainers_data[k].quote?.USD?.percent_change_7d,
+            market_cap:gainers_data[k].quote?.USD?.market_cap,      
+            quote:gainers_data[k].quote?.USD,
+            platform:gainers_data[k].platform
+        }
+           
+  });
+
+  losers_chain = listLoserCoins.map((k) => {
+    
+      return {
+        id:losers_data[k].id,
+        name: losers_data[k].name,
+        symbol: losers_data[k].symbol,
+        price: losers_data[k].quote?.USD?.price,
+        volume_24h:losers_data[k].quote?.USD?.volume_24h,
+        percent_change_24h:losers_data[k].quote?.USD?.percent_change_24h,
+        percent_change_7d:losers_data[k].quote?.USD?.percent_change_7d,
+        market_cap:losers_data[k].quote?.USD?.market_cap,      
+        quote:losers_data[k].quote?.USD,
+        platform:losers_data[k].platform
+    
+  }      
+});
+
+    return {gainers:gainers_chain, losers:losers_chain}
   }
 
 
@@ -180,7 +210,7 @@ export class CoinMarketCapService {
    * Fetch the Gainers and Losers List. using CMC Paid API Key.
    * @returns 
    */
-  private async fetchGainersLosers(): Promise<any> {
+  private async fetchGainers(): Promise<any> {
     let request;
     try {
       request = await this.httpService
@@ -188,7 +218,31 @@ export class CoinMarketCapService {
           headers: { 'X-CMC_PRO_API_KEY': this.apiKey },
           params: { 
             start:1, 
-            limit:20,
+            limit:200,
+            sort_dir:'desc'
+          }
+        })
+        .toPromise();
+    } catch (err) {
+      console.error(err);
+    }
+    return request?.data?.data || [];
+  }
+
+  /**
+   * Fetch the Gainers and Losers List. using CMC Paid API Key.
+   * @returns 
+   */
+   private async fetchLosers(): Promise<any> {
+    let request;
+    try {
+      request = await this.httpService
+        .get(`${process.env.COINMARKETCAP_URL}/v1/cryptocurrency/trending/gainers-losers`, {
+          headers: { 'X-CMC_PRO_API_KEY': this.apiKey },
+          params: { 
+            start:1, 
+            limit:200,
+            sort_dir:'asc'
           }
         })
         .toPromise();
@@ -198,6 +252,8 @@ export class CoinMarketCapService {
     return request?.data?.data || [];
   }
 }
+
+
 
   
 

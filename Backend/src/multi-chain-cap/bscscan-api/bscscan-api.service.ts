@@ -27,10 +27,12 @@ export class BscscanApiService {
               },
             })
             .toPromise();
+            return request.data;
         } catch (err) {
           console.error(err);
+          return [];
         }
-        return request.data || {};
+        
       }
 
       

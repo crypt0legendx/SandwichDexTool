@@ -4,11 +4,17 @@ import {useDispatch } from "react-redux";
 import './App.css';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
-import Chart from "./views/chart/index";
-import Home from "./views/Home/index";
+import Chart from "./views/Chart/index";
+import Ranking from "./views/Currencies/Ranking/index";
+import TrendingTokens from "./views/Currencies/Trending-Tokens";
+import GainersLosers from "./views/Currencies/Gainers-Losers";
+
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 import {getTrendings, getGainersLosers} from './store/slices/trendings-slice';
-import ScrollToTopButton from "./components/ScrollToTopButton";
+import {changeFavourites} from './store/slices/currencies-slice';
+import Footer from "./components/Footer";
+
 
 
 
@@ -24,9 +30,17 @@ function App() {
 
 
     useEffect(()=>{
+        getFavourites();
         getRealtimeDatas();
         setInterval(()=>getRealtimeDatas(),100000);
     })
+
+    const getFavourites = () =>{
+        let favouriteTokens = JSON.parse(localStorage.getItem('favourites'))||[];
+        
+        dispatch(changeFavourites(favouriteTokens));
+    }
+
     const getRealtimeDatas  =() =>{
         dispatch(getTrendings())
         dispatch(getGainersLosers())
@@ -40,93 +54,14 @@ function App() {
                 <div id="page-content" className='page-content'>
                     
                     <Routes>
-                        <Route path="/home" element={<Home />} />
+                        <Route path="/currencies" element={<Ranking />} />
+                        <Route path="/trending-tokens" element={<TrendingTokens />} />
+                        <Route path="/gainers-losers" element={<GainersLosers />} />
                         <Route path="/chart/:symbol/:contractAddress" element={<Chart />} />
-                        {/* <Route path="/*" element={<Navigate to="/home" />} /> */}
+                        <Route path="/*" element={<Navigate to="/currencies" />} />
                     </Routes>
                     
-                    <footer>
-                        <div className="footer_wrapper">
-                            <div className="container">
-                                <div className="row justify-content-center">
-                                    <div className="col-xl-10 col-lg-12">
-                                        <div className="footer_box_wrapper">
-                                            <div className="footer_box pt_30">
-                                                <div className="footer_content">
-                                                    <a href="index.html">
-                                                        <img src="../assets/images/Logo/logo.png" className="img-fluid" alt="" />
-                                                    </a>
-                                                    <p>Sandwich Network is the definite hub to start your decentralized cryptocurrency journey. Join us!</p>
-                                                </div>
-                                            </div>
-                                            <div className="footer_box pt_30">
-                                                <div className="footer_list_wrapper">
-                                                    <h5>Products</h5>
-                                                    <ul className="footer_list">
-                                                        <li>
-                                                            <a href="/launch/">SandwichBeta</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">SandwichSAFU</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">SandwichTools</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">SandwichSwap</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div className="footer_box pt_30">
-                                                <div className="footer_list_wrapper">
-                                                    <h5>Support</h5>
-                                                    <ul className="footer_list">
-                                                        <li>
-                                                            <a href="/tutorials/">Tutorials</a>
-                                                        </li>
-                                                        <li>
-                                                            <a target="_blank" href="https://docs.sandwich.network/">Documentation</a>
-                                                        </li>
-                                                        <li>
-                                                            <a target="_blank" href="https://docs.sandwich.network/support">Customer support</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div className="footer_box pt_30">
-                                                <div className="footer_list_wrapper">
-                                                    <h5>Social</h5>
-                                                    <ul className="footer_list">
-                                                        <li>
-                                                            <a target="_blank" href="https://t.me/SandwichNetwork">
-                                                                <i className="fab fa-telegram-plane"></i> Telegram
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a target="_blank" href="https://twitter.com/NetworkSandwich">
-                                                                <i className="fab fa-twitter"></i> Twitter
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a target="_blank" href="https://medium.com/@sandwichnetwork">
-                                                                <i className="fab fa-medium"></i> Medium
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-12">
-                                        <div className="footer_last_text">
-                                            <p>Copyright © 2021 Sandwich. All rights reserved</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </footer> 
+                    <Footer />
                     <ScrollToTopButton refId="page-content" />
                 </div>
             </div>

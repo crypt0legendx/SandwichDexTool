@@ -1,17 +1,18 @@
 
-import "../../style/css/dashboard2.css"
-import "../../style/css/table.css"
+import React, {useState, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import { useParams } from "react-router-dom";
+import axios from 'axios';
+
+import {Tabs, Tab} from "react-bootstrap";
 
 import FullscreenIcon from "../../assets/icons/others/screen.svg"
 import TradingChart from "../../components/Chart/TradingChart";
-
-import React, {useState, useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-
-import { useParams } from "react-router-dom";
-import axios from 'axios';
 import TrendingMarquee from "../../components/TrendingMarquee/TrendingMarquee";
-import {Tabs, Tab} from "react-bootstrap";
+
+import "../../style/css/dashboard2.css"
+import "../../style/css/table.css"
+
 
 
 function Chart() {
@@ -19,11 +20,13 @@ function Chart() {
     
     const { symbol, contractAddress } = useParams();
     const network_name = useSelector((state) => state.network.name);
+
     const [coin,setCoin] =  useState({});
     const [tradeBook, setTradeBook] = useState([]);
 
     const [timeInterval] =  useState(['1H','4H','1D','1W','1M']);
     const [intervalChart, setIntervalChart] = useState("1D");
+
 
     useEffect(()=>{
         getCoinBySymbol();

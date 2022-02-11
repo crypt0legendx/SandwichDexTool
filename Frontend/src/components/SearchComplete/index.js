@@ -1,34 +1,38 @@
 import { useEffect, useState } from "react";
 import { RiSearchLine, RiStarSLine, RiStarSFill} from "react-icons/ri";
 import { FaRegStar, FaStar} from "react-icons/fa";
+import {useSelector, useDispatch} from "react-redux";
+
+import {changeFavourites} from '../../store/slices/currencies-slice';
 
 import "./style.css";
 
 const SearchComplete = () => {
+
+  const [searchText, setSearchText] = useState("");
+  const [activeCat, setActiveCategory] =useState("trending");
       
-  const [filteredTokens, setFilteredTokens] = useState([
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'433.43', platform:'Polygon'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'Polygon'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'Ethereum'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'Ethereum'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-    {id:4943, name:'Dai', symbol:'DAI', price:'23.43', platform:'BSC'},
-  ]);
+  const favourites = useSelector((state) => state.currencies.favourites);
+  const trendings =  useSelector((state) => state.trendings.latest);
+  const [filteredTrendings, setFilteredTrendings] = useState([]);
+  const [filteredTokens, setFilteredTokens] = useState([]);
+
+  const dispatch = useDispatch();
   
+
+  useEffect(()=>{
+    let ntrendings=[];
+    trendings.forEach(t => {
+      if(t.platform!=null){
+        if(t.platform.slug=='ethereum'||t.platform.slug=='bnb'||t.platform.slug=='matic'){
+          ntrendings.push(t);
+        }
+      }
+    });
+    setFilteredTrendings(ntrendings);
+  },[trendings])
+
+
   useEffect(()=>{
     
     document.addEventListener('click',(e)=>{
@@ -67,32 +71,132 @@ const SearchComplete = () => {
     suggestionList.style.width = searchField.offsetWidth+'px';
   }
 
+  const changedSearchValue =(e) =>{
+    setSearchText(e.target.value);
+  }
+
+  const getChainBySlug = (slug)=>{
+    let chain = 'Other';
+    if(slug=='bnb')
+      chain = 'BSC'
+    if(slug=='ethereum')
+      chain = 'Ethereum'
+    if(slug=='matic')
+      chain = 'Polygon'
+
+    return chain
+  }
+  const presetFavouriteToken = (tokenInfo)=>{
+
+    const chain = getChainBySlug(tokenInfo.platform.slug);
+
+    toggleFavouriteToken(
+      {
+        contractAddress:tokenInfo.platform.token_address,
+        name:tokenInfo.name,
+        symbol:tokenInfo.symbol,
+        logo:`https://s2.coinmarketcap.com/static/img/coins/64x64/${tokenInfo.id}.png`,
+        chain:chain
+
+      }
+    )
+  }
+  const toggleFavouriteToken =(tokenInfo)=>{
+      let favouriteTokens = JSON.parse(localStorage.getItem('favourites'));
+      if(favouriteTokens&&favouriteTokens.length>0){
+          const idx = favouriteTokens.findIndex(d=>d.contractAddress == tokenInfo.contractAddress);
+          if(idx ==-1){
+              favouriteTokens.push(tokenInfo);
+          }else{
+              favouriteTokens.splice(idx,1);
+          }
+      }else{
+          favouriteTokens=[tokenInfo];
+      }
+      localStorage.setItem('favourites', JSON.stringify(favouriteTokens));
+
+      dispatch(changeFavourites(favouriteTokens));  
+
+  }
+
+  const isFavourite = (contractAddress)=>{
+  
+      if(favourites.length==0)
+        return false;
+      const idx = favourites.findIndex(d=>d.contractAddress == contractAddress);
+      if(idx ==-1)
+          return false;
+      else
+          return true;
+  }
+
    return (
     <>
       <div id="token-search">
         {/* <div className="backdrop"></div> */}
         <div id="search-wrapper" className = "search">
-          <input id="search-field" className="search-field" placeholder="Search..." onFocus={()=>showSuggest()} />
+          <input 
+          id="search-field" 
+          className="search-field" 
+          placeholder="Search..." 
+          onFocus={()=>showSuggest()}
+          onChange={(e)=>changedSearchValue(e)}
+            />
           <div id="suggestion-list" className="suggestion-list hide-suggestion">
             <div className="suggestion-list-content">
-                {filteredTokens.map((data, index)=>{
+                {
+                  searchText==""&&(
+                    <div className="category-bar">
+                      <button 
+                      className={activeCat=='trending'?`suggestion-category active cursor-pointer mr-1`:`suggestion-category cursor-pointer mr-1`}
+                      onClick={()=>{setActiveCategory('trending')}}
+                      >Trendings</button>
+                      <button 
+                      className={activeCat=='favorites'?`suggestion-category active cursor-pointer mr-1`:`suggestion-category cursor-pointer mr-1`}
+                      onClick={()=>{setActiveCategory('favorites')}}
+                      >Favorites</button>
+                    </div>
+                  )
+                }
+                {activeCat=="trending"&&filteredTrendings.map((data, index)=>{
                   return <div key={index} className="filtered-token-item d-flex justify-content-between align-items-center">
                       <div className="d-flex align-items-center">
-                        <button className="star-toggle-button">
+                        <button className={isFavourite(data.platform.token_address)?`star-toggle-button active`:`star-toggle-button`}
+                            onClick={()=>{presetFavouriteToken(data)}}
+                        >
                           <FaRegStar />
                         </button>
-                        <img className="token-logo ml-2" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/`+data.id+'.png'} alt="token-logo"/>
+                        <img className="token-logo ml-2" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${data.id}.png`} alt="token-logo"/>
                         <div className="d-flex flex-column ml-2 justify-content-center">
                           <div className="token-name">{data.name}</div>
                           <div className="token-symbol">{data.symbol}</div>
                         </div>
                       </div>
                       <div className="d-flex align-items-center">
-                        <div className="token-price">${data.price}</div>
-                        <div className={`token-platform ${data.platform}`}>{data.platform}</div>
+                        <div className="token-price"></div>
+                        <div className={`token-platform ${getChainBySlug(data.platform.slug)}`}>{getChainBySlug(data.platform.slug)}</div>
                       </div>                                        
                   </div>
                 })}
+                {activeCat=="favorites"&&favourites.map((data, index)=>{
+                  return <div key={index} className="filtered-token-item d-flex justify-content-between align-items-center">
+                      <div className="d-flex align-items-center">
+                        <button className="star-toggle-button active" onClick={()=>toggleFavouriteToken(data.contractAddress)}>
+                          <FaRegStar />
+                        </button>
+                        <img className="token-logo ml-2" src={data.logo} alt="token-logo"/>
+                        <div className="d-flex flex-column ml-2 justify-content-center">
+                          <div className="token-name">{data.name}</div>
+                          <div className="token-symbol">{data.symbol}</div>
+                        </div>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <div className="token-price"></div>
+                        <div className={`token-platform ${data.chain}`}>{data.chain}</div>
+                      </div>                                        
+                  </div>
+                })}
+
             </div>
           </div>
         </div>

@@ -12,24 +12,24 @@ export class EtherscanApiService {
 
     async getTopTokens(){
         const html = await this.fetchTopTokens();
-        return html
+        return html;
       }
   
   
-      private async fetchTopTokens(): Promise<any> {
-        let request;
-        try {
-        request = await this.httpService
-            .get('https://etherscan.io/tokens', {
-            params: { 
-                p:1,
-            },
-            })
-            .toPromise();
-        } catch (err) {
-        console.error(err);
-        }
-        return request.data || {};
+    private async fetchTopTokens(): Promise<any> {
+      console.log('fetch-top-tokens');
+      let request;
+      
+      request = await this.httpService
+          .get('https://etherscan.io/tokens', {
+          params: { 
+              p:1,
+          },
+          })
+          .toPromise();
+      return request.data;
+        
+        
     }
 
     async getTradeBook(contractAddress){

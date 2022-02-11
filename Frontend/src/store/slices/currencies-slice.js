@@ -1,14 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 
-export const changeFavourites =  createAsyncThunk("trendings/changeFavourites", async()=>{
-  console.log('change_favourites');
-  const favourites = localStorage.getItem('favourites');
-  return favourites;
-          
-})
-
-
 export const currenciesSlice = createSlice({
   name: 'currencies',
   initialState: {
@@ -24,18 +16,17 @@ export const currenciesSlice = createSlice({
       state.ranking = action.payload
     },
 
+    changeFavourites: (state, action) => {
+      state.favourites = action.payload
+    },
+
     changeLoading:(state, action) => {
         state.isLoading = action.payload
     },
   },
-  extraReducers:(builder)=>{
-    builder.addCase(changeFavourites.fulfilled,(state, action)=>{
-      state.favourites = action.payload
-    })
-  }
 })
 
 // Action creators are generated for each case reducer function
-export const {  changeRanking, changeLoading } = currenciesSlice.actions
+export const {  changeRanking,changeFavourites, changeLoading } = currenciesSlice.actions
 
 export default currenciesSlice.reducer

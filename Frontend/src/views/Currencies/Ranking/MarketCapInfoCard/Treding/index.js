@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {FaSortUp} from "react-icons/fa";
 
 import "../style.css";
+import { Link } from "react-router-dom";
 
 function TredingCard(){
 
@@ -14,7 +15,11 @@ function TredingCard(){
         <div className="coin-marketcap-info-item ">
             <div className="d-flex justify-content-between ">
                 <span className="info-item-title "><i className="fa fa-fire-flame-curved mr-2"></i>Trending</span>
-                <button className="btn btn-default info-view-more cursor-pointer ">More<i className="fa fa-angle-right ml-2"></i></button>
+                <Link to="/trending-tokens">
+                    <button className="btn btn-default info-view-more cursor-pointer ">
+                        More<i className="fa fa-angle-right ml-2"></i>
+                    </button>
+                </Link>
             </div>
             {
                 tredings.slice(0,3).map((t,i)=>{

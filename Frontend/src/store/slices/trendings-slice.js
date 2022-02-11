@@ -23,7 +23,9 @@ export const trendingsSlice = createSlice({
   name: 'trendings',
   initialState: {
     latest: [],
-    gainers_losers:[]
+    gainers:[],
+    losers:[],
+
   },
   reducers: {
     changeTredings: (state, action) => {
@@ -35,7 +37,8 @@ export const trendingsSlice = createSlice({
       state.latest = action.payload
     })
     builder.addCase(getGainersLosers.fulfilled,(state, action)=>{
-      state.gainers_losers = action.payload
+      state.gainers = action.payload.gainers;
+      state.losers = action.payload.losers;
     })
   }
 })

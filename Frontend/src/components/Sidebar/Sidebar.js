@@ -70,9 +70,9 @@ function Sidebar(props) {
                             </Link>
                         </li>
                         <li className="nav-item ">
-                            <a className="nav-link " href="# ">
+                            <Link to={'currencies'} className="nav-link align-items-center d-flex" onClick={()=>props.setOpen()}>
                                 <RiCopperCoinLine className="side-icon mr-3" />Cryptocurrencies
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item ">
                             <a className="nav-link " href="# ">

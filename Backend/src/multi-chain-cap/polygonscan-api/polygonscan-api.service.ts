@@ -19,7 +19,6 @@ export class PolygonscanApiService {
   
       private async fetchTopTokens(): Promise<any> {
         let request;
-        try {
         request = await this.httpService
             .get('https://polygonscan.com/tokens', {
             params: { 
@@ -27,10 +26,7 @@ export class PolygonscanApiService {
             },
             })
             .toPromise();
-        } catch (err) {
-        console.error(err);
-        }
-        return request.data || {};
+        return request.data||{};
     }
 
     async getTradeBook(contractAddress){

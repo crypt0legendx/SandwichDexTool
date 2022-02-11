@@ -15,7 +15,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Web3ContextProvider>
-        <App />
+          <App />
       </Web3ContextProvider>
     </Provider>
   </React.StrictMode>,

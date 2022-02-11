@@ -1,3 +1,24 @@
+.table-sort-btn {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: #777E91;
+}
+
+.table-sort-btn.active {
+    background: #35C4FF;
+    border-radius: 100px;
+    color: #fff;
+}
+
+.table .white-header-round{
+    background: #F4F9FE;
+    border-radius: 1000px;
+}
 .table th {
     font-family: Poppins;
     font-style: normal;
@@ -68,4 +89,24 @@
 }
 .table thead th{
     border-bottom: 0px;    
+}
+
+.td-no{
+    color:#777E91;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+
+.theader-round-left{
+    border-top-left-radius: 500px;
+    border-bottom-left-radius: 500px;
+}
+
+.theader-round-right{
+    border-top-right-radius: 500px;
+    border-bottom-right-radius: 500px;
 }

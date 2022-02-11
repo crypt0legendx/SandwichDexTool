@@ -1,26 +1,31 @@
 
-import "../../style/css/dashboard1.css"
-import "../../style/css/table.css"
+import "../../../style/css/dashboard1.css"
+import "../../../style/css/table.css"
 
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 
-import {FaRegStar} from "react-icons/fa";
+import {FaRegStar, FaStar} from "react-icons/fa";
 import {AiOutlineDollar, AiOutlineBarChart} from "react-icons/ai";
 
-import axios from 'axios';
-
-import TrendingMarquee from "../../components/TrendingMarquee/TrendingMarquee";
+import TrendingMarquee from "../../../components/TrendingMarquee/TrendingMarquee";
 import TredingCard from "./MarketCapInfoCard/Treding";
 import BestGainersCard from "./MarketCapInfoCard/BestGainers";
 import PresaleCard from "./MarketCapInfoCard/Presale";
+import useFavoriteHelper from "../../../hooks/useFavoriteHelper";
 
-function Home() {
+
+
+
+function Ranking() {
 
     const ranking = useSelector((state) => state.currencies.ranking);
     const isLoading = useSelector((state) => state.currencies.isLoading);
+    const chain = useSelector((state) => state.network.name);
     const scanurl = useSelector((state) => state.network.scanurl);
+
+    const {toggleFavouriteToken, isFavourite} = useFavoriteHelper();
 
     return ( 
         <>
@@ -32,7 +37,7 @@ function Home() {
             <div className="row">
                 <div className="col-md-4 ">
                     <div className="composition-image mt-3 composition-back1" >
-                        <img src="../../assets/images/compositions/composition_1.png " />
+                        <img src="../../../assets/images/compositions/composition_1.png " />
                     </div>
                     <div className="composition-footer d-flex justify-content-between ">
                         <div className="composition-title ">
@@ -45,7 +50,7 @@ function Home() {
                 </div>
                 <div className="col-md-4 ">
                     <div className="composition-image mt-3  composition-back2">
-                        <img src="../../assets/images/compositions/composition_2.png " />
+                        <img src="../../../assets/images/compositions/composition_2.png " />
                     </div>
                     <div className="composition-footer d-flex justify-content-between ">
                         <div className="composition-title ">
@@ -58,7 +63,7 @@ function Home() {
                 </div>
                 <div className="col-md-4 ">
                     <div className="composition-image mt-3  composition-back3">
-                        <img src="../../assets/images/compositions/composition_3.png " />
+                        <img src="../../../assets/images/compositions/composition_3.png " />
                     </div>
                     <div className="composition-footer d-flex justify-content-between ">
                         <div className="composition-title ">
@@ -91,21 +96,6 @@ function Home() {
                     <PresaleCard />
                 </div>
             </div>
-            {/* <div className="row mt-3 ">
-                <div className="col-md-12 d-flex flex-wrap justify-content-between ">
-                    <div className="col-md-6 d-flex flex-wrap justify-content-md-start justify-content-xs-center">
-                        <button className="btn btn-default coin-sort-btn active mt-2 mr-2 ">All Tokens</button>
-                        <button className="btn btn-default coin-sort-btn  mt-2 mr-2 ">Categories</button>
-                        <button className="btn btn-default coin-sort-btn mt-2 mr-2 ">NFT</button>
-                        <button className="btn btn-default coin-sort-btn mt-2 mr-2 ">BSC</button>
-                        <button className="btn btn-default coin-sort-btn mt-2 ">Metaverse</button>
-                    </div>
-                    <div className="col-md-6 d-flex flex-wrap justify-content-md-end justify-content-xs-center">
-                        <input type="text " className="form-control mt-2 mr-2 search-input " placeholder="Search " />
-                        <button className="btn btn-default mt-2 mr-2 time-sort-btn d-flex ">All time &nbsp;<i className="fa fa-calendar"></i></button>
-                    </div>
-                </div>
-            </div> */}
             <div className="row mt-3 ">
                 <div className="col-md-12"  style={{width:'100%', overflowX:'auto', textAlign:'center'}}>
                     {
@@ -137,10 +127,25 @@ function Home() {
                                     {
                                         ranking.map((t,i)=>{
                                             return (<tr key={i}>
-                                                <td className="text-left">
+                                                <td className="text-left td-no">
                                                     <div className="d-flex">
-                                                        <button className="star-toggle-noline-btn mr-2 inline-block">
-                                                            <FaRegStar />
+                                                        <button 
+                                                        className={
+                                                            isFavourite(t.contractAddress)?`star-toggle-noline-btn active mr-2 inline-block`:
+                                                            `star-toggle-noline-btn mr-2 inline-block`
+                                                        }
+                                                            onClick={()=>{toggleFavouriteToken({
+                                                                contractAddress:t.contractAddress,
+                                                                name:t.name,
+                                                                symbol:t.symbol,
+                                                                chain:chain,
+                                                                logo:t.logo?`${scanurl}/token/`+t.logo:`${scanurl}/images/main/empty-token.png`,
+                                                            })}}
+                                                        >
+                                                            {
+                                                                isFavourite(t.contractAddress)?<FaStar />:<FaRegStar />
+                                                            }
+                                                            
                                                         </button>
                                                         {i+1}
                                                     </div>
@@ -176,4 +181,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Ranking;

@@ -15,6 +15,7 @@ export class MultiChainCapController {
 
     @Get('/toptokens/:network')
     async getTopTokens(@Res() res, @Req() req){
+        console.log('toptokens');
         const {network} = req.params;
         let tokenList=[];
         if(network=="Ethereum"){

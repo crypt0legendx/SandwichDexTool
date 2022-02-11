@@ -51,6 +51,7 @@ export class CoinMarketCapController {
    */
   @Get('/token/:symbol')
   async getTokenInfobySymbol(@Res() res, @Req() req) {
+    console.log('cmc/token/:symbol');
     const {symbol} =  req.params;
     const tokens = await this.coinMarketCapService.getTokenInfoBySymbol(symbol);
     return res.status(HttpStatus.OK).json(tokens);

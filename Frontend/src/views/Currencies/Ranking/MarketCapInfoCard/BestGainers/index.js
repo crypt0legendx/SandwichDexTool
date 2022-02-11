@@ -1,18 +1,23 @@
 
 import {useSelector, useDispatch} from "react-redux";
+import { Link } from "react-router-dom";
 
 function BestGainersCard(){
 
-    const gainers_losers = useSelector((state) => state.trendings.gainers_losers);
+    const gainers = useSelector((state) => state.trendings.gainers);
 
     return(
         <div className="coin-marketcap-info-item">
             <div className="d-flex justify-content-between ">
                 <span className="info-item-title "><i className="fa fa-chart-line mr-2"></i>Biggest Gainers</span>
-                <button className="btn btn-default info-view-more ">More<i className="fa fa-angle-right ml-2"></i></button>
+                <Link to="/gainers-losers">
+                    <button className="btn btn-default info-view-more cursor-pointer ">
+                        More<i className="fa fa-angle-right ml-2"></i>
+                    </button>
+                </Link>
             </div>
             {
-                gainers_losers.slice(0,3).map((t,i)=>{
+                gainers.slice(0,3).map((t,i)=>{
                     return <div key={i} className="d-flex justify-content-between mt-1">
                                 <span className="info-item-opt-title ">
                                     <span className="dash-overview-num">{i+1}</span>&nbsp;

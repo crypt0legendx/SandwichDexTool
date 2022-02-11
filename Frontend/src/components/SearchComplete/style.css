@@ -146,3 +146,22 @@
     margin-right: 20px;
     color:black;
 }
+
+.category-bar{
+    width:100%;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.suggestion-category{
+    background-color: white;
+    border: 0px;
+    font-family: 'Poppins';
+    border-radius: 8px;
+    font-size: 13px;
+    padding: 5px 8px;
+}
+
+.suggestion-category.active{
+    background-color: #e5d4d9;
+    color:#46242e;
+}
