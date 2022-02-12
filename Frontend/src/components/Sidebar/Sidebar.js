@@ -92,13 +92,12 @@ function Sidebar(props) {
                             className={`${(pathname.match('/currencies')||pathname.match('/trending')||pathname.match('/gainer')) ? 'nav-item active' : 'nav-item'}`}
                         >
                             <Link to={'currencies'} className="nav-link align-items-center d-flex" onClick={()=>props.setOpen()}>
-                                <RiCopperCoinLine className="side-icon mr-3" />Cryptocurrencies
-                                {
-                                  openSubMenu?<RiArrowUpSLine onClick={()=>toggleSubmenu()} className="side-icon ml-3" />:
-                                  <RiArrowDownSLine onClick={()=>toggleSubmenu()} className="side-icon ml-3" />
-                                }
-                                
+                                <RiCopperCoinLine className="side-icon mr-3" />Cryptocurrencies                            
                             </Link>
+                            {
+                                openSubMenu?<RiArrowUpSLine onClick={()=>toggleSubmenu()} className="side-icon ml-3" />:
+                                <RiArrowDownSLine onClick={()=>toggleSubmenu()} className="side-icon ml-3" />
+                            }
                         </li>
                         {
                             openSubMenu&&(

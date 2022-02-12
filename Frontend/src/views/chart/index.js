@@ -31,44 +31,41 @@ function Chart() {
     useEffect(()=>{
         getCoinBySymbol();
         fetchTradeBook();
-    },[symbol])
+    },[])
 
-    useEffect(() => {
-        const interval = setTimeout(async () => {
-            getCoinBySymbol();
-            fetchTradeBook();
-          }, 10000)
-          return () => clearInterval(interval)
-    }, [coin, tradeBook]);
-
-
-    useEffect(() => {
-        console.log(coin);
-    }, [coin]);
+    // useEffect(() => {
+    //     const interval = setTimeout(async () => {
+    //         getCoinBySymbol();
+    //         fetchTradeBook();
+    //       }, 10000)
+    //       return () => clearInterval(interval)
+    // }, [coin, tradeBook]);
 
     const fetchTradeBook = async() =>{
-        axios.get(`http://localhost:4000/multi-chain-cap/tradebook/${network_name}/${contractAddress}`)
-        .then(function (response) {
-            console.log('tradebook',response.data);
-            setTradeBook(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        }).finally(()=>{
-        });
+        // axios.get(`http://localhost:4000/multi-chain-cap/tradebook/${network_name}/${contractAddress}`)
+        // .then(function (response) {
+        //     console.log('tradebook',response.data);
+        //     setTradeBook(response.data);
+        // })
+        // .catch(function (error) {
+        //     console.log(error);
+        // }).finally(()=>{
+        // });
     }
     const getCoinBySymbol = async() => {
-        axios.get(`http://localhost:4000/coin-market-cap/token/${symbol}`)
-        .then(function (response) {
-            console.log('getdata');
-            console.log(response.data);
-            setCoin(response.data[0]);
-            console.log(response.data[0]);
-        })
-        .catch(function (error) {
-            console.log(error);
-        }).finally(()=>{
-        });
+        // axios.get(`http://localhost:4000/coin-market-cap/token/${symbol}`)
+        //     .then(function (response) {
+        //         console.log('getdata');
+        //         console.log(response.data);
+        //         setCoin(response.data[0]);
+        //         console.log(response.data[0]);
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     }).finally(()=>{
+        // });
+
+        setCoin({symbol:"DAI",percent_change_24h:5,price:1,volume_24h:24324234})
     }
     
     return ( 
@@ -169,9 +166,9 @@ function Chart() {
                 </div>
 
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <TradingChart symbol = {symbol} interval={intervalChart} />
+            <div className="row">
+                <div className="col-md-12">
+                    {/* <TradingChart symbol = {symbol} interval={intervalChart} /> */}
                 </div>
             </div>   
             <div className="row mt-3">

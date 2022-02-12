@@ -58,7 +58,7 @@ function TrendingTokens() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-12"  style={{width:'100%', overflowX:'auto', textAlign:'center'}}>
+                <div className="col-md-12" style={{width:'100%', overflowX:'auto', textAlign:'center'}}>
                 <table className="table mt-2">
                     <thead>
                         <tr>
