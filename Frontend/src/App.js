@@ -14,6 +14,7 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 import {getTrendings, getGainersLosers} from './store/slices/trendings-slice';
 import {changeFavourites} from './store/slices/currencies-slice';
 import Footer from "./components/Footer";
+import Portfolio from "./views/Portfolio";
 
 
 
@@ -58,6 +59,7 @@ function App() {
                         <Route path="/trending-tokens" element={<TrendingTokens />} />
                         <Route path="/gainers-losers" element={<GainersLosers />} />
                         <Route path="/chart/:symbol/:contractAddress" element={<Chart />} />
+                        <Route path="/portfolio" element={<Portfolio />} />
                         <Route path="/*" element={<Navigate to="/currencies" />} />
                     </Routes>
                     

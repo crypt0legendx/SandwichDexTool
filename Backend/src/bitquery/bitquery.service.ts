@@ -66,19 +66,19 @@ export class BitqueryService {
               ) {            
                 protocol
                 baseCurrency{
-                  decimals
                   symbol
-                  name
                 }
                 volume: baseAmount
-                trades: count
                 tradeAmount(in: USD)
                 timeInterval {
                     second
                 }
+                block {
+                    timestamp{
+                      unixtime
+                    }
+                }
                 quotePrice
-                high: quotePrice(calculate: maximum)
-                      low: quotePrice(calculate: minimum)
               }
             }
           }`;
@@ -92,8 +92,49 @@ export class BitqueryService {
         return data;
     }
 
-    getTradeByAddress(){
+    /**
+     * Get Dex Trade Data For account.
+     * @param chain 
+     * @param address 
+     * @param account 
+     */
+    async getTradeByAddress(chain:String, address:String, account:String){
+        const tradeQuery =gql`query ($network:EthereumNetwork!, $baseAddress:String!, $quoteAddress:String!, $account:String!){
+            ethereum(network: $network) {
+              dexTrades(
+                options: {limit: 10, desc: "timeInterval.second"}
+                date: {since: "2022-01-13"}
+                baseCurrency: {is: $baseAddress}
+                quoteCurrency: {is: $quoteAddress}
+                txSender: {is: $account}
+              ) {            
+                protocol
+                baseCurrency{
+                  symbol
+                }
+                volume: baseAmount
+                tradeAmount(in: USD)
+                timeInterval {
+                    second
+                }
+                block {
+                    timestamp{
+                      unixtime
+                    }
+                }
+                quotePrice
+              }
+            }
+          }`;
 
+        const variables={
+            network:this.convertToBitqueryChain(chain),
+            baseAddress:address,
+            quoteAddress:this.getStableCoinAddressForChain(chain),
+            account:account
+        }
+        const data = await this.client.request(tradeQuery, variables);
+        return data;
     }
 
     getHolders(){

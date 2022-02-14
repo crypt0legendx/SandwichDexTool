@@ -120,21 +120,17 @@ function Sidebar(props) {
                                 </ul>
                             )
                         }                        
-                        <li className="nav-item ">
-                            <a className="nav-link " href="# ">
-                                <RiDonutChartLine className="side-icon mr-3" />Sandwich Tracking
-                            </a>
+                        <li className={`${pathname.match('/portfolio') ? 'nav-item active' : 'nav-item'}`}>
+                            <Link to={'portfolio'} className="nav-link align-items-center d-flex" onClick={()=>props.setOpen()}>
+                                <RiWallet2Line className="side-icon mr-3" />SandwichPortfolio
+                            </Link>
                         </li>
                         <li className="nav-item ">
                             <a className="nav-link " href="# ">
                                 <RiToolsLine className="side-icon mr-3" /> Sandwich Instruments
                             </a>
                         </li>
-                        <li className="nav-item ">
-                            <a className="nav-link " href="# ">
-                                <RiWallet2Line className="side-icon mr-3" />SandwichPortfolio
-                            </a>
-                        </li>
+                        
                         <li className="nav-item ">
                             <a className="nav-link " href="# ">
                                 <RiMoreLine className="side-icon mr-3" /> Support & More

@@ -190,10 +190,10 @@ function Chart() {
                                     {
                                         tradeBook.map((tx, index)=>{
                                             return <tr key={index}>
-                                                        <td className="text-strong text-left ">{tx.timeInterval.second}</td>
-                                                        <td className="text-strong text-success text-left ">{tx.volume}&nbsp;{tx.baseCurrency.symbol}</td>
-                                                        <td className="text-strong text-left ">{tx.quotePrice}</td>
-                                                        <td className="text-strong text-right "></td>
+                                                        <td className="text-strong text-left ">{new Date(Number(tx.block.timestamp.unixtime)*1000).toLocaleTimeString()}</td>
+                                                        <td className="text-strong text-success text-left ">{tx.volume.toFixed(5)}&nbsp;{tx.baseCurrency.symbol}</td>
+                                                        <td className="text-strong text-left ">${(tx.tradeAmount/tx.volume).toFixed(5)}</td>
+                                                        <td className="text-strong text-right ">${tx.tradeAmount.toFixed(5)}</td>
                                                     </tr>
                                         })
                                     }                                    
