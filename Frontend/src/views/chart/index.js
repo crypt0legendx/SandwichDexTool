@@ -42,15 +42,15 @@ function Chart() {
     // }, [coin, tradeBook]);
 
     const fetchTradeBook = async() =>{
-        // axios.get(`http://localhost:4000/multi-chain-cap/tradebook/${network_name}/${contractAddress}`)
-        // .then(function (response) {
-        //     console.log('tradebook',response.data);
-        //     setTradeBook(response.data);
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        // }).finally(()=>{
-        // });
+        axios.get(`http://localhost:4000/bitquery/tradebook/${network_name}/${contractAddress}`)
+        .then(function (response) {
+            console.log(response.data.ethereum.dexTrades);
+            setTradeBook(response.data.ethereum.dexTrades);
+        })
+        .catch(function (error) {
+            console.log(error);
+        }).finally(()=>{
+        });
     }
     const getCoinBySymbol = async() => {
         // axios.get(`http://localhost:4000/coin-market-cap/token/${symbol}`)
@@ -190,10 +190,10 @@ function Chart() {
                                     {
                                         tradeBook.map((tx, index)=>{
                                             return <tr key={index}>
-                                                        <td className="text-strong text-left ">{new Date(Number(tx.timeStamp)*1000).toLocaleTimeString()}</td>
-                                                        <td className="text-strong text-success text-left ">{Number(tx.value)/Math.pow(10, Number(tx.tokenDecimal))}&nbsp;{tx.tokenSymbol}</td>
-                                                        <td className="text-strong text-left ">0.245455484546</td>
-                                                        <td className="text-strong text-right ">{Number(tx.gasPrice)/Math.pow(10, 18)}</td>
+                                                        <td className="text-strong text-left ">{tx.timeInterval.second}</td>
+                                                        <td className="text-strong text-success text-left ">{tx.volume}&nbsp;{tx.baseCurrency.symbol}</td>
+                                                        <td className="text-strong text-left ">{tx.quotePrice}</td>
+                                                        <td className="text-strong text-right "></td>
                                                     </tr>
                                         })
                                     }                                    

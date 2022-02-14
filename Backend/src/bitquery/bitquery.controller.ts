@@ -14,9 +14,11 @@ export class BitqueryController {
    * @param req 
    * @returns 
    */
-  @Get('/tradebook')
+  @Get('/tradebook/:chain/:address')
   async getTradeBook(@Res() res, @Req() req) {    
-    const trade_data = await this.bitqueryService.getTradeBook();
+    console.log('bitquery/tradebook');
+    const {chain, address} =  req.params;
+    const trade_data = await this.bitqueryService.getTradeBook(chain, address);
     return res.status(HttpStatus.OK).json(trade_data);
   }
 
