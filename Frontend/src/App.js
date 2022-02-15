@@ -63,7 +63,7 @@ function App() {
                         <Route path="/*" element={<Navigate to="/currencies" />} />
                     </Routes>
                     
-                    <Footer />
+                    {/* <Footer /> */}
                     <ScrollToTopButton refId="page-content" />
                 </div>
             </div>

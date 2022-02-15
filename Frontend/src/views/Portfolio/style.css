@@ -1,0 +1,8 @@
+.worth-card{
+    height:150px;
+}
+
+.dominant-token-card,.nft-token-card{
+    min-height: 300px;
+    max-height: 500px;
+}

@@ -45,8 +45,39 @@ export class BitqueryService {
         return "";
     }
 
-    async getTokenPrice(chain:String, address:String){
-        return;
+    async getTokenInfo(chain:String, address:String){
+      const tradeQuery =gql`query ($network:EthereumNetwork!, $baseAddress:String!, $quoteAddress:String!){
+        ethereum(network: $network) {
+          dexTrades(
+            options: {limit: 2, desc: "timeInterval.day"}
+            date: {since:"2020-11-01"}
+            baseCurrency: {is: $baseAddress}
+            quoteCurrency: {is: $quoteAddress}
+          ) {            
+            timeInterval {
+              day(count: 1)
+            }
+            baseCurrency {
+              symbol
+              address
+            }
+            volume: baseAmount
+            tradeAmount(in: USD)
+            quotePrice      
+            maximum_price: quotePrice(calculate: maximum)
+            minimum_price: quotePrice(calculate: minimum)  		
+          }
+        }
+      }`;
+
+      const variables={
+          "network":this.convertToBitqueryChain(chain),
+          baseAddress:address,
+          quoteAddress:this.getStableCoinAddressForChain(chain)
+      }
+      const data = await this.client.request(tradeQuery, variables);
+      
+      return data;
     }
 
     /**

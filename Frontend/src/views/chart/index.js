@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 import {Tabs, Tab} from "react-bootstrap";
+import {BsArrowUp, BsArrowDown, BsClock} from 'react-icons/bs';
+import {FaRegChartBar} from 'react-icons/fa';
 
 import FullscreenIcon from "../../assets/icons/others/screen.svg"
 import TradingChart from "../../components/Chart/TradingChart";
@@ -21,7 +23,7 @@ function Chart() {
     const { symbol, contractAddress } = useParams();
     const network_name = useSelector((state) => state.network.name);
 
-    const [coin,setCoin] =  useState({});
+    const [tokenInfo,setTokenInfo] =  useState({});
     const [tradeBook, setTradeBook] = useState([]);
 
     const [timeInterval] =  useState(['1H','4H','1D','1W','1M']);
@@ -29,7 +31,7 @@ function Chart() {
 
 
     useEffect(()=>{
-        getCoinBySymbol();
+        getTokenInfo();
         fetchTradeBook();
     },[])
 
@@ -52,20 +54,28 @@ function Chart() {
         }).finally(()=>{
         });
     }
-    const getCoinBySymbol = async() => {
-        // axios.get(`http://localhost:4000/coin-market-cap/token/${symbol}`)
-        //     .then(function (response) {
-        //         console.log('getdata');
-        //         console.log(response.data);
-        //         setCoin(response.data[0]);
-        //         console.log(response.data[0]);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     }).finally(()=>{
-        // });
-
-        setCoin({symbol:"DAI",percent_change_24h:5,price:1,volume_24h:24324234})
+    const getTokenInfo = async() => {
+        axios.get(`http://localhost:4000/bitquery/tokeninfo/${network_name}/${contractAddress}`)
+            .then(function (response) {
+                console.log('getTokenInfo');
+                const dexTrades = response.data.ethereum.dexTrades;
+                const percent_24h_change = (dexTrades[0].quotePrice-dexTrades[1].quotePrice)/dexTrades[1].quotePrice*100;
+                let tokenInfo = {
+                    symbol:dexTrades[0].baseCurrency.symbol,
+                    percent_change_24h:percent_24h_change,
+                    lastPrice:dexTrades[1].quotePrice,
+                    price:dexTrades[0].quotePrice,
+                    minimum:dexTrades[0].minimum_price,
+                    maximum:dexTrades[0].maximum_price,
+                    volume_24h:dexTrades[0].tradeAmount
+                }
+                setTokenInfo(tokenInfo)
+                console.log(tokenInfo);
+            })
+            .catch(function (error) {
+                console.log(error);
+            }).finally(()=>{
+        });        
     }
     
     return ( 
@@ -80,13 +90,13 @@ function Chart() {
                     <div className="pair-card mt-3">
                         <div className="d-flex justify-content-between align-items-center ">
                             <div className="token-pair">
-                                <label>{symbol}</label>
-                                <span className="badge ml-2 mt-1">{coin.percent_change_24h>0?'+':''}{Math.floor(coin.percent_change_24h * 100) / 100}%</span>
+                                <label>{tokenInfo.symbol}</label>
+                                <span className={tokenInfo.percent_change_24h>0?"badge ml-2 mt-1 bg-success":"badge ml-2 mt-1 bg-danger"}>{tokenInfo.percent_change_24h>0?'+':''}{Math.floor(tokenInfo.percent_change_24h * 100) / 100}%</span>
                             </div>
-                            <div className="action"><i className="fa fa-angle-down"></i></div>
+                            {/* <div className="action"><i className="fa fa-angle-down"></i></div> */}
                         </div>
-                        <div className="d-flex value">
-                            ${Math.floor(coin.price * 1000) / 1000}
+                        <div className={tokenInfo.percent_change_24h>0?'d-flex value text-success':'d-flex value text-danger'}>
+                            ${tokenInfo.price?tokenInfo.price.toFixed(5):'-'}
                         </div>
                     </div>
                 </div>
@@ -96,42 +106,42 @@ function Chart() {
                             <div className="col-md-3 x-divider">
                                 <div className="pair-detail-item">
                                     <div className="pair-detail-item-title">
-                                        <i className="fa fa-clock"></i>&nbsp;24h change
+                                        <BsClock />&nbsp;24h change
                                     </div>
                                     <div className="pair-detail-item-value text-success">
-                                        ${Math.floor(coin.price * 100) / 100}
-                                        {coin.percent_change_24h>0?'+':''}
-                                        {Math.floor(coin.percent_change_24h * 100) / 100}%
+                                        ${tokenInfo.lastPrice?tokenInfo.lastPrice.toFixed(5):'-'}
+                                        {tokenInfo.percent_change_24h>0?'+':''}
+                                        {Math.floor(tokenInfo.percent_change_24h * 100) / 100}%
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-3 x-divider">
                                 <div className="pair-detail-item">
                                     <div className="pair-detail-item-title">
-                                        <i className="fa fa-clock"></i>&nbsp;24h high
+                                        <BsArrowUp />&nbsp;24h high
                                     </div>
                                     <div className="pair-detail-item-value">
-                                        ${Math.floor(coin.price * 100) / 100}
+                                        ${tokenInfo.maximum?tokenInfo.maximum.toFixed(5):'-'}
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-3 x-divider">
                                 <div className="pair-detail-item">
                                     <div className="pair-detail-item-title">
-                                        <i className="fa fa-clock"></i>&nbsp;24h low
+                                        <BsArrowDown />&nbsp;24h low
                                     </div>
                                     <div className="pair-detail-item-value">
-                                        ${Math.floor(coin.price * 100) / 100}
+                                        ${tokenInfo.minimum?tokenInfo.minimum.toFixed(5):'-'}
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-3">
                                 <div className="pair-detail-item">
                                     <div className="pair-detail-item-title">
-                                        <i className="fa fa-clock"></i>&nbsp;24h volume
+                                        <FaRegChartBar />&nbsp;24h volume
                                     </div>
                                     <div className="pair-detail-item-value">
-                                        ${Math.round(coin.volume_24h)}
+                                        ${Math.round(tokenInfo.volume_24h)}
                                     </div>
                                 </div>
                             </div>

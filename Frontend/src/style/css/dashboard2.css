@@ -41,7 +41,14 @@
     font-weight: 600;
     font-size: 17px;
     line-height: 22px;
-    color: #FF5757;
+}
+
+.pair-card .value.text-success{
+    color:#00C076 !important;
+}
+
+.pair-card .value.text-danger{
+    color:#FF5757 !important;
 }
 
 .pair-card .token-pair {
@@ -60,7 +67,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #FF5757;
     border-radius: 16.7143px;
     font-family: Poppins;
     font-style: normal;
@@ -70,6 +76,15 @@
     color: #FCFCFD;
 }
 
+.pair-card .token-pair .badge.bg-success
+{
+    background:#00C076 !important;
+}
+
+.pair-card .token-pair .badge.bg-danger
+{
+    background: #FF5757 !important;
+}
 .pair-detail-card {
     width: 100%;
     min-height: 81px;

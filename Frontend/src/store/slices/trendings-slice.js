@@ -34,11 +34,17 @@ export const trendingsSlice = createSlice({
   },
   extraReducers:(builder)=>{
     builder.addCase(getTrendings.fulfilled,(state, action)=>{
-      state.latest = action.payload
+      if(action.payload){
+        state.latest = action.payload
+      }
+      
     })
     builder.addCase(getGainersLosers.fulfilled,(state, action)=>{
-      state.gainers = action.payload.gainers;
-      state.losers = action.payload.losers;
+      if(action.payload){
+        state.gainers = action.payload.gainers;
+        state.losers = action.payload.losers;
+      }
+      
     })
   }
 })

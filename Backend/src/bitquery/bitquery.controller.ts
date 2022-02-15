@@ -15,12 +15,12 @@ export class BitqueryController {
      * @param req 
      * @returns 
      */
-    @Get('/tokenPrice/:chain/:address')
-    async getTokenPrice(@Res() res, @Req() req) {    
-        console.log('bitquery/tokenPrice');
+    @Get('/tokeninfo/:chain/:address')
+    async getTokenInfo(@Res() res, @Req() req) {    
+        console.log('bitquery/tokenInfo');
         const {chain, address} =  req.params;
-        const tokenPrice = await this.bitqueryService.getTokenPrice(chain, address);
-        return res.status(HttpStatus.OK).json(tokenPrice);
+        const tokenInfo = await this.bitqueryService.getTokenInfo(chain, address);
+        return res.status(HttpStatus.OK).json(tokenInfo);
     }
         
     /**

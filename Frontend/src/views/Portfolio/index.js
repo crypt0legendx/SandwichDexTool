@@ -17,19 +17,39 @@ function Portfolio() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-3">
-
+                <div className="col-md-3 mt-3">
+                    <div className="worth-card bg-light-gray">
+                    </div>
                 </div>
-                <div className="col-md-9">
-                    
+                <div className="col-md-8 mt-3">
+                    <div className=" bg-light-gray">
+                        <div className="row">
+                            <div className="col-md-4">
+                                <div className="worth-card">
+                                </div>
+                            </div>
+                            <div className="col-md-4">
+                                <div className="worth-card">
+                                </div>
+                            </div>
+                            <div className="col-md-4">
+                                <div className="worth-card">
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-7">
+                <div className="col-md-7 mt-3">
+                    <div className="dominant-token-card bg-light-gray">
 
+                    </div>
                 </div>
-                <div className="col-md-5">
+                <div className="col-md-4 mt-3">
+                    <div className="nft-token-card bg-light-gray">
                     
+                    </div>
                 </div>
             </div>
         </>
