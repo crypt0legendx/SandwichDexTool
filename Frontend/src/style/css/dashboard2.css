@@ -125,7 +125,7 @@
 
 .trading-view-filter {
     min-height: 75.53px;
-    background: #f4f9fe;
+    /* background: #f4f9fe; */
     border-radius: 12px 12px 0px 0px;
     padding: 20px;
 }
