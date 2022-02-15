@@ -41,6 +41,7 @@ export const trendingsSlice = createSlice({
     })
     builder.addCase(getGainersLosers.fulfilled,(state, action)=>{
       if(action.payload){
+        console.log('losers', action.payload);
         state.gainers = action.payload.gainers;
         state.losers = action.payload.losers;
       }

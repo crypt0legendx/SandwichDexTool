@@ -15,6 +15,7 @@ const TradingChart = (props) => {
   return (
     <TradingViewWidget
       width="100%"
+      height="500"
       symbol={symbol}
       theme={Themes.LIGHT}
       locale="en"

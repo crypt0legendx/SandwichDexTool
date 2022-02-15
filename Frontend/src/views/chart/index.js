@@ -178,7 +178,11 @@ function Chart() {
             </div>
             <div className="row">
                 <div className="col-md-12">
-                    {/* <TradingChart symbol = {symbol} interval={intervalChart} /> */}
+                    {
+                        tokenInfo.symbol&&
+                        <TradingChart symbol = {tokenInfo.symbol} interval={intervalChart} />
+                    }
+                    
                 </div>
             </div>   
             <div className="row mt-3">

@@ -50,7 +50,7 @@ export class BitqueryService {
         ethereum(network: $network) {
           dexTrades(
             options: {limit: 2, desc: "timeInterval.day"}
-            date: {since:"2020-11-01"}
+            date: {since:"2020-12-01"}
             baseCurrency: {is: $baseAddress}
             quoteCurrency: {is: $quoteAddress}
           ) {            
