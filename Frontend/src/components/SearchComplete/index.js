@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { RiSearchLine, RiStarSLine, RiStarSFill} from "react-icons/ri";
 import { FaRegStar, FaStar} from "react-icons/fa";
 import {useSelector, useDispatch} from "react-redux";
+import axios from 'axios';
 
 import {changeFavourites} from '../../store/slices/currencies-slice';
 import useFavoriteHelper from "../../hooks/useFavoriteHelper";
@@ -78,6 +79,18 @@ const SearchComplete = () => {
 
   const changedSearchValue =(e) =>{
     setSearchText(e.target.value);
+    if(e.target.value!=""){
+      axios.get(`http://localhost:4000/multi-chain-cap/search-tokens/${e.target.value}`)
+        .then(function (response) {
+            console.log(response.data);
+            
+        })
+        .catch(function (error) {
+            console.log(error);
+        }).finally(()=>{
+        });
+    }
+
   }
 
   const getChainBySlug = (slug)=>{
@@ -135,7 +148,7 @@ const SearchComplete = () => {
                     </div>
                   )
                 }
-                {activeCat=="trending"&&filteredTrendings.map((data, index)=>{
+                {searchText==""&&activeCat=="trending"&&filteredTrendings.map((data, index)=>{
                   return <div key={index} className="filtered-token-item d-flex justify-content-between align-items-center">
                       <div className="d-flex align-items-center">
                         <button className={isFavourite(data.platform.token_address)?`star-toggle-button active`:`star-toggle-button`}
@@ -155,7 +168,7 @@ const SearchComplete = () => {
                       </div>                                        
                   </div>
                 })}
-                {activeCat=="favorites"&&favourites.map((data, index)=>{
+                {searchText==""&&activeCat=="favorites"&&favourites.map((data, index)=>{
                   return <div key={index} className="filtered-token-item d-flex justify-content-between align-items-center">
                       <div className="d-flex align-items-center">
                         <button className="star-toggle-button active" onClick={()=>toggleFavouriteToken(data)}>

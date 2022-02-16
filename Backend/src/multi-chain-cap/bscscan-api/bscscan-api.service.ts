@@ -33,36 +33,27 @@ export class BscscanApiService {
           return [];
         }
         
-      }
-
-      
-    async getTradeBook(contractAddress){
-      const tradebook =  await this.fetchTradeBook(contractAddress);
-      return tradebook.result;
     }
 
-    private async fetchTradeBook(contractAddress): Promise<any> {
+    async searchTokens(searchText:String){
+      const response = await this.searchTokensFromScan(searchText);
+      return response;
+    }
+    
+    private async searchTokensFromScan(searchText:String): Promise<any> {
+
+      console.log('bscscan Search');
+      let request;
       
-        let request;
-        try {
-          request = await this.httpService
-            .get(this.url, {
-              params: { 
-                module:'account',
-                action:'tokentx',
-                contractaddress:`${contractAddress}`,
-                page:1,
-                offset:10,
-                startblock:0,
-                endblock:99999999,
-                sort:'desc',
-                apikey:this.apiKey
-              },
-            })
-            .toPromise();
-        } catch (err) {
-          console.error(err);
-        }
-        return request.data || {};
-      }
+      request = await this.httpService
+          .get('https://bscscan.com/searchHandler', {
+          params: { 
+              term:searchText,
+              filterby:0
+          },
+          })
+          .toPromise();
+      return request.data;
+
+    }
 }
