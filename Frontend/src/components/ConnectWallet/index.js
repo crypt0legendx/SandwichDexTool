@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { useWeb3Context } from "../../hooks/web3";
 
+import {useSelector, useDispatch} from "react-redux";
+
+import { getChainIdByName } from "../../helpers/chainHelper";
+
 import "./style.css";
 
 function ConnectWallet() {
 
+    const network = useSelector((state) => state.network.name);    
     const { connect, disconnect, connected, web3, providerChainID, checkWrongNetwork, address } = useWeb3Context();
     const [isConnected, setConnected] = useState(connected);
 
@@ -17,7 +22,7 @@ function ConnectWallet() {
         clickFunc = disconnect;
     }
 
-    if (isConnected && providerChainID !== 56) {
+    if (isConnected && providerChainID !== getChainIdByName(network)) {
         buttonText = "Wrong Network";
         buttonStyle = { backgroundColor: "rgb(255, 67, 67)", color: "#ffffff" };
         clickFunc = () => {

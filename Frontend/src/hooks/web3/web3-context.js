@@ -2,10 +2,12 @@ import React, { useState, ReactElement, useContext, useMemo, useCallback } from 
 import Web3Modal from "web3modal";
 import { StaticJsonRpcProvider, JsonRpcProvider, Web3Provider } from "@ethersproject/providers";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
+import { swithNetwork } from "../../helpers/switch-network";
+import { getChainIdByName } from "../../helpers/chainHelper";
 
-const Web3Context = React.createContext(null);
+const Web3Context = React.createContext();
 
 export const useWeb3Context = () => {
     const web3Context = useContext(Web3Context);
@@ -13,6 +15,7 @@ export const useWeb3Context = () => {
         throw new Error("useWeb3Context() can only be used inside of <Web3ContextProvider />, " + "please declare it at a higher level.");
     }
     const { onChainProvider } = web3Context;
+    
     return useMemo(() => {
         return { ...onChainProvider };
     }, [web3Context]);
@@ -25,10 +28,11 @@ export const useAddress = () => {
 
 export const Web3ContextProvider=({ children }) => {
     const dispatch = useDispatch();
+    const network = useSelector((state) => state.network.name);    
 
     const [connected, setConnected] = useState(false);
-    const [chainID, setChainID] = useState(56);
-    const [providerChainID, setProviderChainID] = useState(56);
+    const [chainID, setChainID] = useState(getChainIdByName(network));
+    const [providerChainID, setProviderChainID] = useState(getChainIdByName(network));
     const [address, setAddress] = useState("");
 
     const [uri, setUri] = useState("https://bsc-dataseed1.defibit.io/");
@@ -36,15 +40,11 @@ export const Web3ContextProvider=({ children }) => {
 
     const [web3Modal] = useState(
         new Web3Modal({
+            network:"mainnet",
             cacheProvider: true,
             providerOptions: {
                 walletconnect: {
-                    package: WalletConnectProvider,
-                    options: {
-                        rpc: {
-                            56: "https://bsc-dataseed1.defibit.io/",
-                        },
-                    },
+                    package: WalletConnectProvider,                    
                 },
             },
         }),
@@ -96,7 +96,7 @@ export const Web3ContextProvider=({ children }) => {
 
         setProviderChainID(chainId);
 
-        if (chainId === 56) {
+        if (chainId === getChainIdByName(network)) {
             setProvider(connectedProvider);
         }
 
@@ -106,11 +106,11 @@ export const Web3ContextProvider=({ children }) => {
     }, [provider, web3Modal, connected]);
 
     const checkWrongNetwork = async () => {
-        if (providerChainID !== 56) {
-            const shouldSwitch = window.confirm("Switch to BSC Test Network");
+        if (providerChainID !== getChainIdByName(network)) {
+            const shouldSwitch = window.confirm(`Switch to ${network} Main Network`);
             if (shouldSwitch) {
-                // await swithNetwork();
-                window.location.reload();
+                await swithNetwork(network);
+                // window.location.reload();
             }
             return true;
         }

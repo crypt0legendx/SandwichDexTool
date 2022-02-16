@@ -193,7 +193,7 @@ const SearchComplete = () => {
             placeholder="Search..." 
             onFocus={()=>showSuggest()}
             onChange={(e)=>changedSearchValue(e)}
-            autocomplete="off"
+            autoComplete="off"
             />
           <div id="suggestion-list" className="suggestion-list hide-suggestion">
             <div className="suggestion-list-content">
