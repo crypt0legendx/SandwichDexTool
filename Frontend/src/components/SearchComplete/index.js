@@ -4,7 +4,7 @@ import { FaRegStar, FaStar} from "react-icons/fa";
 import {useSelector, useDispatch} from "react-redux";
 import axios from 'axios';
 
-import {changeFavourites} from '../../store/slices/currencies-slice';
+import { extractNameSymbol } from "../../helpers/scrape";
 import useFavoriteHelper from "../../hooks/useFavoriteHelper";
 
 import "./style.css";
@@ -82,8 +82,70 @@ const SearchComplete = () => {
     if(e.target.value!=""){
       axios.get(`http://localhost:4000/multi-chain-cap/search-tokens/${e.target.value}`)
         .then(function (response) {
-            console.log(response.data);
-            
+            let datas = response.data;
+            let searchedTokens = [];
+            if(datas[0].length>0){
+                for(let i =0; i<datas[0].length;i++){
+                  if(datas[0][i].includes('Addresses')||datas[0][i].includes('Labels')||datas[0][i].includes("Tokens (ERC 721)"))
+                    break;
+                  const splitRslt = datas[0][i].split("\t");
+                  
+                  if(splitRslt[0]!="Tokens (ERC 20)"){
+                    const {name,symbol} = extractNameSymbol(splitRslt[0]);
+                    searchedTokens.push(
+                      {
+                        name: name,
+                        symbol: symbol,
+                        contractAddress: splitRslt[1],
+                        logo:splitRslt[5]==""?'https://etherscan.io/images/main/empty-token.png':`https://etherscan.io/token/images/${splitRslt[5]}`,
+                        chain:'Ethereum'
+                      }
+                    )
+                  }                                    
+                }                
+            }
+            if(datas[1].length>0){
+              for(let i =0; i<datas[1].length;i++){
+                if(datas[1][i].includes('Addresses')||datas[1][i].includes('Labels')||datas[1][i].includes("Tokens (ERC 721)"))
+                  break;
+                const splitRslt = datas[1][i].split("\t");
+                
+                if(splitRslt[0]!="Tokens (BEP 20)"){
+                  const {name,symbol} = extractNameSymbol(splitRslt[0]);
+                  searchedTokens.push(
+                    {
+                      name: name,
+                      symbol: symbol,
+                      contractAddress: splitRslt[1],
+                      logo:splitRslt[5]==""?'https://bscscan.com/images/main/empty-token.png':`https://bscscan.com/token/images/${splitRslt[5]}`,
+                      chain:'BSC'
+                    }
+                  )
+                }                                    
+              }
+            }
+            if(datas[2].length>0){
+              for(let i =0; i<datas[2].length;i++){
+                if(datas[2][i].includes('Addresses')||datas[2][i].includes('Labels')||datas[2][i].includes("Tokens (ERC 721)"))
+                  break;
+                const splitRslt = datas[2][i].split("\t");
+                
+                if(splitRslt[0]!="Tokens (ERC 20)"){
+                  const {name,symbol} = extractNameSymbol(splitRslt[0]);
+                  searchedTokens.push(
+                    {
+                      name: name,
+                      symbol: symbol,
+                      contractAddress: splitRslt[1],
+                      logo:splitRslt[5]==""?'https://polygonscan.com/images/main/empty-token.png':`https://polygonscan.com/token/images/${splitRslt[5]}`,
+                      chain:'Polygon'
+                    }
+                  )
+                }                                    
+              }
+            }
+
+            setFilteredTokens(searchedTokens);
         })
         .catch(function (error) {
             console.log(error);
@@ -126,11 +188,12 @@ const SearchComplete = () => {
         {/* <div className="backdrop"></div> */}
         <div id="search-wrapper" className = "search">
           <input 
-          id="search-field" 
-          className="search-field" 
-          placeholder="Search..." 
-          onFocus={()=>showSuggest()}
-          onChange={(e)=>changedSearchValue(e)}
+            id="search-field" 
+            className="search-field" 
+            placeholder="Search..." 
+            onFocus={()=>showSuggest()}
+            onChange={(e)=>changedSearchValue(e)}
+            autocomplete="off"
             />
           <div id="suggestion-list" className="suggestion-list hide-suggestion">
             <div className="suggestion-list-content">
@@ -172,6 +235,26 @@ const SearchComplete = () => {
                   return <div key={index} className="filtered-token-item d-flex justify-content-between align-items-center">
                       <div className="d-flex align-items-center">
                         <button className="star-toggle-button active" onClick={()=>toggleFavouriteToken(data)}>
+                          <FaRegStar />
+                        </button>
+                        <img className="token-logo ml-2" src={data.logo} alt="token-logo"/>
+                        <div className="d-flex flex-column ml-2 justify-content-center">
+                          <div className="token-name">{data.name}</div>
+                          <div className="token-symbol">{data.symbol}</div>
+                        </div>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <div className="token-price"></div>
+                        <div className={`token-platform ${data.chain}`}>{data.chain}</div>
+                      </div>                                        
+                  </div>
+                })}
+                {searchText!=""&&filteredTokens.map((data, index)=>{
+                  return <div key={index} className="filtered-token-item d-flex justify-content-between align-items-center">
+                      <div className="d-flex align-items-center">
+                        <button className={isFavourite(data.contractAddress)?`star-toggle-button active`:`star-toggle-button`}
+                            onClick={()=>{toggleFavouriteToken(data)}}
+                        >
                           <FaRegStar />
                         </button>
                         <img className="token-logo ml-2" src={data.logo} alt="token-logo"/>
