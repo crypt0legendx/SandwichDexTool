@@ -14,6 +14,20 @@ export class ThirdApiController {
      * @param req 
      * @returns 
      */
+     @Get('/holdings-account/:chain/:address')
+     async getHoldings(@Res() res, @Req() req){
+         console.log('third-api/balances');
+         const {chain, address} =  req.params;
+         const holdings = await this.thirdApiService.getHoldings(chain, address);
+         return res.status(HttpStatus.OK).json(holdings);
+     }
+
+    /**
+     * Return Balance List of Account from third api
+     * @param res 
+     * @param req 
+     * @returns 
+     */
      @Get('/balances-overview/:chain/:address')
      async getBalancesOverview(@Res() res, @Req() req){
          console.log('third-api/balances');
