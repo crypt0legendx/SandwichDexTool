@@ -100,6 +100,13 @@
     background:#F4F9FE;
 }
 
+.text-success{
+    color:#00C076;
+}
+
+.text-danger{
+    color:#EB685C;
+}
 
 /*width*/
 .w-100{

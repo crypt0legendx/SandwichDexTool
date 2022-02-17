@@ -17,10 +17,12 @@ function Portfolio() {
     const [dominantToken, setDominantToken] = useState(null);
     const [tokens, setTokens] = useState([]);
     const [totalTokenCount, setTotalTokenCount] = useState(0);
+    const [holdings, setHoldings] = useState({totalsWorth:null, tokensWorth:null, defiWorth:null, nftWorth:null});
     const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
 
     useEffect(()=>{
         getBalances();
+        getHoldings();
     },[selectedAddress, chain]);
 
     const getBalances = () =>{
@@ -40,6 +42,24 @@ function Portfolio() {
         });        
         
     }
+
+    const getHoldings = () =>{
+
+        axios.get(`http://localhost:4000/third-api/holdings-account/${chain}/${selectedAddress}`)
+            .then(function (response) {
+                console.log('getHoldings');
+                console.log(response.data);
+                setHoldings(response.data);
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            }).finally(()=>{
+        });        
+        
+    }
+
+
     const getbBriefWalletAddress = (address)=>{
         return String(address).substring(0, 4) +"..." +String(address).substring(38);
     }
@@ -63,10 +83,19 @@ function Portfolio() {
                             Net Worth &nbsp;<MdHelp />
                         </div>
                         <div className="value">
-                            $754,412.42
+                            {
+                                holdings.totalWorth?'$'+holdings.totalWorth.toFixed(2):'-'
+                            }
                         </div>
                         <div className="percent">
-                            -0.07$ ($461.54)
+                            {
+                                holdings.totalWorth?
+                                <span className={holdings.changes.totalWorth.percentage>=0?'text-success':'text-danger'}>
+                                    {holdings.changes.totalWorth.percentage+'%'}&nbsp;
+                                    (${holdings.changes.totalWorth.value})
+                                </span>:''
+                                
+                            }                            
                         </div>
                     </div>
                 </div>
@@ -79,10 +108,19 @@ function Portfolio() {
                                         Tokens Worth
                                     </div>
                                     <div className="value">
-                                        $754,412.42
+                                        {
+                                            holdings.tokensWorth?'$'+holdings.tokensWorth.toFixed(2):'-'
+                                        }
                                     </div>
                                     <div className="percent">
-                                        -0.07$ ($461.54)
+                                        {
+                                            holdings.tokensWorth?
+                                            <span className={holdings.changes.tokensWorth.percentage>=0?'text-success':'text-danger'}>
+                                                {holdings.changes.tokensWorth.percentage+'%'}&nbsp;
+                                                (${holdings.changes.tokensWorth.value})
+                                            </span>:''
+                                            
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -92,10 +130,19 @@ function Portfolio() {
                                         DeFi Worth
                                     </div>
                                     <div className="value">
-                                        -
+                                        {
+                                            holdings.defiWorth?'$'+holdings.defiWorth.toFixed(2):'-'
+                                        }
                                     </div>
                                     <div className="percent">
-                                        
+                                        {
+                                            holdings.defiWorth?
+                                            <span className={holdings.changes.defiWorth.percentage>=0?'text-success':'text-danger'}>
+                                                {holdings.changes.defiWorth.percentage+'%'}&nbsp;
+                                                (${holdings.changes.defiWorth.value})
+                                            </span>:''
+                                            
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -105,10 +152,19 @@ function Portfolio() {
                                         NFTS Worth
                                     </div>
                                     <div className="value">
-                                        -                                        
+                                        {
+                                            holdings.nftWorth?'$'+holdings.nftWorth.toFixed(2):'-'
+                                        }                               
                                     </div>
                                     <div className="percent">
-                                        
+                                        {
+                                            holdings.nftWorth?
+                                            <span className={holdings.changes.nftWorth.percentage>=0?'text-success':'text-danger'}>
+                                                {holdings.changes.nftWorth.percentage+'%'}&nbsp;
+                                                (${holdings.changes.nftWorth.value})
+                                            </span>:''
+                                            
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +225,10 @@ function Portfolio() {
                                                     </div>
                                                     <div>
                                                         <div className="pd-token-worth">${d.value.toFixed(4)}</div>
-                                                        <div className="pd-token-value text-right">{d.change.status}&nbsp; (${d.change.value})</div>
+                                                        <div 
+                                                        className={parseFloat(d.change.status)>=0?"pd-token-value text-right text-success":"pd-token-value text-right text-danger"}>
+                                                            {d.change.status}&nbsp; (${d.change.value})
+                                                        </div>
                                                     </div>
                                                 </div>
                                     })
