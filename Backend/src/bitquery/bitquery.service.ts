@@ -175,4 +175,37 @@ export class BitqueryService {
     getLiquidity(){
 
     }
+
+    /**
+     * Return Balance List of account on chain
+     * @param chain 
+     * @param account 
+     * @returns 
+     */
+    async getBalances(chain:String, account:String){
+      const balancesQuery =gql`query ($network:EthereumNetwork!, $account:String!){
+        ethereum(network: $network) {
+          address(address: {is: $account}) {
+            balance
+            balances {
+              currency {
+                name
+                symbol
+                address
+                tokenType
+                tokenId
+              }
+              value
+            }
+          }
+        }
+      }`;
+
+      const variables={
+          network:this.convertToBitqueryChain(chain),
+          account:account
+      }
+      const data = await this.client.request(balancesQuery, variables);
+      return data;
+  }
 }

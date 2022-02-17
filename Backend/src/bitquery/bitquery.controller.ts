@@ -51,6 +51,18 @@ export class BitqueryController {
         return res.status(HttpStatus.OK).json(trade_data);
     }
 
-  
+    /**
+     * Return Balance List of Account
+     * @param res 
+     * @param req 
+     * @returns 
+     */
+    @Get('/balances/:chain/:address')
+    async getBalances(@Res() res, @Req() req){
+        console.log('bitquery/balances');
+        const {chain, address} =  req.params;
+        const balances = await this.bitqueryService.getBalances(chain, address);
+        return res.status(HttpStatus.OK).json(balances);
+    }  
 
 }

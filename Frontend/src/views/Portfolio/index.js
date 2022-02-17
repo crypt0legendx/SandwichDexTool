@@ -11,18 +11,22 @@ import "./style.css";
 function Portfolio() {
 
     const chain = useSelector((state) => state.network.name);
+    const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
 
+    const getbBriefWalletAddress = (address)=>{
+        return String(address).substring(0, 4) +"..." +String(address).substring(38);
+    }
     return ( 
         <>
             <div className="row mt-3">
                 <div className="col-md-12">
                     <Button id="wallet-dropdown-button">
-                            0xb4...7146&nbsp;
+                            {getbBriefWalletAddress(selectedAddress)}&nbsp;
                             <BsThreeDotsVertical />
                     </Button>
                 </div>
             </div>
-            <div className="row mt-3">
+            <div className="row">
                 <div className="col-md-3 mt-3">
                     <div className="worth-card bg-light-gray">
                         <div className="title">
