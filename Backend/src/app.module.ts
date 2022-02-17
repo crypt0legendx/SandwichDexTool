@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { CoinMarketCapModule } from './coin-market-cap/coin-market-cap.module';
 import { MultiChainCapModule } from './multi-chain-cap/multi-chain-cap.module';
 import { BitqueryModule } from './bitquery/bitquery.module';
+import { ThirdApiModule } from './third-api/third-api.module';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { BitqueryModule } from './bitquery/bitquery.module';
     }),
     CoinMarketCapModule, 
     MultiChainCapModule, 
-    BitqueryModule
+    BitqueryModule, ThirdApiModule
   ],
   controllers: [AppController],
   providers: [AppService],

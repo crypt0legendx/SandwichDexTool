@@ -50,7 +50,7 @@ export class BitqueryService {
         ethereum(network: $network) {
           dexTrades(
             options: {limit: 2, desc: "timeInterval.day"}
-            date: {since:"2020-12-01"}
+            date: {since:"2019-12-01"}
             baseCurrency: {is: $baseAddress}
             quoteCurrency: {is: $quoteAddress}
           ) {            
@@ -176,13 +176,33 @@ export class BitqueryService {
 
     }
 
+
+    async getBalances(chain:String, account:String){
+      const response =  await this.fetchBalances(chain, account);
+      const balances = response.ethereum.address[0].balances;
+
+      if(balances == null){
+        console.log("No Exist Data");
+      }else{
+          // await balances.forEach(async(e) => {
+          //   if(e.currency.address!="-"){
+          //     const getInfo = await this.getTokenInfo(chain, e.currency.address);
+          //     console.log(getInfo);
+          //   }
+          // });
+      }
+
+
+      return response;
+
+    }
     /**
      * Return Balance List of account on chain
      * @param chain 
      * @param account 
      * @returns 
      */
-    async getBalances(chain:String, account:String){
+    async fetchBalances(chain:String, account:String){
       const balancesQuery =gql`query ($network:EthereumNetwork!, $account:String!){
         ethereum(network: $network) {
           address(address: {is: $account}) {

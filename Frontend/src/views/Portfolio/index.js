@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
+
+import axios from 'axios';
+
 import {Button} from "react-bootstrap";
 import {BsThreeDotsVertical} from "react-icons/bs";
 import {MdHelp} from "react-icons/md";
@@ -11,11 +14,38 @@ import "./style.css";
 function Portfolio() {
 
     const chain = useSelector((state) => state.network.name);
+    const [dominantToken, setDominantToken] = useState(null);
+    const [tokens, setTokens] = useState([]);
+    const [totalTokenCount, setTotalTokenCount] = useState(0);
     const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
 
+    useEffect(()=>{
+        getBalances();
+    },[selectedAddress, chain]);
+
+    const getBalances = () =>{
+
+        axios.get(`http://localhost:4000/third-api/balances-overview/${chain}/${selectedAddress}`)
+            .then(function (response) {
+                console.log('getBalances');
+                console.log(response.data);
+                setDominantToken(response.data.dominantToken);
+                setTokens(response.data.tokens);
+                setTotalTokenCount(response.data.totalTokensCount);
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            }).finally(()=>{
+        });        
+        
+    }
     const getbBriefWalletAddress = (address)=>{
         return String(address).substring(0, 4) +"..." +String(address).substring(38);
     }
+
+
+
     return ( 
         <>
             <div className="row mt-3">
@@ -95,17 +125,23 @@ function Portfolio() {
                                     <div className="title">
                                         Dominant Token
                                     </div>
-                                    <div className="token-info-body">
-                                        <div className="d-flex">
-                                            <img className="p-token-logo" src="https://etherscan.io/token/images/binanceusd_32.png" />
-                                            <div className="p-token-symbol">
-                                                BUSD
-                                            </div>
-                                        </div>
-                                        <div className="p-token-value">
-                                            $754,412.42 (87.99%)
-                                        </div>
-                                    </div>
+                                    {
+                                            dominantToken!=null?
+                                            <div className="token-info-body">
+                                        
+                                                <div className="d-flex align-items-center">
+                                                    <img className="p-token-logo" src={dominantToken.logoUrl} />
+                                                    <div className="p-token-symbol ml-2">
+                                                        {dominantToken.token.toUpperCase()}
+                                                    </div>
+                                                </div>
+                                                <div className="p-token-value">
+                                                    ${dominantToken.value} ({dominantToken.percentage})
+                                                </div>
+                                            </div>:
+                                            <div className="token-info-body">-</div>
+                                    }
+                                    
                                 </div>
                             </div>
                             <div className="col-md-4">
@@ -114,78 +150,31 @@ function Portfolio() {
                                         Tokens                                        
                                     </div>
                                     <div className="value">
-                                        7                                        
+                                        {totalTokenCount}                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="row mt-3">
-                            <div className="col-md-12">
-                                <div className="dominant-token-item">
-                                    <div className="d-flex align-items-center">
-                                        <img className="p-token-logo" src="https://etherscan.io/token/images/binanceusd_32.png" />
-                                        <div>
-                                            <div className="pd-token-name">BINANCE USD</div>
-                                            <div className="pd-token-value">-0.1%$ ($461.54)</div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="pd-token-worth">$512,23.56</div>
-                                        <div className="pd-token-value">-0.1%$ ($461.54)</div>
-                                    </div>
-                                </div>
-                                <div className="dominant-token-item">
-                                    <div className="d-flex align-items-center">
-                                        <img className="p-token-logo" src="https://etherscan.io/token/images/binanceusd_32.png" />
-                                        <div>
-                                            <div className="pd-token-name">BINANCE USD</div>
-                                            <div className="pd-token-value">-0.1%$ ($461.54)</div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="pd-token-worth">$512,23.56</div>
-                                        <div className="pd-token-value">-0.1%$ ($461.54)</div>
-                                    </div>
-                                </div>
-                                <div className="dominant-token-item">
-                                    <div className="d-flex align-items-center">
-                                        <img className="p-token-logo" src="https://etherscan.io/token/images/binanceusd_32.png" />
-                                        <div>
-                                            <div className="pd-token-name">BINANCE USD</div>
-                                            <div className="pd-token-value">-0.1%$ ($461.54)</div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="pd-token-worth">$512,23.56</div>
-                                        <div className="pd-token-value">-0.1%$ ($461.54)</div>
-                                    </div>
-                                </div>
-                                <div className="dominant-token-item">
-                                    <div className="d-flex align-items-center">
-                                        <img className="p-token-logo" src="https://etherscan.io/token/images/binanceusd_32.png" />
-                                        <div>
-                                            <div className="pd-token-name">BINANCE USD</div>
-                                            <div className="pd-token-value">-0.1%$ ($461.54)</div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="pd-token-worth">$512,23.56</div>
-                                        <div className="pd-token-value">-0.1%$ ($461.54)</div>
-                                    </div>
-                                </div>
-                                <div className="dominant-token-item">
-                                    <div className="d-flex align-items-center">
-                                        <img className="p-token-logo" src="https://etherscan.io/token/images/binanceusd_32.png" />
-                                        <div>
-                                            <div className="pd-token-name">BINANCE USD</div>
-                                            <div className="pd-token-value">-0.1%$ ($461.54)</div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="pd-token-worth">$512,23.56</div>
-                                        <div className="pd-token-value">-0.1%$ ($461.54)</div>
-                                    </div>
-                                </div>
+                            <div className="col-md-12 overview-tokens-list">
+                                {
+                                    tokens.slice(0, 5).map((d,i)=>{
+                                        return <div className="dominant-token-item" key={i}>
+                                                    <div className="d-flex align-items-center">
+                                                        <img className="p-token-logo" src={d.images.thumb} />
+                                                        <div className="ml-2">
+                                                            <div className="pd-token-name">{d.title.toUpperCase()}</div>
+                                                            <div className="pd-token-value">{d.amount.toFixed(4)}&nbsp;{d.token.toUpperCase()}&nbsp;•&nbsp;${d.nominalValueFiat.coinPriceFiat}</div>                                                             
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className="pd-token-worth">${d.value.toFixed(4)}</div>
+                                                        <div className="pd-token-value text-right">{d.change.status}&nbsp; (${d.change.value})</div>
+                                                    </div>
+                                                </div>
+                                    })
+                                }
+                                
                             </div>
                         </div>
                         <div className="row">
