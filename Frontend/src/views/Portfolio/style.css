@@ -249,3 +249,54 @@
 
     color: #23262F;
 }
+
+/*wallet-management*/
+.wallet-management .wallet-management-title{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 27px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: -0.02em;
+    color: #23262F;
+}
+.wallet-management .watch-list .watch-list-title, .wallet-management  .recently-viewed .recently-viewed-title{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: -0.02em;
+    color: #23262F;
+}
+
+.no-watch-list{
+    font-family: DM Sans;
+    font-style: normal;
+    /* font-weight: bold; */
+    font-size: 14px;
+    line-height: 16px;
+    color: #777E90;
+    border:dashed 2px rgba(0,108,255,0.55);
+    padding: 20px 30px;
+    text-align: center;
+}
+
+.add-wallet-btn{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 16px;
+    /* identical to box height, or 100% */
+    text-align: center;
+    /* Neutrals/8 */
+    color: #FCFCFD;
+}
+
+
+/*--------------end of wallet management-----------------------------*/

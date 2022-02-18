@@ -2,14 +2,30 @@ import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 import {Button} from "react-bootstrap";
 import {BsThreeDotsVertical} from "react-icons/bs";
 import {MdHelp} from "react-icons/md";
-import { Link } from "react-router-dom";
+
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
 
 import "./style.css";
 
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '660px',
+    maxWidth:'96%',
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+  };
 
 function Portfolio() {
 
@@ -20,9 +36,15 @@ function Portfolio() {
     const [holdings, setHoldings] = useState({totalsWorth:null, tokensWorth:null, defiWorth:null, nftWorth:null});
     const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
 
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     useEffect(()=>{
-        getBalances();
-        getHoldings();
+        if(selectedAddress!=""){
+            getBalances();
+            getHoldings();
+        }        
     },[selectedAddress, chain]);
 
     const getBalances = () =>{
@@ -70,10 +92,41 @@ function Portfolio() {
         <>
             <div className="row mt-3">
                 <div className="col-md-12">
-                    <Button id="wallet-dropdown-button">
+                    <Button  onClick={handleOpen} id="wallet-dropdown-button">
                             {getbBriefWalletAddress(selectedAddress)}&nbsp;
                             <BsThreeDotsVertical />
                     </Button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box className="wallet-management"  sx={style}>
+                            <Typography id="modal-modal-title" className="wallet-management-title" variant="h6" component="h2">
+                                Wallet Management
+                            </Typography>
+                            <div className="no-watch-list mt-4">
+                                Connect Sync and track your wallet with ease
+                            </div>
+                            <div className="watch-list mt-4">
+                                <div className="d-flex justify-content-between">
+                                    <div className="watch-list-title">Watchlist&nbsp;<small><MdHelp /></small></div>
+                                    <Button className="add-wallet-btn">Add Wallet</Button>
+                                </div>
+                                
+                                <div className="no-watch-list mt-2">
+                                    You can save wallets to your watchlist and come back to them later. Tap ‘+’ in the recent list or ‘Add Wallet’ to connect a wallet.
+                                </div>
+                            </div>
+                            <div className="recently-viewed mt-4">
+                                <div className="recently-viewed-title">Recently viewed&nbsp;<small><MdHelp /></small></div>
+                                <div className="no-watch-list mt-2">
+                                    There is no viewed history
+                                </div>
+                            </div>
+                        </Box>
+                    </Modal>
                 </div>
             </div>
             <div className="row">
@@ -255,7 +308,8 @@ function Portfolio() {
                         </div>
                     </div>                    
                 </div>
-            </div>
+            </div>            
+            
         </>
         );
 }
