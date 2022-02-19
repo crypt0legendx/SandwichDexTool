@@ -4,9 +4,11 @@ import {useSelector, useDispatch} from "react-redux";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
+import { useWeb3Context } from "../../hooks/web3";
+
 import {Button} from "react-bootstrap";
-import {BsThreeDotsVertical} from "react-icons/bs";
-import {MdHelp} from "react-icons/md";
+import {BsThreeDotsVertical, BsPlusCircleFill} from "react-icons/bs";
+import {MdHelp, MdOutlineContentCopy} from "react-icons/md";
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -30,6 +32,8 @@ const style = {
 
 function Portfolio() {
 
+    const { connect, disconnect, connected, address } = useWeb3Context();
+
     const chain = useSelector((state) => state.network.name);
     const [dominantToken, setDominantToken] = useState(null);
     const [tokens, setTokens] = useState([]);
@@ -37,6 +41,8 @@ function Portfolio() {
     const [holdings, setHoldings] = useState({totalsWorth:null, tokensWorth:null, defiWorth:null, nftWorth:null});
     const [load_holding, setLoadHolding] = useState(false);
     const [load_tokens, setLoadTokens] = useState(false);
+
+
     const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
 
     const [open, setOpen] = useState(false);
@@ -110,21 +116,81 @@ function Portfolio() {
                             <Typography id="modal-modal-title" className="wallet-management-title" variant="h6" component="h2">
                                 Wallet Management
                             </Typography>
-                            <div className="no-watch-list mt-4">
-                                Connect Sync and track your wallet with ease
-                            </div>
+                            {
+                                connected?
+                                <div className="account-info mt-3">
+                                    <div className="wallet-management-subtitle">Account&nbsp;<small><MdHelp /></small></div>
+                                    <div className="wallet-itmes">
+                                        <div className="wallet-item d-flex flex-wrap align-items-center justify-content-between">
+                                            <div className="d-flex align-items-center">
+                                                <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${address}.svg`} />
+                                                <span className="wallet-name ml-2">{address}</span>
+                                            </div>                                    
+                                            <div className="d-flex align-items-center">
+                                                <button className="wallet-item-action"><MdOutlineContentCopy /></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>:
+                                <div className="no-watch-list mt-4">
+                                    <button className="wm-connect-btn" onClick={()=>connect()}>Connect</button> Sync and track your wallet with ease
+                                </div>
+                            }
+                                                
+                            
                             <div className="watch-list mt-4">
                                 <div className="d-flex justify-content-between">
-                                    <div className="watch-list-title">Watchlist&nbsp;<small><MdHelp /></small></div>
+                                    <div className="wallet-management-subtitle">Watchlist&nbsp;<small><MdHelp /></small></div>
                                     <Button className="add-wallet-btn">Add Wallet</Button>
                                 </div>
-                                
-                                <div className="no-watch-list mt-2">
+                                <div className="wallet-itmes mt-2">
+                                    <div className="wallet-item d-flex flex-wrap align-items-center justify-content-between">
+                                        <div className="d-flex align-items-center">
+                                            <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${address}.svg`} />
+                                            <span className="wallet-name ml-2">{address}</span>
+                                        </div>                                    
+                                        <div className="d-flex align-items-center">
+                                            <button className="wallet-item-action"><MdOutlineContentCopy /></button>
+                                            <button className="wallet-item-action ml-1"><BsThreeDotsVertical /></button>
+                                        </div>
+                                    </div>
+                                    <div className="wallet-item d-flex flex-wrap align-items-center justify-content-between">
+                                        <div className="d-flex align-items-center">
+                                            <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${address}.svg`} />
+                                            <span className="wallet-name ml-2">{address}</span>
+                                        </div>                                    
+                                        <div className="d-flex align-items-center">
+                                            <button className="wallet-item-action"><MdOutlineContentCopy /></button>
+                                            <button className="wallet-item-action ml-1"><BsThreeDotsVertical /></button>
+                                        </div>
+                                    </div>
+                                    <div className="wallet-item d-flex flex-wrap align-items-center justify-content-between">
+                                        <div className="d-flex align-items-center">
+                                            <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${address}.svg`} />
+                                            <span className="wallet-name ml-2">{address}</span>
+                                        </div>                                    
+                                        <div className="d-flex align-items-center">
+                                            <button className="wallet-item-action"><MdOutlineContentCopy /></button>
+                                            <button className="wallet-item-action ml-1"><BsThreeDotsVertical /></button>
+                                        </div>
+                                    </div>
+                                    <div className="wallet-item d-flex flex-wrap align-items-center justify-content-between">
+                                        <div className="d-flex align-items-center">
+                                            <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${address}.svg`} />
+                                            <span className="wallet-name ml-2">{address}</span>
+                                        </div>                                    
+                                        <div className="d-flex align-items-center">
+                                            <button className="wallet-item-action"><MdOutlineContentCopy /></button>
+                                            <button className="wallet-item-action ml-1"><BsThreeDotsVertical /></button>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                {/* <div className="no-watch-list mt-2">
                                     You can save wallets to your watchlist and come back to them later. Tap ‘+’ in the recent list or ‘Add Wallet’ to connect a wallet.
-                                </div>
+                                </div> */}
                             </div>
                             <div className="recently-viewed mt-4">
-                                <div className="recently-viewed-title">Recently viewed&nbsp;<small><MdHelp /></small></div>
+                                <div className="wallet-management-subtitle">Recently viewed&nbsp;<small><MdHelp /></small></div>
                                 <div className="no-watch-list mt-2">
                                     There is no viewed history
                                 </div>

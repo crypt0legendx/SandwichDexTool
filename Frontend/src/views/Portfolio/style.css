@@ -252,26 +252,22 @@
 
 /*wallet-management*/
 .wallet-management .wallet-management-title{
-    font-family: DM Sans;
+    font-family: 'DM SANS';
     font-style: normal;
     font-weight: bold;
-    font-size: 27px;
+    font-size: 24px;
     line-height: 29px;
-    /* identical to box height */
-
     letter-spacing: -0.02em;
-    color: #23262F;
+    color: #35c4ff;
 }
-.wallet-management .watch-list .watch-list-title, .wallet-management  .recently-viewed .recently-viewed-title{
-    font-family: DM Sans;
+.wallet-management .wallet-management-subtitle{
+    font-family: 'POPPINS';
     font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 16px;
     line-height: 29px;
-    /* identical to box height */
-
     letter-spacing: -0.02em;
-    color: #23262F;
+    color: #23262f;
 }
 
 .no-watch-list{
@@ -279,23 +275,71 @@
     font-style: normal;
     /* font-weight: bold; */
     font-size: 14px;
-    line-height: 16px;
-    color: #777E90;
-    border:dashed 2px rgba(0,108,255,0.55);
+    line-height: 18px;
+    color: #9f8a97;
+    border: dashed 2px rgb(226 194 194);
     padding: 20px 30px;
     text-align: center;
+    border-radius: 10px;
 }
 
-.add-wallet-btn{
+.wm-connect-btn{
+    background: transparent;
+    border:0px;
     font-family: DM Sans;
     font-style: normal;
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-size: 14px;
+    line-height: 16px;
+    color:blue;
+    text-align: center;
+    
+
+}
+.add-wallet-btn{
+    background:#35C4FF;
+    border:0px;
+
+    font-family: DM Sans;
+    font-style: normal;
     font-size: 13px;
     line-height: 16px;
     /* identical to box height, or 100% */
     text-align: center;
     /* Neutrals/8 */
     color: #FCFCFD;
+}
+
+.wallet-itmes{
+    background:#ffd9d96e;
+    padding:10px;
+    border-radius:10px;
+}
+
+.wallet-logo{
+    width:36px;
+    background:#fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.wallet-name{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.wallet-item-action{
+    font-size:18px;
+    color:#23262F;
+    background:transparent;
+    border:0px;
+}
+
+.wallet-item + .wallet-item{
+    margin-top:5px;
 }
 
 
