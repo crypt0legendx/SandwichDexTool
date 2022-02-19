@@ -16,6 +16,7 @@ function PortfolioTokens(){
     const [holdings, setHoldings] = useState({totalsWorth:null, tokensWorth:null, defiWorth:null, nftWorth:null});
     const [load_tokens, setLoadTokens] = useState(false);
     const [tokens, setTokens] = useState([]);
+    const [tokens_summary, setTokensSummary] = useState(null);
 
     useEffect(()=>{
         if(selectedAddress!=""){
@@ -30,6 +31,7 @@ function PortfolioTokens(){
             .then(function (response) {
                 console.log('getTokens');                
                 setTokens(response.data.tokens);
+                setTokensSummary(response.data.summary);
                 setLoadTokens(false);
                 
             })
@@ -50,20 +52,20 @@ function PortfolioTokens(){
                         </div>
                         <div className="value">                            
                             {
-                                load_holding?
+                                load_tokens?
                                 <Skeleton animation="wave" width={100} height={30} />:
-                                holdings.totalWorth?'$'+holdings.totalWorth.toFixed(2):'-'
+                                tokens_summary!==null?'$'+tokens_summary.nominalValueFiat.valueFiat.toFixed(2):'-'
                             }
                             
                         </div>
                         <div className="percent">
-                            {   load_holding?
+                            {   load_tokens?
                                 <Skeleton animation="wave" width={100} height={15} />:
                                 (
-                                    holdings.totalWorth?
-                                    <span className={holdings.changes.totalWorth.percentage>=0?'text-success':'text-danger'}>
-                                        {holdings.changes.totalWorth.percentage+'%'}&nbsp;
-                                        (${holdings.changes.totalWorth.value})
+                                    tokens_summary!==null?
+                                    <span className={tokens_summary.change.label=="negative"?'text-danger':'text-success'}>
+                                        {tokens_summary.change.status}&nbsp;
+                                        (${tokens_summary.change.value})
                                     </span>:''
                                 )                                
                             }                                                    
