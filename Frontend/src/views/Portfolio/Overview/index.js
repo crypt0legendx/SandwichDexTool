@@ -30,7 +30,7 @@ function PortfolioOverview(){
     const getBalances = () =>{
 
         setLoadTokens(true);
-        axios.get(`http://localhost:4000/third-api/balances-overview/${chain}/${selectedAddress}`)
+        axios.get(`http://localhost:4000/third-api/balances-overview/${chain}/${selectedAddress}/5`)
             .then(function (response) {
                 console.log('getBalances');
                 console.log(response.data);
@@ -296,7 +296,7 @@ function PortfolioOverview(){
                     <div className="nft-token-card bg-light-gray">
                         <div className="title">NFT</div>
                         <div className="no-data">
-                            <img className=" mt-4" src="assets/images/Portfolio/nodata.png" />
+                            <img className=" mt-4" src="../assets/images/Portfolio/nodata.png" />
                             <div className="nodata-description mt-4">
                                 No NFTS detected in this wallet
                             </div>
