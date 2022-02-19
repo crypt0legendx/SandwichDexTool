@@ -36,7 +36,8 @@ function App() {
     useEffect(()=>{
         getFavourites();
         getRealtimeDatas();
-        setInterval(()=>getRealtimeDatas(),100000);
+
+        // setInterval(()=>getRealtimeDatas(),100000);
     })
 
     const getFavourites = () =>{

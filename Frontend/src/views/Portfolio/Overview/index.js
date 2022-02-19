@@ -14,6 +14,7 @@ function PortfolioOverview(){
     const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
 
     const [dominantToken, setDominantToken] = useState(null);
+    const [tokens_summary, setTokensSummary] = useState(null);
     const [tokens, setTokens] = useState([]);
     const [totalTokenCount, setTotalTokenCount] = useState(0);
     const [holdings, setHoldings] = useState({totalsWorth:null, tokensWorth:null, defiWorth:null, nftWorth:null});
@@ -22,8 +23,8 @@ function PortfolioOverview(){
 
     useEffect(()=>{
         if(selectedAddress!=""){
-            getBalances();
-            getHoldings();
+            getBalances();            
+            getHoldings();            
         }        
     },[selectedAddress, chain]);
 
@@ -37,6 +38,7 @@ function PortfolioOverview(){
                 setDominantToken(response.data.dominantToken);
                 setTokens(response.data.tokens);
                 setTotalTokenCount(response.data.totalTokensCount);
+                setTokensSummary(response.data.summary);
                 setLoadTokens(false);
                 
             })
@@ -58,7 +60,7 @@ function PortfolioOverview(){
                 
             })
             .catch(function (error) {
-                console.log(error);
+                console.log(error);                
             }).finally(()=>{
         });        
         
@@ -103,25 +105,28 @@ function PortfolioOverview(){
                                     <div className="title">
                                         Tokens Worth
                                     </div>
-                                    <div className="value">
+                                    <div className="value">                            
                                         {
-                                            load_holding?
-                                            <Skeleton animation="wave" width={"100%"} height={30} />:
-                                            holdings.tokensWorth?'$'+holdings.tokensWorth.toFixed(2):'-'
+                                            load_tokens?
+                                            <Skeleton animation="wave" width={100} height={30} />:
+                                            tokens_summary!==null?
+                                            (
+                                                tokens_summary.nominalValueFiat.valueFiat>0?'$'+tokens_summary.nominalValueFiat.valueFiat.toFixed(2):'-'
+                                            ):'-'
                                         }
+                                        
                                     </div>
                                     <div className="percent">
-                                        {   load_holding?
-                                            <Skeleton animation="wave" width={"100%"} height={15} />:
+                                        {   load_tokens?
+                                            <Skeleton animation="wave" width={100} height={15} />:
                                             (
-                                                holdings.tokensWorth?
-                                                <span className={holdings.changes.tokensWorth.percentage>=0?'text-success':'text-danger'}>
-                                                    {holdings.changes.tokensWorth.percentage+'%'}&nbsp;
-                                                    (${holdings.changes.tokensWorth.value})
+                                                tokens_summary!==null?
+                                                <span className={tokens_summary.change.label=="negative"?'text-danger':'text-success'}>
+                                                    {tokens_summary.change.status}&nbsp;
+                                                    {tokens_summary.change.value>0?`($${tokens_summary.change.value})`:''}
                                                 </span>:''
-                                            )
-                                            
-                                        }
+                                            )                                
+                                        }                                                    
                                     </div>
                                 </div>
                             </div>

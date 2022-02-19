@@ -168,11 +168,14 @@
     color: #23262F;
 }
 
-.nft-token-card .no-data{
+.no-data{
     text-align: center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
-.nft-token-card .no-data .nodata-description{
+.no-data .nodata-description{
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;

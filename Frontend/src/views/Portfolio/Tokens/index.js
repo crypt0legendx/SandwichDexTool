@@ -11,16 +11,22 @@ function PortfolioTokens(){
 
     const chain = useSelector((state) => state.network.name);
     const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
-    
-    const [load_holding, setLoadHolding] =  useState(true);
-    const [holdings, setHoldings] = useState({totalsWorth:null, tokensWorth:null, defiWorth:null, nftWorth:null});
+
     const [load_tokens, setLoadTokens] = useState(false);
     const [tokens, setTokens] = useState([]);
     const [tokens_summary, setTokensSummary] = useState(null);
+    const [defies_summary, setDefiesSummary] = useState(null);
+
+    const [load_defies, setLoadDefies] = useState(false);
+    const [defies, setDefies] = useState(null);
 
     useEffect(()=>{
         if(selectedAddress!=""){
-            getTokens();            
+            getTokens();  
+            setTimeout(() => {
+                getDefiAssets();    
+            }, 1000);          
+            
         }        
     },[selectedAddress, chain]);
 
@@ -42,6 +48,24 @@ function PortfolioTokens(){
         
     }
 
+    const getDefiAssets = () =>{
+
+        setLoadDefies(true);
+        axios.get(`http://localhost:4000/third-api/defi-assets/${chain}/${selectedAddress}`)
+            .then(function (response) {
+                console.log('getDefies');                
+                setDefies(response.data.asset);
+                setDefiesSummary(response.data.totals.worth);
+                setLoadDefies(false);
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            }).finally(()=>{
+        });        
+        
+    }
+
     return (
         <>
             <div className="row">
@@ -54,7 +78,10 @@ function PortfolioTokens(){
                             {
                                 load_tokens?
                                 <Skeleton animation="wave" width={100} height={30} />:
-                                tokens_summary!==null?'$'+tokens_summary.nominalValueFiat.valueFiat.toFixed(2):'-'
+                                tokens_summary!==null?
+                                (
+                                    tokens_summary.nominalValueFiat.valueFiat>0?'$'+tokens_summary.nominalValueFiat.valueFiat.toFixed(2):'-'
+                                ):'-'
                             }
                             
                         </div>
@@ -65,7 +92,7 @@ function PortfolioTokens(){
                                     tokens_summary!==null?
                                     <span className={tokens_summary.change.label=="negative"?'text-danger':'text-success'}>
                                         {tokens_summary.change.status}&nbsp;
-                                        (${tokens_summary.change.value})
+                                        {tokens_summary.change.value>0?`($${tokens_summary.change.value})`:''}
                                     </span>:''
                                 )                                
                             }                                                    
@@ -79,20 +106,24 @@ function PortfolioTokens(){
                         </div>
                         <div className="value">                            
                             {
-                                load_holding?
+                                load_defies?
                                 <Skeleton animation="wave" width={100} height={30} />:
-                                holdings.totalWorth?'$'+holdings.totalWorth.toFixed(2):'-'
+                                defies_summary!==null?
+                                (
+                                    defies_summary.valueFiat>0?'$'+defies_summary.valueFiat.toFixed(2):'-'
+                                ):
+                                '-'
                             }
                             
                         </div>
                         <div className="percent">
-                            {   load_holding?
+                            {   load_defies?
                                 <Skeleton animation="wave" width={100} height={15} />:
                                 (
-                                    holdings.totalWorth?
-                                    <span className={holdings.changes.totalWorth.percentage>=0?'text-success':'text-danger'}>
-                                        {holdings.changes.totalWorth.percentage+'%'}&nbsp;
-                                        (${holdings.changes.totalWorth.value})
+                                    defies_summary!==null?
+                                    <span className={defies_summary.change.label=="negative"?'text-danger':'text-success'}>
+                                        {defies_summary.change.status}&nbsp;
+                                        {defies_summary.change.value>0?`($${defies_summary.change.value})`:''}
                                     </span>:''
                                 )                                
                             }                                                    
@@ -130,27 +161,41 @@ function PortfolioTokens(){
                                                     </div>
                                                 </div>
                                     })):
-                                    (tokens.map((d,i)=>{
-                                        return <div className="dominant-token-item" key={i}>
-                                                    <div className="d-flex align-items-center">
-                                                        <img className="p-token-logo" src={d.images.thumb} />
-                                                        <div className="ml-2">
-                                                            <div className="pd-token-name">{d.title.toUpperCase()}</div>
-                                                            <div className="pd-token-value">{d.amount.toFixed(4)}&nbsp;{d.token.toUpperCase()}&nbsp;•&nbsp;${d.nominalValueFiat.coinPriceFiat}</div>                                                             
+                                    (
+                                        tokens.length>0?
+                                        (
+                                            tokens.map((d,i)=>{
+                                            return <div className="dominant-token-item" key={i}>
+                                                        <div className="d-flex align-items-center">
+                                                            <img className="p-token-logo" src={d.images.thumb} />
+                                                            <div className="ml-2">
+                                                                <div className="pd-token-name">{d.title.toUpperCase()}</div>
+                                                                <div className="pd-token-value">{d.amount.toFixed(4)}&nbsp;{d.token.toUpperCase()}&nbsp;•&nbsp;${d.nominalValueFiat.coinPriceFiat}</div>                                                             
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className="pd-token-worth">${d.value.toFixed(4)}</div>
+                                                            {
+                                                                d.change&&
+                                                                <div className={parseFloat(d.change.status)>=0?"pd-token-value text-right text-success":"pd-token-value text-right text-danger"}>
+                                                                    {d.change.status}&nbsp; (${d.change.value})
+                                                                </div>
+                                                            }
+                                                            
                                                         </div>
                                                     </div>
-                                                    <div>
-                                                        <div className="pd-token-worth">${d.value.toFixed(4)}</div>
-                                                        {
-                                                            d.change&&
-                                                            <div className={parseFloat(d.change.status)>=0?"pd-token-value text-right text-success":"pd-token-value text-right text-danger"}>
-                                                                {d.change.status}&nbsp; (${d.change.value})
-                                                            </div>
-                                                        }
-                                                        
-                                                    </div>
-                                                </div>
-                                    }))
+                                            })
+                                        ):
+                                        (
+                                            <div className="no-data">
+                                                <img className=" mt-4" src="../assets/images/Portfolio/nodata.png" />
+                                                <div className="nodata-description mt-4">
+                                                    No tokens detected for this wallet
+                                                </div>                                                
+                                            </div>
+                                        
+                                        )
+                                    )
                                 }
                                 
                                 
@@ -158,16 +203,45 @@ function PortfolioTokens(){
                         </div>                        
                     </div>
                 </div>
-                <div className="col-md-4 mt-3">
+                <div className="col-md-5 mt-3">
                     <div className="nft-token-card bg-light-gray">
                         <div className="title">DeFi Saving</div>
-                        <div className="no-data">
-                            <img className=" mt-4" src="../assets/images/Portfolio/nodata.png" />
-                            <div className="nodata-description mt-4">
-                                No deposits detected for this wallet
-                            </div>
-                            <Button className="discover-nft-btn mt-5">Discover DeFi</Button>
-                        </div>
+                        {
+                            load_defies?
+                            (new Array(5).fill(0).map((d,i)=>{
+                                return <div className="dominant-token-item" key={i}>
+                                            <div className="d-flex align-items-center">
+                                                <Skeleton animation="wave" variant="circular" width={30} height={30} />
+                                                <div className="ml-2">
+                                                    <div className="pd-token-name">
+                                                        <Skeleton animation="wave" width={70} height={20} />
+                                                    </div>                                                                                                    
+                                                </div>
+                                            </div>
+                                            <div className="d-flex align-items-center">
+                                                <div className="pd-token-worth">
+                                                    <Skeleton animation="wave" width={50} height={20} />
+                                                </div>
+                                                <div className="pd-token-value text-right ml-1">
+                                                    <Skeleton animation="wave" variant="circular" width={20} height={20} />
+                                                </div>
+                                            </div>
+                                        </div>
+                            })):
+                            (
+                                defies != null?
+                                (
+                                    '-'
+                                ):
+                                <div className="no-data">
+                                    <img className=" mt-4" src="../assets/images/Portfolio/nodata.png" />
+                                    <div className="nodata-description mt-4">
+                                        No deposits detected for this wallet
+                                    </div>
+                                    <Button className="discover-nft-btn mt-5">Discover DeFi</Button>
+                                </div>
+                            )                            
+                        }                        
                     </div>                    
                 </div>
             </div>

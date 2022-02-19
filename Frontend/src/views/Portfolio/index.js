@@ -1,22 +1,15 @@
 import React, {useState, useEffect} from "react";
-import {BrowserRouter as Router, Routes, Route, Navigate, Link, Outlet} from "react-router-dom";
+import {  Outlet} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 
-import { useWeb3Context } from "../../hooks/web3";
-
 import {Button} from "react-bootstrap";
-import {BsThreeDotsVertical, BsPlusCircleFill, BsTrash} from "react-icons/bs";
-import {MdHelp, MdOutlineContentCopy, MdDelete} from "react-icons/md";
-import {HiPlusCircle} from "react-icons/hi";
+import {BsThreeDotsVertical} from "react-icons/bs";
 
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 
 import WalletManagement from "./WalletManagement";
-import PortfolioTokens from "./Tokens";
-import PortfolioOverview from "./Overview";
 
 
 import "./style.css";
@@ -36,7 +29,7 @@ function Portfolio() {
 
     const chain = useSelector((state) => state.network.name);
     const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
-    
+
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
