@@ -73,7 +73,10 @@ function Header(props) {
                     </Dropdown.Menu>
                 </Dropdown>
                 <ConnectWallet />
-            </div>            
+            </div>   
+            <button onClick={()=>props.setOpen()} className="navbar-toggler navbar-light " type="button " data-toggle="collapse " data-target="#main-navigation ">
+                <span className="navbar-toggler-icon "></span>
+            </button>         
             
         </nav>
     </>

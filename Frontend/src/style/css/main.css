@@ -21,7 +21,7 @@ body {
     overflow-y: auto;    
 }
 
-@media(max-width:768px){
+@media(max-width:1028px){
   .page-content{
       margin-left: 0px;
       padding-left:20px;

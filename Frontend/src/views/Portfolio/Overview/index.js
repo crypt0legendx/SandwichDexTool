@@ -189,7 +189,7 @@ function PortfolioOverview(){
                     <div className="dominant-token-card bg-light-gray">
                         <div className="row">
                             <div className="col-md-8">
-                                <div className="token-info">
+                                <div className="token-info mt-1">
                                     <div className="title">
                                         Dominant Token
                                     </div>
@@ -225,11 +225,11 @@ function PortfolioOverview(){
                                 </div>
                             </div>
                             <div className="col-md-4">
-                                <div className="token-count">
-                                    <div className="title">
+                                <div className="token-count mt-1">
+                                    <div className="title d-flex align-items-center justify-content-md-center">
                                         Tokens                                        
                                     </div>
-                                    <div className="value d-flex align-items-center justify-content-center">
+                                    <div className="value d-flex align-items-center justify-content-md-center">
                                         { load_tokens?
                                           <Skeleton animation="wave" width={20} height={20} />:
                                           totalTokenCount                                        
