@@ -142,14 +142,14 @@ function Portfolio() {
                         <div className="value">                            
                             {
                                 load_holding?
-                                <Skeleton variant="rectangular" width={"100%"} height={30} />:
+                                <Skeleton animation="wave" width={"100%"} height={30} />:
                                 holdings.totalWorth?'$'+holdings.totalWorth.toFixed(2):'-'
                             }
                             
                         </div>
                         <div className="percent">
                             {   load_holding?
-                                <Skeleton variant="rectangular" width={"100%"} height={15} />:
+                                <Skeleton animation="wave" width={"100%"} height={15} />:
                                 (
                                     holdings.totalWorth?
                                     <span className={holdings.changes.totalWorth.percentage>=0?'text-success':'text-danger'}>
@@ -172,13 +172,13 @@ function Portfolio() {
                                     <div className="value">
                                         {
                                             load_holding?
-                                            <Skeleton variant="rectangular" width={"100%"} height={30} />:
+                                            <Skeleton animation="wave" width={"100%"} height={30} />:
                                             holdings.tokensWorth?'$'+holdings.tokensWorth.toFixed(2):'-'
                                         }
                                     </div>
                                     <div className="percent">
                                         {   load_holding?
-                                            <Skeleton variant="rectangular" width={"100%"} height={15} />:
+                                            <Skeleton animation="wave" width={"100%"} height={15} />:
                                             (
                                                 holdings.tokensWorth?
                                                 <span className={holdings.changes.tokensWorth.percentage>=0?'text-success':'text-danger'}>
@@ -198,13 +198,13 @@ function Portfolio() {
                                     </div>
                                     <div className="value">
                                         {   load_holding?
-                                            <Skeleton variant="rectangular" width={"100%"} height={30} />:
+                                            <Skeleton animation="wave" width={"100%"} height={30} />:
                                             holdings.defiWorth?'$'+holdings.defiWorth.toFixed(2):'-'
                                         }
                                     </div>
                                     <div className="percent">
                                         {   load_holding?
-                                            <Skeleton variant="rectangular" width={"100%"} height={15} />:
+                                            <Skeleton animation="wave" width={"100%"} height={15} />:
                                             (
                                                 holdings.defiWorth?
                                                 <span className={holdings.changes.defiWorth.percentage>=0?'text-success':'text-danger'}>
@@ -223,13 +223,13 @@ function Portfolio() {
                                     </div>
                                     <div className="value">
                                             {load_holding?
-                                            <Skeleton variant="rectangular" width={"100%"} height={30} />:
+                                            <Skeleton animation="wave" width={"100%"} height={30} />:
                                             holdings.nftWorth?'$'+holdings.nftWorth.toFixed(2):'-'
                                         }                               
                                     </div>
                                     <div className="percent">
                                         {   load_holding?
-                                            <Skeleton variant="rectangular" width={"100%"} height={15} />:
+                                            <Skeleton animation="wave" width={"100%"} height={15} />:
                                             (
                                                 holdings.nftWorth?
                                                 <span className={holdings.changes.nftWorth.percentage>=0?'text-success':'text-danger'}>
@@ -260,11 +260,11 @@ function Portfolio() {
                                                 <div className="d-flex align-items-center">
                                                     <Skeleton animation="wave" variant="circular" width={30} height={30} />
                                                     <div className="p-token-symbol ml-2">
-                                                        <Skeleton variant="rectangular" width={100} height={20} />
+                                                        <Skeleton animation="wave" width={100} height={20} />
                                                     </div>
                                                 </div>
                                                 <div className="p-token-value">
-                                                    <Skeleton variant="rectangular" width={100} height={20} />
+                                                    <Skeleton animation="wave" width={100} height={20} />
                                                 </div>
                                             </div>
                                         ):
@@ -292,7 +292,7 @@ function Portfolio() {
                                     </div>
                                     <div className="value d-flex align-items-center justify-content-center">
                                         { load_tokens?
-                                          <Skeleton variant="rectangular" width={20} height={20} />:
+                                          <Skeleton animation="wave" width={20} height={20} />:
                                           totalTokenCount                                        
                                         }
                                     </div>
@@ -309,19 +309,19 @@ function Portfolio() {
                                                         <Skeleton animation="wave" variant="circular" width={30} height={30} />
                                                         <div className="ml-2">
                                                             <div className="pd-token-name">
-                                                                <Skeleton variant="rectangular" width={100} height={15} />
+                                                                <Skeleton animation="wave" width={100} height={12} />
                                                             </div>
                                                             <div className="pd-token-value mt-1">
-                                                                <Skeleton variant="rectangular" width={100} height={5} />
+                                                                <Skeleton animation="wave" width={100} height={5} />
                                                             </div>                                                             
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <div className="pd-token-worth">
-                                                            <Skeleton variant="rectangular" width={50} height={10} />
+                                                            <Skeleton animation="wave" width={50} height={10} />
                                                         </div>
                                                         <div className="pd-token-value text-right mt-1">
-                                                            <Skeleton variant="rectangular" width={50} height={5} />
+                                                            <Skeleton animation="wave" width={50} height={5} />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -337,10 +337,13 @@ function Portfolio() {
                                                     </div>
                                                     <div>
                                                         <div className="pd-token-worth">${d.value.toFixed(4)}</div>
-                                                        <div 
-                                                        className={parseFloat(d.change.status)>=0?"pd-token-value text-right text-success":"pd-token-value text-right text-danger"}>
-                                                            {d.change.status}&nbsp; (${d.change.value})
-                                                        </div>
+                                                        {
+                                                            d.change&&
+                                                            <div className={parseFloat(d.change.status)>=0?"pd-token-value text-right text-success":"pd-token-value text-right text-danger"}>
+                                                                {d.change.status}&nbsp; (${d.change.value})
+                                                            </div>
+                                                        }
+                                                        
                                                     </div>
                                                 </div>
                                     }))
