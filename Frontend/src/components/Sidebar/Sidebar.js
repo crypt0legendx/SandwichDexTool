@@ -121,7 +121,7 @@ function Sidebar(props) {
                             )
                         }                        
                         <li className={`${pathname.match('/portfolio') ? 'nav-item active' : 'nav-item'}`}>
-                            <Link to={'portfolio'} className="nav-link align-items-center d-flex" onClick={()=>props.setOpen()}>
+                            <Link to={'portfolio/overview'} className="nav-link align-items-center d-flex" onClick={()=>props.setOpen()}>
                                 <RiWallet2Line className="side-icon mr-3" />SandwichPortfolio
                             </Link>
                         </li>

@@ -250,6 +250,10 @@
     color: #23262F;
 }
 
+
+.wallet-management{
+    padding: 30px 20px;
+}
 /*wallet-management*/
 .wallet-management .wallet-management-title{
     font-family: 'DM SANS';
@@ -329,6 +333,8 @@
     font-weight: bold;
     font-size: 14px;
     line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #23262f;
 }
 
 .wallet-item-action{

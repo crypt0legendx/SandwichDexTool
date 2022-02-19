@@ -118,7 +118,7 @@ function WalletManagement(){
                         </div>                                                                                                 
                     </div>
                     {/* <div className="no-watch-list mt-2">
-                        There is no viewed history
+                        The last five wallets you viewed will be shown here
                     </div> */}
                 </div>
             </div>

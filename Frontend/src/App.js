@@ -15,6 +15,9 @@ import {getTrendings, getGainersLosers} from './store/slices/trendings-slice';
 import {changeFavourites} from './store/slices/currencies-slice';
 import Footer from "./components/Footer";
 import Portfolio from "./views/Portfolio";
+import PortfolioTokens from "./views/Portfolio/Tokens";
+import PortfolioOverview from "./views/Portfolio/Overview";
+
 
 
 
@@ -37,8 +40,7 @@ function App() {
     })
 
     const getFavourites = () =>{
-        let favouriteTokens = JSON.parse(localStorage.getItem('favourites'))||[];
-        
+        let favouriteTokens = JSON.parse(localStorage.getItem('favourites'))||[];        
         dispatch(changeFavourites(favouriteTokens));
     }
 
@@ -59,7 +61,11 @@ function App() {
                         <Route path="/trending-tokens" element={<TrendingTokens />} />
                         <Route path="/gainers-losers" element={<GainersLosers />} />
                         <Route path="/chart/:symbol/:contractAddress" element={<Chart />} />
-                        <Route path="/portfolio" element={<Portfolio />} />
+                        <Route path="/portfolio" element={<Portfolio />} >
+                            <Route path="overview" element={<PortfolioOverview />} />
+                            <Route path="tokens" element={<PortfolioTokens />} />                                        
+                        </Route>
+                        
                         <Route path="/*" element={<Navigate to="/currencies" />} />
                     </Routes>
                     
