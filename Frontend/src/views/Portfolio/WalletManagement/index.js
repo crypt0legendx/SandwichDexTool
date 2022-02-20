@@ -25,10 +25,6 @@ function WalletManagement(props){
         initialWalletInfo();
     },[])
 
-    useEffect(()=>{
-        console.log('-');
-    },[recentList, watchList])
-
     const initialWalletInfo = () =>{    
         const watch_list = JSON.parse(localStorage.getItem('watch_list'))||[];        
         const recent_list = JSON.parse(localStorage.getItem('recent_viewed_wallets'))||[];        
@@ -36,8 +32,23 @@ function WalletManagement(props){
         setRecentList(recent_list);
     }
 
-    const clickedAddress = (address) =>{
-        dispatch(setCurrentAddress(address));
+    const clickedAddress = (addr) =>{
+        dispatch(setCurrentAddress(addr));
+        const recent_lists = [...recentList];
+        if(recent_lists[recent_lists.length-1] !==addr){
+            recent_lists.push(addr);
+            if(recent_lists.length>5){
+                setRecentList(recent_lists.slice(1, 6));
+                localStorage.setItem('recent_viewed_wallets', JSON.stringify(recent_lists.slice(1, 6)));
+            }else{
+                setRecentList(recent_lists.slice(0, 5));
+                localStorage.setItem('recent_viewed_wallets', JSON.stringify(recent_lists.slice(0, 5)));
+            }
+            
+            
+        }else{
+            //if already address is existed in watch list, exception handle
+        }
         props.handleClose();
     }
 
@@ -45,8 +56,10 @@ function WalletManagement(props){
         console.log("add");
         if(checkWallet(inputAddress)){
             //add wallet to watch list
-            let watch_lists = watchList;
+            console.log('checked');
+            const watch_lists = [...watchList];
             if(!watch_lists.includes(inputAddress)){
+                console.log('push');
                 watch_lists.push(inputAddress);
                 setWatchList(watch_lists);
                 localStorage.setItem('watch_list', JSON.stringify(watch_lists));
@@ -56,6 +69,35 @@ function WalletManagement(props){
             }            
         }else{
             // exception handle.
+        }
+    }
+
+    const recentToWatchList = (addr) => {
+        console.log("move");
+        //add wallet to watch list
+        console.log('checked');
+        const watch_lists = [...watchList];
+        if(!watch_lists.includes(addr)){
+            console.log('push');
+            watch_lists.push(addr);
+            setWatchList(watch_lists);
+            localStorage.setItem('watch_list', JSON.stringify(watch_lists));
+            
+        }else{
+            //if already address is existed in watch list, exception handle
+        }            
+        
+    }
+
+    const removeWallet = (w) =>{
+        console.log('removeWallet');
+        let watch_lists = [...watchList];
+        const idx =  watch_lists.findIndex(d=>d === w);
+        if(idx!=-1){
+            console.log('exist', idx);
+            watch_lists.splice(idx, 1);
+            setWatchList(watch_lists);
+            localStorage.setItem('watch_list', JSON.stringify(watch_lists));
         }
     }
 
@@ -80,7 +122,7 @@ function WalletManagement(props){
                     connected?
                     <div className="account-info mt-3">
                         <div className="wallet-management-subtitle">Account&nbsp;<small><MdHelp /></small></div>
-                        <div className="wallet-itmes">
+                        <div className="wallet-items">
                             <div className="wallet-item d-flex flex-wrap align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
                                     <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${address}.svg`} />
@@ -110,9 +152,9 @@ function WalletManagement(props){
                     </div>                    
                     {
                         watchList.length>0&&(
-                        <div className="wallet-itmes mt-2">
+                        <div className="wallet-items watch-lists mt-2">
                             {
-                                watchList.map((w,i)=>{
+                                [...watchList].reverse().map((w,i)=>{
                                 return <div key={i} className="wallet-item d-flex flex-wrap align-items-center justify-content-between">                                            
                                             <div className="d-flex align-items-center">
                                                 <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${w}.svg`} />
@@ -122,7 +164,7 @@ function WalletManagement(props){
                                             </div>                                    
                                             <div className="d-flex align-items-center">
                                                 <button className="wallet-item-action"><MdOutlineContentCopy /></button>
-                                                <button className="wallet-item-action ml-1"><MdDelete /></button>
+                                                <button onClick={()=>removeWallet(w)} className="wallet-item-action ml-1"><MdDelete /></button>
                                             </div>
                                         </div>    
                                 })
@@ -143,9 +185,9 @@ function WalletManagement(props){
                     
                     {
                         recentList.length>0&&(
-                            <div className="wallet-itmes mt-2">
+                            <div className="wallet-items mt-2">
                             {
-                                recentList.map((w,i)=>{
+                                [...recentList].reverse().map((w,i)=>{
                                 return <div key={i} className="wallet-item d-flex flex-wrap align-items-center justify-content-between">
                                             <div className="d-flex align-items-center">
                                                 <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${w}.svg`} />
@@ -155,11 +197,12 @@ function WalletManagement(props){
                                             </div>                                    
                                             <div className="d-flex align-items-center">
                                                 <button className="wallet-item-action"><MdOutlineContentCopy /></button>
-                                                <button className="wallet-item-action ml-1"><HiPlusCircle /></button>
+                                                <button className="wallet-item-action ml-1" onClick={()=>recentToWatchList(w)}><HiPlusCircle /></button>
                                             </div>
                                         </div>                                                                                                                                         
                                 })
                             }
+                            <button className="link-btn clear-btn mt-2">Clear All</button>
                             </div>
                         )
                     }

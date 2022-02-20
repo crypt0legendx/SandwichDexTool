@@ -319,10 +319,15 @@
     color: #FCFCFD;
 }
 
-.wallet-itmes{
+.wallet-items{
     background:#ffd9d96e;
     padding:10px;
-    border-radius:10px;
+    border-radius:10px;    
+}
+
+.watch-lists{
+    max-height:180px;
+    overflow-y:auto;
 }
 
 .wallet-logo{
@@ -374,5 +379,14 @@
     border:0px;
 }
 
+.clear-btn{
+    background: #dfb0b054;
+    border-radius: 5px;
+    padding: 2px 10px;
+
+    font-family: DM Sans;
+    font-style: normal;
+    font-size: 13px;
+}
 
 /*--------------end of wallet management-----------------------------*/

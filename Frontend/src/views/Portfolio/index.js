@@ -46,7 +46,7 @@ function Portfolio() {
         if(recentList.length===0){
             dispatch(setCurrentAddress(""))
         }else{
-            dispatch(setCurrentAddress(recentList[0]));
+            dispatch(setCurrentAddress(recentList[recentList.length-1]));
         }
     }
     
