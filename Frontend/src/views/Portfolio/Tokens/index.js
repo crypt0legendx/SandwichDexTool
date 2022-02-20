@@ -10,7 +10,7 @@ import Skeleton from '@mui/material/Skeleton';
 function PortfolioTokens(){
 
     const chain = useSelector((state) => state.network.name);
-    const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
+    const selectedAddress = useSelector((state) => state.tracking.currentAddress);
 
     const [load_tokens, setLoadTokens] = useState(false);
     const [tokens, setTokens] = useState([]);

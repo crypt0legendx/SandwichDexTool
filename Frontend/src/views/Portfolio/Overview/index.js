@@ -11,7 +11,7 @@ import Skeleton from '@mui/material/Skeleton';
 function PortfolioOverview(){
 
     const chain = useSelector((state) => state.network.name);
-    const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
+    const selectedAddress = useSelector((state) => state.tracking.currentAddress);
 
     const [dominantToken, setDominantToken] = useState(null);
     const [tokens_summary, setTokensSummary] = useState(null);
@@ -90,7 +90,7 @@ function PortfolioOverview(){
                                     holdings.totalWorth?
                                     <span className={holdings.changes.totalWorth.percentage>=0?'text-success':'text-danger'}>
                                         {holdings.changes.totalWorth.percentage+'%'}&nbsp;
-                                        (${holdings.changes.totalWorth.value})
+                                        (${holdings.changes.totalWorth.value.toFixed(2)})
                                     </span>:''
                                 )                                
                             }                                                    
@@ -123,7 +123,7 @@ function PortfolioOverview(){
                                                 tokens_summary!==null?
                                                 <span className={tokens_summary.change.label=="negative"?'text-danger':'text-success'}>
                                                     {tokens_summary.change.status}&nbsp;
-                                                    {tokens_summary.change.value>0?`($${tokens_summary.change.value})`:''}
+                                                    {tokens_summary.change.value>0?`($${tokens_summary.change.value.toFixed(2)})`:''}
                                                 </span>:''
                                             )                                
                                         }                                                    

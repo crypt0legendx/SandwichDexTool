@@ -2,7 +2,7 @@
     background: #35C4FF;
     border:0px;
     border-radius: 4px;
-    width: 120px;
+    width: 125px;
     height: 38px;
 
     /*font*/
@@ -275,7 +275,7 @@
     font-size: 16px;
     line-height: 29px;
     letter-spacing: -0.02em;
-    color: #23262f;
+    color: #4d8daf;
 }
 
 .no-watch-list{
@@ -285,7 +285,8 @@
     font-size: 14px;
     line-height: 18px;
     color: #9f8a97;
-    border: dashed 2px rgb(226 194 194);
+    border: dashed 2px rgb(196 238 255);
+    background: #fff9f9;
     padding: 20px 30px;
     text-align: center;
     border-radius: 10px;
@@ -293,13 +294,13 @@
 
 .wm-connect-btn{
     background: transparent;
-    border:0px;
+    border: 0px;
     font-family: DM Sans;
     font-style: normal;
     /* font-weight: bold; */
     font-size: 14px;
     line-height: 16px;
-    color:blue;
+    color: #35c4ff;
     text-align: center;
     
 
@@ -341,6 +342,11 @@
     color: #23262f;
 }
 
+.wallet-name:hover{
+    color:#35C4FF;
+    text-decoration:underline;
+}
+
 .wallet-item-action{
     font-size:18px;
     color:#23262F;
@@ -350,6 +356,22 @@
 
 .wallet-item + .wallet-item{
     margin-top:5px;
+}
+
+.wallet-add-input{
+    border: 1px solid #c69595;
+    width: 100%;
+    border-radius: 10px;
+    padding: 7px 20px;
+    font-size: 13px;
+    font-family: DM Sans;
+    text-align: center;
+    font-weight: 600;
+}
+
+.link-btn{
+    background:transparent;
+    border:0px;
 }
 
 

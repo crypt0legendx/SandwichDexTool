@@ -8,7 +8,7 @@ import {BsThreeDotsVertical} from "react-icons/bs";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
-
+import {setCurrentAddress} from "../../store/slices/tracking-slice";
 import WalletManagement from "./WalletManagement";
 
 
@@ -27,13 +27,28 @@ const style = {
 
 function Portfolio() {
 
+    const dispatch = useDispatch();
+
     const chain = useSelector((state) => state.network.name);
-    const [selectedAddress, setAddress] = useState("0xb4d78a81bb7f6d01dd9d053bff002e33aa2f7146");
+    const selectedAddress = useSelector((state) => state.tracking.currentAddress);   
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    useEffect(()=>{
+        initialWalletInfo();
+    },[])
+
+    const initialWalletInfo = () =>{
+        
+        let recentList = JSON.parse(localStorage.getItem('recent_viewed_wallets'))||[];                
+        if(recentList.length===0){
+            dispatch(setCurrentAddress(""))
+        }else{
+            dispatch(setCurrentAddress(recentList[0]));
+        }
+    }
     
     const getbBriefWalletAddress = (address)=>{
         return String(address).substring(0, 4) +"..." +String(address).substring(38);
@@ -45,7 +60,11 @@ function Portfolio() {
             <div className="row mt-3">
                 <div className="col-md-12">
                     <Button  onClick={handleOpen} id="wallet-dropdown-button">
-                            {getbBriefWalletAddress(selectedAddress)}&nbsp;
+                            {
+                                selectedAddress!=""?
+                                getbBriefWalletAddress(selectedAddress):
+                                "No Wallet"
+                            }&nbsp;
                             <BsThreeDotsVertical />
                     </Button>
                     <Modal
@@ -55,7 +74,7 @@ function Portfolio() {
                         aria-describedby="modal-modal-description"
                     >                    
                         <Box sx={style}>
-                            <WalletManagement />                            
+                            <WalletManagement handleClose={handleClose} />                            
                         </Box>
                     </Modal>
                 </div>
