@@ -11,8 +11,9 @@ import axios from 'axios';
 
 import {Tabs, Tab, Button, Form} from "react-bootstrap";
 import {BsArrowUp, BsArrowDown, BsClock} from 'react-icons/bs';
-import {FaRegChartBar} from 'react-icons/fa';
+import {FaRegChartBar, FaRegEdit} from 'react-icons/fa';
 import {VscArrowSwap} from 'react-icons/vsc';
+import {MdStackedLineChart} from 'react-icons/md';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -36,7 +37,6 @@ import { useWeb3Context } from "../../hooks/web3";
 
 function Chart() {
 
-    
     const { chain, contractAddress } = useParams();
     const network_name = useSelector((state) => state.network.name);
 
@@ -46,11 +46,14 @@ function Chart() {
     const [tokenInfo,setTokenInfo] =  useState(null);
     const [tradeBook, setTradeBook] = useState([]);
     const [yourTrade, setYourTrade] = useState([]);
+    const [holders, setHolders] = useState([]);
     const [liquidities, setLiquidities] = useState([]);
 
     const [timeInterval] =  useState(['1H','4H','1D','1W','1M']);
     const [intervalChart, setIntervalChart] = useState("1D");
 
+    //mobile
+    const [showIndex, setShowIndex] =  useState(0);
     //dex aggregator
     const [slidePage, setSlidePage] = useState(false);
     const [percent_slide_page, setPercentSlidePage] = useState(0.1);
@@ -60,6 +63,7 @@ function Chart() {
     useEffect(()=>{
         getTokenInfo();
         fetchTradeBook();
+        fetchHolders();
         fetchLiquidity();
     },[])
 
@@ -98,6 +102,31 @@ function Chart() {
         .then(function (response) {
             console.log(response.data.ethereum.dexTrades);
             setYourTrade(response.data.ethereum.dexTrades);
+        })
+        .catch(function (error) {
+            console.log(error);
+        }).finally(()=>{
+        });
+    }
+
+    const fetchHolders = async() => {
+        axios.get(`http://localhost:4000/multi-chain-cap/holders/${chain}/${contractAddress}`)
+        .then(function (response) {
+            let parser = new DOMParser();
+                let doc = parser.parseFromString(response.data, 'text/html');
+                let trs = doc.body.getElementsByTagName("tr");
+                let results=[];
+                for (let i =1; i<trs.length; i++){
+                    const tds=trs[i].getElementsByTagName('td');
+                    const token_address = tds[1].innerText.trim();
+                    const quantity = tds[2].innerText.trim();
+                    const percent = tds[3].innerText.trim();
+                    const value = tds[4].innerText.trim();                                        
+                    
+                    results.push({token_address:token_address, quantity:quantity, percent:percent, value:value});                    
+                }
+                setHolders(results);
+            
         })
         .catch(function (error) {
             console.log(error);
@@ -306,7 +335,7 @@ function Chart() {
             </div>                
             <div className="row">
                 <div className="col-md-12 d-flex">
-                    <div className="dex-trade-container">
+                    <div className={showIndex==0?`dex-trade-container open`:`dex-trade-container`}>
                         {
                             load_tokeninfo?
                             <Skeleton className="mt-3" variant="retangle" animation="wave" width={'100%'} height={500} />:
@@ -425,7 +454,36 @@ function Chart() {
                                             </div>
                                         </Tab>
                                         <Tab eventKey="holders" title="Holders" className="mt-1">
-                                            <div className="trade-no-content">Comming Soon.</div>
+                                            
+                                            {
+                                                holders.length>0?
+                                                <table className="table table-striped market-trade-table ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col " className="text-left ">Balance <i className="fa fa-sort ml-2"></i></th>
+                                                            <th scope="col " className="text-left ">Value<i className="fa fa-sort ml-2"></i></th>
+                                                            <th scope="col " className="text-left ">Percent<i className="fa fa-sort ml-2"></i></th>
+                                                            <th scope="col " className="text-left ">Address<i className="fa fa-sort ml-2"></i></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        {
+                                                            holders.map((h, index)=>{
+                                                                return <tr key={index}>
+                                                                            <td className="text-strong text-left ">{h.quantity}</td>
+                                                                            <td className="text-strong text-success text-left ">{h.value}</td>
+                                                                            <td className="text-strong text-left ">{h.percent}</td>
+                                                                            <td className="text-strong text-left ">{h.token_address}</td>
+                                                                        </tr>
+                                                            })
+                                                        }                                    
+                                                    </tbody>
+                                                </table>:
+                                                <div className="trade-no-content">Looks like there is no data.</div>
+                                            }
+                                                
+                                            
                                         </Tab>
                                         <Tab eventKey="details" title="Details" className="mt-1">
                                             <div className="trade-no-content">Comming Soon.</div>
@@ -455,7 +513,7 @@ function Chart() {
                             </div>
                         </div>
                     </div>            
-                    <div className="dex-aggregator-container">
+                    <div className={showIndex==1?`dex-aggregator-container open`:`dex-aggregator-container`}>
                         <div className="dex-aggregator-section">
                             <div className="title mt-2">
                                 Sandwich Dex Aggregator                                    
@@ -524,6 +582,10 @@ function Chart() {
                             </div>
                             <Button className="learn-more-btn">Learn More</Button>
                         </div>                            
+                    </div>
+                    <div className="chart-actions">
+                        <Button className={showIndex==0?`chart-action active`:`chart-action`} onClick={()=>{setShowIndex(0)}}><MdStackedLineChart /></Button>
+                        <Button className={showIndex==1?`chart-action active`:`chart-action`} onClick={()=>{setShowIndex(1)}}><FaRegEdit /></Button>
                     </div>
                 </div>
             </div>

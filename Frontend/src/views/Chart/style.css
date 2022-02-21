@@ -53,30 +53,28 @@
 
 .tab-content{
     min-height:200px;
-    max-height:400px;
+    max-height:450px;
     overflow-y:auto;
+    overflow-x:auto;
 }
 
 .liquidity-item{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    font-size:12px;
 }
 
 .liquidity-item .lp-name{
-    font-size:12px;
-    font-family: DM Sans;
-    font-style: normal;
     font-weight: 600;
-    color:#23262F;
+    font-size: 12px;
+    line-height: 24px;
+    color: #23262F;
 }
 
 .liquidity-item .protocol-name{
-    font-size: 12px;
-    font-family: DM Sans;
-    font-style: normal;
     font-weight: 600;
+    font-size: 11px;
+    line-height: 24px;
     color: #23262F;
     background: #f4e6ea;
     margin-top: 5px;
@@ -315,4 +313,52 @@
     text-align: center;
 
     color: #35C4FF;
+}
+
+.chart-actions{
+    display:none;
+}
+@media(max-width: 768px){
+    .chart-actions{
+        display:block;
+        position:fixed;
+        bottom: 10px;
+        left:calc(50% - 24px);    
+        z-index:1;
+    }
+
+    .chart-action{
+        border-radius:0px;
+        background:#1f1f1f;
+        border:0px;
+
+    }
+
+    .chart-action.active{
+        background:#1f1f1f;
+    }
+    .chart-action:first-child{
+        border-top-left-radius:10px;
+        border-bottom-left-radius:10px;
+    }
+    .chart-action:last-child{
+        border-top-right-radius:10px;
+        border-bottom-right-radius:10px;
+    }
+
+    @media(max-width:768px){
+        .dex-trade-container, .dex-aggregator-container{
+            display:none;
+        }
+        .dex-trade-container.open, .dex-aggregator-container.open{
+            display:block;
+            width:100%;
+            padding:0px;
+
+        }
+
+    }
+    
+
+
 }
