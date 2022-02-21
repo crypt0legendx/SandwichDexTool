@@ -101,11 +101,11 @@
 }
 
 .text-success{
-    color:#00C076;
+    color:#00C076 !important;
 }
 
 .text-danger{
-    color:#EB685C;
+    color:#EB685C !important;
 }
 
 /*width*/

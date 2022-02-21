@@ -2,9 +2,11 @@
 import "../../../style/css/dashboard1.css"
 import "../../../style/css/table.css"
 
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import {useSelector} from "react-redux";
+
+import axios from 'axios';
 
 import {FaRegStar, FaStar} from "react-icons/fa";
 import {AiOutlineDollar, AiOutlineBarChart} from "react-icons/ai";
@@ -28,6 +30,32 @@ function Ranking() {
     const scanurl = useSelector((state) => state.network.scanurl);
 
     const {toggleFavouriteToken, isFavourite} = useFavoriteHelper();
+
+    const [globalMetrics, setGlobalMetrics] = useState(null);
+
+    useEffect(()=>{
+        getGlobalMetrics();
+    },[])
+
+    const getGlobalMetrics = () =>{
+        axios.get(`http://localhost:4000/coin-market-cap/global-metrics`)
+            .then(function (response) {
+                console.log('getGlobalMetrics');
+                console.log(response.data);
+                const res = response.data;
+                if(res.quote){
+                    setGlobalMetrics({
+                        total_market_cap:res.quote.USD.total_market_cap,
+                        total_change:res.quote.USD.total_market_cap_yesterday_percentage_change
+                    })
+                }                
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            }).finally(()=>{
+        });   
+    }
 
     return ( 
         <>
@@ -81,8 +109,19 @@ function Ranking() {
                 <div className="col-md-12 ">
                     <div className="coin-martketcap-intro-title ">
                         Today's Cryptocurrency Prices by Market Cap<br />
-                        <small>
-                            The global crypto market cap is $1.58T, a 13.92% decrease over the last day.
+                        <small className="d-flex align-items-center flex-wrap">
+                            The global crypto market cap is {
+                                globalMetrics == null?
+                                <Skeleton className="ml-1" animation="wave" width={50} height={30} />:
+                                <span className="text-success ml-1">${globalMetrics.total_market_cap}</span>
+                    
+                            }, a 
+                            {
+                                globalMetrics == null?
+                                <><Skeleton className="ml-1" animation="wave" width={50} height={30}/>%</>:
+                                <span className={globalMetrics.total_change>0?"text-success ml-1":"text-danger ml-1"}>{globalMetrics.total_change.toFixed(2)}%</span>
+                            }
+                             &nbsp;change over the last day.
                         </small>
                     </div>
                 </div>

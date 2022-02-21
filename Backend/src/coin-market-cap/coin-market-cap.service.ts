@@ -9,6 +9,28 @@ export class CoinMarketCapService {
   constructor(private httpService: HttpService) {}
   
   /**
+   * return global metrics such as global market cap, etc.
+   */
+  async getGlobalMetrics(){
+      const global_metrics =  await this.fetchGlobalMetrics();
+      return global_metrics;
+  }
+
+  async fetchGlobalMetrics(){
+    let request;
+    try {
+      request = await this.httpService
+        .get(`${process.env.COINMARKETCAP_URL}/v1/global-metrics/quotes/latest`, {
+          headers: { 'X-CMC_PRO_API_KEY': this.apiKey },
+        })
+        .toPromise();
+    } catch (err) {
+      console.error(err);
+    }
+    return request?.data?.data || {};    
+  }
+
+  /**
    * Return the Ranking List by certain chain.
    * @param chain 
    * @returns 

@@ -6,6 +6,18 @@ export class CoinMarketCapController {
   constructor(private coinMarketCapService: CoinMarketCapService) {}
 
   /**
+   * Return Global Metrics from CMC.
+   * @param res 
+   * @param req 
+   * @returns
+   */
+  @Get('/global-metrics')
+  async getGlobalMetrics(@Res() res, @Req() req) {
+    const metrics = await this.coinMarketCapService.getGlobalMetrics();
+    return res.status(HttpStatus.OK).json(metrics);
+  }
+
+  /**
    * Return ranking list for certain chain from CMC.
    * @param res 
    * @param req 
