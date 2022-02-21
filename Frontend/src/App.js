@@ -13,6 +13,8 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 
 import {getTrendings, getGainersLosers} from './store/slices/trendings-slice';
 import {changeFavourites} from './store/slices/currencies-slice';
+import {setBrowserWidth} from './store/slices/app-slice';
+
 import Footer from "./components/Footer";
 import Portfolio from "./views/Portfolio";
 import PortfolioTokens from "./views/Portfolio/Tokens";
@@ -36,9 +38,17 @@ function App() {
     useEffect(()=>{
         getFavourites();
         getRealtimeDatas();
-
+        
         // setInterval(()=>getRealtimeDatas(),100000);
     })
+
+    useEffect(()=>{
+        setWindowWidth();
+        window.addEventListener('resize',(e)=>{
+            setWindowWidth();      
+        });
+
+    },[]);
 
     const getFavourites = () =>{
         let favouriteTokens = JSON.parse(localStorage.getItem('favourites'))||[];        
@@ -49,6 +59,11 @@ function App() {
         dispatch(getTrendings())
         dispatch(getGainersLosers())
     }
+    const setWindowWidth = () => {
+        dispatch(setBrowserWidth(window.innerWidth));
+    }
+
+    
 
     return ( 
         <Router>

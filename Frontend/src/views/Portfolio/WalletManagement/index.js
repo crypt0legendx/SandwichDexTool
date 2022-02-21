@@ -17,7 +17,8 @@ import ClickTooltip from "./ClickTooltip";
 function WalletManagement(props){
 
     const dispatch = useDispatch();
-    
+    const browserWidth = useSelector((state) => state.app.browserWidth);
+
     const { connect, disconnect, connected, address } = useWeb3Context();
     const [watchList, setWatchList] = useState([]);
     const [recentList, setRecentList] = useState([]);
@@ -125,6 +126,10 @@ function WalletManagement(props){
         return true;
     }
 
+    const getbBriefWalletAddress = (address)=>{
+        return String(address).substring(0, 4) +"..." +String(address).substring(38);
+    }
+
     return(
         <>
             <div className="wallet-management">
@@ -141,7 +146,11 @@ function WalletManagement(props){
                                 <div className="d-flex align-items-center">
                                     <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${address}.svg`} />
                                     <button className="link-btn" onClick={()=>clickedAddress(address)}>
-                                        <span className="wallet-name ml-2">{address}</span>
+                                        <span className="wallet-name ml-2">
+                                        {
+                                            browserWidth>768?address:getbBriefWalletAddress(address)
+                                        }
+                                        </span>
                                     </button>
                                 </div>                                    
                                 <div className="d-flex align-items-center">
@@ -173,7 +182,11 @@ function WalletManagement(props){
                                             <div className="d-flex align-items-center">
                                                 <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${w}.svg`} />
                                                 <button className="link-btn" onClick={()=>clickedAddress(w)}>
-                                                    <span className="wallet-name ml-2">{w}</span>
+                                                    <span className="wallet-name ml-2">
+                                                    {
+                                                        browserWidth>768?w:getbBriefWalletAddress(w)
+                                                    }
+                                                    </span>
                                                 </button>
                                             </div>                                    
                                             <div className="d-flex align-items-center">
@@ -206,7 +219,11 @@ function WalletManagement(props){
                                             <div className="d-flex align-items-center">
                                                 <img className="wallet-logo" src={ `https://avatars.dicebear.com/api/identicon/${w}.svg`} />
                                                 <button className="link-btn" onClick={()=>clickedAddress(w)}>
-                                                    <span className="wallet-name ml-2">{w}</span>
+                                                    <span className="wallet-name ml-2">
+                                                    {
+                                                        browserWidth>768?w:getbBriefWalletAddress(w)
+                                                    }
+                                                    </span>
                                                 </button>
                                             </div>                                    
                                             <div className="d-flex align-items-center">
