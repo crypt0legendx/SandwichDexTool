@@ -353,10 +353,10 @@
 }
 
 .wallet-item-action{
-    font-size:18px;
-    color:#23262F;
-    background:transparent;
-    border:0px;
+    font-size:18px !important;
+    color:#23262F !important;
+    background:transparent !important;
+    border:0px !important;
 }
 
 .wallet-item + .wallet-item{

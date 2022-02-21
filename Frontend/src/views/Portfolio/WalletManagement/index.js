@@ -12,6 +12,8 @@ import Typography from '@mui/material/Typography';
 import { useWeb3Context } from "../../../hooks/web3";
 import {setCurrentAddress} from "../../../store/slices/tracking-slice";
 
+import ClickTooltip from "./ClickTooltip";
+
 function WalletManagement(props){
 
     const dispatch = useDispatch();
@@ -101,6 +103,18 @@ function WalletManagement(props){
         }
     }
 
+    const clearRecent = () =>{
+        console.log('clear');
+        let recent_lists = [recentList[recentList.length-1]];
+        setRecentList(recent_lists);
+        localStorage.setItem('recent_viewed_wallets', JSON.stringify(recent_lists));
+    }
+
+    const copyWallet = (w)=>{
+        navigator.clipboard.writeText(w);
+
+    }
+
     const changedInputValue =(e) =>{
         setInputAddress(e.target.value);
     }
@@ -131,7 +145,7 @@ function WalletManagement(props){
                                     </button>
                                 </div>                                    
                                 <div className="d-flex align-items-center">
-                                    <button className="wallet-item-action"><MdOutlineContentCopy /></button>
+                                    <ClickTooltip onClick={()=>copyWallet(address)}><MdOutlineContentCopy /></ClickTooltip>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +177,7 @@ function WalletManagement(props){
                                                 </button>
                                             </div>                                    
                                             <div className="d-flex align-items-center">
-                                                <button className="wallet-item-action"><MdOutlineContentCopy /></button>
+                                                <ClickTooltip onClick={()=>copyWallet(w)}><MdOutlineContentCopy /></ClickTooltip>
                                                 <button onClick={()=>removeWallet(w)} className="wallet-item-action ml-1"><MdDelete /></button>
                                             </div>
                                         </div>    
@@ -196,13 +210,16 @@ function WalletManagement(props){
                                                 </button>
                                             </div>                                    
                                             <div className="d-flex align-items-center">
-                                                <button className="wallet-item-action"><MdOutlineContentCopy /></button>
+                                                <ClickTooltip onClick={()=>copyWallet(w)}><MdOutlineContentCopy /></ClickTooltip>
                                                 <button className="wallet-item-action ml-1" onClick={()=>recentToWatchList(w)}><HiPlusCircle /></button>
                                             </div>
                                         </div>                                                                                                                                         
                                 })
                             }
-                            <button className="link-btn clear-btn mt-2">Clear All</button>
+                            {
+                                recentList.length>1&&<button className="link-btn clear-btn mt-2" onClick={()=>clearRecent()}>Clear All</button>
+                            }
+                            
                             </div>
                         )
                     }
