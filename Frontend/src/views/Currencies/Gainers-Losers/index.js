@@ -76,7 +76,7 @@ function GainersLosers() {
                                         filteredGainersForChain.slice(0,10).map((t,i)=>{
                                             return (<tr key={i}>                                        
                                                 <td className="text-strong text-left ">                                                    
-                                                    <Link to={ `/chart/${t.symbol}/${t.platform.token_address}`}>
+                                                    <Link to={ `/chart/${chain}/${t.platform.token_address}`}>
                                                         <div className="d-flex align-items-center">
                                                         <img className="token-logo mr-2" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${t.id}.png`} />
                                                         <div className="d-flex flex-column token-normal-info">
@@ -125,7 +125,7 @@ function GainersLosers() {
                                         filteredLosersForChain.slice(0,10).map((t,i)=>{
                                             return (<tr key={i}>                                        
                                                 <td className="text-strong text-left ">                                                    
-                                                    <Link to={ `/chart/${t.symbol}/${t.platform.token_address}`}>
+                                                    <Link to={ `/chart/${chain}/${t.platform.token_address}`}>
                                                         <div className="d-flex align-items-center">
                                                         <img className="token-logo mr-2" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${t.id}.png`} />
                                                         <div className="d-flex flex-column token-normal-info">

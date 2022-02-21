@@ -27,7 +27,7 @@ function PresaleCard(){
     return(
         <div className="coin-marketcap-info-item ">
             <div className="d-flex justify-content-between ">
-                <span className="info-item-title "><i className="fa fa-fire-flame-curved mr-2"></i>Sandwich Network Presales</span>
+                <span className="info-item-title "><i className="fa fa-fire-flame-curved mr-2"></i>SandwichBeta Presales</span>
                 <button className="btn btn-default info-view-more ">More<i className="fa fa-angle-right ml-2"></i></button>
             </div>
             {

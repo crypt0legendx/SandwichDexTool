@@ -19,14 +19,26 @@ export class ThirdApiService {
         const response = await this.fetchHoldings(chain, account);
         return response;
     }
+
     /**
      * get doiminant token and tokens list from third api
      * @param chain 
      * @param account 
      * @returns 
      */
-    async getBalancesOverview(chain:String, account:String){
-        const response =  await this.fetchBalancesOverview(chain, account);
+    async getBalancesOverview(chain:String, account:String, limit){
+        const response =  await this.fetchBalancesOverview(chain, account, limit);
+        return response;
+    }
+
+    /**
+     * get defi assets from third api
+     * @param chain 
+     * @param account 
+     * @returns 
+     */
+    async getDefiAssets(chain:String, account:String){
+        const response =  await this.fetchDefiAssets(chain, account);
         return response;
     }
 
@@ -60,15 +72,48 @@ export class ThirdApiService {
      * @param account 
      * @returns 
      */
-     async fetchBalancesOverview(chain:String, account:String){
+     async fetchBalancesOverview(chain:String, account:String, limit){
         let request;
+        let params ={};
+        if(limit != "all"){
+            params = {
+                protocol:chain.toLowerCase(),
+                limit:limit,
+                fiat:"USD"
+            }
+        }else{
+            params = {
+                protocol:chain.toLowerCase(),
+                fiat:"USD"
+            }
+        }
         try {
         request = await this.httpService
             .get(`https://dappradar.com/apiv3/wallet/overview/${account}`, {
             headers: { 'User-Agent': 'third-api' },
+            params: params,
+            })
+            .toPromise();
+        } catch (err) {
+        console.error(err);
+        }
+        return request.data?.data || {};
+    }
+
+    /**
+     * Return Defi Assets of account on chain
+     * @param chain 
+     * @param account 
+     * @returns 
+     */
+     async fetchDefiAssets(chain:String, account:String){
+        let request;
+        try {
+        request = await this.httpService
+            .get(`https://dappradar.com/apiv3/wallet/defi/assets/${chain}/${account}`, {
+            headers: { 'User-Agent': 'third-api' },
             params: {
-                protocol:chain.toLowerCase(),
-                limit:5,
+                embed:"all",
                 fiat:"USD"
             },
             })

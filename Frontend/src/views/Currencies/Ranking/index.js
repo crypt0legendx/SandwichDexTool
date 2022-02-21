@@ -151,7 +151,7 @@ function Ranking() {
                                                     </div>
                                                 </td>
                                                 <td className="text-strong text-left ">                                                    
-                                                    <Link to={ `/chart/${t.symbol}/${t.contractAddress}`}>
+                                                    <Link to={ `/chart/${chain}/${t.contractAddress}`}>
                                                         <div className="d-flex align-items-center">
                                                         <img className="ranking-img mr-1" src={t.logo?`${scanurl}/token/`+t.logo:`${scanurl}/images/main/empty-token.png`} alt="t_logo" />
                                                         {t.name} <span className="mark ">                                            

@@ -63,6 +63,20 @@ export class BitqueryController {
         const {chain, address} =  req.params;
         const balances = await this.bitqueryService.getBalances(chain, address);
         return res.status(HttpStatus.OK).json(balances);
+    }
+
+    /**
+     * Return Liquidity List of token
+     * @param res 
+     * @param req 
+     * @returns 
+     */
+    @Get('/liquidity/:chain/:address')
+    async getLiquidities(@Res() res, @Req() req){
+        console.log('bitquery/liquidity');
+        const {chain, address} =  req.params;
+        const balances = await this.bitqueryService.getLiquidity(chain, address);
+        return res.status(HttpStatus.OK).json(balances);
     }  
 
 }

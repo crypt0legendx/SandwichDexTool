@@ -44,6 +44,24 @@ export class MultiChainCapController {
         return res.status(HttpStatus.OK).json(tokenList);
     }
 
+    @Get('/holders/:network/:address')
+    async getTopHolders(@Res() res, @Req() req){
+        console.log('toptokens');
+        const {network, address} = req.params;
+        let holderPage=[];
+        if(network=="Ethereum"){
+            holderPage = await this.etherscanApiService.getTopHolders(address);
+        }
+        if(network=="BSC"){
+            holderPage = await this.bscscanApiService.getTopHolders(address);
+        }
+        if(network=="Polygon"){
+            holderPage = await this.polygonscanApiService.getTopHolders(address);
+        }
+        
+        return res.status(HttpStatus.OK).json(holderPage);
+    }
+
     
 
 }

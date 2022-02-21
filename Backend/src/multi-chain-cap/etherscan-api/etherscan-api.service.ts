@@ -52,4 +52,27 @@ export class EtherscanApiService {
       return request.data;
 
     }
+
+    async getTopHolders(address:String){
+      const response = await this.fetchTopHolders(address);
+      return response;
+    }
+
+    private async fetchTopHolders(address:String): Promise<any> {
+
+      console.log('Etherscan Holders');
+      let request;
+      
+      request = await this.httpService
+          .get('https://etherscan.io/token/generic-tokenholders2', {
+          params: { 
+              a:address,
+              s:1778999999999999997504281044,
+              p:1
+          },
+          })
+          .toPromise();
+      return request.data;
+
+    }
 }

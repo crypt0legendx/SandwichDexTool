@@ -61,7 +61,7 @@ function App() {
                         <Route path="/currencies" element={<Ranking />} />
                         <Route path="/trending-tokens" element={<TrendingTokens />} />
                         <Route path="/gainers-losers" element={<GainersLosers />} />
-                        <Route path="/chart/:symbol/:contractAddress" element={<Chart />} />
+                        <Route path="/chart/:chain/:contractAddress" element={<Chart />} />
                         <Route path="/portfolio" element={<Portfolio />} >
                             <Route path="overview" element={<PortfolioOverview />} />
                             <Route path="tokens" element={<PortfolioTokens />} />                                        

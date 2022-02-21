@@ -106,7 +106,7 @@ function TrendingTokens() {
                                         </div>
                                     </td>
                                     <td className="text-strong text-left ">                                                    
-                                        <Link to={ `/chart/${t.symbol}/${t.contractAddress}`}>
+                                        <Link to={ `/chart/${chain}/${t.platform.token_address}`}>
                                             <div className="d-flex align-items-center">
                                             <img className="ranking-img mr-1" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${t.id}.png`} />
                                             {t.name} <span className="mark ">                                            

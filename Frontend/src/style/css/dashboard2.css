@@ -187,12 +187,12 @@
     font-size: 14px;
     line-height: 16px;
     border-radius: 20px;
-    border:0px;
+    border: 0px;
     margin-top: 5px;
-    padding: 6.84868px 13.6974px;
+    padding: 6.84868px 8px;
     background: transparent;
-    color:#807e91;
-    margin-right: 5px !important;
+    color: #807e91;
+    margin-right: 0px !important;
 }
 
 .nav-pills .nav-link.active{

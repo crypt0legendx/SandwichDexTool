@@ -50,7 +50,7 @@ export class BitqueryService {
         ethereum(network: $network) {
           dexTrades(
             options: {limit: 2, desc: "timeInterval.day"}
-            date: {since:"2019-12-01"}
+            date: {since:"2017-12-01"}
             baseCurrency: {is: $baseAddress}
             quoteCurrency: {is: $quoteAddress}
           ) {            
@@ -91,7 +91,7 @@ export class BitqueryService {
             ethereum(network: $network) {
               dexTrades(
                 options: {limit: 10, desc: "timeInterval.second"}
-                date: {since: "2022-01-13"}
+                date: {since: "2018-01-13"}
                 baseCurrency: {is: $baseAddress}
                 quoteCurrency: {is: $quoteAddress}
               ) {            
@@ -172,7 +172,36 @@ export class BitqueryService {
 
     }
 
-    getLiquidity(){
+    /**
+     * get Liquidity List and protocol of token
+     * @param chain 
+     * @param address 
+     * @return  
+     */
+    async getLiquidity(chain:String, address:String){
+
+      const liquidityQuery =gql`query ($network:EthereumNetwork!, $address:String!){
+        ethereum(network: $network) {
+          dexTrades(baseCurrency: {is: $address}){
+            protocol
+            buyCurrency{
+              name
+              symbol
+            }
+            sellCurrency{
+              name
+              symbol
+            }
+          }
+        }
+      }`;
+
+      const variables={
+          network:this.convertToBitqueryChain(chain),
+          address:address
+      }
+      const data = await this.client.request(liquidityQuery, variables);
+      return data;
 
     }
 
@@ -180,18 +209,6 @@ export class BitqueryService {
     async getBalances(chain:String, account:String){
       const response =  await this.fetchBalances(chain, account);
       const balances = response.ethereum.address[0].balances;
-
-      if(balances == null){
-        console.log("No Exist Data");
-      }else{
-          // await balances.forEach(async(e) => {
-          //   if(e.currency.address!="-"){
-          //     const getInfo = await this.getTokenInfo(chain, e.currency.address);
-          //     console.log(getInfo);
-          //   }
-          // });
-      }
-
 
       return response;
 
