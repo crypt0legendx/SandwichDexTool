@@ -1,19 +1,4 @@
 
-.coin-item {
-    width: 120px;
-    background: transparent;
-    border: 0.5px solid rgba(53, 196, 255, 0.3);
-    box-sizing: border-box;
-    border-radius: 7px;
-    font-family: DM Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 16px;
-    text-align: center;
-    color: #23262F;
-}
-
 .composition-image {
     height: 163px;
     background: #F4E6EA;
