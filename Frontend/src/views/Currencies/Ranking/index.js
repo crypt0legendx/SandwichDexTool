@@ -9,6 +9,8 @@ import {useSelector} from "react-redux";
 import {FaRegStar, FaStar} from "react-icons/fa";
 import {AiOutlineDollar, AiOutlineBarChart} from "react-icons/ai";
 
+import Skeleton from '@mui/material/Skeleton';
+
 import TrendingMarquee from "../../../components/TrendingMarquee/TrendingMarquee";
 import TredingCard from "./MarketCapInfoCard/Treding";
 import BestGainersCard from "./MarketCapInfoCard/BestGainers";
@@ -100,7 +102,36 @@ function Ranking() {
                 <div className="col-md-12"  style={{width:'100%', overflowX:'auto', textAlign:'center'}}>
                     {
                         isLoading&&(
-                            <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--sQzcbE_t--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/fk3smrzna1vieidxaawn.gif" alt="Alt Text" loading="lazy" data-xblocker="passed" />
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col " className="text-left ">#</th>
+                                        <th scope="col " className="text-left ">Name</th>
+                                        <th scope="col " className="text-left ">Price</th>
+                                        <th scope="col " className="text-right ">24h %</th>
+                                        <th scope="col " className="text-right ">7d %</th>
+                                        <th scope="col " className="text-right">
+                                            marketcap <big><AiOutlineDollar className="ml-1" /></big>
+                                        </th>
+                                        <th scope="col " className="text-right d-flex align-items-center">
+                                            volume(24) <big><AiOutlineBarChart className="ml-1" /></big>
+                                        </th>
+                                        <th scope="col " className="text-right ">Chart</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                 {
+                                        new Array(50).fill(0).map((t,i)=>{
+                                            return (<tr key={i}>
+                                                <td className="text-left td-no">{i+1}</td>                                                
+                                                <td colSpan="7"><Skeleton animation="wave" width="100%" height={30} /></td>
+                                                
+                                            </tr>);
+                                        })
+                                    }
+                                </tbody>
+                            </table>
                         )
                     }
                     {

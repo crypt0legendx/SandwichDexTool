@@ -6,6 +6,8 @@ import {FaSortUp} from "react-icons/fa";
 import "../style.css";
 import { Link } from "react-router-dom";
 
+import Skeleton from '@mui/material/Skeleton';
+
 function TredingCard(){
 
     const tredings = useSelector((state) => state.trendings.latest);
@@ -21,6 +23,22 @@ function TredingCard(){
                     </button>
                 </Link>
             </div>
+            {
+                tredings.length==0&&(
+                    new Array(3).fill(0).map((t,i)=>{
+                        return <div key={i} className="d-flex justify-content-between mt-1">
+                                    <span className="info-item-opt-title align-items-center ">
+                                        <span className="dash-overview-num">{i+1}</span>&nbsp;
+                                        <Skeleton className="ml-1" variant="circular" animation="wave" width={17} height={17} />
+                                        <Skeleton className="ml-1" animation="wave" width={50} height={15} />
+                                    </span>
+                                    <span className="info-item-opt-value">
+                                        <Skeleton animation="wave" width={50} height={15} />
+                                    </span>                                    
+                                </div>        
+                    })    
+                )
+            }
             {
                 tredings.slice(0,3).map((t,i)=>{
                     return <div key={i} className="d-flex justify-content-between mt-1">
