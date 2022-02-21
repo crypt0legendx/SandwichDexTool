@@ -11,6 +11,7 @@ import SearchComplete from "../SearchComplete";
 import useInitialize from "../../hooks/useInitialize";
 
 function Header(props) {
+    const browserWidth = useSelector((state) => state.app.browserWidth);
     const network = useSelector((state) => state.network.name);    
     const dispatch = useDispatch();
 
@@ -56,11 +57,19 @@ function Header(props) {
                     </li>                   
                 </ul>
             </div>
-            <button onClick={()=>props.setOpen()} className="navbar-toggler navbar-light " type="button " data-toggle="collapse " data-target="#main-navigation ">
-                <span className="navbar-toggler-icon "></span>
-            </button>
-            <SearchComplete />
-            <div className="d-flex">
+            {
+                    browserWidth<=525?
+                    <button onClick={()=>props.setOpen()} className="navbar-toggler navbar-light " type="button " data-toggle="collapse " data-target="#main-navigation ">
+                        <span className="navbar-toggler-icon "></span>
+                    </button>:''
+            }
+            {
+                browserWidth>1028?<SearchComplete />:''
+            }
+            <div className="d-flex align-items-center">
+                {
+                    browserWidth<=1028?<SearchComplete />:''
+                }
                 <button type="button " className="btn btn-default notification-btn "><RiNotification2Line /></button>
                 <Dropdown className="mr-2 ml-2 d-flex align-items-center network-dropdown">
                     <Dropdown.Toggle id="dropdown-basic" className="header-switch-network-btn">
@@ -73,10 +82,14 @@ function Header(props) {
                     </Dropdown.Menu>
                 </Dropdown>
                 <ConnectWallet />
+                {
+                    browserWidth>525?
+                    <button onClick={()=>props.setOpen()} className="navbar-toggler navbar-toggler-md navbar-light " type="button " data-toggle="collapse " data-target="#main-navigation ">
+                        <span className="navbar-toggler-icon "></span>
+                    </button>:''         
+                }
             </div>   
-            <button onClick={()=>props.setOpen()} className="navbar-toggler navbar-light " type="button " data-toggle="collapse " data-target="#main-navigation ">
-                <span className="navbar-toggler-icon "></span>
-            </button>         
+            
             
         </nav>
     </>

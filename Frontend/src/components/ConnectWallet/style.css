@@ -19,8 +19,10 @@
 
 @media(max-width:768px){
     .connect-wallet-btn {
-        width: 150px;
+        width: 120px;
         height: 30px;
         font-size: 12px;
+        padding-left:10px;
+        padding-right:10px;
     }
 }

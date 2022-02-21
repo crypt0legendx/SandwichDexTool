@@ -30,6 +30,11 @@
         border-right: 0px;
     }
 }
+@media(max-width:325px) {
+    .navbar-brand{
+        padding-right: 10px;
+    }
+}
 
 .nav-link {
     font-style: normal;
@@ -59,11 +64,16 @@
     font-weight: bold;
     font-size: 15px;
 }
-
+.navbar-toggler-md{
+    display:none;
+}
 @media(max-width:1028px){
     .network-dropdown{
         display: none !important;
     }    
+    .navbar-toggler-md{
+        display:block !important;
+    }
 }
 
 .network-dropdown-body{
