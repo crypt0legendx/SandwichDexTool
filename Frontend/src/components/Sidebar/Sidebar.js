@@ -24,13 +24,19 @@ import {useSelector, useDispatch} from "react-redux";
 import {changeNetwork} from "../../store/slices/network-slice";
 import {changeLoading, changeRanking} from "../../store/slices/currencies-slice";
 
+import useInitialize from "../../hooks/useInitialize";
+
 import axios from 'axios';
 
 function Sidebar(props) {
 
-    const network = useSelector((state) => state.network.name);
-    const [openSubMenu, setOpenSubMenu] = useState(false);
     const dispatch = useDispatch();
+
+    const network = useSelector((state) => state.network.name);
+    const {initializeApp} = useInitialize();
+
+    const [openSubMenu, setOpenSubMenu] = useState(false);
+    
 
     let pathname = window.location.pathname;
 
@@ -39,18 +45,19 @@ function Sidebar(props) {
     }, [window.location.pathname]);
 
     const changedNetwork = async(chain) => {
-        props.setOpen();
-        dispatch(changeNetwork(chain));
-        dispatch(changeLoading(true));
-        axios.get(`http://localhost:4000/coin-market-cap/ranking/${chain}`)
-        .then(function (response) {
-            dispatch(changeRanking(response.data));                
-        })
-        .catch(function (error) {
-            console.log(error);
-        }).finally(()=>{
-            dispatch(changeLoading(false));
-        });
+            let scanurl="";
+            if(chain==="Ethereum"){
+                scanurl="https://etherscan.io"
+            }
+            if(chain==="BSC"){
+                scanurl="https://bscscan.com"
+            }
+            if(chain==="Polygon"){
+                scanurl="https://polygonscan.com"
+            }
+            dispatch(changeNetwork({name:chain, scanurl:scanurl}));
+            initializeApp(chain);  
+            props.setOpen();
     }
 
     const toggleSubmenu =() =>{
@@ -67,7 +74,7 @@ function Sidebar(props) {
                     <div className="setting-section justify-content-between">
                         <Dropdown>
                             <Dropdown.Toggle id="dropdown-basic" className="switch-network-btn">
-                                <img className="network-logo mr-2" src={`assets/images/Networks/${network}.png`} alt="network_logo" />{network}
+                                <img className="network-logo mr-2" src={`../../assets/images/Networks/${network}.png`} alt="network_logo" />{network}
                             </Dropdown.Toggle>
                                 <Dropdown.Menu className="network-dropdown-body"><Dropdown.Item onClick={() => changedNetwork("Ethereum")}>Ethereum</Dropdown.Item>
                                 <Dropdown.Item onClick={() => changedNetwork("BSC")}>BSC</Dropdown.Item>

@@ -58,6 +58,12 @@
     overflow-x:auto;
 }
 
+@media(max-width:768px){
+    .tab-content{
+        max-height: 100% !important;
+    }
+}
+
 .liquidity-item{
     display:flex;
     justify-content:space-between;
