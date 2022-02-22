@@ -1,19 +1,21 @@
 # SandwichTools
 
 ## Backend - API Server
-## Installation
+### Installation
 
 ```bash
 $ npm install
 ```
 
-## Settings
-### .env
+### Settings
+#### .env
+
 ```bash
+# set API Server Port like this.
 PORT=4000
 ```
 
-## Running the app
+### Running the app
 
 ```bash
 # development
@@ -27,19 +29,21 @@ $ npm run start:prod
 ```
 
 ## Frontend
-## Installation
+### Installation
 
 ```bash
 $ npm install
 ```
 
-## Settings
-### .env
+### Settings
+#### .env
+
 ```bash
+# set api server domain url like this.
 REACT_APP_DOMAIN_URL=http://localhost:4000
 ```
 
-## Running the app
+### Running the app
 
 ```bash
 # development
@@ -50,5 +54,10 @@ $ npm run start
 
 # build
 $ npm run build
+```
+
+### Running on Browser
+```bash
+localhost:3000
 ```
 
