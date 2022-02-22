@@ -91,7 +91,7 @@ function Sidebar(props) {
                             </Link>
                         </li>
                         <li className={`${pathname.match('/chart') ? 'nav-item active' : 'nav-item'}`}>
-                            <Link to="/chart/BTC" className="nav-link " onClick={()=>props.setOpen()}>                            
+                            <Link to="/chart/Ethereum/0xdac17f958d2ee523a2206206994597c13d831ec7" className="nav-link " onClick={()=>props.setOpen()}>                            
                                 <RiBarChartBoxLine className="side-icon mr-3" />SandwichCharts                            
                             </Link>
                         </li>
