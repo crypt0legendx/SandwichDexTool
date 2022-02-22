@@ -4,6 +4,8 @@ import { FaRegStar, FaStar} from "react-icons/fa";
 import {useSelector, useDispatch} from "react-redux";
 import axios from 'axios';
 
+import { Link } from "react-router-dom";
+
 import { extractNameSymbol } from "../../helpers/scrape";
 import useFavoriteHelper from "../../hooks/useFavoriteHelper";
 
@@ -219,11 +221,15 @@ const SearchComplete = () => {
                         >
                           <FaRegStar />
                         </button>
-                        <img className="token-logo ml-2" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${data.id}.png`} alt="token-logo"/>
-                        <div className="d-flex flex-column ml-2 justify-content-center">
-                          <div className="token-name">{data.name}</div>
-                          <div className="token-symbol">{data.symbol}</div>
-                        </div>
+                        <Link to={ `/chart/${getChainBySlug(data.platform.slug)}/${data.platform.token_address}`}>
+                          <div className="d-flex align-items-center">
+                            <img className="token-logo ml-2" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${data.id}.png`} alt="token-logo"/>
+                            <div className="d-flex flex-column ml-2 justify-content-center">
+                              <div className="token-name">{data.name}</div>
+                              <div className="token-symbol">{data.symbol}</div>
+                            </div>
+                          </div>
+                        </Link>
                       </div>
                       <div className="d-flex align-items-center">
                         <div className="token-price"></div>
@@ -237,11 +243,15 @@ const SearchComplete = () => {
                         <button className="star-toggle-button active" onClick={()=>toggleFavouriteToken(data)}>
                           <FaRegStar />
                         </button>
-                        <img className="token-logo ml-2" src={data.logo} alt="token-logo"/>
-                        <div className="d-flex flex-column ml-2 justify-content-center">
-                          <div className="token-name">{data.name}</div>
-                          <div className="token-symbol">{data.symbol}</div>
-                        </div>
+                        <Link to={ `/chart/${data.chain}/${data.contractAddress}`}>
+                          <div className="d-flex align-items-center">
+                            <img className="token-logo ml-2" src={data.logo} alt="token-logo"/>
+                            <div className="d-flex flex-column ml-2 justify-content-center">
+                              <div className="token-name">{data.name}</div>
+                              <div className="token-symbol">{data.symbol}</div>
+                            </div>
+                          </div>
+                        </Link>
                       </div>
                       <div className="d-flex align-items-center">
                         <div className="token-price"></div>
@@ -257,11 +267,15 @@ const SearchComplete = () => {
                         >
                           <FaRegStar />
                         </button>
-                        <img className="token-logo ml-2" src={data.logo} alt="token-logo"/>
-                        <div className="d-flex flex-column ml-2 justify-content-center">
-                          <div className="token-name">{data.name}</div>
-                          <div className="token-symbol">{data.symbol}</div>
-                        </div>
+                        <Link to={ `/chart/${data.chain}/${data.contractAddress}`}>
+                          <div className="d-flex align-items-center">
+                            <img className="token-logo ml-2" src={data.logo} alt="token-logo"/>
+                            <div className="d-flex flex-column ml-2 justify-content-center">
+                              <div className="token-name">{data.name}</div>
+                              <div className="token-symbol">{data.symbol}</div>
+                            </div>
+                          </div>
+                        </Link>
                       </div>
                       <div className="d-flex align-items-center">
                         <div className="token-price"></div>

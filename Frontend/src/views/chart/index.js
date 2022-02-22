@@ -65,7 +65,7 @@ function Chart() {
         fetchTradeBook();
         fetchHolders();
         fetchLiquidity();
-    },[])
+    },[chain,contractAddress])
 
     useEffect(()=>{
         if(address == ""){
