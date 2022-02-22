@@ -9,6 +9,16 @@ export class ThirdApiController {
     ){}
 
     /**
+    * Returns Presale Token List
+    *
+     */
+    @Get('/presale-tokens')
+    async getPresaleTokens(@Res() res, @Req() req){
+        console.log('third-api/presale-tokens');
+        const presaleTokens = await this.thirdApiService.getPresaleTokens();
+        return res.status(HttpStatus.OK).json(presaleTokens);
+    }
+    /**
      * Return Balance List of Account from third api
      * @param res 
      * @param req 

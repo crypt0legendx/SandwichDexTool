@@ -1,46 +1,56 @@
 import { useState } from "react";
+import {useSelector, useDispatch} from "react-redux";
 
+import { Link } from "react-router-dom";
+
+import Skeleton from '@mui/material/Skeleton';
+
+import "../style.css";
 
 function PresaleCard(){
 
-    const [presales, setPresales] =  useState([
-        {
-            name:'-',
-            symbol:'-',
-            logo:'token_empty.png',
-            percent_change_24h:'-'
-        },
-        {
-            name:'-',
-            symbol:'-',
-            logo:'token_empty.png',
-            percent_change_24h:'-'
-        },
-        {
-            name:'-',
-            symbol:'-',
-            logo:'token_empty.png',
-            percent_change_24h:'-'
-        }
-    ])
+    const presaleTokens = useSelector((state) => state.currencies.presaleTokens);
 
     return(
         <div className="coin-marketcap-info-item ">
             <div className="d-flex justify-content-between ">
                 <span className="info-item-title "><i className="fa fa-fire-flame-curved mr-2"></i>SandwichBeta Presales</span>
-                <button className="btn btn-default info-view-more ">More<i className="fa fa-angle-right ml-2"></i></button>
+                <Link to="/trending-tokens">
+                    <button className="btn btn-default info-view-more cursor-pointer ">
+                        More<i className="fa fa-angle-right ml-2"></i>
+                    </button>
+                </Link>
             </div>
             {
-                presales.slice(0,3).map((t,i)=>{
+                presaleTokens.length==0&&(
+                    new Array(3).fill(0).map((t,i)=>{
+                        return <div key={i} className="d-flex justify-content-between mt-1">
+                                    <span className="info-item-opt-title align-items-center ">
+                                        <span className="dash-overview-num">{i+1}</span>&nbsp;
+                                        <Skeleton className="ml-1" variant="circular" animation="wave" width={17} height={17} />
+                                        <Skeleton className="ml-1" animation="wave" width={50} height={15} />
+                                    </span>
+                                    <span className="info-item-opt-value">
+                                        <Skeleton animation="wave" width={50} height={15} />
+                                    </span>                                    
+                                </div>        
+                    })    
+                )
+            }
+            {
+                presaleTokens.slice(0,3).map((t,i)=>{
                     return <div key={i} className="d-flex justify-content-between mt-1">
                                 <span className="info-item-opt-title ">
                                     <span className="dash-overview-num">{i+1}</span>&nbsp;
-                                    <img className="trending-dash-logo ml-2 mr-2" src={`../../../assets/icons/others${t.logo}.png`} />
-                                    {t.name}&nbsp;
-                                    <small>{t.symbol}</small>
+                                    <img 
+                                    className="trending-dash-logo ml-2 mr-2" 
+                                    src={t.logo!==""?t.logo:"../assets/icons/others/sandwichholder.png"} />
+                                    {t.t_name}&nbsp;
+                                    <small>{t.t_sym}</small>
                                 </span>
-                                <span className={t.percent_change_24h>0?`info-item-opt-value text-success`:`info-item-opt-value text-danger`}>
-                                    {t.percent_change_24h>0?'+':''}{t.percent_change_24h}%</span>
+                                <span className="info-item-opt-value text-success">
+                                    {t.sc}/{t.hc}
+                                </span>
                                 
                             </div>        
                 })

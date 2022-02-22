@@ -66,6 +66,8 @@
 }
 
 .coin-marketcap-info-item .info-view-more {
+    display: flex;
+    align-items: center;
     padding-left: 0px;
     padding-right: 0px;
     font-family: Poppins;

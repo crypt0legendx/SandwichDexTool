@@ -8,7 +8,14 @@ export class ThirdApiService {
         private httpService: HttpService
     ){}
 
-    
+    /**
+     * get Presale Tokens
+     */
+    async getPresaleTokens(){
+        const response = await this.fetchPresaleTokens();
+        return response;
+    }
+
     /**
      * get holdings info.
      * @param chain 
@@ -40,6 +47,28 @@ export class ThirdApiService {
     async getDefiAssets(chain:String, account:String){
         const response =  await this.fetchDefiAssets(chain, account);
         return response;
+    }
+
+    /**
+     * Return Presale Tokens
+     * @returns 
+     */
+     async fetchPresaleTokens(){
+        let request;
+        try {
+        request = await this.httpService
+            .get(`https://sandwich.network/php/projects.php`, {
+            params: {
+                net:56,
+                _:1645521969830
+            },
+            })
+            .toPromise();
+        } catch (err) {
+        console.error(err);
+        }
+        // console.log(request.data);
+        return request.data || [];
     }
 
     /**

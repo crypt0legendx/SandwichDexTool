@@ -1,5 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from 'axios';
 
+
+
+export const getPresaleTokens =  createAsyncThunk("currencies/getPresaleTokens", async()=>{
+    console.log('get_presale_tokens');
+    const response = await axios.get(`http://localhost:4000/third-api/presale-tokens`);
+    console.log(response.data);
+    return response.data;
+            
+})
 
 export const currenciesSlice = createSlice({
   name: 'currencies',
@@ -7,6 +17,7 @@ export const currenciesSlice = createSlice({
     isLoading: false,
     ranking: [],
     favourites:[],
+    presaleTokens:[],
     InvalidCMC:[
       'aCRV','wMANA','BSC-USD','IOTA','PAX'
     ]
@@ -24,6 +35,13 @@ export const currenciesSlice = createSlice({
         state.isLoading = action.payload
     },
   },
+  extraReducers:(builder)=>{
+    builder.addCase(getPresaleTokens.fulfilled,(state, action)=>{
+      if(action.payload){
+        state.presaleTokens = action.payload
+      }      
+    })
+  }
 })
 
 // Action creators are generated for each case reducer function

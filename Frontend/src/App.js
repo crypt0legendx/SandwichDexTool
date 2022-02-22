@@ -12,6 +12,7 @@ import GainersLosers from "./views/Currencies/Gainers-Losers";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
 import {getTrendings, getGainersLosers, getMostVisited} from './store/slices/trendings-slice';
+import {getPresaleTokens} from './store/slices/currencies-slice';
 import {changeFavourites} from './store/slices/currencies-slice';
 import {setBrowserWidth} from './store/slices/app-slice';
 
@@ -19,9 +20,6 @@ import Footer from "./components/Footer";
 import Portfolio from "./views/Portfolio";
 import PortfolioTokens from "./views/Portfolio/Tokens";
 import PortfolioOverview from "./views/Portfolio/Overview";
-
-
-
 
 
 function App() {
@@ -59,6 +57,8 @@ function App() {
         dispatch(getTrendings())
         dispatch(getGainersLosers())
         dispatch(getMostVisited())
+        dispatch(getPresaleTokens())
+        
     }
     
     const setWindowWidth = () => {

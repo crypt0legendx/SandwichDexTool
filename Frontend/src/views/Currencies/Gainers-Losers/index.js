@@ -81,10 +81,10 @@ function GainersLosers() {
                                                         <img className="token-logo mr-2" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${t.id}.png`} />
                                                         <div className="d-flex flex-column token-normal-info">
                                                             <div>
-                                                                {t.name}
+                                                                {t.symbol}
                                                             </div>                                                        
                                                             <div  className="small-price">
-                                                                ${t.price}
+                                                                ${t.price.toFixed(4)}
                                                             </div>
                                                         </div>                                                                                                    
                                                         </div>
@@ -130,10 +130,10 @@ function GainersLosers() {
                                                         <img className="token-logo mr-2" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${t.id}.png`} />
                                                         <div className="d-flex flex-column token-normal-info">
                                                             <div>
-                                                                {t.name}
+                                                                {t.symbol}
                                                             </div>                                                        
                                                             <div className="small-price">
-                                                                ${t.price}
+                                                                ${t.price.toFixed(6)}
                                                             </div>
                                                         </div>                                                                                                    
                                                         </div>
