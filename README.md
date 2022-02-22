@@ -7,6 +7,12 @@
 $ npm install
 ```
 
+## Settings
+### .env
+```bash
+PORT=4000
+```
+
 ## Running the app
 
 ```bash
@@ -28,7 +34,7 @@ $ npm install
 ```
 
 ## Settings
-
+### .env
 ```bash
 REACT_APP_DOMAIN_URL=http://localhost:4000
 ```
