@@ -347,7 +347,7 @@ function Chart() {
                                         <div className="col-md-12 flex-wrap">
                                             <div className="trading-view-filter" style={{width: "100%"}}>
                                                 <div className="row">
-                                                    <div className="col-md-7 d-flex flex-wrap">
+                                                    <div className="col-md-7 d-flex flex-wrap justify-content-center justify-content-md-start">
                                                         <button className="trading-filter-btn mt-1 mr-1">Time</button>
                                                         {
                                                             timeInterval.map((val,index)=>{
@@ -359,9 +359,9 @@ function Chart() {
                                                             })
                                                         }                                
                                                     </div>
-                                                    <div className="col-md-5 d-flex justify-content-end align-items-center">
-                                                        <a href="" className="trading-subnav active mr-3">Trading View</a>
-                                                        <a href="" className="trading-subnav"><img src={FullscreenIcon} /></a>
+                                                    <div className="col-md-5 mt-2 d-flex justify-content-center justify-content-md-end align-items-center">
+                                                        <a href="#" className="trading-subnav active mr-3">Trading View</a>
+                                                        <a href="#" className="trading-subnav"><img src={FullscreenIcon} /></a>
                                                     </div>
                                                 </div>
                                             </div>
