@@ -11,7 +11,7 @@ import GainersLosers from "./views/Currencies/Gainers-Losers";
 
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
-import {getTrendings, getGainersLosers} from './store/slices/trendings-slice';
+import {getTrendings, getGainersLosers, getMostVisited} from './store/slices/trendings-slice';
 import {changeFavourites} from './store/slices/currencies-slice';
 import {setBrowserWidth} from './store/slices/app-slice';
 
@@ -58,7 +58,9 @@ function App() {
     const getRealtimeDatas  =() =>{
         dispatch(getTrendings())
         dispatch(getGainersLosers())
+        dispatch(getMostVisited())
     }
+    
     const setWindowWidth = () => {
         dispatch(setBrowserWidth(window.innerWidth));
     }

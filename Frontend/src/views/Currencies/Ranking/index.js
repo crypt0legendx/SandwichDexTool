@@ -113,7 +113,7 @@ function Ranking() {
                             The global crypto market cap is {
                                 globalMetrics == null?
                                 <Skeleton className="ml-1" animation="wave" width={50} height={30} />:
-                                <span className="text-success ml-1">${globalMetrics.total_market_cap}</span>
+                                <span className="text-success ml-1">${(globalMetrics.total_market_cap/Math.pow(10,12)).toFixed(2)}T</span>
                     
                             }, a 
                             {

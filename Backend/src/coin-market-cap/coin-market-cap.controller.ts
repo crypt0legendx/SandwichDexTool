@@ -43,6 +43,19 @@ export class CoinMarketCapController {
   }
 
   /**
+   * Return Most visited from CMC
+   * @param res 
+   * @param req 
+   * @returns 
+   */
+   @Get('/most-visited')
+   async getMostVisited(@Res() res, @Req() req) {    
+     const mostVisited = await this.coinMarketCapService.getMostVisited();
+     return res.status(HttpStatus.OK).json(mostVisited);
+   }
+
+
+  /**
    * Return Biggest Gainers and Losers from CMC
    * @param res 
    * @param req 

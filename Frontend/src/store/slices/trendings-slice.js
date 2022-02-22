@@ -19,12 +19,21 @@ export const getGainersLosers =  createAsyncThunk("trendings/getGainersLosers", 
           
 })
 
+export const getMostVisited =  createAsyncThunk("trendings/getMostVisited", async()=>{
+  console.log('get_most_visited');
+  const response = await axios.get(`http://localhost:4000/coin-market-cap/most-visited`);
+  console.log(response.data);
+  return response.data;
+          
+})
+
 export const trendingsSlice = createSlice({
   name: 'trendings',
   initialState: {
     latest: [],
     gainers:[],
     losers:[],
+    mostVisited:[],
 
   },
   reducers: {
@@ -36,8 +45,12 @@ export const trendingsSlice = createSlice({
     builder.addCase(getTrendings.fulfilled,(state, action)=>{
       if(action.payload){
         state.latest = action.payload
-      }
-      
+      }      
+    })
+    builder.addCase(getMostVisited.fulfilled,(state, action)=>{
+      if(action.payload){
+        state.mostVisited = action.payload
+      }      
     })
     builder.addCase(getGainersLosers.fulfilled,(state, action)=>{
       if(action.payload){

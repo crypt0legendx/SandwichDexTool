@@ -177,6 +177,52 @@ export class CoinMarketCapService {
   }
 
   /**
+   * Return the Most Visited List.
+   * @returns 
+   */
+  async getMostVisited() {
+    console.log("most-visited");
+    const mostVisited = await this.fetchMostVisited();
+
+    const listCoins = Object.keys(mostVisited);
+    return listCoins.map((k) => ({
+      id:mostVisited[k].id,
+      name: mostVisited[k].name,
+      symbol: mostVisited[k].symbol,
+      price: mostVisited[k].quote?.USD?.price,
+      volume_24h:mostVisited[k].quote?.USD?.volume_24h,
+      percent_change_24h:mostVisited[k].quote?.USD?.percent_change_24h,
+      percent_change_7d:mostVisited[k].quote?.USD?.percent_change_7d,
+      market_cap:mostVisited[k].quote?.USD?.market_cap,      
+      quote:mostVisited[k].quote?.USD,
+      platform:mostVisited[k].platform
+    }));
+  }
+
+
+  /**
+   * Fetch the most visited using CMC Paid API Key.
+   * @returns 
+   */
+  private async fetchMostVisited(): Promise<any> {
+    let request;
+    try {
+      request = await this.httpService
+        .get(`${process.env.COINMARKETCAP_URL}/v1/cryptocurrency/trending/most-visited`, {
+          headers: { 'X-CMC_PRO_API_KEY': this.apiKey },
+          params: { 
+            start:1, 
+            limit:200,
+          }
+        })
+        .toPromise();
+    } catch (err) {
+      console.error(err);
+    }
+    return request?.data?.data || [];
+  }
+
+  /**
    * Return the Gainers and Losers List.
    * @returns 
    */
