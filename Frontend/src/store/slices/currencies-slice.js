@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export const getPresaleTokens =  createAsyncThunk("currencies/getPresaleTokens", async()=>{
     console.log('get_presale_tokens');
-    const response = await axios.get(`http://localhost:4000/third-api/presale-tokens`);
+    const response = await axios.get(`${process.env.REACT_APP_DOMAIN_URL}/third-api/presale-tokens`);
     console.log(response.data);
     return response.data;
             

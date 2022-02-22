@@ -38,7 +38,7 @@ function Ranking() {
     },[])
 
     const getGlobalMetrics = () =>{
-        axios.get(`http://localhost:4000/coin-market-cap/global-metrics`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/coin-market-cap/global-metrics`)
             .then(function (response) {
                 console.log('getGlobalMetrics');
                 console.log(response.data);

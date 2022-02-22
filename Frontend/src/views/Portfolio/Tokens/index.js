@@ -33,7 +33,7 @@ function PortfolioTokens(){
     const getTokens = () =>{
 
         setLoadTokens(true);
-        axios.get(`http://localhost:4000/third-api/balances-overview/${chain}/${selectedAddress}/all`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/third-api/balances-overview/${chain}/${selectedAddress}/all`)
             .then(function (response) {
                 console.log('getTokens');                
                 setTokens(response.data.tokens);
@@ -51,7 +51,7 @@ function PortfolioTokens(){
     const getDefiAssets = () =>{
 
         setLoadDefies(true);
-        axios.get(`http://localhost:4000/third-api/defi-assets/${chain}/${selectedAddress}`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/third-api/defi-assets/${chain}/${selectedAddress}`)
             .then(function (response) {
                 console.log('getDefies');                
                 setDefies(response.data.asset);

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export const getTrendings =  createAsyncThunk("trendings/getTrendings", async()=>{
     console.log('get_trendings');
-    const response = await axios.get(`http://localhost:4000/coin-market-cap/trending`);
+    const response = await axios.get(`${process.env.REACT_APP_DOMAIN_URL}/coin-market-cap/trending`);
     console.log(response.data);
     return response.data;
             
@@ -13,7 +13,7 @@ export const getTrendings =  createAsyncThunk("trendings/getTrendings", async()=
 
 export const getGainersLosers =  createAsyncThunk("trendings/getGainersLosers", async()=>{
   console.log('get_gainers_losers');
-  const response = await axios.get(`http://localhost:4000/coin-market-cap/gainers-losers`);
+  const response = await axios.get(`${process.env.REACT_APP_DOMAIN_URL}/coin-market-cap/gainers-losers`);
   console.log(response.data);
   return response.data;
           
@@ -21,7 +21,7 @@ export const getGainersLosers =  createAsyncThunk("trendings/getGainersLosers", 
 
 export const getMostVisited =  createAsyncThunk("trendings/getMostVisited", async()=>{
   console.log('get_most_visited');
-  const response = await axios.get(`http://localhost:4000/coin-market-cap/most-visited`);
+  const response = await axios.get(`${process.env.REACT_APP_DOMAIN_URL}/coin-market-cap/most-visited`);
   console.log(response.data);
   return response.data;
           

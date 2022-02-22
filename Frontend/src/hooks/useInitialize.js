@@ -12,7 +12,7 @@ const useInitialize = () => {
     const initializeApp = (chain) => {
 
         dispatch(changeLoading(true));
-        axios.get(`http://localhost:4000/multi-chain-cap/toptokens/${chain}`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/multi-chain-cap/toptokens/${chain}`)
             .then(function (response) {
                 let results=[];
                 let symbols="";
@@ -43,7 +43,7 @@ const useInitialize = () => {
                     
                 }
                 symbols=symbols.substring(1);
-                axios.get(`http://localhost:4000/coin-market-cap/token/${symbols}`)
+                axios.get(`${process.env.REACT_APP_DOMAIN_URL}/coin-market-cap/token/${symbols}`)
                     .then(async function (response) {
                         const cmc_data=response.data;
                         results=await results.map((d,index)=>{

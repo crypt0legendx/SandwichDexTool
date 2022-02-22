@@ -31,7 +31,7 @@ function PortfolioOverview(){
     const getBalances = () =>{
 
         setLoadTokens(true);
-        axios.get(`http://localhost:4000/third-api/balances-overview/${chain}/${selectedAddress}/5`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/third-api/balances-overview/${chain}/${selectedAddress}/5`)
             .then(function (response) {
                 console.log('getBalances');
                 console.log(response.data);
@@ -51,7 +51,7 @@ function PortfolioOverview(){
     const getHoldings = () =>{
 
         setLoadHolding(true);
-        axios.get(`http://localhost:4000/third-api/holdings-account/${chain}/${selectedAddress}`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/third-api/holdings-account/${chain}/${selectedAddress}`)
             .then(function (response) {
                 console.log('getHoldings');
                 console.log(response.data);

@@ -85,7 +85,7 @@ function Chart() {
 
     const fetchTradeBook = async() =>{
         
-        axios.get(`http://localhost:4000/bitquery/tradebook/${chain}/${contractAddress}`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/bitquery/tradebook/${chain}/${contractAddress}`)
         .then(function (response) {
             console.log(response.data.ethereum.dexTrades);
             setTradeBook(response.data.ethereum.dexTrades);
@@ -98,7 +98,7 @@ function Chart() {
 
     const fetchYourTrade = async() =>{
         
-        axios.get(`http://localhost:4000/bitquery/tradebook/${chain}/${contractAddress}/${address}`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/bitquery/tradebook/${chain}/${contractAddress}/${address}`)
         .then(function (response) {
             console.log(response.data.ethereum.dexTrades);
             setYourTrade(response.data.ethereum.dexTrades);
@@ -110,7 +110,7 @@ function Chart() {
     }
 
     const fetchHolders = async() => {
-        axios.get(`http://localhost:4000/multi-chain-cap/holders/${chain}/${contractAddress}`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/multi-chain-cap/holders/${chain}/${contractAddress}`)
         .then(function (response) {
             let parser = new DOMParser();
                 let doc = parser.parseFromString(response.data, 'text/html');
@@ -135,7 +135,7 @@ function Chart() {
     }
 
     const fetchLiquidity = async()=> {
-        axios.get(`http://localhost:4000/bitquery/liquidity/${chain}/${contractAddress}`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/bitquery/liquidity/${chain}/${contractAddress}`)
         .then(function (response) {
             console.log(response.data.ethereum.dexTrades);
             let dexTrades = response.data.ethereum.dexTrades;
@@ -169,7 +169,7 @@ function Chart() {
 
     const getTokenInfo = async() => {
         setLoadTokeninfo(true);
-        axios.get(`http://localhost:4000/bitquery/tokeninfo/${chain}/${contractAddress}`)
+        axios.get(`${process.env.REACT_APP_DOMAIN_URL}/bitquery/tokeninfo/${chain}/${contractAddress}`)
             .then(function (response) {
                 console.log('getTokenInfo');
                 const dexTrades = response.data.ethereum.dexTrades;

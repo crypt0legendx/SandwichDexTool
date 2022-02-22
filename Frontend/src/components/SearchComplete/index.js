@@ -82,7 +82,7 @@ const SearchComplete = () => {
   const changedSearchValue =(e) =>{
     setSearchText(e.target.value);
     if(e.target.value!=""){
-      axios.get(`http://localhost:4000/multi-chain-cap/search-tokens/${e.target.value}`)
+      axios.get(`${process.env.REACT_APP_DOMAIN_URL}/multi-chain-cap/search-tokens/${e.target.value}`)
         .then(function (response) {
             let datas = response.data;
             let searchedTokens = [];
