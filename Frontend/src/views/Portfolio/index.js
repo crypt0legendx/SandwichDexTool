@@ -72,6 +72,7 @@ function Portfolio() {
                         onClose={handleClose}
                         aria-labelledby="modal-modal-title"
                         aria-describedby="modal-modal-description"
+                        className="wallet-management-modal"
                     >                    
                         <Box sx={style}>
                             <WalletManagement handleClose={handleClose} />                            

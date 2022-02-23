@@ -1,11 +1,11 @@
-import React, { useState, ReactElement, useContext, useMemo, useCallback } from "react";
+import React, { useState, useEffect, ReactElement, useContext, useMemo, useCallback } from "react";
 import Web3Modal from "web3modal";
 import { StaticJsonRpcProvider, JsonRpcProvider, Web3Provider } from "@ethersproject/providers";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { useDispatch, useSelector } from "react-redux";
 
 import { swithNetwork } from "../../helpers/switch-network";
-import { getChainIdByName } from "../../helpers/chainHelper";
+import { getChainIdByName, getRPCByChainID } from "../../helpers/chainHelper";
 
 const Web3Context = React.createContext();
 
@@ -34,17 +34,21 @@ export const Web3ContextProvider=({ children }) => {
     const [chainID, setChainID] = useState(getChainIdByName(network));
     const [providerChainID, setProviderChainID] = useState(getChainIdByName(network));
     const [address, setAddress] = useState("");
+    
+    const [provider, setProvider] = useState(new StaticJsonRpcProvider(getRPCByChainID(chainID)));
 
-    const [uri, setUri] = useState("https://bsc-dataseed1.defibit.io/");
-    const [provider, setProvider] = useState(new StaticJsonRpcProvider(uri));
-
-    const [web3Modal] = useState(
+    const [web3Modal, setWeb3Modal] = useState(
         new Web3Modal({
-            network:"mainnet",
+            // network:"mainnet",
             cacheProvider: true,
             providerOptions: {
                 walletconnect: {
-                    package: WalletConnectProvider,                    
+                    package: WalletConnectProvider,
+                    options: {
+                        rpc: {
+                            chainID: getRPCByChainID(chainID),
+                        },
+                    },     
                 },
             },
         }),

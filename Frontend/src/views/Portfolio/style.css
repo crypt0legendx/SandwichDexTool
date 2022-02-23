@@ -255,6 +255,9 @@
 }
 
 
+.wallet-management-modal{
+    z-index:1 !important;
+}
 .wallet-management{
     padding: 30px 20px;
 }
