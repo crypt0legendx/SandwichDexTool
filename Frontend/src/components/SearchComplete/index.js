@@ -17,6 +17,7 @@ const SearchComplete = () => {
   const [searchText, setSearchText] = useState("");
   const [activeCat, setActiveCategory] =useState("trending");
       
+  const browserWidth = useSelector((state) => state.app.browserWidth);
   const favourites = useSelector((state) => state.currencies.favourites);
   const trendings =  useSelector((state) => state.trendings.latest);
 
@@ -74,7 +75,11 @@ const SearchComplete = () => {
     let searchField = document.getElementById('search-field');
     
     let suggestionList = document.getElementById('suggestion-list');
-    suggestionList.style.left=searchField.offsetLeft+'px';
+    let offsetLeft =  searchField.offsetLeft;
+    if(browserWidth>1240){
+      offsetLeft = searchField.offsetLeft+280;
+    }
+    suggestionList.style.left=offsetLeft+'px';
     suggestionList.style.top=Number(searchField.offsetTop+50)+'px';
     suggestionList.style.width = searchField.offsetWidth+'px';
   }

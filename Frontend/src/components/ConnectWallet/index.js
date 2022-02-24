@@ -36,7 +36,7 @@ function ConnectWallet() {
 
     return (
         <button type="button " className="btn btn-primary connect-wallet-btn " style={buttonStyle} onClick={clickFunc}>
-            <p>{buttonText}</p>
+            {buttonText}
         </button>
     );
 }

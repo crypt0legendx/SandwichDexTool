@@ -1,12 +1,12 @@
 import React,{useEffect} from "react";
 import {RiNotification2Line} from "react-icons/ri";
 import {Dropdown} from "react-bootstrap";
-import ConnectWallet from "../ConnectWallet";
 import {useSelector, useDispatch} from "react-redux";
 import {changeNetwork} from "../../store/slices/network-slice";
 
 
 import "./Header.css";
+import ConnectWallet from "../ConnectWallet";
 import SearchComplete from "../SearchComplete";
 import useInitialize from "../../hooks/useInitialize";
 
@@ -40,10 +40,8 @@ function Header(props) {
     return ( 
         <>
         <nav className="navbar navbar-expand-md fixed-top ">
-            <a className="navbar-brand " href="# ">
-                <img src="../../../assets/images/Logo/logo.png" alt="logo" />
-            </a>
-            
+            <div className="d-flex">
+            </div>
             <div className="collapse navbar-collapse " id="main-navigation ">
                 <ul className="navbar-nav ">
                     <li className="nav-item ">
@@ -71,7 +69,7 @@ function Header(props) {
                     browserWidth<=1028?<SearchComplete />:''
                 }
                 <button type="button " className="btn btn-default notification-btn "><RiNotification2Line /></button>
-                <Dropdown className="mr-2 ml-2 d-flex align-items-center network-dropdown">
+                <Dropdown className="mr-3 ml-2 d-flex align-items-center network-dropdown">
                     <Dropdown.Toggle id="dropdown-basic" className="header-switch-network-btn">
                         <img className="network-logo mr-2" src={`../../assets/images/Networks/${network}.png`} alt="network_logo" />{network}
                     </Dropdown.Toggle>
@@ -82,12 +80,7 @@ function Header(props) {
                     </Dropdown.Menu>
                 </Dropdown>
                 <ConnectWallet />
-                {
-                    browserWidth>525?
-                    <button onClick={()=>props.setOpen()} className="navbar-toggler navbar-toggler-md navbar-light " type="button " data-toggle="collapse " data-target="#main-navigation ">
-                        <span className="navbar-toggler-icon "></span>
-                    </button>:''         
-                }
+                
             </div>   
             
             

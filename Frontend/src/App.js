@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import {useDispatch } from "react-redux";
+
 import './App.css';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -42,6 +43,7 @@ function App() {
 
     useEffect(()=>{
         setWindowWidth();
+        setSidebarOpenState();
         window.addEventListener('resize',(e)=>{
             setWindowWidth();      
         });
@@ -65,14 +67,23 @@ function App() {
         dispatch(setBrowserWidth(window.innerWidth));
     }
 
+    const setSidebarOpenState=()=>{
+        if(window.innerWidth<=768){
+            setOpen(false);
+        }else{
+            setOpen(true);
+        }
+    }
+
     
 
     return ( 
         <Router>
-            <Header setOpen = {toggleSidebar} />
+        
+            <Sidebar isOpen = {isOpen}  setOpen = {toggleSidebar} />            
             <div className="page-container container-full ">
-                <Sidebar isOpen = {isOpen}  setOpen = {toggleSidebar} />
-                <div id="page-content" className='page-content'>
+                <Header setOpen = {toggleSidebar} />    
+                <div id="page-content" className={!isOpen?'page-content open':'page-content'}>
                     
                     <Routes>
                         <Route path="/currencies" element={<Ranking />} />
@@ -87,7 +98,7 @@ function App() {
                         <Route path="/*" element={<Navigate to="/currencies" />} />
                     </Routes>
                     
-                    {/* <Footer /> */}
+                  
                     <ScrollToTopButton refId="page-content" />
                 </div>
             </div>
