@@ -131,13 +131,7 @@ function Sidebar(props) {
                             <Link to={'portfolio/overview'} className="nav-link align-items-center d-flex" onClick={()=>props.setOpen()}>
                                 <RiWallet2Line className="side-icon mr-3" />SandwichPortfolio
                             </Link>
-                        </li>
-                        <li className="nav-item ">
-                            <a className="nav-link " href="# ">
-                                <RiToolsLine className="side-icon mr-3" /> Sandwich Instruments
-                            </a>
-                        </li>
-                        
+                        </li>                                            
                         <li className="nav-item ">
                             <a className="nav-link " href="# ">
                                 <RiMoreLine className="side-icon mr-3" /> Support & More

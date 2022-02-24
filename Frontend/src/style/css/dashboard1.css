@@ -29,13 +29,17 @@
     color: #23262F;
 }
 
-.composition-ads {
+.composition-ads a {
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
     font-size: 9.94737px;
     line-height: 17px;
     color: #777E91;
+}
+
+.composition-ads a:hover{
+    color:#35C4FF;
 }
 
 .coin-martketcap-intro-title {

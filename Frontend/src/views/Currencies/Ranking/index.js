@@ -66,6 +66,7 @@ function Ranking() {
             </div>
             <div className="row">
                 <div className="col-md-4 ">
+
                     <div className="composition-image mt-3 composition-back1" >
                         <img src="../../../assets/images/compositions/composition_1.png " alt="composition" />
                     </div>
@@ -74,7 +75,7 @@ function Ranking() {
                             When to invest in crypto?
                         </div>
                         <div className="composition-ads ">
-                            Ads
+                            <a href="https://a-ads.com/" target="_blank">Ads</a>                            
                         </div>
                     </div>
                 </div>
@@ -87,7 +88,7 @@ function Ranking() {
                             Crypto in 2022
                         </div>
                         <div className="composition-ads ">
-                            Ads
+                            <a href="https://a-ads.com/"  target="_blank">Ads</a>
                         </div>
                     </div>
                 </div>
@@ -100,7 +101,7 @@ function Ranking() {
                             Will BTC recover?
                         </div>
                         <div className="composition-ads ">
-                            Ads
+                            <a href="#">Ads</a>
                         </div>
                     </div>
                 </div>
@@ -150,10 +151,10 @@ function Ranking() {
                                         <th scope="col " className="text-right ">24h %</th>
                                         <th scope="col " className="text-right ">7d %</th>
                                         <th scope="col " className="text-right">
-                                            marketcap <big><AiOutlineDollar className="ml-1" /></big>
+                                            Marketcap <big><AiOutlineDollar className="ml-1" /></big>
                                         </th>
                                         <th scope="col " className="text-right d-flex align-items-center">
-                                            volume(24) <big><AiOutlineBarChart className="ml-1" /></big>
+                                            Volume(24) <big><AiOutlineBarChart className="ml-1" /></big>
                                         </th>
                                         <th scope="col " className="text-right ">Chart</th>
 
@@ -184,10 +185,10 @@ function Ranking() {
                                         <th scope="col " className="text-right ">24h %</th>
                                         <th scope="col " className="text-right ">7d %</th>
                                         <th scope="col " className="text-right">
-                                            marketcap <big><AiOutlineDollar className="ml-1" /></big>
+                                            Marketcap <big><AiOutlineDollar className="ml-1" /></big>
                                         </th>
                                         <th scope="col " className="text-right d-flex align-items-center">
-                                            volume(24) <big><AiOutlineBarChart className="ml-1" /></big>
+                                            Volume(24) <big><AiOutlineBarChart className="ml-1" /></big>
                                         </th>
                                         <th scope="col " className="text-right ">Chart</th>
 

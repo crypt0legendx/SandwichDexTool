@@ -398,7 +398,7 @@ function Chart() {
                                                             <th scope="col " className="text-left ">Time <i className="fa fa-sort ml-2"></i></th>
                                                             <th scope="col " className="text-left ">Traded<i className="fa fa-sort ml-2"></i></th>
                                                             <th scope="col " className="text-left ">Token Price<i className="fa fa-sort ml-2"></i></th>
-                                                            <th scope="col " className="text-right ">value<i className="fa fa-sort ml-2"></i></th>
+                                                            <th scope="col " className="text-right ">Value<i className="fa fa-sort ml-2"></i></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -431,7 +431,7 @@ function Chart() {
                                                             <th scope="col " className="text-left ">Time <i className="fa fa-sort ml-2"></i></th>
                                                             <th scope="col " className="text-left ">Traded<i className="fa fa-sort ml-2"></i></th>
                                                             <th scope="col " className="text-left ">Token Price<i className="fa fa-sort ml-2"></i></th>
-                                                            <th scope="col " className="text-right ">value<i className="fa fa-sort ml-2"></i></th>
+                                                            <th scope="col " className="text-right ">Value<i className="fa fa-sort ml-2"></i></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>

@@ -67,7 +67,7 @@ function GainersLosers() {
                                     <tr>                                
                                         <th scope="col " className="text-left bg-light-gray theader-round-left">Position</th>
                                         <th scope="col " className="text-left bg-light-gray ">24h change</th>
-                                        <th scope="col " className="text-right bg-light-gray ">volume</th>
+                                        <th scope="col " className="text-right bg-light-gray ">Volume</th>
                                         <th scope="col " className="text-right bg-light-gray theader-round-right">Trust Score</th>                                
                                     </tr>
                                 </thead>
@@ -116,7 +116,7 @@ function GainersLosers() {
                                     <tr>                                
                                         <th scope="col " className="text-left bg-light-gray theader-round-left">Position</th>
                                         <th scope="col " className="text-left bg-light-gray ">24h change</th>
-                                        <th scope="col " className="text-right bg-light-gray ">volume</th>
+                                        <th scope="col " className="text-right bg-light-gray ">Volume</th>
                                         <th scope="col " className="text-right bg-light-gray theader-round-right">Trust Score</th>                                
                                     </tr>
                                 </thead>

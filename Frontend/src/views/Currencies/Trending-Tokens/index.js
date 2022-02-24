@@ -106,10 +106,10 @@ function TrendingTokens() {
                             <th scope="col " className="text-right ">24h %</th>
                             <th scope="col " className="text-right ">7d %</th>
                             <th scope="col " className="text-right">
-                                marketcap <big><AiOutlineDollar className="ml-1  " /></big>
+                                Marketcap <big><AiOutlineDollar className="ml-1  " /></big>
                             </th>
                             <th scope="col " className="text-right d-flex align-items-center">
-                                volume(24) <big><AiOutlineBarChart className="ml-1" /></big>
+                                Volume(24) <big><AiOutlineBarChart className="ml-1" /></big>
                             </th>
                             <th scope="col " className="text-right ">Chart</th>
 
