@@ -68,33 +68,39 @@ function Ranking() {
                 <div className="col-md-4 ">
 
                     <div className="composition-image mt-3 composition-back1" >
-                        <img src="../../../assets/images/compositions/composition_1.png " alt="composition" />
+                        <a href="https://a-ads.com/"  target="_blank">
+                            <img src="../../../assets/images/compositions/composition_1.png " alt="composition" />
+                        </a>
                     </div>
                     <div className="composition-footer d-flex justify-content-between ">
                         <div className="composition-title ">
                             When to invest in crypto?
                         </div>
                         <div className="composition-ads ">
-                            <a href="https://a-ads.com/" target="_blank">Ads</a>                            
+                            <a href="#">Ads</a>
                         </div>
                     </div>
                 </div>
                 <div className="col-md-4 ">
                     <div className="composition-image mt-3  composition-back2">
-                        <img src="../../../assets/images/compositions/composition_2.png " alt="composition" />
+                        <a href="https://a-ads.com/"  target="_blank">
+                            <img src="../../../assets/images/compositions/composition_2.png " alt="composition" />
+                        </a>
                     </div>
                     <div className="composition-footer d-flex justify-content-between ">
                         <div className="composition-title ">
                             Crypto in 2022
                         </div>
                         <div className="composition-ads ">
-                            <a href="https://a-ads.com/"  target="_blank">Ads</a>
+                            <a href="#">Ads</a>
                         </div>
                     </div>
                 </div>
                 <div className="col-md-4 ">
                     <div className="composition-image mt-3  composition-back3">
-                        <img src="../../../assets/images/compositions/composition_3.png " alt="composition" />
+                        <a href="#"  target="_blank">
+                            <img src="../../../assets/images/compositions/composition_3.png " alt="composition" />
+                        </a>
                     </div>
                     <div className="composition-footer d-flex justify-content-between ">
                         <div className="composition-title ">
