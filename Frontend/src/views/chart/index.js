@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 import {Tabs, Tab, Button, Form} from "react-bootstrap";
-import {BsArrowUp, BsArrowDown, BsClock} from 'react-icons/bs';
+import {BsArrowUp, BsArrowDown,BsArrowRight, BsClock} from 'react-icons/bs';
 import {FaRegChartBar, FaRegEdit} from 'react-icons/fa';
 import {VscArrowSwap} from 'react-icons/vsc';
 import {MdStackedLineChart} from 'react-icons/md';
@@ -377,7 +377,7 @@ function Chart() {
                                 </>:
                                 <div className="nodata-widget">
                                     <img className="nodata-img mt-4" src="../../assets/images/Portfolio/nodata.png" />
-                                    <div className="msg mt-2">Information Comming Soon</div>
+                                    <div className="msg mt-2">Comming <BsArrowRight/> Coming</div>
                                 </div>
                             )
                         }
