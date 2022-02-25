@@ -17,7 +17,7 @@ import {getPresaleTokens} from './store/slices/currencies-slice';
 import {changeFavourites} from './store/slices/currencies-slice';
 import {setBrowserWidth} from './store/slices/app-slice';
 
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Portfolio from "./views/Portfolio";
 import PortfolioTokens from "./views/Portfolio/Tokens";
 import PortfolioOverview from "./views/Portfolio/Overview";
@@ -39,12 +39,13 @@ function App() {
         getRealtimeDatas();
         
         // setInterval(()=>getRealtimeDatas(),100000);
-    })
+    },[])
 
     useEffect(()=>{
         setWindowWidth();
         setSidebarOpenState();
         window.addEventListener('resize',(e)=>{
+            console.log('dd');
             setWindowWidth();      
         });
 

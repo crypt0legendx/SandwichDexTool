@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useWeb3Context } from "../../hooks/web3";
 
-import {useSelector, useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 
 import { getChainIdByName } from "../../helpers/chainHelper";
 

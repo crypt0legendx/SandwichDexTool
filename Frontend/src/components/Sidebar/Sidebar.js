@@ -17,7 +17,7 @@ import {FaTelegramPlane, FaMedium, FaTwitter} from "react-icons/fa";
 import {MdOutlineShowChart,MdOutlineLocalFireDepartment} from "react-icons/md";
 import {Dropdown, Button} from "react-bootstrap";
 import { Link } from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback} from "react";
 import "./Sidebar.css";
 
 import {useSelector, useDispatch} from "react-redux";
@@ -35,31 +35,49 @@ function Sidebar(props) {
     const dispatch = useDispatch();
 
     const browserWidth = useSelector((state) => state.app.browserWidth);
+    
     const network = useSelector((state) => state.network.name);
     const {initializeApp} = useInitialize();
 
-    const [openSubMenu, setOpenSubMenu] = useState(false);
+    const [openSubMenu1, setOpenSubMenu1] = useState(false);
+    const [openSubMenu2, setOpenSubMenu2] = useState(false);
     const [refreshVal, setRefreshVal] = useState(1);
     
 
     let pathname = window.location.pathname;
 
-    useEffect(()=>{
-        document.addEventListener('click',(e)=>{
-            let sidebarMenu = document.getElementById('sidebarMenu');
-            let sidebarBrand = document.getElementById('sidebar-brand');
+    const handleAutoClose = useCallback(e => {
+        let sidebarMenu = document.getElementById('sidebar-sticky');
+        let sidebarBrand = document.getElementById('sidebar-brand');
+        if(e.target){
             if(sidebarBrand.contains(e.target)){
-                console.log('containe');
                 return;
             }
             if(!sidebarMenu.contains(e.target)&&props.isOpen){
-                if(browserWidth<=1028){
-                    props.setOpen();
+                if(e.target.classList){
+                    if(!e.target.classList.contains('side-icon')){
+                        if(browserWidth<=1028){
+                            setOpenState();
+                        }
+                    }
+                }else{
+                    if(browserWidth<=1028){
+                        setOpenState();
+                    }
                 }
-                
-            }      
-          })
-    })
+                                                        
+            }
+        }
+    }, [browserWidth]);
+    
+    useEffect(() => {
+        document.addEventListener("click", handleAutoClose);
+        return () => {
+            document.removeEventListener("click", handleAutoClose);
+        };
+    }, [handleAutoClose]);
+
+
     useEffect(() => {
         pathname = window.location.pathname;
     }, [window.location.pathname]);
@@ -80,18 +98,34 @@ function Sidebar(props) {
             setOpenState();
     }
 
-    const toggleSubmenu =() =>{
-        setOpenSubMenu(!openSubMenu);
+    const toggleSubmenu1 =() =>{
+            if(openSubMenu1 == false){
+                setOpenSubMenu2(false);        
+            }
+            setOpenSubMenu1(!openSubMenu1);
+            
     }
 
-    const setOpenState = () =>{
+    const toggleSubmenu2 =() =>{
+        if(openSubMenu2 == false){
+            setOpenSubMenu1(false);        
+        }
+        setOpenSubMenu2(!openSubMenu2);
+    }
+
+    const setOpenState = () =>{        
         
         if(browserWidth <= 1028&&props.isOpen){
+            if(openSubMenu1){
+                setOpenSubMenu1(!openSubMenu1);
+            }
+            if(openSubMenu2){
+                setOpenSubMenu2(!openSubMenu2);
+            }
             props.setOpen();
         }
         setRefreshVal(refreshVal+1);
     }
-
     return ( 
         <>
             <nav id="sidebarMenu" 
@@ -99,7 +133,7 @@ function Sidebar(props) {
                 className={props.isOpen?"d-md-block sidebar p-0":"d-md-block sidebar sidebar-collapse p-0"}
 
             >
-                <div id="sidebar-brand" className="sidebar-brand">
+                <div id="sidebar-brand" className="sidebar-brand d-flex align-items-center">
                     <span className="side-collapsible">
                         {
                             props.isOpen?
@@ -114,7 +148,7 @@ function Sidebar(props) {
                     </span>
                     <img className="ml-3 sidebar-logo" src="../../../assets/images/Logo/logo.png" alt="logo" />
                 </div>
-                <div className="sidebar-sticky ">
+                <div id = "sidebar-sticky" className="sidebar-sticky ">
                     
                     {
                         props.isOpen&&(
@@ -156,14 +190,14 @@ function Sidebar(props) {
                         <li
                             className={`${(pathname.match('/currencies')||pathname.match('/trending')||pathname.match('/gainer')) ? 'nav-item active' : 'nav-item'}`}
                         >
-                            <div className="nav-link align-items-center d-flex">
-                                <Link to={'currencies'} className="" onClick={()=>setOpenState()}>
+                            <div className="nav-link align-items-center d-flex  justify-content-between">
+                                <Link to={'currencies'} className="d-flex align-items-center">
                                     <RiCopperCoinLine className="side-icon" />{props.isOpen&&<span className="ml-3">Cryptocurrencies</span>}                                                                
                                 </Link>
                                 {
                                     props.isOpen&&(
-                                        openSubMenu?<RiArrowUpSLine onClick={()=>toggleSubmenu()} className="side-icon ml-3" />:
-                                        <RiArrowDownSLine onClick={()=>toggleSubmenu()} className="side-icon ml-3" />
+                                        openSubMenu1?<RiArrowUpSLine onClick={()=>toggleSubmenu1()} className="side-icon ml-3" />:
+                                        <RiArrowDownSLine onClick={()=>toggleSubmenu1()} className="side-icon ml-3" />
                                     )
                                     
                                 }
@@ -172,7 +206,9 @@ function Sidebar(props) {
                             
                         </li>
                         {
-                            props.isOpen&&openSubMenu&&(
+                            <div className={(props.isOpen&&openSubMenu1)?'wrapper-sub open1':'wrapper-sub'}>
+                            
+                                
                                 <ul className="submenu">
                                     <Link to="/currencies" className="nav-link " onClick={()=>setOpenState()}>
                                         <li className={`${pathname.match('/currencies') ? 'submenu-item active' : 'submenu-item'}`}>
@@ -190,7 +226,9 @@ function Sidebar(props) {
                                         </li>
                                     </Link>
                                 </ul>
-                            )
+                                
+                            
+                            </div>
                         }                        
                         <li className={`${pathname.match('/portfolio') ? 'nav-item active' : 'nav-item'}`}>
                             <Link to={'portfolio/overview'} className="nav-link align-items-center d-flex" onClick={()=>setOpenState()}>
@@ -198,10 +236,57 @@ function Sidebar(props) {
                             </Link>
                         </li>                                            
                         <li className="nav-item ">
-                            <a className="nav-link " href="# ">
-                                <RiMoreLine className="side-icon" /> {props.isOpen&&<span className="ml-3">Support & More</span>}
-                            </a>
+                            <div className="nav-link align-items-center d-flex justify-content-between">
+                                <div className="d-flex align-items-center">
+                                    <RiMoreLine className="side-icon" /> {props.isOpen&&<span className="ml-3">Support & More</span>}                                
+                                </div>                                
+                                {
+                                    props.isOpen&&(
+                                        openSubMenu2?<RiArrowUpSLine onClick={()=>toggleSubmenu2()} className="side-icon ml-3" />:
+                                        <RiArrowDownSLine onClick={()=>toggleSubmenu2()} className="side-icon ml-3" />
+                                    )
+                                    
+                                }
+                            </div>                            
+                            
                         </li>
+                        {
+                            <div className={(props.isOpen&&openSubMenu2)?'wrapper-sub open2':'wrapper-sub'}>                                                        
+                                <ul className="submenu">
+                                    <a href="https://sandwich.network/token/" target="_blank" className="nav-link ">
+                                        <li className="submenu-item">
+                                            {props.isOpen&&<span className="ml-4">Token</span>}
+                                        </li>
+                                    </a>
+                                    <a href="https://docs.sandwich.network/support" target="_blank" className="nav-link ">
+                                        <li className="submenu-item">
+                                            {props.isOpen&&<span className="ml-4">Support</span>}
+                                        </li>
+                                    </a>
+
+                                    <a href="https://docs.sandwich.network/" target="_blank" className="nav-link ">
+                                        <li className="submenu-item">
+                                            {props.isOpen&&<span className="ml-4">Docs</span>}
+                                        </li>
+                                    </a>
+                                    <a href="https://sandwich.network/tutorials/" target="_blank" className="nav-link ">
+                                        <li className="submenu-item">
+                                            {props.isOpen&&<span className="ml-4">Tutorials</span>}
+                                        </li>
+                                    </a>
+                                    <a href="https://medium.com/@sandwichnetwork" target="_blank" className="nav-link ">
+                                        <li className="submenu-item">
+                                            {props.isOpen&&<span className="ml-4">Blog</span>}
+                                        </li>
+                                    </a>
+                                    <a href="https://sandwich.network/submit/" target="_blank" className="nav-link ">
+                                        <li className="submenu-item">
+                                            {props.isOpen&&<span className="ml-4">Submit idea</span>}
+                                        </li>
+                                    </a>
+                                </ul>                                                            
+                            </div>
+                        }
                     </ul>
                 </div>
                 <div className="sidebar-footer">

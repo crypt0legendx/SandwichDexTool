@@ -17,10 +17,8 @@ import {MdStackedLineChart} from 'react-icons/md';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 
@@ -222,7 +220,7 @@ function Chart() {
                                     tokenInfo!=null?
                                     <>
                                         <label>{tokenInfo.symbol}</label>
-                                        <span lassName={tokenInfo.percent_change_24h>0?"badge ml-2 mt-1 bg-success":"badge ml-2 mt-1 bg-danger"}>{tokenInfo.percent_change_24h>0?'+':''}{Math.floor(tokenInfo.percent_change_24h * 100) / 100}%</span>
+                                        <span className={tokenInfo.percent_change_24h>0?"badge ml-2 mt-1 bg-success":"badge ml-2 mt-1 bg-danger"}>{tokenInfo.percent_change_24h>0?'+':''}{Math.floor(tokenInfo.percent_change_24h * 100) / 100}%</span>
                                     </>:
                                     <Skeleton animation="wave" width={100} height={20} />
                                 )
@@ -494,7 +492,7 @@ function Chart() {
                                             <div className="">
                                                 {
                                                     liquidities.map((d,i)=>{
-                                                        return <div className="liquidity-item">
+                                                        return <div key={i} className="liquidity-item">
                                                                     <div className="lp-name">{d.sellCurrency.symbol+'-'+d.buyCurrency.symbol } LP Token</div>
                                                                     <div className="protocol-name">{d.protocol}</div>
                                                                     

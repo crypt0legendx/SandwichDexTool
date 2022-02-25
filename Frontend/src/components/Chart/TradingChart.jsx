@@ -21,7 +21,6 @@ const TradingChart = (props) => {
       locale="en"
       interval={props.interval}
       timezone="exchange"
-      theme="Light"
       hide_top_toolbar={true}
       ref={tradingRef}
     />

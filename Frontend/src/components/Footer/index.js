@@ -19,20 +19,7 @@ function Footer(){
                                     <div className="footer_box pt_30">
                                         <div className="footer_list_wrapper">
                                             <h5>Products</h5>
-                                            <ul className="footer_list">
-                                                <li>
-                                                    <a href="/launch/">SandwichBeta</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">SandwichSAFU</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">SandwichTools</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">SandwichSwap</a>
-                                                </li>
-                                            </ul>
+                                   
                                         </div>
                                     </div>
                                     <div className="footer_box pt_30">
