@@ -54,11 +54,17 @@ function Chart() {
 
 
     useEffect(()=>{
+        setTokenInfo(null);
+        setTradeBook([]);
+        setYourTrade([]);
+        setHolders([]);
+        setLiquidities([]);
+
         getTokenInfo();
         fetchTradeBook();
         fetchHolders();
         fetchLiquidity();
-    },[chain,contractAddress])// eslint-disable-line react-hooks/exhaustive-deps
+    },[chain,contractAddress])
 
     useEffect(()=>{
         if(address === ""){
