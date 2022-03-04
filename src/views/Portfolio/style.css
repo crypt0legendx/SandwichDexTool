@@ -1,0 +1,395 @@
+#wallet-dropdown-button{
+    background: #35C4FF;
+    border:0px;
+    border-radius: 4px;
+    width: 125px;
+    height: 38px;
+
+    /*font*/
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.worth-card{
+    height:120px;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.worth-card .title{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: left;
+
+    color: #777E90;
+}
+
+.worth-card .value{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.02em;
+
+    /* Neutrals/2 */
+
+    color: #23262F;
+}
+
+.worth-card .percent{
+
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height, or 114% */
+    color: #EB685C;
+}
+
+
+.dominant-token-card,.nft-token-card{
+    min-height: 300px;
+    padding:20px 20px;
+}
+
+.overview-tokens-list{
+    min-height: 200px;
+}
+
+.dominant-token-card .token-info, .dominant-token-card .token-count{
+    width: 100%;
+    height:110px;
+    padding: 10px 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.dominant-token-card .token-info .title,  .dominant-token-card .token-count .title{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height, or 114% */
+    color: #777E90;
+}
+
+.dominant-token-card .token-info .title{
+    text-align: left;
+}
+
+.dominant-token-card .token-info .token-info-body{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.p-token-logo{
+    width: 23px;  
+    border-radius:50%;     
+}
+
+
+.dominant-token-card .token-info .token-info-body .p-token-symbol{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 29px;
+    letter-spacing: -0.02em;    
+    color: #23262F;
+}
+.dominant-token-card .token-info .token-info-body .p-token-value{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 23px;
+    text-align: right;
+    letter-spacing: -0.02em;
+
+    /* Neutrals/2 */
+
+    color: #23262F;
+}
+.dominant-token-card .token-count .value{
+    text-align: center;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 29px;
+
+    letter-spacing: -0.02em;
+    color: #23262F;
+}
+
+.dominant-token-card .p-open-token-btn{
+    width: 100%;
+    height: 56px;
+    background: #35C4FF;
+    border-radius: 90px;
+    border:0px;
+
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    /* identical to box height, or 100% */
+
+    text-align: center;
+
+    /* Neutrals/8 */
+
+    color: #FCFCFD;
+}
+
+.nft-token-card .title{
+    text-align:left;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+    color: #23262F;
+}
+
+.no-data{
+    text-align: center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.no-data .nodata-description{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+
+    text-align: center;
+    color: #23262F;
+}
+
+.nft-token-card .no-data  .discover-nft-btn{
+    width: 100%;
+    height: 56px;
+    background: #fff;
+    border:1px solid #35C4FF;
+    border-radius: 90px;
+
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    /* identical to box height, or 100% */
+
+    text-align: center;
+
+    /* Neutrals/8 */
+
+    color: #35C4FF;
+}
+
+.dominant-token-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0px;
+}
+
+.pd-token-name{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+
+    /* Neutrals/2 */
+
+    color: #23262F;
+}
+
+.pd-token-value{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 13px;
+    ;
+    /* identical to box height */
+
+    letter-spacing: -0.02em;
+
+    color: #777E90;
+}
+
+.pd-token-worth{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    /* identical to box height */
+
+    text-align: right;
+    letter-spacing: -0.02em;
+
+    color: #23262F;
+}
+
+
+.wallet-management-modal{
+    z-index:1 !important;
+}
+.wallet-management{
+    padding: 30px 20px;
+}
+/*wallet-management*/
+.wallet-management .wallet-management-title{
+    font-family: 'DM SANS';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+    color: #35c4ff;
+}
+.wallet-management .wallet-management-subtitle{
+    font-family: 'POPPINS';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+    color: #4d8daf;
+}
+
+.no-watch-list{
+    font-family: DM Sans;
+    font-style: normal;
+    /* font-weight: bold; */
+    font-size: 14px;
+    line-height: 18px;
+    color: #9f8a97;
+    border: dashed 2px rgb(196 238 255);
+    background: #fff9f9;
+    padding: 20px 30px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.wm-connect-btn{
+    background: transparent;
+    border: 0px;
+    font-family: DM Sans;
+    font-style: normal;
+    /* font-weight: bold; */
+    font-size: 14px;
+    line-height: 16px;
+    color: #35c4ff;
+    text-align: center;
+    
+
+}
+.add-wallet-btn{
+    background:#35C4FF;
+    border:0px;
+
+    font-family: DM Sans;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 16px;
+    /* identical to box height, or 100% */
+    text-align: center;
+    /* Neutrals/8 */
+    color: #FCFCFD;
+}
+
+.wallet-items{
+    background:#ffd9d96e;
+    padding:10px;
+    border-radius:10px;    
+}
+
+.watch-lists{
+    max-height:180px;
+    overflow-y:auto;
+}
+
+.wallet-logo{
+    width:36px;
+    background:#fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.wallet-name{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #23262f;
+}
+
+.wallet-name:hover{
+    color:#35C4FF;
+    text-decoration:underline;
+}
+
+.wallet-item-action{
+    font-size:18px !important;
+    color:#23262F !important;
+    background:transparent !important;
+    border:0px !important;
+}
+
+.wallet-item + .wallet-item{
+    margin-top:5px;
+}
+
+.wallet-add-input{
+    border: 1px solid #c69595;
+    width: 100%;
+    border-radius: 10px;
+    padding: 7px 20px;
+    font-size: 13px;
+    font-family: DM Sans;
+    text-align: center;
+    font-weight: 600;
+}
+
+.link-btn{
+    background:transparent;
+    border:0px;
+}
+
+.clear-btn{
+    background: #dfb0b054;
+    border-radius: 5px;
+    padding: 2px 10px;
+
+    font-family: DM Sans;
+    font-style: normal;
+    font-size: 13px;
+}
+
+/*--------------end of wallet management-----------------------------*/

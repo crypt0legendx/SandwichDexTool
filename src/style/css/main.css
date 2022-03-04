@@ -1,0 +1,37 @@
+/*
+  #FF5757
+  #35C4FF
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Inter:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    color: #333;
+
+}
+
+.page-content{
+    margin-left:280px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 93px;
+    height: calc(100vh);
+    overflow-y: auto;    
+}
+
+@media(min-width:769px){
+  .page-content.open{
+    margin-left: 70px;
+  }
+}
+
+@media(max-width:1028px){
+  .page-content{
+      margin-left: 0px;
+      padding-left:20px;
+      padding-right:20px;
+  }
+}
